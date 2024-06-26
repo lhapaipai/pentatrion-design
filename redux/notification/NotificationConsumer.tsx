@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { messageRemoved, selectMessages } from ".";
 import { nanoid } from "@reduxjs/toolkit";
 import { Snack } from "../../components/snack";
-import { Message } from "../../types.d";
+import { Message } from "../../types";
 
 interface Props {
   children: ReactNode;

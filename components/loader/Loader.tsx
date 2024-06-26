@@ -1,5 +1,5 @@
 import { CSSProperties, ComponentPropsWithoutRef, useId } from "react";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { colorVariants } from "../../lib";
 
@@ -43,10 +43,10 @@ export function Loader({ size = "medium", color = "blue", className, ...rest }: 
       <defs>
         <circle id={id} cx="8" cy="8" r="7" />
       </defs>
-      <use href={`#${id}`} className="opacity-25 fill-none stroke-current" style={trackStyle} />
+      <use href={`#${id}`} className="fill-none stroke-current opacity-25" style={trackStyle} />
       <use
         href={`#${id}`}
-        className="fill-none stroke-current animate-loader-stroke"
+        className="animate-loader-stroke fill-none stroke-current"
         style={circleStyle}
       />
     </svg>

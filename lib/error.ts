@@ -1,4 +1,4 @@
-import { MessageOptions } from "../types.d";
+import { MessageOptions } from "../types";
 
 export function isErrorLike(err: any): err is Error {
   if (err instanceof Error) {

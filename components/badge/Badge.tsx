@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { buttonVariants } from "../button";
 import { Href } from "../href";
@@ -43,10 +43,7 @@ export function Badge({
         <span className="px-2">{children}</span>
       )}
       {onRemove && (
-        <button
-          className="remove rounded-r-full pl-0.5 pr-1"
-          onClick={onRemove}
-        >
+        <button className="remove rounded-r-full pl-0.5 pr-1" onClick={onRemove}>
           <i className="fe-cancel"></i>
         </button>
       )}

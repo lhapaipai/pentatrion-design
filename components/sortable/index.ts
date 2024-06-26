@@ -1,2 +1,2 @@
-export type * from "./types.d";
+export type * from "./interface";
 export { Sortable } from "./Sortable";

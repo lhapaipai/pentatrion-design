@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, createContext } from "react";
 import { parseError } from "../../lib";
-import { Message, MessageOptions } from "../../types.d";
+import { Message, MessageOptions } from "../../types";
 
 export function createNotificationsManager(setNotifications: Dispatch<SetStateAction<Message[]>>) {
   let idx = 1;

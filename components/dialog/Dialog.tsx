@@ -1,7 +1,7 @@
 import { Placement } from "@floating-ui/react";
 import clsx from "clsx";
 import { ComponentProps, ReactNode } from "react";
-import type { ThemeColor } from "../../types.d";
+import type { ThemeColor } from "../../types";
 
 interface Props extends ComponentProps<"div"> {
   color?: ThemeColor;
@@ -32,7 +32,7 @@ export function Dialog({ placement, color, children, className, ...rest }: Props
   return (
     <div
       className={clsx(
-        "rounded-2xl relative shadow dark:shadow-dark",
+        "relative rounded-2xl shadow dark:shadow-dark",
         dialogVariants.color(color),
         className,
       )}

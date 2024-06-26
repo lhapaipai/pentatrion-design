@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
-import type { ThemeColor } from "../../types.d";
+import type { ThemeColor } from "../../types";
 
 export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix"> {
   variant?: "normal" | "ghost";
@@ -29,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {prefix && (
           <div
             className={clsx([
-              "flex-center relative",
+              "relative flex-center",
               typeof prefix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >
@@ -45,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {suffix && (
           <div
             className={clsx([
-              "flex-center relative",
+              "relative flex-center",
               typeof suffix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >

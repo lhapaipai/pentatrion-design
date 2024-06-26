@@ -1,5 +1,5 @@
 import { ComponentProps, forwardRef, useImperativeHandle, useRef } from "react";
-import type { ThemeColor } from "../../types.d";
+import type { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { useRipple } from "../../hooks";
 
@@ -15,15 +15,7 @@ export interface ColorProps extends ComponentProps<"button"> {
 
 export const Color = forwardRef<HTMLButtonElement, ColorProps>(
   (
-    {
-      value,
-      withRipple = true,
-      color = "yellow",
-      label,
-      showValue = false,
-      className,
-      ...rest
-    },
+    { value, withRipple = true, color = "yellow", label, showValue = false, className, ...rest },
     ref,
   ) => {
     const valueToShow = label ?? (showValue ? value : null);

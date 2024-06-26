@@ -1,15 +1,11 @@
 import { Placement } from "@floating-ui/react";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 
-export interface TooltipOptions {
+export interface PopoverOptions {
   initialOpen?: boolean;
   placement?: Placement;
   open?: boolean;
   onOpen?: (open: boolean) => void;
-  openDelay?: number;
-  closeDelay?: number;
   color?: ThemeColor;
-  contentClassName?: string;
+  modal?: boolean;
 }
-
-export { ThemeColor };

@@ -1,3 +1,11 @@
+## 0.0.14
+
+fix export .d.ts files
+
+## 0.0.13
+
+Pentatrion-design has its own repository !!
+
 ## 0.0.12
 fix notificationsConsumer pointer event none
 

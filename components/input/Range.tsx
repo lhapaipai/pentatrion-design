@@ -1,16 +1,13 @@
 import { forwardRef, useMemo, ComponentPropsWithRef } from "react";
 
 import clsx from "clsx";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 
 // import styles from "./Range.module.css";
 // console.log(Object.keys(styles));
 
 export interface RangeProps
-  extends Omit<
-    ComponentPropsWithRef<"input">,
-    "value" | "min" | "max" | "step"
-  > {
+  extends Omit<ComponentPropsWithRef<"input">, "value" | "min" | "max" | "step"> {
   value: number;
   min?: number;
   max?: number;
@@ -75,12 +72,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
         </>
       )}
 
-      <div
-        className={clsx(
-          trackBase,
-          "bottom-0 right-0 flex items-center justify-center",
-        )}
-      >
+      <div className={clsx(trackBase, "bottom-0 right-0 flex items-center justify-center")}>
         <div className="relative h-2 w-[calc(100%-2rem)]">
           {/* track full */}
           <div

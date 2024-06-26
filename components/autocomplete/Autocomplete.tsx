@@ -35,7 +35,7 @@ import { Button } from "../button";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
 import { inputConfig } from "../input/Input";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 
 export interface AutocompleteProps<O extends OptionLike = Option> {
   className?: string;

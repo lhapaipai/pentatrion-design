@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 
 export interface DropdownMenuOptions {
   initialOpen?: boolean;
@@ -9,5 +9,3 @@ export interface DropdownMenuOptions {
   color?: ThemeColor | "default";
   modal?: boolean;
 }
-
-export { ThemeColor };

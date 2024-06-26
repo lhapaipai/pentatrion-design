@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, forwardRef, useRef } from "react";
-import { type ThemeColor } from "../../types.d";
+import { type ThemeColor } from "../../types";
 import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 
@@ -9,26 +9,11 @@ export interface ToggleProps extends ComponentPropsWithRef<"input"> {
 }
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  (
-    {
-      color = "yellow",
-      disabled = false,
-      checked,
-      className,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ color = "yellow", disabled = false, checked, className, children, ...rest }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label
-        className={clsx(
-          "flex cursor-pointer items-center",
-          disabled && "disabled",
-        )}
-      >
+      <label className={clsx("flex cursor-pointer items-center", disabled && "disabled")}>
         <input
           data-color={color}
           ref={combinedRef}

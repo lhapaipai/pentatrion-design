@@ -1,4 +1,4 @@
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 
@@ -21,7 +21,7 @@ export const Context = () => {
       {directions.map((direction) => (
         <div className="flex flex-col gap-4">
           {variants.map((variant) => (
-            <div key={variant} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+            <div key={variant} className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
               {colors.map((color) => (
                 <ButtonGroup key={color} direction={direction}>
                   {buttonLabels.map((label) => (

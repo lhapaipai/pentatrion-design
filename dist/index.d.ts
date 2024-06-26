@@ -1,4 +1,4 @@
-export type { ThemeColor } from "./types.d";
+export type { ThemeColor } from "./types";
 export * from "./components/autocomplete";
 export * from "./components/badge";
 export * from "./components/button";

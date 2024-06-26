@@ -6,7 +6,7 @@ import {
   type NotificationsManager,
 } from "./NotificationsContext";
 import { Snack } from "../snack";
-import { Message } from "../../types.d";
+import { Message } from "../../types";
 
 interface Props {
   children: ReactNode;
@@ -46,9 +46,7 @@ export function NotificationsProvider({ children }: Props) {
 
   return (
     <>
-      <NotificationsContext.Provider value={manager}>
-        {children}
-      </NotificationsContext.Provider>
+      <NotificationsContext.Provider value={manager}>{children}</NotificationsContext.Provider>
       {createPortal(
         /* snack-bar-inner */
         <div className="mx-4 mb-4 flex flex-col items-center gap-4">

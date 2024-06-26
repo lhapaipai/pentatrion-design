@@ -1,4 +1,4 @@
-import { type ThemeColor } from "../../types.d";
+import { type ThemeColor } from "../../types";
 
 export interface ModalOptions {
   initialOpen?: boolean;
@@ -6,5 +6,3 @@ export interface ModalOptions {
   onOpen?: (open: boolean) => void;
   color?: ThemeColor | "default";
 }
-
-export { ThemeColor };

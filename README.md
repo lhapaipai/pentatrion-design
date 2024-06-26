@@ -1,4 +1,4 @@
-# [Pentatrion Design System](https://storybook.lonlat.pentatrion.com)
+# [Pentatrion Design System](https://design.pentatrion.com)
 
 <a href="https://design.pentatrion.com">
 <img src="https://raw.githubusercontent.com/lhapaipai/pentatrion-design/main/screenshot.png" alt="Pentatrion design system" />

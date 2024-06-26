@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { colorVariants } from "../../lib";
 

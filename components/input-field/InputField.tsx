@@ -1,6 +1,6 @@
 import { ElementType, ForwardedRef, ReactNode, forwardRef, useId } from "react";
 import { Input } from "../input";
-import { type ThemeColor } from "../../types.d";
+import { type ThemeColor } from "../../types";
 import { type PolymorphicPropsWithRef } from "../../env.d";
 
 interface InputFieldOwnProps {
@@ -13,10 +13,7 @@ interface InputFieldOwnProps {
 
 const defaultElement = Input;
 
-type Props<E extends ElementType> = PolymorphicPropsWithRef<
-  InputFieldOwnProps,
-  E
->;
+type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   { label, hint, help, error, warning, as, ...rest }: Props<E>,
@@ -26,9 +23,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const Element: ElementType = as || defaultElement;
 
   const labelElement = label && <span className="font-bold">{label}</span>;
-  const hintElement = hint && (
-    <span className="ml-auto text-sm text-gray-6">{hint}</span>
-  );
+  const hintElement = hint && <span className="ml-auto text-sm text-gray-6">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
     <span className="font-medium text-red-4 dark:text-red-2">
       <i className="fe-circle-exclamation"></i>
@@ -55,9 +50,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
         <label htmlFor={id} className="invisible"></label>
       )}
       <Element ref={ref} id={id} color={color} {...rest} />
-      <div className="mt-1 text-sm text-gray-6">
-        {errorElement || warningElement || help}
-      </div>
+      <div className="mt-1 text-sm text-gray-6">{errorElement || warningElement || help}</div>
     </div>
   );
 };

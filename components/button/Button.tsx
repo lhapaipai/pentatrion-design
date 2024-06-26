@@ -1,11 +1,6 @@
-import {
-  ComponentPropsWithRef,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
-} from "react";
+import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
-import { ThemeColor } from "../../types.d";
+import { ThemeColor } from "../../types";
 import { Loader } from "../loader";
 import { useRipple } from "../../hooks";
 
@@ -53,10 +48,7 @@ export const buttonVariants = {
       case "medium":
         return clsx("h-8", icon ? "min-w-8 [&_i]:w-8" : "px-4");
       case "large":
-        return clsx(
-          "h-12",
-          icon ? "text-2xl min-w-12 [&_i]:w-12" : "text-xl px-8",
-        );
+        return clsx("h-12", icon ? "text-2xl min-w-12 [&_i]:w-12" : "text-xl px-8");
     }
   },
   variant: {

@@ -5,7 +5,7 @@ import { Button } from "../button";
 import { useEventCallback } from "../../hooks";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
-import { Message } from "../../types.d";
+import { Message } from "../../types";
 
 export type SnackProps = Partial<Message> & {
   onRemove?: () => void;
@@ -32,10 +32,7 @@ export function Snack({
 
   return (
     <Dialog
-      className={clsx(
-        "pointer-events-auto motion-safe:animate-fade-in",
-        "ll-snack",
-      )}
+      className={clsx("pointer-events-auto motion-safe:animate-fade-in", "ll-snack")}
       placement="top"
       color={color}
     >
