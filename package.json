@@ -1,15 +1,16 @@
 {
   "name": "pentatrion-design",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "",
   "keywords": [],
   "author": "Hugues Tavernier",
   "license": "ISC",
+  "private": true,
   "main": "./index.ts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "tsc": "tsc",
+    "tsc": "tsc --project tsconfig.build.json && node generate-public-package.js",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6007",
@@ -38,11 +39,11 @@
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.5.2",
-    "@typescript-eslint/eslint-plugin": "^7.13.0",
-    "@typescript-eslint/parser": "^7.13.0",
     "@types/geojson": "^7946.0.14",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react-swc": "^3.7.0",
     "@vitest/ui": "^1.6.0",
@@ -89,6 +90,6 @@
     }
   },
   "volta": {
-      "node": "20.14.0"
+    "node": "20.14.0"
   }
 }
