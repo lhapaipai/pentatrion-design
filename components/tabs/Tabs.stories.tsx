@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "../button";
-import { Tabs } from ".";
+import { Button } from "../button/Button";
+import { Tabs } from "./Tabs";
 
 export default {
   title: "Components/Tabs",

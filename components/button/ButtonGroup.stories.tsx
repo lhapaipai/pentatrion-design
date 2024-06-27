@@ -2,7 +2,8 @@ import { ThemeColor } from "../../types";
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 
-import { Button, ButtonGroup } from ".";
+import { Button } from "./Button";
+import { ButtonGroup } from "./ButtonGroup";
 
 const meta = {
   title: "Components/ButtonGroup",

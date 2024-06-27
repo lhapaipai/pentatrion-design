@@ -1,9 +1,9 @@
 import { ComponentProps, forwardRef } from "react";
-import { useTooltipContext } from ".";
+import { useTooltipContext } from "./useTooltipContext";
 import { FloatingPortal, useMergeRefs } from "@floating-ui/react";
 import clsx from "clsx";
 import { computeArrowStyle } from "../dialog/util";
-import { Dialog } from "../dialog";
+import { Dialog } from "../dialog/Dialog";
 
 export const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, children, className, ...props }, propRef) => {
@@ -25,10 +25,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
         >
           <Dialog
             placement={context.placement}
-            className={clsx(
-              "max-w-80 px-2 py-1 text-sm motion-safe:animate-fade-in",
-              className,
-            )}
+            className={clsx("max-w-80 px-2 py-1 text-sm motion-safe:animate-fade-in", className)}
             color={context.color}
           >
             {children}

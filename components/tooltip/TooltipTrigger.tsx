@@ -1,5 +1,5 @@
 import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
-import { useTooltipContext } from ".";
+import { useTooltipContext } from "./useTooltipContext";
 import { useMergeRefs } from "@floating-ui/react";
 
 interface Props extends HTMLProps<HTMLElement> {

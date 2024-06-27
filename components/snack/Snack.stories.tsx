@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Snack } from ".";
+import { Snack } from "./Snack";
 const meta = {
   title: "Components/Snack",
   component: Snack,
@@ -9,7 +9,7 @@ export default meta;
 export const Basic = () => {
   return (
     <div className="ll-snack-bar fixed bottom-0 left-0 right-0 z-notification">
-      <div className="snack-bar-inner mb-4 mx-4 flex flex-col gap-4 items-center">
+      <div className="snack-bar-inner mx-4 mb-4 flex flex-col items-center gap-4">
         <Snack id={"a"} content="Hello world" expiration={-1} color="yellow" canClose={true} />
         <Snack
           id={"b"}

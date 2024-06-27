@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { RadioGroup } from ".";
+import { RadioGroup } from "./RadioGroup";
 
 const meta = {
   title: "Components/Input/RadioGroup",
@@ -69,12 +69,7 @@ export const Basic = () => {
         value={value}
         onChange={setValue}
       />
-      <RadioGroup
-        placement="inline-grid"
-        options={options}
-        value={value}
-        onChange={setValue}
-      />
+      <RadioGroup placement="inline-grid" options={options} value={value} onChange={setValue} />
       <RadioGroup options={options} value={value} onChange={setValue} />
     </div>
   );

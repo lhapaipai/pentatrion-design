@@ -1,6 +1,8 @@
 import { ReactNode, isValidElement } from "react";
 import { TooltipOptions } from "./interface";
-import { Tooltip, TooltipContent, TooltipTrigger } from ".";
+import { Tooltip } from "./Tooltip";
+import { TooltipContent } from "./TooltipContent";
+import { TooltipTrigger } from "./TooltipTrigger";
 
 interface Props extends TooltipOptions {
   children: ReactNode;

@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { TooltipOptions } from "./interface";
-import { useTooltip, TooltipContext } from ".";
+import { useTooltip } from "./useTooltip";
+import { TooltipContext } from "./useTooltipContext";
 
 interface Props extends TooltipOptions {
   children: ReactNode;

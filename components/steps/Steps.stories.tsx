@@ -1,5 +1,7 @@
 import { Meta } from "@storybook/react";
-import { Steps, Step } from ".";
+import { Step } from "./Step";
+import { Steps } from "./Steps";
+
 import { Input } from "../input";
 import { useState } from "react";
 import { ReactSortable } from "react-sortablejs";

@@ -25,8 +25,8 @@ import {
 import { FocusEvent, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import { MenuContext } from "./MenuContext";
 import clsx from "clsx";
-import { Button, type ButtonProps } from "../button";
-import { Dialog } from "../dialog";
+import { Button, type ButtonProps } from "../button/Button";
+import { Dialog } from "../dialog/Dialog";
 
 export interface Props extends ButtonProps {
   label?: string;

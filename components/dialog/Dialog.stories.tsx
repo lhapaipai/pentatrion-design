@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Dialog } from ".";
+import { Dialog } from "./Dialog";
 import { Button } from "../button";
 
 const meta = {
@@ -9,7 +9,7 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="flex gap-8 flex-col mb-4">
+    <div className="mb-4 flex flex-col gap-8">
       <div>
         <Dialog>
           <div className="description p-2">coucou</div>
@@ -42,7 +42,7 @@ export const Basic = () => {
 
       <div>
         <Dialog placement="top" color="orange" style={{ width: 300 }}>
-          <div className="p-1 float-right">
+          <div className="float-right p-1">
             <Button icon variant="text" color="gray">
               <i className="fe-cancel"></i>
             </Button>
@@ -55,7 +55,7 @@ export const Basic = () => {
 
       <div>
         <Dialog placement="top" color="blue" style={{ width: 300 }}>
-          <div className="p-1 float-right">
+          <div className="float-right p-1">
             <Button icon variant="text" color="gray">
               <i className="fe-cancel"></i>
             </Button>
@@ -70,7 +70,7 @@ export const Basic = () => {
 
       <div>
         <Dialog placement="top" color="yellow" style={{ width: 300 }}>
-          <div className="p-1 float-right">
+          <div className="float-right p-1">
             <Button icon variant="text" color="gray">
               <i className="fe-cancel"></i>
             </Button>
@@ -96,13 +96,13 @@ export const Basic = () => {
 
 export const Options = () => {
   return (
-    <div className="flex gap-8 flex-col mb-4">
+    <div className="mb-4 flex flex-col gap-8">
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="option">Default state 1</div>
           <div className="option active">Active state 2 (keyboard navigation)</div>
           <div className="option">Default state 3</div>
-          <div className="option selected">Selected state 4</div>
+          <div className="selected option">Selected state 4</div>
           <div className="option">Default state 5</div>
           <div className="option">Default state 6</div>
         </Dialog>
@@ -181,7 +181,7 @@ export const Options = () => {
 
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
-          <div className="overflow-auto max-h-56">
+          <div className="max-h-56 overflow-auto">
             <div className="option">
               <span className="bullet">A</span>
               <span>Itinéraire depuis ce point</span>

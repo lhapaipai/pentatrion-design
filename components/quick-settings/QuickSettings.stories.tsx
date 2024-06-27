@@ -1,7 +1,8 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { Button } from "../button";
-import { Checkbox, Input } from "../input";
+import { Button } from "../button/Button";
+import { Input } from "../input/Input";
+import { Checkbox } from "../input/Checkbox";
 import { Select } from "../select";
 
 const meta = {
@@ -37,42 +38,42 @@ export const Basic = () => {
         <div className="p8n-setting">
           <div>Coordonnées</div>
           <div>
-            <span className="text-gray-6 text-sm">lon/lat </span>
+            <span className="text-sm text-gray-6">lon/lat </span>
             6.497886, 46.091857
           </div>
         </div>
         <div className="p8n-setting">
           <div>Altitude</div>
           <div>
-            500 <span className="text-gray-6 text-sm">m</span>
+            500 <span className="text-sm text-gray-6">m</span>
           </div>
         </div>
       </div>
       <div className="actions flex gap-2">
-        <Button variant="text" color="gray" size="large" className="flex-1 min-w-0">
-          <span className="flex-center w-full">
+        <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
+          <span className="w-full flex-center">
             <i className="fe-isochrone text-2xl"></i>
           </span>
         </Button>
-        <Button variant="text" color="gray" size="large" className="flex-1 min-w-0">
-          <span className="flex-center w-full">
+        <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
+          <span className="w-full flex-center">
             <i className="fe-route text-2xl"></i>
           </span>
         </Button>
-        <Button variant="text" color="gray" size="large" className="flex-1 min-w-0">
-          <span className="flex-center w-full">RAW</span>
+        <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
+          <span className="w-full flex-center">RAW</span>
         </Button>
       </div>
 
       <div className="actions flex gap-2">
-        <Button variant="text" color="gray" size="large" className="flex-1 min-w-0">
-          <span className="flex-center w-full">
+        <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
+          <span className="w-full flex-center">
             <i className="fe-stopwatch"></i>
             isochrone
           </span>
         </Button>
-        <Button variant="text" color="gray" size="large" className="flex-1 min-w-0">
-          <span className="flex-center w-full">
+        <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
+          <span className="w-full flex-center">
             <i className="fe-ruler"></i>
             isodistance
           </span>
@@ -165,7 +166,7 @@ export const Basic = () => {
         <div className="p8n-setting">
           <div>Distance</div>
           <div>
-            325 <span className="text-gray-6 text-sm">km</span>
+            325 <span className="text-sm text-gray-6">km</span>
           </div>
         </div>
         <div className="p8n-setting">

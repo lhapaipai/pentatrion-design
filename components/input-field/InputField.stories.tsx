@@ -1,7 +1,9 @@
 import { Meta } from "@storybook/react";
 import { ChangeEvent, useState } from "react";
-import { InputField } from ".";
-import { Toggle, Checkbox, RadioGroup } from "../input";
+import { InputField } from "./InputField";
+import { Toggle } from "../input/Toggle";
+import { Checkbox } from "../input/Checkbox";
+import { RadioGroup } from "../input/RadioGroup";
 
 const meta = {
   title: "Components/InputField",
@@ -29,9 +31,7 @@ export const Playbook = () => {
           value={value}
           warning={warning}
           error={error}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setValue(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         />
       </div>
       <div className="grid grid-cols-2 gap-4">
@@ -39,47 +39,35 @@ export const Playbook = () => {
           label="Label"
           placeholder="What is your name ?"
           value={label}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setLabel(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
         />
         <InputField
           label="Hint"
           placeholder="One hint ?"
           value={hint}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setHint(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setHint(e.target.value)}
         />
         <InputField
           label="Placeholder"
           value={placeholder}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setPlaceholder(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setPlaceholder(e.target.value)}
         />
         <InputField
           label="Help"
           value={help}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setHelp(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setHelp(e.target.value)}
         />
         <InputField
           label="Warning"
           placeholder="warning message"
           value={warning}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setWarning(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setWarning(e.target.value)}
         />
         <InputField
           label="Error"
           placeholder="Error message"
           value={error}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setError(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setError(e.target.value)}
         />
       </div>
     </>
@@ -170,9 +158,7 @@ export const Context = () => {
       />
       <InputField
         checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsAgree(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
         label="Gender"
         hint="One hint"
         as={Checkbox}
@@ -181,9 +167,7 @@ export const Context = () => {
       </InputField>
       <InputField
         checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsAgree(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
         label="Gender"
         hint="One hint"
         warning="Make your choice"
@@ -193,9 +177,7 @@ export const Context = () => {
       </InputField>
       <InputField
         checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsAgree(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
         label="Gender"
         hint="One hint"
         error="This field is required"
@@ -206,9 +188,7 @@ export const Context = () => {
 
       <InputField
         checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsEnabled(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
         label="Label"
         hint=""
         as={Toggle}
@@ -217,9 +197,7 @@ export const Context = () => {
       </InputField>
       <InputField
         checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsEnabled(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
         label="Label"
         hint="One hint"
         warning="Make your choice"
@@ -229,9 +207,7 @@ export const Context = () => {
       </InputField>
       <InputField
         checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setIsEnabled(e.target.checked)
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
         label="Label"
         hint="One hint"
         error="This field is required"

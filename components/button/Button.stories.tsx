@@ -1,16 +1,9 @@
 import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHeader,
-  TableHeaderCell,
-  TableRow,
-} from "../table";
+import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
 
-import { Button } from ".";
+import { Button } from "./Button";
 
 const meta = {
   title: "Components/Button",

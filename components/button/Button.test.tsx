@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { Button } from ".";
+import { Button } from "./Button";
 
 afterEach(cleanup);
 

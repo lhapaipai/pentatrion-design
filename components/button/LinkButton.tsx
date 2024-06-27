@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
-import { useRipple } from "../../hooks";
+import { useRipple } from "../../hooks/useRipple";
 import { buttonVariants } from "./Button";
 
 export interface LinkButtonProps extends ComponentPropsWithRef<"a"> {

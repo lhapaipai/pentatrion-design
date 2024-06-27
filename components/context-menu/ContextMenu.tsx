@@ -26,7 +26,7 @@ import {
 } from "@floating-ui/react";
 
 import { ContextMenuItemProps } from "./ContextMenuItem";
-import { Dialog } from "../dialog";
+import { Dialog } from "../dialog/Dialog";
 import { useEventCallback, useRefDebounce } from "../../hooks";
 
 type CustomContextEvent = CustomEvent<{ emulated: boolean; originalEvent: Event }>;

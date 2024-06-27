@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDebounce } from ".";
+import { useDebounce } from "./useDebounce";
 
 /**
  * This hook accepts a ref to any element and adds a click event handler that creates ripples when click

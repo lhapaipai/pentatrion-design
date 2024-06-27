@@ -1,13 +1,15 @@
 import { memo, useId } from "react";
 import { OptionLike } from "../select";
 import { useListItem } from "@floating-ui/react";
-import { useAutocomplete } from ".";
+import { useAutocomplete } from "./useAutocompleteContext";
 import clsx from "clsx";
 import { getOptionLabel, getOptionValue } from "./util";
 
 export type AutocompleteOptionProps<O extends OptionLike> = O;
 
-function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps<O>) {
+export const AutocompleteOption = memo(function AutocompleteOption<O extends OptionLike>(
+  props: AutocompleteOptionProps<O>,
+) {
   const label = getOptionLabel(props);
 
   const id = useId();
@@ -30,6 +32,4 @@ function AutocompleteOption<O extends OptionLike>(props: AutocompleteOptionProps
       {label}
     </div>
   );
-}
-
-export default memo(AutocompleteOption);
+});

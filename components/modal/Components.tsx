@@ -1,8 +1,8 @@
 import { ComponentProps } from "react";
-import { useModalContext } from ".";
+import { useModalContext } from "./useModalContext";
 import clsx from "clsx";
-import { Button } from "../button";
-import { Scroll } from "../scroll";
+import { Button } from "../button/Button";
+import { Scroll } from "../scroll/Scroll";
 
 interface ModalHeaderProps extends ComponentProps<"h2"> {
   closeButton?: boolean;
@@ -19,20 +19,12 @@ export function ModalHeader({
     <>
       {closeButton && (
         <div className="float-right p-1">
-          <Button
-            icon
-            variant="text"
-            color="gray"
-            onClick={() => setOpen(false)}
-          >
+          <Button icon variant="text" color="gray" onClick={() => setOpen(false)}>
             <i className="fe-cancel"></i>
           </Button>
         </div>
       )}
-      <header
-        className={clsx("flex items-center px-2 pt-2", className)}
-        {...props}
-      >
+      <header className={clsx("flex items-center px-2 pt-2", className)} {...props}>
         <h4 className="font-semibold leading-6">{children}</h4>
       </header>
     </>
@@ -42,12 +34,7 @@ export function ModalHeader({
 interface ModalDescriptionProps extends ComponentProps<"div"> {
   height?: number;
 }
-export function ModalDescription({
-  children,
-  className,
-  height,
-  ...props
-}: ModalDescriptionProps) {
+export function ModalDescription({ children, className, height, ...props }: ModalDescriptionProps) {
   if (!height) {
     return (
       <div className={clsx("p-2", className)} {...props}>
@@ -62,11 +49,7 @@ export function ModalDescription({
   );
 }
 
-export function ModalFooter({
-  children,
-  className,
-  ...props
-}: ComponentProps<"footer">) {
+export function ModalFooter({ children, className, ...props }: ComponentProps<"footer">) {
   return (
     <footer className={clsx("relative z-10 px-2 pb-2", className)} {...props}>
       {children}

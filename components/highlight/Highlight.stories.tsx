@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/react";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
-import { Toggle } from "../input";
-import { Highlight } from ".";
-import { InputField } from "../input-field";
+import { Toggle } from "../input/Toggle";
+import { Highlight } from "./Highlight";
+import { InputField } from "../input-field/InputField";
 
 const meta = {
   title: "Components/Highlight",
@@ -47,12 +47,7 @@ export const Playbook = () => {
     PreviewElement = (
       <>
         {matches.map(({ indices, value }, idx) => (
-          <Highlight
-            key={idx}
-            value={value}
-            indices={indices}
-            minLength={minLength}
-          />
+          <Highlight key={idx} value={value} indices={indices} minLength={minLength} />
         ))}
         <div className="text-sm text-gray-6">score: {score}</div>
       </>
@@ -61,16 +56,12 @@ export const Playbook = () => {
 
   return (
     <>
-      <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">
-        {PreviewElement}
-      </div>
+      <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">{PreviewElement}</div>
       <div className="grid grid-cols-2 gap-4">
         <InputField
           label="Search string"
           value={search}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setSearch(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
         />
         <InputField
           label="parseHighlightIndices minLength"
@@ -85,9 +76,7 @@ export const Playbook = () => {
           help="Indicates whether comparisons should be case sensitive."
           checked={isCaseSensitive}
           as={Toggle}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setIsCaseSensitive(e.target.checked)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setIsCaseSensitive(e.target.checked)}
         />
         <InputField
           label="fuse.js minMatchCharLength"
@@ -95,8 +84,7 @@ export const Playbook = () => {
           value={minMatchCharLength}
           help="Only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character matches in the result, set it to 2)."
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid &&
-            setMinMatchCharLength(e.target.valueAsNumber)
+            e.target.validity.valid && setMinMatchCharLength(e.target.valueAsNumber)
           }
         />
         <InputField
@@ -132,9 +120,7 @@ export const Playbook = () => {
           as={Toggle}
           help="When true, search will ignore location and distance, so it won't matter where in the string the pattern appears."
           checked={ignoreLocation}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            setIgnoreLocation(e.target.checked)
-          }
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setIgnoreLocation(e.target.checked)}
         />
       </div>
     </>

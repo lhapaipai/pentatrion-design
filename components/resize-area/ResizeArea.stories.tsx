@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { ResizeArea } from ".";
+import { ResizeArea } from "./ResizeArea";
 import "./ResizeArea.stories.css";
 
 const meta = {

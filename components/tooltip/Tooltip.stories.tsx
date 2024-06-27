@@ -1,7 +1,8 @@
 import { HTMLProps, forwardRef } from "react";
 import { useDrag } from "@use-gesture/react";
 import { useSpring, animated } from "@react-spring/web";
-import { Tooltip, SimpleTooltip } from ".";
+import { Tooltip } from "./Tooltip";
+import { SimpleTooltip } from "./SimpleTooltip";
 
 export default {
   title: "Components/Tooltip",
@@ -11,7 +12,7 @@ export default {
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
-    className="shadow-lg w-[100px] h-[100px] bg-gray-2 flex-center"
+    className="h-[100px] w-[100px] bg-gray-2 shadow-lg flex-center"
     style={{
       margin: "100px",
     }}
@@ -113,7 +114,7 @@ export const Draggable = () => {
       <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
         <animated.div
           {...bind()}
-          className="shadow-lg w-[100px] h-[100px] bg-gray-2 flex-center"
+          className="h-[100px] w-[100px] bg-gray-2 shadow-lg flex-center"
           style={{
             x,
             y,

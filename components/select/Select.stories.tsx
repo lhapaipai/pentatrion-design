@@ -4,8 +4,7 @@ import { useState } from "react";
 
 import { action } from "@storybook/addon-actions";
 
-import { SelectValue } from "./Select";
-import { Select } from ".";
+import { SelectValue, Select } from "./Select";
 import {
   SelectOptionComponent,
   SelectSelectionComponent,

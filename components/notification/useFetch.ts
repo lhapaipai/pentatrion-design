@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { CustomFetchOptions, fetchAPI } from "../../lib";
-import { useContextNotifications } from ".";
+import { useContextNotifications } from "./useContextNotifications";
 
 export const useFetch = () => {
   // is it the good useContextNotifications ? from redux or not ??

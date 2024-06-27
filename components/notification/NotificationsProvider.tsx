@@ -5,7 +5,7 @@ import {
   createNotificationsManager,
   type NotificationsManager,
 } from "./NotificationsContext";
-import { Snack } from "../snack";
+import { Snack } from "../snack/Snack";
 import { Message } from "../../types";
 
 interface Props {

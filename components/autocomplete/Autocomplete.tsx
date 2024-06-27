@@ -10,7 +10,7 @@ import {
   ReactNode,
 } from "react";
 import type { OptionLike, Option } from "../select";
-import AutocompleteOption, { AutocompleteOptionProps } from "./AutocompleteOption";
+import { AutocompleteOption, AutocompleteOptionProps } from "./AutocompleteOption";
 import {
   FloatingFocusManager,
   FloatingList,
@@ -86,7 +86,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   readOnly?: boolean;
 }
 
-function Autocomplete<O extends OptionLike = Option>(
+export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLike = Option>(
   {
     className,
     icon = true,
@@ -322,6 +322,4 @@ function Autocomplete<O extends OptionLike = Option>(
       </FloatingPortal>
     </div>
   );
-}
-
-export default forwardRef(Autocomplete);
+});

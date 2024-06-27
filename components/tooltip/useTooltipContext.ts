@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useTooltip } from ".";
+import { useTooltip } from "./useTooltip";
 
 type ContextType = ReturnType<typeof useTooltip> | null;
 

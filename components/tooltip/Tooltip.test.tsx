@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { SimpleTooltip } from ".";
+import { SimpleTooltip } from "./SimpleTooltip";
 
 afterEach(cleanup);
 

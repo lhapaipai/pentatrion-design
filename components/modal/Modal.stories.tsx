@@ -1,15 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Button } from "../button";
+import { Button } from "../button/Button";
 
-import {
-  Modal,
-  ModalTrigger,
-  ModalContent,
-  ModalDescription,
-  ModalHeader,
-  ModalFooter,
-} from ".";
+import { Modal } from "./Modal";
+import { ModalTrigger } from "./ModalTrigger";
+import { ModalContent } from "./ModalContent";
+import { ModalDescription, ModalHeader, ModalFooter } from "./Components";
+
 import { type Tab, Tabs } from "../tabs/Tabs";
 
 const meta = {
@@ -48,10 +45,9 @@ export const BasicLongText: Story = {
         <ModalContent className="w-[600px] max-w-full">
           <ModalHeader>Header</ModalHeader>
           <ModalDescription>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Exercitationem voluptates amet ad recusandae a. Laudantium, aliquam!
-            Perferendis reiciendis aliquid ut repudiandae, repellat tenetur
-            harum! Ad dicta nostrum laboriosam consectetur ratione.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptates amet
+            ad recusandae a. Laudantium, aliquam! Perferendis reiciendis aliquid ut repudiandae,
+            repellat tenetur harum! Ad dicta nostrum laboriosam consectetur ratione.
           </ModalDescription>
         </ModalContent>
       </Modal>
@@ -79,11 +75,7 @@ export const WithButtons = () => {
         <ModalDescription>Content</ModalDescription>
         <ModalFooter>
           <div className="flex justify-between">
-            <Button
-              variant="text"
-              color="gray"
-              onClick={() => setIsOpen(false)}
-            >
+            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>
@@ -107,16 +99,14 @@ export const WithTabs = () => {
       content: (
         <div className="flex h-96 max-h-full flex-col p-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit
-            id omnis molestias quidem necessitatibus aperiam deleniti, neque
-            reiciendis iusto dolorem pariatur voluptatem natus reprehenderit
-            itaque illum autem consectetur vero?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit id omnis molestias
+            quidem necessitatibus aperiam deleniti, neque reiciendis iusto dolorem pariatur
+            voluptatem natus reprehenderit itaque illum autem consectetur vero?
           </p>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit
-            id omnis molestias quidem necessitatibus aperiam deleniti, neque
-            reiciendis iusto dolorem pariatur voluptatem natus reprehenderit
-            itaque illum autem consectetur vero?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere odit id omnis molestias
+            quidem necessitatibus aperiam deleniti, neque reiciendis iusto dolorem pariatur
+            voluptatem natus reprehenderit itaque illum autem consectetur vero?
           </p>
         </div>
       ),
@@ -127,11 +117,10 @@ export const WithTabs = () => {
       content: (
         <div className="flex h-96 max-h-full flex-col p-4">
           <p>
-            Hello world Hello world Hello world Hello world Hello world Hello
-            world Hello world Hello world Hello world Hello world Hello world
-            Hello world Hello world Hello world Hello world Hello world Hello
-            world Hello world Hello world Hello world Hello world Hello world
-            Hello world{" "}
+            Hello world Hello world Hello world Hello world Hello world Hello world Hello world
+            Hello world Hello world Hello world Hello world Hello world Hello world Hello world
+            Hello world Hello world Hello world Hello world Hello world Hello world Hello world
+            Hello world Hello world{" "}
           </p>
         </div>
       ),
@@ -143,12 +132,7 @@ export const WithTabs = () => {
       <ModalTrigger>Generate config</ModalTrigger>
       <ModalContent className="w-full max-w-[600px]">
         <Tabs tabs={tabs} value={id} onChange={setId} className="rounded-2xl">
-          <Button
-            icon
-            variant="text"
-            color="gray"
-            onClick={() => setIsOpen(false)}
-          >
+          <Button icon variant="text" color="gray" onClick={() => setIsOpen(false)}>
             <i className="fe-cancel"></i>
           </Button>
         </Tabs>
@@ -173,38 +157,30 @@ export const Scrollable = () => {
         <ModalDescription height={160}>
           <div className="px-4 text-justify">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
-              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
-              qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
+              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
+              Deleniti iure amet qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
-              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
-              qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
+              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
+              Deleniti iure amet qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
-              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
-              qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
+              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
+              Deleniti iure amet qui vero, blanditiis quos?
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium unde, blanditiis rem accusamus obcaecati enim amet,
-              voluptatibus nemo facilis illum aut itaque in? Deleniti iure amet
-              qui vero, blanditiis quos?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
+              rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?
+              Deleniti iure amet qui vero, blanditiis quos?
             </p>
           </div>
         </ModalDescription>
         <ModalFooter>
           <div className="flex justify-between">
-            <Button
-              variant="text"
-              color="gray"
-              onClick={() => setIsOpen(false)}
-            >
+            <Button variant="text" color="gray" onClick={() => setIsOpen(false)}>
               Cancel
             </Button>
             <Button color="yellow" onClick={() => setIsOpen(false)}>

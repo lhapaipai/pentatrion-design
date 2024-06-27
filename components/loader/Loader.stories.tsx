@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Loader } from ".";
+import { Loader } from "./Loader";
 
 const meta = {
   title: "Components/Loader",
@@ -25,7 +25,7 @@ export const Playbook: Story = {
 };
 
 export const Context = () => (
-  <div className="flex gap-2 flex-col">
+  <div className="flex flex-col gap-2">
     <Loader size="small" />
     <br />
     <Loader size="medium" color="yellow" />

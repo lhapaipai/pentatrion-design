@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Autocomplete, AutocompleteProps } from ".";
+import { Autocomplete, AutocompleteProps } from "./Autocomplete";
 import { OptionLike, Option } from "../select";
 import { getOptionLabel } from "./util";
 import { useStateDebounce, useEventCallback } from "../../hooks";

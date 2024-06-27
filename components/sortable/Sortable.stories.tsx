@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
 import { ItemInterface, ReactSortable } from "react-sortablejs";
-import { Button } from "../button";
-import { Input } from "../input";
-import { Sortable } from ".";
+import { Button } from "../button/Button";
+import { Input } from "../input/Input";
+import { Sortable } from "./Sortable";
 
 const meta = {
   title: "Components/Sortable",
@@ -54,7 +54,7 @@ export const BasicOriginal = () => {
     <ReactSortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
-          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
+          <Button icon variant="text" color="gray" className="handle mr-2 cursor-row-resize">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -71,7 +71,7 @@ export const Basic = () => {
     <Sortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
-          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
+          <Button icon variant="text" color="gray" className="handle mr-2 cursor-row-resize">
             <i className="fe-braille"></i>
           </Button>
           {item.name}
@@ -87,7 +87,7 @@ export const WithInputs = () => {
     <Sortable list={items} setList={setItems} animation={200} handle=".handle">
       {items.map((item) => (
         <div key={item.id} className={twClasses.item}>
-          <Button icon variant="text" color="gray" className="handle cursor-row-resize mr-2">
+          <Button icon variant="text" color="gray" className="handle mr-2 cursor-row-resize">
             <i className="fe-braille"></i>
           </Button>
           <Input className="flex-1" defaultValue={item.name} />

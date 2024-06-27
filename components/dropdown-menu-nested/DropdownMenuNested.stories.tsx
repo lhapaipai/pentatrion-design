@@ -1,5 +1,8 @@
-import { DropdownMenuNested, MenuItem, MenuItemWithChildren } from ".";
-import { Button } from "../button";
+import { DropdownMenuNested } from "./DropdownMenuNested";
+import { MenuItem } from "./MenuItem";
+import { MenuItemWithChildren } from "./MenuItemWithChildren";
+
+import { Button } from "../button/Button";
 
 import { Meta } from "@storybook/react";
 

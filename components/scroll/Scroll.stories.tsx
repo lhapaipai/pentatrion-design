@@ -1,4 +1,4 @@
-import { Scroll } from ".";
+import { Scroll } from "./Scroll";
 
 export default {
   component: Scroll,
@@ -33,7 +33,7 @@ export const Basic = () => {
         </div>
       </Scroll>
       <Scroll horizontal className="border border-gray-2">
-        <div className="p-4 flex flex-nowrap">
+        <div className="flex flex-nowrap p-4">
           <p className="pr-7" style={{ minWidth: 400 }}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis
             rem accusamus obcaecati enim amet, voluptatibus nemo facilis illum aut itaque in?

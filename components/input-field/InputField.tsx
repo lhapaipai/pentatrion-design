@@ -13,7 +13,7 @@ interface InputFieldOwnProps {
 
 const defaultElement = Input;
 
-type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
+export type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   { label, hint, help, error, warning, as, ...rest }: Props<E>,

@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/react";
 import { useState } from "react";
-import { Checkbox } from ".";
+import { Checkbox } from "./Checkbox";
 
 const meta = {
   title: "Components/Input/Checkbox",
@@ -44,11 +44,7 @@ export const WithIndeterminate = () => {
   }
 
   return (
-    <Checkbox
-      checked={checked}
-      indeterminate={indeterminate}
-      onChange={handleChange}
-    >
+    <Checkbox checked={checked} indeterminate={indeterminate} onChange={handleChange}>
       Checkbox value : {checked ? "True" : "False"}, Indeterminate value :{" "}
       {indeterminate ? "True" : "False"}
     </Checkbox>

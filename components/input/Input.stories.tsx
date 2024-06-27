@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Button } from "../button";
-import { Input } from ".";
-import { Loader } from "../loader";
+import { Button } from "../button/Button";
+import { Input } from "./Input";
+import { Loader } from "../loader/Loader";
 
 const meta = {
   title: "Components/Input/Text",

@@ -1,8 +1,9 @@
 import { Meta, ReactRenderer } from "@storybook/react";
 import { PartialStoryFn } from "@storybook/types";
 import { useRef } from "react";
-import { NotificationsProvider, useFetch } from ".";
-import { Button } from "../button";
+import { NotificationsProvider } from "./NotificationsProvider";
+import { useFetch } from "./useFetch";
+import { Button } from "../button/Button";
 import { useContextNotifications } from "./useContextNotifications";
 
 const meta = {

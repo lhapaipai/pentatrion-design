@@ -1,7 +1,7 @@
 import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "../button";
-import { useModalContext } from ".";
+import { Button } from "../button/Button";
+import { useModalContext } from "./useModalContext";
 
 interface Props extends HTMLProps<HTMLElement> {
   asChild?: boolean;

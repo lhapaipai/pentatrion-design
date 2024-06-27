@@ -5,9 +5,9 @@ import {
   useMergeRefs,
 } from "@floating-ui/react";
 import { ComponentProps, forwardRef } from "react";
-import { useModalContext } from ".";
+import { useModalContext } from "./useModalContext";
 import clsx from "clsx";
-import { Dialog } from "../dialog";
+import { Dialog } from "../dialog/Dialog";
 
 export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
   ({ style, className, children, ...props }, propRef) => {
