@@ -1,6 +1,6 @@
 import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
-import { useDropdownMenuContext } from ".";
+import { useDropdownMenuContext } from "./useDropdownMenuContext";
 import { ComponentProps, MouseEvent, ReactNode } from "react";
 
 interface Props extends ComponentProps<"button"> {

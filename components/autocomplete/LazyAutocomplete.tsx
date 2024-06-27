@@ -20,6 +20,7 @@ interface Props<O extends OptionLike = Option>
     | "autocompleteOptionComponent"
     | "loading"
     | "clearSearchButton"
+    | "readOnly"
   > {
   onChangeSearchValueCallback: (searchValue: string) => Promise<O[]>;
   debounce?: number;
@@ -39,7 +40,6 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
     selection ? getOptionLabel(selection) : "",
     debounce,
   );
-  // console.log(searchValue, searchValueDebounced);
 
   const searchValueRef = useRef(searchValue);
   searchValueRef.current = searchValue;

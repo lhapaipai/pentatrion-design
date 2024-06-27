@@ -4,7 +4,7 @@ export default {
 
 import { useState } from "react";
 
-import jsonFile from "../fontello.config.json";
+import jsonFile from "../.storybook/fontello/config.json";
 import { Input } from "../components/input/Input";
 const fontelloConfig = jsonFile as FontelloConfig;
 
@@ -51,10 +51,10 @@ export const Icons = () => {
           placeholder={`Search ${fontelloConfig.glyphs.length} icons by name`}
         />
       </div>
-      <div className="grid grid-cols-repeat-fill-160 gap-4 mt-4">
+      <div className="mt-4 grid grid-cols-repeat-fill-160 gap-4">
         {iconResults.map((glyph) => (
           <div
-            className="border border-gray-2 rounded-2xl flex-center p-2 flex-col"
+            className="flex-col rounded-2xl border border-gray-2 p-2 flex-center"
             key={glyph.uid}
           >
             <div>

@@ -5,7 +5,7 @@ import { Input } from ".";
 import { Loader } from "../loader";
 
 const meta = {
-  title: "Components/Input",
+  title: "Components/Input/Text",
   component: Input,
   argTypes: {
     prefix: {
@@ -32,7 +32,7 @@ export const Context = () => {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex gap-2 flex-col">
+    <div className="flex flex-col gap-2">
       <Input />
       <Input color="gray" />
       <Input color="red" />
@@ -43,10 +43,13 @@ export const Context = () => {
       <Input color="gray" variant="ghost" />
       <Input color="blue" variant="ghost" />
 
+      <Input disabled defaultValue="disabled input" />
+      <Input readOnly defaultValue="readonly input" />
+
       <Input placeholder="Your first name" />
       <Input
         prefix={
-          <span className="w-8 h-8 flex-center">
+          <span className="h-8 w-8 flex-center">
             <i className="fe-search"></i>
           </span>
         }
@@ -55,7 +58,7 @@ export const Context = () => {
         prefix={
           <>
             <Loader size="medium" color="gray" />
-            <span className="w-8 h-8 flex-center -ml-8">
+            <span className="-ml-8 h-8 w-8 flex-center">
               <i className="fe-search"></i>
             </span>
           </>
@@ -94,7 +97,7 @@ export const Context = () => {
           e.target.validity.valid && setCounter(e.target.valueAsNumber);
         }}
       />
-      <div className="flex gap-2 ">
+      <div className="flex gap-2">
         <Input className="flex-1" />
         <Button>Valider</Button>
       </div>

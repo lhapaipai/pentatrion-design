@@ -33,16 +33,12 @@ export const componentsStep: CSSRuleObject = {
     '&[data-direction="horizontal"]': {
       "@apply flex flex-wrap": {},
       '&[data-marker="circle"]': {
-        "--line-width":
-          "calc(100% - var(--step-circle-radius) * 2 - var(--line-space) * 2)",
-        "--line-left":
-          "calc(50% + var(--step-circle-radius) + var(--line-space))",
+        "--line-width": "calc(100% - var(--step-circle-radius) * 2 - var(--line-space) * 2)",
+        "--line-left": "calc(50% + var(--step-circle-radius) + var(--line-space))",
       },
       '&[data-marker="bullet"]': {
-        "--line-width":
-          "calc(100% - var(--step-circle-radius) - var(--line-space) * 2)",
-        "--line-left":
-          "calc(50% + var(--step-circle-radius) / 2 + var(--line-space))",
+        "--line-width": "calc(100% - var(--step-circle-radius) - var(--line-space) * 2)",
+        "--line-left": "calc(50% + var(--step-circle-radius) / 2 + var(--line-space))",
       },
       "& .ll-step": {
         "@apply flex flex-col flex-1 text-center": {},
@@ -66,10 +62,8 @@ export const componentsStep: CSSRuleObject = {
         "--line-bottom": "var(--line-space)",
       },
       '&[data-marker="bullet"]': {
-        "--line-top":
-          "calc(var(--step-circle-radius) * 1.5 + var(--line-space))",
-        "--line-bottom":
-          "calc(-0.5 * var(--step-circle-radius) + var(--line-space))",
+        "--line-top": "calc(var(--step-circle-radius) * 1.5 + var(--line-space))",
+        "--line-bottom": "calc(-0.5 * var(--step-circle-radius) + var(--line-space))",
       },
       ".ll-step": {
         "@apply relative gap-1 items-start flex": {},
@@ -196,65 +190,34 @@ export const componentsResizeArea: CSSRuleObject = {
 };
 
 export const componentsInputOutline: CSSRuleObject = {
-  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)":
-    {
-      "@apply outline outline-1 focus-full:outline-2": {},
-    },
+  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)": {
+    "@apply outline outline-1 outline-[rgb(var(--color-custom-2))]": {},
+  },
   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"])':
     {
-      "@apply outline-gray-2 hover:outline-gray-3 focus-full:outline-yellow-4":
+      "@apply outline-gray-2": {},
+    },
+
+  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):not([readonly], .readonly)":
+    {
+      "@apply hover:outline-[rgb(var(--color-custom-3))] focus-full:outline-2 focus-full:outline-[rgb(var(--color-custom-4))]":
         {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="gray"])':
+  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"]):not([readonly], .readonly)':
     {
-      "@apply outline-gray-2 hover:outline-gray-3 focus-full:outline-gray-4":
-        {},
+      "@apply hover:outline-gray-3": {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="red"])':
-    {
-      "@apply outline-red-2 hover:outline-red-3 focus-full:outline-red-4": {},
-    },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="orange"])':
-    {
-      "@apply outline-orange-2 hover:outline-orange-3 focus-full:outline-orange-4":
-        {},
-    },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="blue"])':
-    {
-      "@apply outline-blue-2 hover:outline-blue-3 focus-full:outline-blue-4":
-        {},
-    },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="green"])':
-    {
-      "@apply outline-green-2 hover:outline-green-3 focus-full:outline-green-4":
-        {},
-    },
+
   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-variant="ghost"])':
     {
       "@apply outline-transparent": {},
     },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="yellow"])': {
-    "@apply text-yellow-3": {},
+  ":is(.p8n-input-checkbox, .p8n-input-radio)": {
+    "@apply text-[rgb(var(--color-custom-3))]": {},
   },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="gray"])': {
-    "@apply text-gray-3": {},
+  ":is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .checked, .indeterminate)": {
+    "@apply bg-full bg-center bg-no-repeat outline-gray-1 bg-current": {},
   },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="red"])': {
-    "@apply text-red-3": {},
-  },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="orange"])': {
-    "@apply text-orange-3": {},
-  },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="blue"])': {
-    "@apply text-blue-3": {},
-  },
-  ':is(.p8n-input-checkbox, .p8n-input-radio):where([data-color="green"])': {
-    "@apply text-green-3": {},
-  },
-  ":is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .checked, .indeterminate)":
-    {
-      "@apply bg-full bg-center bg-no-repeat outline-gray-1 bg-current": {},
-    },
   ".p8n-input-checkbox:not(.p8n-input-toggle):where(:checked, .checked)": {
     backgroundImage:
       "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
@@ -263,11 +226,10 @@ export const componentsInputOutline: CSSRuleObject = {
     backgroundImage:
       "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\")",
   },
-  ":is(.p8n-input-checkbox, .p8n-input-radio):is(.indeterminate, :checked.indeterminate)":
-    {
-      backgroundImage:
-        "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.5 7.5a1 1 0 0 0-1 1 1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z' /%3e%3c/svg%3e\")",
-    },
+  ":is(.p8n-input-checkbox, .p8n-input-radio):is(.indeterminate, :checked.indeterminate)": {
+    backgroundImage:
+      "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.5 7.5a1 1 0 0 0-1 1 1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z' /%3e%3c/svg%3e\")",
+  },
 };
 
 export const components: CSSRuleObject = {
@@ -286,6 +248,9 @@ export const components: CSSRuleObject = {
     "&[disabled]": {
       opacity: "0.5",
     },
+  },
+  "input[readonly]": {
+    color: "rgb(var(--color-gray-6))",
   },
   ".option": {
     "@apply flex w-full px-2 h-8 items-center text-left relative cursor-pointer first:rounded-t-2xl last:rounded-b-2xl hover:bg-gray-1 focus-full:text-gray-8 outline-none":

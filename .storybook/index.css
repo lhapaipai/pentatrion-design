@@ -1,4 +1,4 @@
-@import "./fontello";
+@import "./fontello/index.css";
 
 @tailwind base;
 @tailwind components;

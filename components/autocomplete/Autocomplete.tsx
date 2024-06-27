@@ -82,6 +82,8 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   clearSearchButton?: boolean;
 
   selectOnFocus?: boolean;
+
+  readOnly?: boolean;
 }
 
 function Autocomplete<O extends OptionLike = Option>(
@@ -102,6 +104,7 @@ function Autocomplete<O extends OptionLike = Option>(
     onChangeSearchValue,
     options,
     selectOnFocus = true,
+    readOnly = false,
   }: AutocompleteProps<O>,
   inputRef: ForwardedRef<HTMLInputElement>,
 ) {
@@ -206,9 +209,16 @@ function Autocomplete<O extends OptionLike = Option>(
     [activeIndex, selection, getItemProps, handleSelect],
   );
 
+  const showClearSearchButton =
+    !readOnly && clearSearchButton && (searchValue.trim() !== "" || selection !== null);
+
   return (
     <div className={className}>
-      <div className={clsx(inputConfig.container)} ref={refs.setReference} data-color={color}>
+      <div
+        className={clsx(inputConfig.container, readOnly && "readonly")}
+        ref={refs.setReference}
+        data-color={color}
+      >
         {icon !== false && (
           <div className="relative flex-center">
             {loading && <Loader size="medium" color="gray" className="absolute left-0 top-0" />}
@@ -226,12 +236,13 @@ function Autocomplete<O extends OptionLike = Option>(
           className={clsx(inputConfig.input, icon === false && "pl-4")}
           ref={inputRef}
           type="search"
+          readOnly={readOnly}
           value={searchValue}
           placeholder={placeholder}
           aria-autocomplete="list"
           {...getReferenceProps({
             onFocus() {
-              if (selectOnFocus) {
+              if (selectOnFocus && !readOnly) {
                 (document.activeElement as HTMLInputElement)?.select();
               }
             },
@@ -259,7 +270,7 @@ function Autocomplete<O extends OptionLike = Option>(
         />
         <div className="relative flex-center">
           {selection && selectionSuffix}
-          {clearSearchButton && (searchValue.trim() !== "" || selection !== null) && (
+          {showClearSearchButton && (
             <Button
               withRipple={false}
               icon

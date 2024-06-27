@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useDropdownMenu } from ".";
+import { useDropdownMenu } from "./useDropdownMenu";
 
 type ContextType = ReturnType<typeof useDropdownMenu> | null;
 

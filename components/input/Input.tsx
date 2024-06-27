@@ -17,14 +17,28 @@ export const inputConfig = {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { variant = "normal", color = "yellow", disabled = false, prefix, suffix, className, ...rest },
+    {
+      variant = "normal",
+      color = "yellow",
+      disabled = false,
+      prefix,
+      suffix,
+      className,
+      readOnly,
+      ...rest
+    },
     ref,
   ) => {
     return (
       <div
         data-color={color}
         data-variant={variant}
-        className={clsx(inputConfig.container, disabled && "disabled", className)}
+        className={clsx(
+          inputConfig.container,
+          disabled && "disabled",
+          readOnly && "readonly",
+          className,
+        )}
       >
         {prefix && (
           <div
@@ -39,8 +53,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           className={clsx(inputConfig.input, !prefix && "pl-4", !suffix && "pr-4")}
-          {...rest}
           disabled={disabled}
+          readOnly={readOnly}
+          {...rest}
         />
         {suffix && (
           <div

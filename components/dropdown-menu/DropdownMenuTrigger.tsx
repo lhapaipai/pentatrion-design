@@ -1,5 +1,5 @@
 import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
-import { useDropdownMenuContext } from ".";
+import { useDropdownMenuContext } from "./useDropdownMenuContext";
 import { useMergeRefs } from "@floating-ui/react";
 import { Button } from "../button";
 

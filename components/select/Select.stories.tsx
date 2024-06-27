@@ -26,7 +26,7 @@ export default meta;
 export const Basic = () => {
   const [value, setValue] = useState<SelectValue>(null);
   return (
-    <div className="grid gap-2 grid-cols-1">
+    <div className="grid grid-cols-1 gap-2">
       <Select
         searchable={false}
         placeholder="Select your town..."
@@ -44,7 +44,7 @@ export const Basic = () => {
 export const Variants = () => {
   const [value, setValue] = useState<SelectValue>(null);
   return (
-    <div className="grid gap-2 grid-cols-1">
+    <div className="grid grid-cols-1 gap-2">
       <Select
         searchable={false}
         placeholder="Select your town..."
@@ -61,6 +61,16 @@ export const Variants = () => {
         placeholder="Select your town..."
         options={options}
         value={value}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o.target.value);
+        }}
+      ></Select>
+      <Select
+        placeholder="Select your town..."
+        options={options}
+        disabled={true}
+        value={"aixenprovence"}
         onChange={(o) => {
           onChangeAction(o);
           setValue(o.target.value);
@@ -146,16 +156,17 @@ const stars: StarOption[] = [
   { value: 2, label: "Fill", icon: "fe-star" },
 ];
 
-export const CustomRenderer = () => {
+export const CustomRenderer = ({ disabled, searchable, showArrow }) => {
   const [value, setValue] = useState<SelectValue>(1);
   return (
     <>
       <Select
-        showArrow={false}
+        disabled={disabled}
+        showArrow={showArrow}
         selectionClassName="ml-auto"
         width="37px"
         placement="bottom-end"
-        searchable={false}
+        searchable={searchable}
         options={stars}
         value={value}
         onChange={(o) => {
@@ -167,4 +178,10 @@ export const CustomRenderer = () => {
       ></Select>
     </>
   );
+};
+
+CustomRenderer.args = {
+  disabled: false,
+  searchable: false,
+  showArrow: false,
 };

@@ -39,7 +39,7 @@ export const Color = forwardRef<HTMLButtonElement, ColorProps>(
         {withRipple && ripples}
         <span
           className={clsx(
-            "flex items-center justify-center rounded-2xl px-2",
+            "flex h-full items-center justify-center rounded-2xl px-2",
             valueToShow === null && "min-w-12",
             className,
           )}

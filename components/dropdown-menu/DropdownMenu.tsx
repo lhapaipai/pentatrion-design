@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { DropdownMenuOptions } from "./interface";
-import { DropdownMenuContext, useDropdownMenu } from ".";
+import { DropdownMenuContext } from "./useDropdownMenuContext";
+import { useDropdownMenu } from "./useDropdownMenu";
 
 interface Props extends DropdownMenuOptions {
   children: ReactNode;

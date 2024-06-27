@@ -17,6 +17,7 @@ interface Props<O extends OptionLike = Option>
     | "autocompleteOptionComponent"
     | "options"
     | "selection"
+    | "readOnly"
   > {}
 
 export function SimpleAutocomplete<O extends OptionLike = Option>({

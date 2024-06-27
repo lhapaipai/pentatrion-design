@@ -53,23 +53,14 @@ export const utilitiesDialog: CSSRuleObject = {
   },
   '[data-placement="right-start"]': { transformOrigin: "top left" },
   '[data-placement="right-end"]': { transformOrigin: "bottom left" },
-  '[data-placement][data-color="yellow"] .p8n-arrow': {
+  ".p8n-arrow": {
+    "@apply text-[rgb(var(--color-custom-1))]": {},
+  },
+  '[data-color="yellow"] .p8n-arrow': {
     "@apply text-gray-0": {},
   },
-  '[data-placement][data-color="gray"] .p8n-arrow': {
+  '[data-color="gray"] .p8n-arrow': {
     "@apply text-gray-0": {},
-  },
-  '[data-placement][data-color="red"] .p8n-arrow': {
-    "@apply text-red-1": {},
-  },
-  '[data-placement][data-color="orange"] .p8n-arrow': {
-    "@apply text-orange-1": {},
-  },
-  '[data-placement][data-color="blue"] .p8n-arrow': {
-    "@apply text-blue-1": {},
-  },
-  '[data-placement][data-color="green"] .p8n-arrow': {
-    "@apply text-green-1": {},
   },
   ".option[data-nested][data-open]:not([data-focus-inside])": {
     "@apply bg-gray-2": {},
