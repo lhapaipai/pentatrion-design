@@ -191,21 +191,17 @@ export const componentsResizeArea: CSSRuleObject = {
 
 export const componentsInputOutline: CSSRuleObject = {
   ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)": {
-    "@apply outline outline-1 outline-[rgb(var(--color-custom-2))]": {},
+    "@apply outline outline-1 outline-[rgb(var(--color-custom-2))] hover:outline-[rgb(var(--color-custom-3))] focus-full:outline-[rgb(var(--color-custom-4))]":
+      {},
   },
   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"])':
     {
-      "@apply outline-gray-2": {},
+      "@apply outline-gray-2 hover:outline-gray-3": {},
     },
 
   ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):not([readonly], .readonly)":
     {
-      "@apply hover:outline-[rgb(var(--color-custom-3))] focus-full:outline-2 focus-full:outline-[rgb(var(--color-custom-4))]":
-        {},
-    },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"]):not([readonly], .readonly)':
-    {
-      "@apply hover:outline-gray-3": {},
+      "@apply focus-full:outline-2": {},
     },
 
   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-variant="ghost"])':

@@ -44,7 +44,15 @@ export const Context = () => {
       <Input color="blue" variant="ghost" />
 
       <Input disabled defaultValue="disabled input" />
-      <Input readOnly defaultValue="readonly input" />
+      <Input
+        readOnly
+        defaultValue="readonly input"
+        suffix={
+          <Button withRipple={false} icon variant="text" color="gray">
+            <i className="fe-clipboard-copy"></i>
+          </Button>
+        }
+      />
 
       <Input placeholder="Your first name" />
       <Input

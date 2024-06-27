@@ -55,6 +55,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={clsx(inputConfig.input, !prefix && "pl-4", !suffix && "pr-4")}
           disabled={disabled}
           readOnly={readOnly}
+          onFocus={() => {
+            if (readOnly) {
+              (document.activeElement as HTMLInputElement)?.select();
+            }
+          }}
           {...rest}
         />
         {suffix && (

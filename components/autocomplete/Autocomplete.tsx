@@ -242,7 +242,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           aria-autocomplete="list"
           {...getReferenceProps({
             onFocus() {
-              if (selectOnFocus && !readOnly) {
+              if (selectOnFocus) {
                 (document.activeElement as HTMLInputElement)?.select();
               }
             },
