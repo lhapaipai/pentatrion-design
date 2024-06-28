@@ -265,7 +265,7 @@ export const components: CSSRuleObject = {
     },
   },
   ".p8n-separator": {
-    "@apply bg-gray-1 w-1/2 h-1 rounded-sm mx-auto relative": {},
+    "@apply bg-gray-1 w-full h-0.5 rounded-sm mx-auto relative": {},
   },
   ".p8n-setting": {
     "@apply flex items-center justify-between": {},

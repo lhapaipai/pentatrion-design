@@ -210,7 +210,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
   );
 
   const showClearSearchButton =
-    !readOnly && clearSearchButton && (searchValue.trim() !== "" || selection !== null);
+    clearSearchButton && (searchValue.trim() !== "" || selection !== null);
 
   return (
     <div className={className}>

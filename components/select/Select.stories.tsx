@@ -155,6 +155,7 @@ const stars: StarOption[] = [
   { value: 2, label: "Fill", icon: "fe-star" },
 ];
 
+// @ts-ignore
 export const CustomRenderer = ({ disabled, searchable, showArrow }) => {
   const [value, setValue] = useState<SelectValue>(1);
   return (

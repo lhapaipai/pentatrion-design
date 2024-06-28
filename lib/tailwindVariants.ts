@@ -1,5 +1,4 @@
 import { ThemeColor } from "../types";
-
 type Variant = {
   border: string;
   text: string;

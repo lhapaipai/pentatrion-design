@@ -139,10 +139,10 @@ export function ContextMenu({ targetRef, children, style, eventName = "contextme
 
   useEffect(() => {
     const stableTarget = targetRef?.current ?? document.documentElement;
-    console.log("add contextmenu", targetRef);
+    // console.log("add contextmenu", targetRef);
     stableTarget.addEventListener(eventName as "contextmenu", onContextMenuStable);
     return () => {
-      console.log("remove contextmenu", targetRef);
+      // console.log("remove contextmenu", targetRef);
       stableTarget.removeEventListener(eventName as "contextmenu", onContextMenuStable);
     };
   }, [eventName, onContextMenuStable, targetRef]);

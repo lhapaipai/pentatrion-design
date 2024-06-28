@@ -1,7 +1,7 @@
 import { CSSProperties, ComponentPropsWithoutRef, useId } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
-import { colorVariants } from "../../lib";
+import { colorVariants } from "../../lib/tailwindVariants";
 
 interface Props extends ComponentPropsWithoutRef<"svg"> {
   size?: "small" | "medium" | "large";
