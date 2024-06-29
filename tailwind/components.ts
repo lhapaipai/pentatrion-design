@@ -245,7 +245,7 @@ export const components: CSSRuleObject = {
       opacity: "0.5",
     },
   },
-  "input[readonly]": {
+  ":is(input,textarea)[readonly]": {
     color: "rgb(var(--color-gray-6))",
   },
   ".option": {
