@@ -45,14 +45,11 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   color?: ThemeColor;
 
   /**
-   * render suffix only if selection
-   * ex: add contextuel buttons associated to selection
-   */
-  selectionSuffix?: ReactNode;
-  /**
    * render suffix only if selection and searchValue is empty
    */
   noSearchSuffix?: ReactNode;
+
+  suffix?: ReactNode;
 
   placement?: Placement;
   placeholder?: string;
@@ -91,8 +88,8 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
     className,
     icon = true,
     color = "yellow",
-    selectionSuffix,
     noSearchSuffix,
+    suffix,
     placement = "bottom",
     placeholder = "Search...",
     selection = null,
@@ -269,7 +266,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           })}
         />
         <div className="relative flex-center">
-          {selection && selectionSuffix}
+          {suffix}
           {showClearSearchButton && (
             <Button
               withRipple={false}

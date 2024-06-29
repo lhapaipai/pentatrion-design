@@ -10,6 +10,8 @@ interface Props<O extends OptionLike = Option>
     | "className"
     | "icon"
     | "color"
+    | "suffix"
+    | "noSearchSuffix"
     | "placement"
     | "placeholder"
     | "selection"
