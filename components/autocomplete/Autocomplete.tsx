@@ -238,8 +238,10 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           placeholder={placeholder}
           aria-autocomplete="list"
           {...getReferenceProps({
-            onFocus() {
+            onClick() {
               if (selectOnFocus) {
+                // it's better to listen onClick instead of onFocus. the event is triggered later and there
+                // was an issue if we listen on onFocus and user click on the text of the textarea with Firefox
                 (document.activeElement as HTMLInputElement)?.select();
               }
             },

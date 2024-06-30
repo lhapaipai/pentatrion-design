@@ -19,13 +19,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         data-variant={variant}
         ref={ref}
         className={clsx(
-          "p8n-textarea w-full min-w-0 appearance-none rounded-2xl bg-transparent p-2 outline-offset-[-1px] filter-none",
+          "p8n-textarea h-full w-full min-w-0 appearance-none rounded-2xl bg-transparent p-2 outline-offset-[-1px] filter-none",
           disabled && "disabled",
           readOnly && "readonly",
         )}
         readOnly={readOnly}
-        onFocus={() => {
+        onClick={() => {
           if (readOnly) {
+            // it's better to listen onClick instead of onFocus. the event is triggered later and there
+            // was an issue if we listen on onFocus and user click on the text of the textarea with Firefox
             (document.activeElement as HTMLInputElement)?.select();
           }
         }}
