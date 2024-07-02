@@ -48,12 +48,16 @@ export async function fetchAPI(
     }
   }
 
-  if (body && typeof body !== "string" && !(body instanceof FormData)) {
-    options.headers = {
-      ...(options.headers = {}),
-      "Content-Type": "application/json",
-    };
-    options.body = JSON.stringify(body);
+  if (body) {
+    if (typeof body !== "string" && !(body instanceof FormData)) {
+      options.headers = {
+        ...(options.headers = {}),
+        "Content-Type": "application/json",
+      };
+      options.body = JSON.stringify(body);
+    } else {
+      options.body = body;
+    }
   }
 
   if (baseOptions) {

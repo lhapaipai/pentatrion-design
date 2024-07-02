@@ -31,9 +31,9 @@ VERSION=${VERSION:1}
 pnpm build
 
 git add .
-git commit -m "change pentatrion-design version $VERSION"
+git commit -m "change pentatrion-design version v$VERSION"
 
-git tag -a $VERSION -m $VERSION
+git tag -a "v$VERSION" -m "v$VERSION"
 
 git push origin
 

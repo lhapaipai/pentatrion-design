@@ -104,4 +104,22 @@ describe("fetchAPI", () => {
       },
     });
   });
+
+  test("keep body unchanged if already stringified", async ({ expect }): Promise<void> => {
+    const mock = vi.fn().mockResolvedValue(get200Response());
+
+    vi.stubGlobal("fetch", mock);
+    await fetchAPI("/user", {
+      headers: {
+        "Content-Type": "x-www-form-urlencoded",
+      },
+      body: "name=dupond&id=3",
+    });
+    expect(mock).toHaveBeenCalledWith("http://localhost:3000/user", {
+      body: "name=dupond&id=3",
+      headers: {
+        "Content-Type": "x-www-form-urlencoded",
+      },
+    });
+  });
 });
