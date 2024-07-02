@@ -245,9 +245,6 @@ export const components: CSSRuleObject = {
       opacity: "0.5",
     },
   },
-  ":is(input,textarea)[readonly]": {
-    color: "rgb(var(--color-gray-6))",
-  },
   ".option": {
     "@apply flex w-full px-2 h-8 items-center text-left relative cursor-pointer first:rounded-t-2xl last:rounded-b-2xl hover:bg-gray-1 focus-full:text-gray-8 outline-none":
       {},

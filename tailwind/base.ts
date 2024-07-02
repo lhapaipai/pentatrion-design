@@ -21,10 +21,12 @@ export const base: CSSRuleObject = {
     "@apply rounded outline outline-2 outline-offset-2 outline-yellow-5": {},
   },
 
-  "textarea:read-only": {
+  "textarea[readonly],.readonly": {
     "@apply bg-gray-1": {},
   },
-
+  ":is(input,textarea)[readonly]": {
+    color: "rgb(var(--color-gray-6))",
+  },
   'input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration':
     {
       display: "none",
