@@ -1,3 +1,7 @@
+## 0.1.2
+
+fix file extension for imports and add tsc-alias
+
 ## 0.0.14
 
 fix export .d.ts files
