@@ -40,6 +40,8 @@ import { ThemeColor } from "../../types";
 export interface AutocompleteProps<O extends OptionLike = Option> {
   className?: string;
 
+  autoFocus?: boolean;
+
   icon?: boolean | ReactNode;
 
   color?: ThemeColor;
@@ -86,6 +88,7 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
 export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLike = Option>(
   {
     className,
+    autoFocus = false,
     icon = true,
     color = "yellow",
     noSearchSuffix,
@@ -229,6 +232,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           </div>
         )}
         <input
+          autoFocus={autoFocus}
           spellCheck="false"
           className={clsx(inputConfig.input, icon === false && "pl-4")}
           ref={inputRef}

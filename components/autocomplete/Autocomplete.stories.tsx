@@ -85,6 +85,7 @@ export const Lazy = () => {
   return (
     <>
       <LazyAutocomplete<Option>
+        autoFocus={true}
         clearSearchButton={true}
         icon={true}
         selection={selection}

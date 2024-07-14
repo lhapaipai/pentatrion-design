@@ -1,3 +1,7 @@
+## 0.1.3
+
+autocomplete add autofocus option
+
 ## 0.1.2
 
 fix file extension for imports and add tsc-alias

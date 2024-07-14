@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.json",
+  "include": ["components", "hooks", "lib", "redux", "styles", "index.ts", ".storybook"],
   "exclude": ["**/node_modules", "**/*.stories.ts", "**/*.stories.tsx"],
   "tsc-alias": {
     "resolveFullPaths": true
