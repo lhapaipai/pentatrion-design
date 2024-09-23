@@ -78,6 +78,13 @@ Mettre à jour le fichier `src/index.css`
 @import "tailwindcss/utilities";
 ```
 
+```json
+// .prettierrc
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
+```
+
 ## Installation
 
 
@@ -96,13 +103,13 @@ const config = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-+   "./node_modules/pentatrion-design/lib/**/*.{ts,tsx}",
-+   "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
-+   "./node_modules/pentatrion-design/hooks/**/*.{ts,tsx}",
-+   "./node_modules/pentatrion-design/redux/**/*.{ts,tsx}",
++   "./node_modules/pentatrion-design/lib/**/*.js",
++   "./node_modules/pentatrion-design/components/**/*.js",
++   "./node_modules/pentatrion-design/hooks/**/*.js",
++   "./node_modules/pentatrion-design/redux/**/*.js",
   ],
   darkMode: ["class"],
-+  plugins: [pentatrionTw],
++  plugins: [pentatrionTw()],
 };
 
 export default config;

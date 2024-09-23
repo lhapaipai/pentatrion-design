@@ -47,6 +47,7 @@ export const Simple = () => {
   return (
     <>
       <SimpleAutocomplete
+        autoFocus={true}
         options={options}
         selection={selection}
         readOnly={readOnly}

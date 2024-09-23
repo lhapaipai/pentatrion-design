@@ -51,6 +51,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </div>
         )}
         <input
+          autoFocus={true}
           ref={ref}
           className={clsx(inputConfig.input, !prefix && "pl-4", !suffix && "pr-4")}
           disabled={disabled}
