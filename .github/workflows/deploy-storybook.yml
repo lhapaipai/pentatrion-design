@@ -36,7 +36,7 @@ jobs:
         run: "pnpm i --frozen-lockfile"
 
       - name: Build storybook
-        run: pnpm run build:storybook-build
+        run: pnpm run storybook-build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
