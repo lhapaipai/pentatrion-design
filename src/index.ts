@@ -1,5 +1,5 @@
-// issue: https://github.com/floating-ui/floating-ui/issues/2507
-import type {} from "@floating-ui/react-dom";
+// // issue: https://github.com/floating-ui/floating-ui/issues/2507
+// import type {} from "@floating-ui/react-dom";
 
 export type { ThemeColor } from "./types";
 

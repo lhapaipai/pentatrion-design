@@ -1,5 +1,8 @@
 import "react";
 
+// issue: https://github.com/floating-ui/floating-ui/issues/2507
+import type {} from "@floating-ui/react-dom";
+
 type Merge<T, U> = Omit<T, keyof U> & U;
 type PropsWithAs<P, T extends React.ElementType> = P & { as?: T };
 export type PolymorphicPropsWithRef<P, T extends React.ElementType> = Merge<
