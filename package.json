@@ -9,144 +9,144 @@
   "main": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./index.js",
+      "default": "./index.js",
       "types": "./index.d.ts"
     },
     "./types": {
-      "import": "./types.js",
+      "default": "./types.js",
       "types": "./types.d.ts"
     },
-    "./components/autocomplete": {
-      "import": "./components/autocomplete/index.js",
-      "types": "./components/autocomplete/index.d.ts"
-    },
-    "./components/badge": {
-      "import": "./components/badge/index.js",
-      "types": "./components/badge/index.d.ts"
-    },
-    "./components/button": {
-      "import": "./components/button/index.js",
-      "types": "./components/button/index.d.ts"
-    },
-    "./components/card": {
-      "import": "./components/card/index.js",
-      "types": "./components/card/index.d.ts"
-    },
-    "./components/code": {
-      "import": "./components/code/index.js",
-      "types": "./components/code/index.d.ts"
-    },
-    "./components/context-menu": {
-      "import": "./components/context/index.js",
-      "types": "./components/context/index.d.ts"
-    },
-    "./components/dialog": {
-      "import": "./components/dialog/index.js",
-      "types": "./components/dialog/index.d.ts"
-    },
-    "./components/dropdown-menu": {
-      "import": "./components/dropdown/index.js",
-      "types": "./components/dropdown/index.d.ts"
-    },
-    "./components/dropdown-menu-nested": {
-      "import": "./components/dropdown/index.js",
-      "types": "./components/dropdown/index.d.ts"
-    },
-    "./components/flash": {
-      "import": "./components/flash/index.js",
-      "types": "./components/flash/index.d.ts"
-    },
-    "./components/highlight": {
-      "import": "./components/highlight/index.js",
-      "types": "./components/highlight/index.d.ts"
-    },
-    "./components/href": {
-      "import": "./components/href/index.js",
-      "types": "./components/href/index.d.ts"
-    },
-    "./components/input": {
-      "import": "./components/input/index.js",
-      "types": "./components/input/index.d.ts"
-    },
-    "./components/input-field": {
-      "import": "./components/input/index.js",
-      "types": "./components/input/index.d.ts"
-    },
-    "./components/loader": {
-      "import": "./components/loader/index.js",
-      "types": "./components/loader/index.d.ts"
-    },
-    "./components/modal": {
-      "import": "./components/modal/index.js",
-      "types": "./components/modal/index.d.ts"
-    },
-    "./components/notification": {
-      "import": "./components/notification/index.js",
-      "types": "./components/notification/index.d.ts"
-    },
-    "./components/popover": {
-      "import": "./components/popover/index.js",
-      "types": "./components/popover/index.d.ts"
-    },
-    "./components/portal": {
-      "import": "./components/portal/index.js",
-      "types": "./components/portal/index.d.ts"
-    },
-    "./components/resize-area": {
-      "import": "./components/resize/index.js",
-      "types": "./components/resize/index.d.ts"
-    },
-    "./components/scroll": {
-      "import": "./components/scroll/index.js",
-      "types": "./components/scroll/index.d.ts"
-    },
-    "./components/select": {
-      "import": "./components/select/index.js",
-      "types": "./components/select/index.d.ts"
-    },
-    "./components/snack": {
-      "import": "./components/snack/index.js",
-      "types": "./components/snack/index.d.ts"
-    },
-    "./components/sortable": {
-      "import": "./components/sortable/index.js",
-      "types": "./components/sortable/index.d.ts"
-    },
-    "./components/steps": {
-      "import": "./components/steps/index.js",
-      "types": "./components/steps/index.d.ts"
-    },
-    "./components/table": {
-      "import": "./components/table/index.js",
-      "types": "./components/table/index.d.ts"
-    },
-    "./components/tabs": {
-      "import": "./components/tabs/index.js",
-      "types": "./components/tabs/index.d.ts"
-    },
-    "./components/textarea": {
-      "import": "./components/textarea/index.js",
-      "types": "./components/textarea/index.d.ts"
-    },
-    "./components/tooltip": {
-      "import": "./components/tooltip/index.js",
-      "types": "./components/tooltip/index.d.ts"
-    },
     "./hooks": {
-      "import": "./hooks/index.js",
+      "default": "./hooks/index.js",
       "types": "./hooks/index.d.ts"
     },
     "./lib": {
-      "import": "./lib/index.js",
+      "default": "./lib/index.js",
       "types": "./lib/index.d.ts"
     },
+    "./tailwind": {
+      "default": "./tailwind/index.js",
+      "types": "./tailwind/index.d.ts"
+    },
     "./redux/notification": {
-      "import": "./redux/notification/index.js",
+      "default": "./redux/notification/index.js",
       "types": "./redux/notification/index.d.ts"
     },
-    "./tailwind": {
-      "import": "./tailwind/index.js",
-      "types": "./tailwind/index.d.ts"
+    "./components/autocomplete": {
+      "default": "./components/autocomplete/index.js",
+      "types": "./components/autocomplete/index.d.ts"
+    },
+    "./components/badge": {
+      "default": "./components/badge/index.js",
+      "types": "./components/badge/index.d.ts"
+    },
+    "./components/button": {
+      "default": "./components/button/index.js",
+      "types": "./components/button/index.d.ts"
+    },
+    "./components/card": {
+      "default": "./components/card/index.js",
+      "types": "./components/card/index.d.ts"
+    },
+    "./components/code": {
+      "default": "./components/code/index.js",
+      "types": "./components/code/index.d.ts"
+    },
+    "./components/context-menu": {
+      "default": "./components/context/index.js",
+      "types": "./components/context/index.d.ts"
+    },
+    "./components/dialog": {
+      "default": "./components/dialog/index.js",
+      "types": "./components/dialog/index.d.ts"
+    },
+    "./components/dropdown-menu": {
+      "default": "./components/dropdown/index.js",
+      "types": "./components/dropdown/index.d.ts"
+    },
+    "./components/dropdown-menu-nested": {
+      "default": "./components/dropdown/index.js",
+      "types": "./components/dropdown/index.d.ts"
+    },
+    "./components/flash": {
+      "default": "./components/flash/index.js",
+      "types": "./components/flash/index.d.ts"
+    },
+    "./components/highlight": {
+      "default": "./components/highlight/index.js",
+      "types": "./components/highlight/index.d.ts"
+    },
+    "./components/href": {
+      "default": "./components/href/index.js",
+      "types": "./components/href/index.d.ts"
+    },
+    "./components/input": {
+      "default": "./components/input/index.js",
+      "types": "./components/input/index.d.ts"
+    },
+    "./components/input-field": {
+      "default": "./components/input/index.js",
+      "types": "./components/input/index.d.ts"
+    },
+    "./components/loader": {
+      "default": "./components/loader/index.js",
+      "types": "./components/loader/index.d.ts"
+    },
+    "./components/modal": {
+      "default": "./components/modal/index.js",
+      "types": "./components/modal/index.d.ts"
+    },
+    "./components/notification": {
+      "default": "./components/notification/index.js",
+      "types": "./components/notification/index.d.ts"
+    },
+    "./components/popover": {
+      "default": "./components/popover/index.js",
+      "types": "./components/popover/index.d.ts"
+    },
+    "./components/portal": {
+      "default": "./components/portal/index.js",
+      "types": "./components/portal/index.d.ts"
+    },
+    "./components/resize-area": {
+      "default": "./components/resize/index.js",
+      "types": "./components/resize/index.d.ts"
+    },
+    "./components/scroll": {
+      "default": "./components/scroll/index.js",
+      "types": "./components/scroll/index.d.ts"
+    },
+    "./components/select": {
+      "default": "./components/select/index.js",
+      "types": "./components/select/index.d.ts"
+    },
+    "./components/snack": {
+      "default": "./components/snack/index.js",
+      "types": "./components/snack/index.d.ts"
+    },
+    "./components/sortable": {
+      "default": "./components/sortable/index.js",
+      "types": "./components/sortable/index.d.ts"
+    },
+    "./components/steps": {
+      "default": "./components/steps/index.js",
+      "types": "./components/steps/index.d.ts"
+    },
+    "./components/table": {
+      "default": "./components/table/index.js",
+      "types": "./components/table/index.d.ts"
+    },
+    "./components/tabs": {
+      "default": "./components/tabs/index.js",
+      "types": "./components/tabs/index.d.ts"
+    },
+    "./components/textarea": {
+      "default": "./components/textarea/index.js",
+      "types": "./components/textarea/index.d.ts"
+    },
+    "./components/tooltip": {
+      "default": "./components/tooltip/index.js",
+      "types": "./components/tooltip/index.d.ts"
     }
   },
   "scripts": {
