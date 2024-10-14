@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button, useIsClosing } from "..";
+import { Button } from "~/components/button";
+import { useIsClosing } from "~/hooks";
 import clsx from "clsx";
 
 export default {
@@ -12,9 +13,7 @@ export const Basic = () => {
   return (
     <div>
       <div>
-        <Button onClick={() => setIsOpen((v) => !v)}>
-          {isOpen ? "Masquer" : "Afficher"}
-        </Button>
+        <Button onClick={() => setIsOpen((v) => !v)}>{isOpen ? "Masquer" : "Afficher"}</Button>
       </div>
       {isOpen && (
         <div className="h-[300px] w-[300px] origin-top-left shadow-xl flex-center motion-safe:animate-fade-in">
@@ -37,9 +36,7 @@ export const InOut = () => {
   return (
     <div>
       <div>
-        <Button onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? "Masquer" : "Afficher"}
-        </Button>
+        <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Masquer" : "Afficher"}</Button>
       </div>
       {isOpen && <div className={classNames}>Modal</div>}
     </div>

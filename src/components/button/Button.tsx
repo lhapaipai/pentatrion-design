@@ -1,9 +1,9 @@
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
-import { ThemeColor } from "../../types";
+import { ThemeColor } from "~/types";
 import { Loader } from "../loader";
-import { useRipple } from "../../hooks";
-
+import { useRipple } from "~/hooks";
+console.log("hell");
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 

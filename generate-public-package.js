@@ -1,4 +1,4 @@
-import { dirname, resolve } from "node:path";
+import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFileSync, writeFileSync, copyFileSync } from "node:fs";
 const projectDir = dirname(fileURLToPath(import.meta.url));
@@ -14,6 +14,19 @@ delete pkgInfos.main;
 
 pkgInfos.main = "index.js";
 pkgInfos.types = "index.d.ts";
+
+pkgInfos.exports = Object.fromEntries(
+  Object.entries(pkgInfos.exports).map(([key, path]) => {
+    const outputRelativePath = `./${relative("./src", path)}`;
+    return [
+      key,
+      {
+        types: outputRelativePath.replace(".ts", ".d.ts"),
+        default: outputRelativePath.replace(".ts", ".js"),
+      },
+    ];
+  }),
+);
 
 writeFileSync(resolve(projectDir, "dist/package.json"), JSON.stringify(pkgInfos, undefined, 2));
 

@@ -116,6 +116,18 @@ export default config;
 
 ```
 
+fichier `tsconfig.json`.
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "pentatrion-design/*": ["./*"]
+    },
+  }
+}
+```
+
+
 La dépendance `pentatrion-fonts` est optionnelle.
 
 Mettre à jour `src/App.tsx`

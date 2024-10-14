@@ -4,7 +4,7 @@ export default {
 
 import { useState } from "react";
 
-import jsonFile from "../.storybook/fontello/config.json";
+import jsonFile from "../../.storybook/fontello/config.json";
 import { Input } from "../components/input/Input";
 const fontelloConfig = jsonFile as FontelloConfig;
 

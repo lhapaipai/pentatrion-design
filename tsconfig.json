@@ -27,7 +27,10 @@
      */
     "declaration": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "exclude": ["**/node_modules", "./dist"],
   "include": [
