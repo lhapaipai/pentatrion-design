@@ -4,6 +4,7 @@ import { Option, OptionLike } from "../select";
 import { useEventCallback } from "../../hooks";
 import { getOptionLabel } from "./util";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props<O extends OptionLike = Option>
   extends Pick<
     AutocompleteProps<O>,
