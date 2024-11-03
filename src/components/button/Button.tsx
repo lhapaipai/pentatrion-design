@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { ThemeColor } from "~/types";
 import { Loader } from "../loader";
 import { useRipple } from "~/hooks";
-console.log("hell");
+
 export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   withRipple?: boolean;
 
