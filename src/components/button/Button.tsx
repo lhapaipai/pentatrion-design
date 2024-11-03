@@ -83,14 +83,17 @@ export const buttonVariants = {
     },
     outlined(color: ThemeColor) {
       return clsx(
-        "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline outline-2 outline-offset-[-2px] focus-visible:ring-2",
+        "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline-offset-0 border-2 ",
         {
-          yellow: "hover:bg-yellow-1/50 outline-yellow-5 focus-visible:ring-yellow-4",
-          gray: "hover:bg-gray-1 outline-gray-5 focus-visible:ring-gray-4",
-          red: "hover:bg-red-1/50 outline-red-5 focus-visible:ring-red-4",
-          orange: "hover:bg-orange-1/50 outline-orange-5 focus-visible:ring-orange-4",
-          green: "hover:bg-green-1/50 outline-green-5 focus-visible:ring-green-4",
-          blue: "hover:bg-blue-1/50 outline-blue-5 focus-visible:ring-blue-4",
+          yellow:
+            "hover:bg-yellow-1/50 border-yellow-5 focus-visible:outline-yellow-5 focus-visible:border-yellow-4",
+          gray: "hover:bg-gray-1 border-gray-5 focus-visible:outline-gray-5 focus-visible:border-gray-4",
+          red: "hover:bg-red-1/50 border-red-5 focus-visible:outline-red-5 focus-visible:border-red-4",
+          orange:
+            "hover:bg-orange-1/50 border-orange-5 focus-visible:outline-orange-5 focus-visible:border-orange-4",
+          green:
+            "hover:bg-green-1/50 border-green-5 focus-visible:outline-green-5 focus-visible:border-green-4",
+          blue: "hover:bg-blue-1/50 border-blue-5 focus-visible:outline-blue-5 focus-visible:border-blue-4",
         }[color],
       );
     },
@@ -114,12 +117,12 @@ export const buttonVariants = {
       return clsx(
         "bg-transparent outline-offset-0",
         {
-          yellow: "text-yellow-4 hover:text-yellow-5",
-          gray: "text-gray-5 hover:text-gray-6 active-full:text-gray-7",
-          red: "text-red-4 hover:text-red-5",
-          orange: "text-orange-4 hover:text-orange-5",
-          green: "text-green-4 hover:text-green-5",
-          blue: "text-blue-4 hover:text-blue-5",
+          yellow: "text-yellow-4 hover:text-yellow-5 focus-visible:outline-yellow-5",
+          gray: "text-gray-5 hover:text-gray-6 active-full:text-gray-7 focus-visible:outline-gray-5",
+          red: "text-red-4 hover:text-red-5 focus-visible:outline-red-5",
+          orange: "text-orange-4 hover:text-orange-5 focus-visible:outline-orange-5",
+          green: "text-green-4 hover:text-green-5 focus-visible:outline-green-5",
+          blue: "text-blue-4 hover:text-blue-5 focus-visible:outline-blue-5",
         }[color],
       );
     },
@@ -163,7 +166,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "relative inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 active:translate-y-[1px] motion-safe:transition-color-shadow active:motion-safe:transition-colors",
+          "relative box-border inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 active:translate-y-[1px] motion-safe:transition-color-shadow active:motion-safe:transition-colors",
           icon ? "rounded-full" : "rounded-2xl",
           className,
           buttonVariants.size(icon, size),
