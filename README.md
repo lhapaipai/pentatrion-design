@@ -177,3 +177,16 @@ Create a `.vscode/settings.json` file
   }
 }
 ```
+
+## Développement avec watch
+
+anciennement dans le `package.json`. plus nécessaire pour le moment
+
+```json
+{
+  "scripts": {
+    "dev:tsc": "tsc -w -p tsconfig.build.json",
+    "dev:alias": "tsc-alias -w -p tsconfig.build.json",
+    "dev": "run-p dev:tsc dev:alias",
+  }
+}

@@ -33,14 +33,5 @@
     }
   },
   "exclude": ["**/node_modules", "./dist"],
-  "include": [
-    "src/components",
-    "src/hooks",
-    "src/lib",
-    "src/redux",
-    "src/styles",
-    "src/tailwind",
-    "*.ts",
-    ".storybook"
-  ]
+  "include": ["src", "*.ts", ".storybook"]
 }
