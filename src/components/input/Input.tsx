@@ -11,8 +11,8 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
 }
 
 export const inputConfig = {
-  container: "p8n-input-text rounded-2xl outline-offset-[-1px] flex ",
-  input: "h-8 flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
+  container: "p8n-input-text rounded-2xl outline-offset-[-1px] flex box-border h-8",
+  input: "h-full flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

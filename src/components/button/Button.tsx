@@ -44,88 +44,23 @@ export const buttonVariants = {
 
     switch (size) {
       case "small":
-        return clsx("text-sm h-6", icon ? "min-w-6 [&_i]:w-6" : "px-2");
+        return clsx("text-sm h-6", icon ? "min-w-6 [&_i]:w-[calc(1.5rem-4px)]" : "px-2");
       case "medium":
-        return clsx("h-8", icon ? "min-w-8 [&_i]:w-8" : "px-4");
+        return clsx("h-8", icon ? "min-w-8 [&_i]:w-[calc(2rem-4px)]" : "px-4");
       case "large":
-        return clsx("h-12", icon ? "text-2xl min-w-12 [&_i]:w-12" : "text-xl px-8");
+        return clsx("h-12", icon ? "text-2xl min-w-12 [&_i]:w-[calc(3rem-4px)]" : "text-xl px-8");
     }
   },
   variant: {
-    contained(color: ThemeColor) {
-      return clsx(
-        "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0",
-        {
-          yellow: "text-yellow-text bg-yellow-3 hover:bg-yellow-4 focus-visible:outline-yellow-5",
-          gray: "text-gray-text bg-gray-3 hover:bg-gray-4 focus-visible:outline-gray-5",
-          red: "text-red-text bg-red-3 hover:bg-red-4 focus-visible:outline-red-5",
-          orange: "text-orange-text bg-orange-3 hover:bg-orange-4 focus-visible:outline-orange-5",
-          green: "text-green-text bg-green-3 hover:bg-green-4 focus-visible:outline-green-5",
-          blue: "text-blue-text bg-blue-3 hover:bg-blue-4 focus-visible:outline-blue-5",
-        }[color],
-      );
-    },
-    light(color: ThemeColor) {
-      return clsx(
-        "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 bg-gray-0",
-        {
-          yellow:
-            "text-gray-text hover:text-yellow-text hover:bg-yellow-3 focus-visible:outline-yellow-4",
-          gray: "text-gray-text hover:text-gray-text hover:bg-gray-3 focus-visible:outline-gray-4",
-          red: "text-gray-text hover:text-red-text hover:bg-red-3 focus-visible:outline-red-4",
-          orange:
-            "text-gray-text hover:text-orange-text hover:bg-orange-3 focus-visible:outline-orange-4",
-          green:
-            "text-gray-text hover:text-green-text hover:bg-green-3 focus-visible:outline-green-4",
-          blue: "text-gray-text hover:text-blue-text hover:bg-blue-3 focus-visible:outline-blue-4",
-        }[color],
-      );
-    },
-    outlined(color: ThemeColor) {
-      return clsx(
-        "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline-offset-0 border-2 ",
-        {
-          yellow:
-            "hover:bg-yellow-1/50 border-yellow-5 focus-visible:outline-yellow-5 focus-visible:border-yellow-4",
-          gray: "hover:bg-gray-1 border-gray-5 focus-visible:outline-gray-5 focus-visible:border-gray-4",
-          red: "hover:bg-red-1/50 border-red-5 focus-visible:outline-red-5 focus-visible:border-red-4",
-          orange:
-            "hover:bg-orange-1/50 border-orange-5 focus-visible:outline-orange-5 focus-visible:border-orange-4",
-          green:
-            "hover:bg-green-1/50 border-green-5 focus-visible:outline-green-5 focus-visible:border-green-4",
-          blue: "hover:bg-blue-1/50 border-blue-5 focus-visible:outline-blue-5 focus-visible:border-blue-4",
-        }[color],
-      );
-    },
-    text(color: ThemeColor) {
-      return clsx(
-        "bg-transparent hover:shadow-sm active-full:shadow-sm-active outline-offset-0",
-        {
-          yellow:
-            "hover:bg-yellow-1/50 text-yellow-4 hover:text-yellow-5 focus-visible:outline-yellow-5",
-          gray: "hover:bg-gray-1 text-gray-5 hover:text-gray-6 active-full:text-gray-7 focus-visible:outline-gray-5",
-          red: "hover:bg-red-1/50 text-red-4 hover:text-red-5 focus-visible:outline-red-5",
-          orange:
-            "hover:bg-orange-1/50 text-orange-4 hover:text-orange-5 focus-visible:outline-orange-5",
-          green:
-            "hover:bg-green-1/50 text-green-4 hover:text-green-5 focus-visible:outline-green-5",
-          blue: "hover:bg-blue-1/50 text-blue-4 hover:text-blue-5 focus-visible:outline-blue-5",
-        }[color],
-      );
-    },
-    ghost(color: ThemeColor) {
-      return clsx(
-        "bg-transparent outline-offset-0",
-        {
-          yellow: "text-yellow-4 hover:text-yellow-5 focus-visible:outline-yellow-5",
-          gray: "text-gray-5 hover:text-gray-6 active-full:text-gray-7 focus-visible:outline-gray-5",
-          red: "text-red-4 hover:text-red-5 focus-visible:outline-red-5",
-          orange: "text-orange-4 hover:text-orange-5 focus-visible:outline-orange-5",
-          green: "text-green-4 hover:text-green-5 focus-visible:outline-green-5",
-          blue: "text-blue-4 hover:text-blue-5 focus-visible:outline-blue-5",
-        }[color],
-      );
-    },
+    contained:
+      "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] focus-visible:outline-[rgb(var(--color-custom-5))]",
+    light:
+      "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 bg-gray-0 text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-4))]",
+    outlined:
+      "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-5))] focus-visible:outline-[rgb(var(--color-custom-5))] focus-visible:border-[rgb(var(--color-custom-4))]",
+    text: "bg-transparent hover:shadow-sm active-full:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1)/50%)] text-[rgb(var(--color-custom-4))] hover:text-[rgb(var(--color-custom-5))] focus-visible:outline-[rgb(var(--color-custom-5))]",
+    ghost:
+      "bg-transparent outline-offset-0 text-[rgb(var(--color-custom-4))] hover:text-[rgb(var(--color-custom-5))] focus-visible:outline-[rgb(var(--color-custom-5))]",
   },
 };
 
@@ -170,13 +105,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           icon ? "rounded-full" : "rounded-2xl",
           className,
           buttonVariants.size(icon, size),
-          buttonVariants.variant[variant](color),
+          buttonVariants.variant[variant],
           icon && "justify-center [&_:last-child:not(i,img,svg)]:pr-4",
           fullWidth && "w-full",
           selected && "active",
           notClickable && "disabled",
         )}
+        data-color={color}
         data-variant={variant}
+        data-selected={selected}
         disabled={disabled}
         aria-busy={loading}
         {...props}

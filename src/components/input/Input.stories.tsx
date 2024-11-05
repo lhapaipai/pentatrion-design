@@ -28,7 +28,7 @@ export const Playbook: Story = {
   },
 };
 
-export const Context = () => {
+function ContextWithHook() {
   const [counter, setCounter] = useState(0);
 
   return (
@@ -111,4 +111,8 @@ export const Context = () => {
       </div>
     </div>
   );
+}
+
+export const Context: Story = {
+  render: () => <ContextWithHook />,
 };

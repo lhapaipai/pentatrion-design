@@ -17,7 +17,7 @@ export function ButtonGroup({ children, className, direction = "horizontal" }: P
   return (
     <div
       className={clsx(
-        "ll-button-group [&_:not(:first-child)]:rounded-tl-none [&_:not(:last-child)]:rounded-br-none",
+        "[&_:not(:first-child)]:rounded-tl-none [&_:not(:last-child)]:rounded-br-none",
         buttonGroupVariants[direction],
         `direction-${direction}`,
         className,

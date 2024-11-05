@@ -1,8 +1,11 @@
 @import "./fontello/index.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "../src/tailwind/vars.css";
+@import "../src/tailwind/components-input-outline.css";
 
 .sb-h1 {
   color: var(--tw-prose-headings);

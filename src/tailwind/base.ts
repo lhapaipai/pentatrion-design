@@ -78,6 +78,7 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-yellow-3);",
     "--color-custom-4": "var(--color-yellow-4);",
     "--color-custom-5": "var(--color-yellow-5);",
+    "--color-custom-text": "var(--color-yellow-text);",
   },
   '[data-color="gray"]': {
     "--color-custom-1": "var(--color-gray-1);",
@@ -85,6 +86,7 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-gray-3);",
     "--color-custom-4": "var(--color-gray-4);",
     "--color-custom-5": "var(--color-gray-5);",
+    "--color-custom-text": "var(--color-gray-text);",
   },
   '[data-color="red"]': {
     "--color-custom-1": "var(--color-red-1);",
@@ -92,6 +94,7 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-red-3);",
     "--color-custom-4": "var(--color-red-4);",
     "--color-custom-5": "var(--color-red-5);",
+    "--color-custom-text": "var(--color-red-text);",
   },
   '[data-color="orange"]': {
     "--color-custom-1": "var(--color-orange-1);",
@@ -99,6 +102,7 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-orange-3);",
     "--color-custom-4": "var(--color-orange-4);",
     "--color-custom-5": "var(--color-orange-5);",
+    "--color-custom-text": "var(--color-orange-text);",
   },
   '[data-color="green"]': {
     "--color-custom-1": "var(--color-green-1);",
@@ -106,6 +110,7 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-green-3);",
     "--color-custom-4": "var(--color-green-4);",
     "--color-custom-5": "var(--color-green-5);",
+    "--color-custom-text": "var(--color-green-text);",
   },
   '[data-color="blue"]': {
     "--color-custom-1": "var(--color-blue-1);",
@@ -113,5 +118,6 @@ export const base: CSSRuleObject = {
     "--color-custom-3": "var(--color-blue-3);",
     "--color-custom-4": "var(--color-blue-4);",
     "--color-custom-5": "var(--color-blue-5);",
+    "--color-custom-text": "var(--color-blue-text);",
   },
 };

@@ -15,7 +15,7 @@ export const vars: CSSRuleObject = {
     "--color-yellow-3": "255 232 34" /* rgb(255, 232, 34); */,
 
     // /* text color, button hover bgcolor */
-    "--color-yellow-4": "251 191 36" /* rgb(251, 191, 36); */,
+    "--color-yellow-4": "251 191 36" /* rgb(252, 200, 36); */,
 
     // /* text hover color, button active bgcolor */
     "--color-yellow-5": "245 158 11" /* rgb(245, 158, 11); */,

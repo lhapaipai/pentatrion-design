@@ -189,44 +189,44 @@ export const componentsResizeArea: CSSRuleObject = {
   },
 };
 
-export const componentsInputOutline: CSSRuleObject = {
-  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)": {
-    "@apply outline outline-1 outline-[rgb(var(--color-custom-2))] hover:outline-[rgb(var(--color-custom-3))] focus-full:outline-[rgb(var(--color-custom-4))]":
-      {},
-  },
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"])':
-    {
-      "@apply outline-gray-2 hover:outline-gray-3": {},
-    },
+// export const componentsInputOutline: CSSRuleObject = {
+//   ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea)": {
+//     "@apply outline outline-1 outline-[rgb(var(--color-custom-2))] hover:outline-[rgb(var(--color-custom-3))] focus-full:outline-[rgb(var(--color-custom-4))]":
+//       {},
+//   },
+//   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-color="yellow"])':
+//     {
+//       "@apply outline-gray-2 hover:outline-gray-3": {},
+//     },
 
-  ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):not([readonly], .readonly)":
-    {
-      "@apply focus-full:outline-2": {},
-    },
+//   ":is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):not([readonly], .readonly)":
+//     {
+//       "@apply focus-full:outline-2": {},
+//     },
 
-  ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-variant="ghost"])':
-    {
-      "@apply outline-transparent": {},
-    },
-  ":is(.p8n-input-checkbox, .p8n-input-radio)": {
-    "@apply text-[rgb(var(--color-custom-3))]": {},
-  },
-  ":is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .checked, .indeterminate)": {
-    "@apply bg-full bg-center bg-no-repeat outline-gray-1 bg-current": {},
-  },
-  ".p8n-input-checkbox:not(.p8n-input-toggle):where(:checked, .checked)": {
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
-  },
-  ".p8n-input-radio:where(:checked, .checked)": {
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\")",
-  },
-  ":is(.p8n-input-checkbox, .p8n-input-radio):is(.indeterminate, :checked.indeterminate)": {
-    backgroundImage:
-      "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.5 7.5a1 1 0 0 0-1 1 1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z' /%3e%3c/svg%3e\")",
-  },
-};
+//   ':is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):where([data-variant="ghost"])':
+//     {
+//       "@apply outline-transparent": {},
+//     },
+//   ":is(.p8n-input-checkbox, .p8n-input-radio)": {
+//     "@apply text-[rgb(var(--color-custom-3))]": {},
+//   },
+//   ":is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .checked, .indeterminate)": {
+//     "@apply bg-full bg-center bg-no-repeat outline-gray-1 bg-current": {},
+//   },
+//   ".p8n-input-checkbox:not(.p8n-input-toggle):where(:checked, .checked)": {
+//     backgroundImage:
+//       "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")",
+//   },
+//   ".p8n-input-radio:where(:checked, .checked)": {
+//     backgroundImage:
+//       "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e\")",
+//   },
+//   ":is(.p8n-input-checkbox, .p8n-input-radio):is(.indeterminate, :checked.indeterminate)": {
+//     backgroundImage:
+//       "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M4.5 7.5a1 1 0 0 0-1 1 1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1 1 1 0 0 0-1-1Z' /%3e%3c/svg%3e\")",
+//   },
+// };
 
 export const components: CSSRuleObject = {
   ".can-copy": {

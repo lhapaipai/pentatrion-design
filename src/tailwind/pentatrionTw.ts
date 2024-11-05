@@ -2,14 +2,8 @@ import plugin from "tailwindcss/plugin";
 import { keyframes } from "./keyframes";
 
 import defaultTheme from "tailwindcss/defaultTheme";
-import { vars } from "./vars";
 import { base } from "./base";
-import {
-  components,
-  componentsInputOutline,
-  componentsResizeArea,
-  componentsStep,
-} from "./components";
+import { components, componentsResizeArea, componentsStep } from "./components";
 import { utilities, utilitiesDialog } from "./utilities";
 
 export const pentatrionTypographyExtend = {
@@ -59,10 +53,10 @@ interface PentatrionTwOptions {
 export const pentatrionTw = plugin.withOptions(
   function (options: PentatrionTwOptions = {}) {
     return ({ addBase, addUtilities, addComponents, addVariant }) => {
-      options.vars !== false && addBase(vars);
+      // options.vars !== false && addBase(vars);
       options.base !== false && addBase(base);
       options.components !== false && addComponents(components);
-      options.componentsInputOutline !== false && addComponents(componentsInputOutline);
+      // options.componentsInputOutline !== false && addComponents(componentsInputOutline);
       options.componentsResizeArea !== false && addComponents(componentsResizeArea);
       options.componentsStep !== false && addComponents(componentsStep);
       options.utilities !== false && addUtilities(utilities);

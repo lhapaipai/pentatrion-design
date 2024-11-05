@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import type {} from "@storybook/types";
+import { UserConfig } from "vite";
 
 const projectDir = resolve(fileURLToPath(new URL("..", import.meta.url)));
 
@@ -29,5 +30,13 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["./public"],
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async viteFinal(config, options) {
+    const { mergeConfig } = await import("vite");
+
+    return mergeConfig(config, {
+      plugins: [],
+    } satisfies UserConfig);
+  },
 };
 export default config;
