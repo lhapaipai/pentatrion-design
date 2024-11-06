@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { ChangeEvent, useState } from "react";
 import { InputField } from "./InputField";
 import { Toggle } from "../input/Toggle";
@@ -8,10 +8,25 @@ import { RadioGroup } from "../input/RadioGroup";
 const meta = {
   title: "Components/InputField",
   component: InputField,
+  tags: ["autodocs"],
 } satisfies Meta<typeof InputField>;
 export default meta;
 
-export const Playbook = () => {
+type Story = StoryObj<typeof InputField>;
+
+export const Basic: Story = {
+  args: {
+    label: "Nom",
+    hint: "Votre nom complet",
+    placeholder: "Dupond",
+    help: "Nom + Prénom",
+    value: "",
+    error: false,
+    warning: false,
+  },
+};
+
+const PlaybookWithHook = () => {
   const [value, setValue] = useState("");
   const [label, setLabel] = useState("Your label");
   const [hint, setHint] = useState("Any hint related to input field");
@@ -73,8 +88,11 @@ export const Playbook = () => {
     </>
   );
 };
+export const Playbook: Story = {
+  render: () => <PlaybookWithHook />,
+};
 
-export const Context = () => {
+const ContextWithHook = () => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState<string | null>("female");
   const [isAgree, setIsAgree] = useState(true);
@@ -226,4 +244,7 @@ export const Context = () => {
       </pre>
     </div>
   );
+};
+export const Context: Story = {
+  render: () => <ContextWithHook />,
 };

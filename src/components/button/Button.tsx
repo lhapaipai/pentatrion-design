@@ -53,7 +53,7 @@ export const buttonVariants = {
   },
   variant: {
     contained:
-      "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] focus-visible:outline-[rgb(var(--color-custom-5))]",
+      "shadow hover:shadow-md active-full:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] focus-visible:outline-[rgb(var(--color-custom-5))]",
     light:
       "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 bg-gray-0 text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-4))]",
     outlined:
@@ -92,7 +92,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const notClickable = loading || disabled;
 
-    const ripples = useRipple(inputRef);
+    const ripples = useRipple(
+      inputRef,
+      ["text", "outlined", "ghost"].includes(variant) ? true : false,
+    );
 
     // check if overflow-clip-margin: 1px; is needed ?
     return (
@@ -101,7 +104,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "relative box-border inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 active:translate-y-[1px] motion-safe:transition-color-shadow active:motion-safe:transition-colors",
+          "relative box-border inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline focus-visible:outline focus-visible:outline-2 active:translate-y-[1px]",
           icon ? "rounded-full" : "rounded-2xl",
           className,
           buttonVariants.size(icon, size),

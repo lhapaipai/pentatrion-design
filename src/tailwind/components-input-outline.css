@@ -4,13 +4,13 @@
   @apply border border-[rgb(var(--color-custom-2))];
 }
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea) {
-  @apply hover:border hover:border-[rgb(var(--color-custom-3))] focus-full:outline focus-full:outline-2 focus-full:outline-[rgb(var(--color-custom-4))];
+  @apply hover:bg-[rgb(var(--color-custom-1)/25%)] focus-full:bg-gray-0 focus-full:outline focus-full:outline-2 focus-full:outline-[rgb(var(--color-custom-4))];
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):is(
     [data-color="yellow"]
   ) {
-  @apply border-gray-2 hover:border-gray-3;
+  @apply border-gray-2 hover:bg-gray-1/25;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio) {
