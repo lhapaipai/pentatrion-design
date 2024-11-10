@@ -28,13 +28,11 @@ export function Badge({
 }: Props) {
   const badge = (
     <span
+      data-color={color}
       className={clsx(
         "ll-badge",
         "inline-flex w-fit items-stretch overflow-hidden rounded-full text-xs shadow",
-        buttonVariants.variant.contained(color),
-        // badgeVariants.color[color],
-        // `variant-solid-${color}`,
-        // `text-${color}-4`,
+        buttonVariants.variant.contained,
         className,
       )}
     >
