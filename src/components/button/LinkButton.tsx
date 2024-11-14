@@ -62,12 +62,13 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
       role="button"
       href={href}
       ref={anchorRef}
+      data-color={color}
       className={clsx(
         "relative inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 motion-safe:transition-color-shadow",
         icon ? "rounded-full" : "rounded-2xl",
         className,
         buttonVariants.size(icon, size),
-        buttonVariants.variant[variant](color),
+        buttonVariants.variant[variant],
         icon && "justify-center [&_:last-child:not(i,img)]:pr-4",
         fullWidth && "w-full",
         selected && "active",

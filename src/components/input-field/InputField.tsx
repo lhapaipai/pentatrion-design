@@ -16,10 +16,11 @@ const defaultElement = Input;
 export type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
-  { label, hint, help, error, warning, as, ...rest }: Props<E>,
+  { label, hint, help, error, warning, id: providedId, as, ...rest }: Props<E>,
   ref: ForwardedRef<Element>,
 ) => {
-  const id = useId();
+  const internalId = useId();
+  const id = providedId ?? internalId;
   const Element: ElementType = as || defaultElement;
 
   const labelElement = label && <span className="font-bold">{label}</span>;
@@ -50,7 +51,9 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
         <label htmlFor={id} className="invisible"></label>
       )}
       <Element ref={ref} id={id} color={color} {...rest} />
-      <div className="mt-1 text-sm text-gray-6">{errorElement || warningElement || help}</div>
+      <div className="mt-1 min-h-5 text-sm text-gray-6">
+        {errorElement || warningElement || help}
+      </div>
     </div>
   );
 };

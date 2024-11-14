@@ -4,7 +4,7 @@ import { ThemeColor } from "~/types";
 import { Loader } from "../loader";
 import { useRipple } from "~/hooks";
 
-export interface ButtonProps extends ComponentPropsWithRef<"button"> {
+export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "color"> {
   withRipple?: boolean;
 
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
@@ -23,8 +23,6 @@ export interface ButtonProps extends ComponentPropsWithRef<"button"> {
   loading?: boolean;
 
   disabled?: boolean;
-
-  fullWidth?: boolean;
 
   focusable?: boolean;
 
@@ -73,7 +71,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color = "yellow",
       size = "medium",
       focusable = true,
-      fullWidth,
       className,
       disabled,
       children,
@@ -110,7 +107,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants.size(icon, size),
           buttonVariants.variant[variant],
           icon && "justify-center [&_:last-child:not(i,img,svg)]:pr-4",
-          fullWidth && "w-full",
           selected && "active",
           notClickable && "disabled",
         )}
