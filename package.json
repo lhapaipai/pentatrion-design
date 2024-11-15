@@ -24,17 +24,9 @@
     "ci": "pnpm lint:check && pnpm tsc:check && pnpm test-run"
   },
   "type": "module",
-  "dependencies": {
-    "@floating-ui/react": "^0.26.27",
-    "clsx": "^2.1.1",
-    "pentatrion-design": "link:",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-polymorphic-types": "^2.0.0",
-    "react-sortablejs": "^6.1.4"
-  },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
+    "@floating-ui/react": "^0.26.27",
     "@floating-ui/react-dom": "^2.1.2",
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.3.0",
@@ -61,6 +53,7 @@
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react-swc": "^3.7.1",
     "chokidar": "^4.0.1",
+    "clsx": "^2.1.1",
     "eslint": "^9.14.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
@@ -74,7 +67,11 @@
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-polymorphic-types": "^2.0.0",
     "react-redux": "^9.1.2",
+    "react-sortablejs": "^6.1.4",
     "storybook": "8.2.9",
     "tailwindcss": "^3.4.14",
     "tsc-alias": "^1.8.10",
@@ -85,15 +82,42 @@
     "vitest": "^2.1.4"
   },
   "peerDependencies": {
+    "@floating-ui/react": "*",
     "@reduxjs/toolkit": "*",
+    "clsx": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-polymorphic-types": "*",
     "react-redux": "*",
+    "react-sortablejs": "*",
     "tailwindcss": "*"
   },
   "peerDependenciesMeta": {
-    "@types/react": {
+    "@floating-ui/react": {
       "optional": true
     },
-    "@types/react-dom": {
+    "@reduxjs/toolkit": {
+      "optional": true
+    },
+    "clsx": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "react-polymorphic-types": {
+      "optional": true
+    },
+    "react-redux": {
+      "optional": true
+    },
+    "react-sortablejs": {
+      "optional": true
+    },
+    "tailwindcss": {
       "optional": true
     }
   },
@@ -235,9 +259,10 @@
       "default": "./dist/redux/notification/index.js"
     },
     "./tailwind": {
-      "types": "./dist/tailwind/index.d.ts",
-      "default": "./dist/tailwind/index.js"
-    }
+      "types": "./dist/tailwind/plugin.d.ts",
+      "default": "./dist/tailwind/plugin.js"
+    },
+    "./tailwind/*": "./src/tailwind/*"
   },
   "volta": {
     "node": "20.14.0"

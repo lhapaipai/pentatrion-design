@@ -1,0 +1,7 @@
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+a.link {
+  @apply text-gray-8 underline decoration-gray-8 visited:text-gray-8 hover:decoration-yellow-4 hover:decoration-2 active:text-yellow-4;
+}
