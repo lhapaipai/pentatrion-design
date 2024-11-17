@@ -1,5 +1,6 @@
 import {
   ChangeEvent,
+  ComponentProps,
   ReactElement,
   ReactNode,
   Ref,
@@ -37,16 +38,16 @@ import { Input } from "../input/Input";
 import { Button } from "../button/Button";
 import { useEventCallback } from "../../hooks/useEventCallback";
 import { Dialog } from "../dialog/Dialog";
+import { ThemeColor } from "~/types";
 
-export type SelectValue = number | string | null;
+export type SelectValue = number | string | readonly string[] | null;
 type ChangeEventLike = {
   target: {
     value: SelectValue;
   };
 };
 
-type Props<O extends Option = Option> = {
-  disabled?: boolean;
+export type SelectProps<O extends Option = Option> = {
   variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
@@ -54,26 +55,26 @@ type Props<O extends Option = Option> = {
   floatingMinWidth?: number;
   placement?: Placement;
   options: O[];
+  color?: ThemeColor;
   placeholder?: string;
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
   searchable?: boolean;
-  required?: boolean;
   selectOptionComponent?: (props: O) => ReactNode;
   selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
-  defaultValue?: string;
-  name?: string;
+  defaultValue?: SelectValue;
   value?: SelectValue;
   onChange?: ((e: ChangeEventLike) => void) | null;
   zIndex?: number;
-};
+} & Omit<ComponentProps<"select">, "onChange" | "value" | "defaultValue" | "multiple">;
 
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
 }
 
-export const Select = forwardRef<HTMLDivElement, Props>(
+export const Select = forwardRef<HTMLDivElement, SelectProps>(
   (
     {
+      id,
       variant = "normal",
       disabled = false,
       showArrow = true,
@@ -93,6 +94,7 @@ export const Select = forwardRef<HTMLDivElement, Props>(
       selectOptionComponent: SelectOptionCustomComponent,
       options = [],
       zIndex,
+      color = "yellow",
     },
     propRef,
   ) => {
@@ -251,17 +253,19 @@ export const Select = forwardRef<HTMLDivElement, Props>(
       <div>
         <input
           type="hidden"
+          id={id}
           name={name}
-          value={selectedIndex ? filteredOptions[selectedIndex].value : ""}
+          value={selectedIndex !== null ? filteredOptions[selectedIndex].value : ""}
         />
         <div
+          data-color={color}
           className={clsx(
-            "flex cursor-pointer rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 focus-full:outline-2 focus-full:outline-yellow-4",
-            variant === "normal" ? "outline-gray-2" : "outline-transparent",
+            "p8n-input-text box-border flex cursor-pointer rounded-2xl outline-offset-[-1px]",
             selectionClassName,
             isOpen && "focus",
             disabled && "disabled",
           )}
+          data-variant={variant}
           ref={ref}
           tabIndex={0}
           style={{
@@ -376,4 +380,4 @@ export const Select = forwardRef<HTMLDivElement, Props>(
 
   // see : React with Typescript -- Generics while using React.forwardRef
   // https://stackoverflow.com/questions/58469229/react-with-typescript-generics-while-using-react-forwardref
-) as <O extends Option>(p: Props<O> & { ref?: Ref<HTMLDivElement> }) => ReactElement;
+) as <O extends Option>(p: SelectProps<O> & { ref?: Ref<HTMLDivElement> }) => ReactElement;

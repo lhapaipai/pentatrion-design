@@ -203,3 +203,4 @@ anciennement dans le `package.json`. plus nécessaire pour le moment
     "dev": "run-p dev:tsc dev:alias",
   }
 }
+```

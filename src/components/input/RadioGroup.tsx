@@ -20,7 +20,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           type="radio"
           className={clsx(
             "p8n-input-radio",
-            "my-0 mr-1 inline-block h-5 w-5 shrink-0 cursor-pointer select-none appearance-none rounded-full bg-gray-0 bg-origin-border p-0",
+            "my-0 mr-1 inline-block h-5 w-5 shrink-0 cursor-pointer select-none appearance-none rounded-full bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
             className,
           )}
           checked={checked}

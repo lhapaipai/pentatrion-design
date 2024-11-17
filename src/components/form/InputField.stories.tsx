@@ -6,9 +6,8 @@ import { Checkbox } from "../input/Checkbox";
 import { RadioGroup } from "../input/RadioGroup";
 
 const meta = {
-  title: "Components/InputField",
+  title: "Components/Form/InputField",
   component: InputField,
-  tags: ["autodocs"],
 } satisfies Meta<typeof InputField>;
 export default meta;
 
@@ -19,7 +18,7 @@ export const Basic: Story = {
     label: "Nom",
     hint: "Votre nom complet",
     placeholder: "Dupond",
-    help: "Nom + Prénom",
+    description: "Nom + Prénom",
     value: "",
     error: false,
     warning: false,
@@ -31,7 +30,7 @@ const PlaybookWithHook = () => {
   const [label, setLabel] = useState("Your label");
   const [hint, setHint] = useState("Any hint related to input field");
   const [placeholder, setPlaceholder] = useState("Ex: Fernando");
-  const [help, setHelp] = useState("Help message into the bottom");
+  const [description, setDescription] = useState("Description message at the top of the field");
   const [warning, setWarning] = useState("");
   const [error, setError] = useState("");
 
@@ -42,7 +41,7 @@ const PlaybookWithHook = () => {
           label={label}
           hint={hint}
           placeholder={placeholder}
-          help={help}
+          description={description}
           value={value}
           warning={warning}
           error={error}
@@ -69,8 +68,8 @@ const PlaybookWithHook = () => {
         />
         <InputField
           label="Help"
-          value={help}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setHelp(e.target.value)}
+          value={description}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
         />
         <InputField
           label="Warning"
@@ -104,7 +103,7 @@ const ContextWithHook = () => {
         label="What is your name"
         hint="Any hint related to input field"
         placeholder="Ex: Fernando"
-        help="Help text for your input field"
+        description="Description message at the top of the field"
         value={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
       />
@@ -112,7 +111,7 @@ const ContextWithHook = () => {
         label="What is your name"
         hint="Any hint related to input field"
         placeholder="Ex: Fernando"
-        help="Help text for your input field"
+        description="Description message at the top of the field"
         error="Input is required"
         value={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
@@ -121,7 +120,7 @@ const ContextWithHook = () => {
         label="What is your name"
         hint="Any hint related to input field"
         placeholder="Ex: Fernando"
-        help="Help text for your input field"
+        description="Description message at the top of the field"
         warning="Only your firstname"
         value={name}
         onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
@@ -139,7 +138,7 @@ const ContextWithHook = () => {
           { label: "Female", value: "female" },
           { label: "I don't want to answer", value: "undefined" },
         ]}
-        help="You still have to check a box"
+        description="You still have to check a box"
       />
       <InputField
         value={gender}
@@ -155,7 +154,7 @@ const ContextWithHook = () => {
           { label: "Female", value: "female" },
           { label: "I don't want to answer", value: "undefined" },
         ]}
-        help="You still have to check a box"
+        description="You still have to check a box"
       />
 
       <InputField
@@ -172,7 +171,7 @@ const ContextWithHook = () => {
           { label: "Female", value: "female" },
           { label: "I don't want to answer", value: "undefined" },
         ]}
-        help="You still have to check a box"
+        description="You still have to check a box"
       />
       <InputField
         checked={isAgree}

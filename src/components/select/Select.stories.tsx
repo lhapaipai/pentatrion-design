@@ -119,7 +119,9 @@ export const Searchable = () => {
   );
 };
 
-function isDepartment(department: number | string | null): department is "38" | "73" | "74" {
+function isDepartment(
+  department: number | string | null | readonly string[],
+): department is "38" | "73" | "74" {
   return department !== null && ["38", "73", "74"].indexOf(department.toString()) !== -1;
 }
 

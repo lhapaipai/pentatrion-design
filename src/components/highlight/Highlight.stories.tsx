@@ -3,7 +3,7 @@ import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
 import { Toggle } from "../input/Toggle";
 import { Highlight } from "./Highlight";
-import { InputField } from "../input-field/InputField";
+import { InputField } from "../form/InputField";
 
 const meta = {
   title: "Components/Highlight",
@@ -73,7 +73,7 @@ export const Playbook = () => {
         />
         <InputField
           label="fuse.js isCaseSensitive"
-          help="Indicates whether comparisons should be case sensitive."
+          description="Indicates whether comparisons should be case sensitive."
           checked={isCaseSensitive}
           as={Toggle}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setIsCaseSensitive(e.target.checked)}
@@ -82,7 +82,7 @@ export const Playbook = () => {
           label="fuse.js minMatchCharLength"
           type="number"
           value={minMatchCharLength}
-          help="Only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character matches in the result, set it to 2)."
+          description="Only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character matches in the result, set it to 2)."
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             e.target.validity.valid && setMinMatchCharLength(e.target.valueAsNumber)
           }
@@ -91,7 +91,7 @@ export const Playbook = () => {
           label="fuse.js location"
           type="number"
           value={location}
-          help="Determines approximately where in the text is the pattern expected to be found."
+          description="Determines approximately where in the text is the pattern expected to be found."
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             e.target.validity.valid && setLocation(e.target.valueAsNumber)
           }
@@ -101,7 +101,7 @@ export const Playbook = () => {
           type="number"
           value={threshold}
           step="0.1"
-          help="At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything."
+          description="At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything."
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             e.target.validity.valid && setThreshold(e.target.valueAsNumber)
           }
@@ -109,7 +109,7 @@ export const Playbook = () => {
         <InputField
           label="fuse.js distance"
           type="number"
-          help="Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of 0 requires the match be at the exact location specified. A distance of 1000 would require a perfect match to be within 800 characters of the location to be found using a threshold of 0.8."
+          description="Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of 0 requires the match be at the exact location specified. A distance of 1000 would require a perfect match to be within 800 characters of the location to be found using a threshold of 0.8."
           value={distance}
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             e.target.validity.valid && setDistance(e.target.valueAsNumber)
@@ -118,7 +118,7 @@ export const Playbook = () => {
         <InputField
           label="fuse.js ignoreLocation"
           as={Toggle}
-          help="When true, search will ignore location and distance, so it won't matter where in the string the pattern appears."
+          description="When true, search will ignore location and distance, so it won't matter where in the string the pattern appears."
           checked={ignoreLocation}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setIgnoreLocation(e.target.checked)}
         />

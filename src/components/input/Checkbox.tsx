@@ -24,7 +24,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
         type="checkbox"
         className={clsx(
           "p8n-input-checkbox",
-          "my-0 mr-1 inline-block h-5 w-5 shrink-0 select-none appearance-none rounded bg-gray-0 bg-origin-border p-0",
+          "my-0 mr-1 inline-block h-5 w-5 shrink-0 select-none appearance-none rounded bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
           indeterminate && "indeterminate",
           className,
         )}
