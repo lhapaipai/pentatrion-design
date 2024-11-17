@@ -17,11 +17,18 @@
 }
 
 .option {
-  @apply relative flex h-8 w-full cursor-pointer items-center px-2 text-left outline-none first:rounded-t-2xl last:rounded-b-2xl hover:bg-gray-1 focus-full:text-gray-8;
+  @apply relative flex h-8 w-full cursor-pointer items-center px-2 text-left outline-none hover:bg-gray-1 focus-full:text-gray-8;
 
   &[disabled] {
     color: rgb(var(--color-gray-6));
     pointer-events: none;
+  }
+
+  &[data-presentation="compact"] {
+    @apply first:rounded-t-2xl last-of-type:rounded-b-2xl;
+  }
+  &[data-presentation="large"] {
+    @apply rounded-xl;
   }
 
   .bullet {

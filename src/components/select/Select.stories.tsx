@@ -26,6 +26,14 @@ export const Basic = () => {
   const [value, setValue] = useState<SelectValue>(null);
   return (
     <div className="grid grid-cols-1 gap-2">
+      <div>UnControlled</div>
+      <Select
+        searchable={false}
+        defaultValue="aixenprovence"
+        placeholder="Select your town..."
+        options={options}
+      ></Select>
+      <div>Controlled</div>
       <Select
         searchable={false}
         placeholder="Select your town..."

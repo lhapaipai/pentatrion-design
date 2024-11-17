@@ -63,6 +63,7 @@ export function SelectOptionComponent({ icon, label }: StarOption) {
       className={clsx("option", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
       ref={ref}
       role="option"
+      data-presentation="compact"
       aria-selected={isActive && isSelected}
       tabIndex={isActive ? 0 : -1}
       {...getItemProps({

@@ -17,6 +17,7 @@ export function DropdownMenuItem({ children, className, onClick, ...rest }: Prop
       className={clsx("option", isActive && "bg-gray-1", className)}
       ref={ref}
       role="option"
+      data-presentation="large"
       aria-selected={isActive}
       tabIndex={isActive ? 0 : -1}
       {...getItemProps({

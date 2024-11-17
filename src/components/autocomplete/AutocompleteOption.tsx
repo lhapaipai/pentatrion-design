@@ -24,6 +24,7 @@ export const AutocompleteOption = memo(function AutocompleteOption<O extends Opt
       ref={ref}
       role="option"
       id={id}
+      data-presentation="compact"
       aria-selected={isActive}
       {...getItemProps({
         onClick: () => handleSelect(index),

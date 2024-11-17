@@ -22,6 +22,7 @@ export const ContextMenuItem = forwardRef<HTMLButtonElement, ContextMenuItemProp
         className={clsx(["option", className])}
         ref={ref}
         role="menuitem"
+        data-presentation="compact"
         disabled={disabled}
       >
         {icon}

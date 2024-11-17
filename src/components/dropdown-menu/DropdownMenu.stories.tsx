@@ -13,6 +13,8 @@ export const Basic = () => (
     <DropdownMenuContent>
       <DropdownMenuItem onClick={() => console.log("Undo")}>Your profile</DropdownMenuItem>
       <DropdownMenuItem disabled>Settings</DropdownMenuItem>
+      <DropdownMenuItem>Customize</DropdownMenuItem>
+      <DropdownMenuItem>Info</DropdownMenuItem>
       <DropdownMenuItem>Sign out</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

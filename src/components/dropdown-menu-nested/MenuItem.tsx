@@ -23,6 +23,7 @@ export const MenuItem = forwardRef<
       type="button"
       role="menuitem"
       className="option"
+      data-presentation="compact"
       tabIndex={isActive ? 0 : -1}
       disabled={disabled}
       {...menu.getItemProps({

@@ -6,6 +6,6 @@ export interface DropdownMenuOptions {
   placement?: Placement;
   open?: boolean;
   onOpen?: (open: boolean) => void;
-  color?: ThemeColor | "default";
+  color?: ThemeColor;
   modal?: boolean;
 }

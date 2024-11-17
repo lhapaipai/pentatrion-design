@@ -65,7 +65,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
 
     const hover = useHover(context, {
       enabled: isNested,
-      delay: { open: 75 },
+      delay: { open: 75, close: 200 },
       handleClose: safePolygon({ blockPointerEvents: true }),
     });
     const click = useClick(context, {
@@ -135,6 +135,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
             role="menuitem"
             data-open={isOpen ? "" : undefined}
             data-nested=""
+            data-presentation="compact"
             data-focus-inside={hasFocusInside ? "" : undefined}
             {...getReferenceProps(
               parent.getItemProps({
@@ -167,10 +168,8 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 },
               }),
             )}
-            className={clsx(
-              isNested && "option",
-              !isNested && !TriggerComponent && "ll-dropdown-menu-trigger",
-            )}
+            data-presentation="compact"
+            className={clsx(isNested && "option")}
           >
             {label}
           </TriggerComponent>

@@ -60,8 +60,10 @@ type Props<O extends Option = Option> = {
   required?: boolean;
   selectOptionComponent?: (props: O) => ReactNode;
   selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
+  defaultValue?: string;
+  name?: string;
   value?: SelectValue;
-  onChange: ((e: ChangeEventLike) => void) | null;
+  onChange?: ((e: ChangeEventLike) => void) | null;
   zIndex?: number;
 };
 
@@ -81,8 +83,10 @@ export const Select = forwardRef<HTMLDivElement, Props>(
       placement = "bottom",
       searchable = false,
       required = true,
+      defaultValue,
+      name = "",
       value = null,
-      onChange,
+      onChange = null,
       placeholder = "Select ...",
       getSearchableValue,
       selectSelectionComponent: SelectSelectionCustomComponent,
@@ -92,8 +96,19 @@ export const Select = forwardRef<HTMLDivElement, Props>(
     },
     propRef,
   ) => {
+    const isControlled = onChange !== null;
+
     const onChangeStable = useEventCallback(onChange);
 
+    const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(
+      () => {
+        if (typeof defaultValue === "undefined") {
+          return null;
+        }
+        const pos = options.findIndex((o) => o.value === defaultValue);
+        return pos !== -1 ? pos : null;
+      },
+    );
     const [search, setSearch] = useState("");
 
     const filteredOptions = useMemo(
@@ -110,12 +125,15 @@ export const Select = forwardRef<HTMLDivElement, Props>(
     );
 
     let selectedIndex: number | null = null;
-
-    if (value !== null) {
-      const pos = filteredOptions.findIndex((o) => o.value === value);
-      if (pos !== -1) {
-        selectedIndex = pos;
+    if (isControlled) {
+      if (value !== null) {
+        const pos = filteredOptions.findIndex((o) => o.value === value);
+        if (pos !== -1) {
+          selectedIndex = pos;
+        }
       }
+    } else {
+      selectedIndex = uncontrolledSelectedIndex;
     }
 
     const [isOpen, setIsOpen] = useState(false);
@@ -203,14 +221,18 @@ export const Select = forwardRef<HTMLDivElement, Props>(
         setIsOpen(false);
         setSearch("");
 
-        const event: ChangeEventLike = {
-          target: {
-            value: index === null ? null : filteredOptions[index].value,
-          },
-        };
-        onChangeStable(event);
+        if (isControlled) {
+          const event: ChangeEventLike = {
+            target: {
+              value: index === null ? null : filteredOptions[index].value,
+            },
+          };
+          onChangeStable(event);
+        } else {
+          setUncontrolledSelectedIndex(index);
+        }
       },
-      [onChangeStable, filteredOptions],
+      [isControlled, onChangeStable, filteredOptions],
     );
 
     const selectContext = useMemo(
@@ -227,9 +249,13 @@ export const Select = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div>
+        <input
+          type="hidden"
+          name={name}
+          value={selectedIndex ? filteredOptions[selectedIndex].value : ""}
+        />
         <div
           className={clsx(
-            // "selection",
             "flex cursor-pointer rounded-2xl outline outline-1 outline-offset-[-1px] hover:outline-gray-3 focus-full:outline-2 focus-full:outline-yellow-4",
             variant === "normal" ? "outline-gray-2" : "outline-transparent",
             selectionClassName,
@@ -322,6 +348,7 @@ export const Select = forwardRef<HTMLDivElement, Props>(
                               "option",
                               isSelected ? "bg-gray-2" : isActive && "bg-gray-1",
                             )}
+                            data-presentation="compact"
                             role="option"
                             aria-selected={isActive && isSelected}
                             tabIndex={isActive ? 0 : -1}

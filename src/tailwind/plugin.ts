@@ -165,7 +165,7 @@ export const pentatrionTw = plugin(
         },
         animation: {
           ripple: "ripple .9s linear",
-          "fade-in": "fade-in 250ms ease both",
+          "fade-in": "fade-in 150ms ease both",
           "fade-in-list": "fade-in-list 150ms ease both",
           "fade-out": "fade-out 250ms ease both",
           "fade-in-opacity": "fade-in-opacity 250ms ease both",

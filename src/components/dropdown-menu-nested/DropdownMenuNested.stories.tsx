@@ -13,7 +13,7 @@ const meta = {
 export default meta;
 
 export const Basic = () => (
-  <DropdownMenuNested label="Edit" triggerComponent={Button} color="yellow">
+  <DropdownMenuNested label="Edit" triggerComponent={Button} color="gray" variant="text">
     <MenuItem label="Undo" onClick={() => console.log("Undo")} />
     <MenuItem label="Redo" disabled />
     <MenuItem label="Cut" />

@@ -17,6 +17,7 @@ export function SelectOption<O extends Option>({ label }: Props<O>) {
       className={clsx("option", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
       ref={ref}
       role="option"
+      data-presentation="compact"
       aria-selected={isActive && isSelected}
       tabIndex={isActive ? 0 : -1}
       {...getItemProps({

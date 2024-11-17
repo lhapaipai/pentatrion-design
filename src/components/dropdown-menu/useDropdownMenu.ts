@@ -21,7 +21,7 @@ export function useDropdownMenu({
   placement = "bottom",
   open: controlledOpen,
   onOpen: setControlledOpen,
-  color = "default",
+  color = "gray",
   modal = false,
 }: DropdownMenuOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
