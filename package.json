@@ -218,6 +218,10 @@
       "types": "./dist/components/select/index.d.ts",
       "default": "./dist/components/select/index.js"
     },
+    "./slot": {
+      "types": "./dist/components/slot/index.d.ts",
+      "default": "./dist/components/slot/index.js"
+    },
     "./snack": {
       "types": "./dist/components/snack/index.d.ts",
       "default": "./dist/components/snack/index.js"
