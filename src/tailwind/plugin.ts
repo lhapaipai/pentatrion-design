@@ -60,7 +60,7 @@ export const pentatrionTw = plugin(
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,
-        DEFAULT: "300ms",
+        DEFAULT: "200ms",
       },
       colors: {
         transparent: "transparent",

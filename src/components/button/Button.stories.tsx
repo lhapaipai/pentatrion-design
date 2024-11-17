@@ -52,7 +52,6 @@ export const Basic: Story = {
     children: "My button",
     loading: undefined,
     disabled: false,
-    fullWidth: false,
     selected: false,
     withRipple: false,
   },
@@ -83,6 +82,24 @@ export const Context = () => {
         <Button disabled={true}>disabled</Button>
         <Button loading={false}>isLoading false</Button>
         <Button loading={true}>isLoading true</Button>
+      </div>
+      <h3 className="sb-h3">As child</h3>
+      <div className="flex items-center gap-2">
+        <Button variant="contained" color="gray" asChild>
+          <a>as link</a>
+        </Button>
+        <Button variant="light" color="gray" asChild>
+          <a>as link</a>
+        </Button>
+        <Button variant="outlined" color="gray" asChild>
+          <a>as link</a>
+        </Button>
+        <Button variant="text" color="gray" asChild>
+          <a>as link</a>
+        </Button>
+        <Button variant="ghost" color="gray" asChild>
+          <a>as link</a>
+        </Button>
       </div>
       <h3 className="sb-h3">Default state</h3>
       <Table>
