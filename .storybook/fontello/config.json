@@ -865,6 +865,12 @@
       "src": "iconic"
     },
     {
+      "uid": "0d20938846444af8deb1920dc85a29fb",
+      "css": "logout",
+      "code": 59460,
+      "src": "fontawesome"
+    },
+    {
       "uid": "24b7643d8401ffb5bd0872b14261d9ee",
       "css": "climbing-outdoor",
       "code": 59402,

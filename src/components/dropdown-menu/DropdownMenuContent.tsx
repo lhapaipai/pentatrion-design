@@ -10,7 +10,7 @@ import clsx from "clsx";
 import { Dialog } from "../dialog";
 
 export const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
-  ({ style, children, ...props }, propRef) => {
+  ({ style, className, children, ...props }, propRef) => {
     const context = useDropdownMenuContext();
     const floatingContext = context.context;
 
@@ -23,7 +23,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"di
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
             ref={ref}
-            className="z-dialog outline-none"
+            className={clsx("z-dialog outline-none", className)}
             style={{ ...context.floatingStyles, ...style }}
             {...context.getFloatingProps(props)}
           >
