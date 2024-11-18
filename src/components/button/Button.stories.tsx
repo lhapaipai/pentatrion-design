@@ -4,6 +4,7 @@ import { PartialStoryFn } from "@storybook/types";
 import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
 
 import { Button } from "./Button";
+import { Loader } from "../loader";
 
 const meta = {
   title: "Components/Button",
@@ -177,6 +178,9 @@ export const Context = () => {
           <i className="fe-cancel"></i>
           <span>Cancel</span>
         </Button>
+        <Button icon color="gray" disabled={true}>
+          <Loader color="gray" />
+        </Button>
       </div>
       <div className="mb-4 flex items-center gap-4">
         <Button icon variant="contained">
@@ -194,6 +198,9 @@ export const Context = () => {
         <Button variant="contained" icon>
           <i className="fe-cancel"></i>
           <span>Cancel</span>
+        </Button>
+        <Button icon color="yellow" disabled={true}>
+          <Loader color="yellow" />
         </Button>
       </div>
     </div>
