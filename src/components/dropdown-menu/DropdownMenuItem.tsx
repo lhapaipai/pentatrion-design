@@ -2,18 +2,29 @@ import { useListItem } from "@floating-ui/react";
 import clsx from "clsx";
 import { useDropdownMenuContext } from "./useDropdownMenuContext";
 import { ComponentProps, MouseEvent, ReactNode } from "react";
+import { Slot } from "../slot";
 
 interface Props extends ComponentProps<"button"> {
   children: ReactNode;
+  asChild?: boolean;
 }
 
-export function DropdownMenuItem({ children, className, onClick, ...rest }: Props) {
+export function DropdownMenuItem({
+  children,
+  className,
+  onClick,
+  asChild = false,
+  ...rest
+}: Props) {
   const { activeIndex, getItemProps, handleSelect } = useDropdownMenuContext();
 
   const { ref, index } = useListItem({ label: children?.toString() });
   const isActive = activeIndex === index;
+
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={clsx("option", isActive && "bg-gray-1", className)}
       ref={ref}
       role="option"
@@ -24,11 +35,13 @@ export function DropdownMenuItem({ children, className, onClick, ...rest }: Prop
         ...rest,
         onClick: (e: MouseEvent<HTMLButtonElement>) => {
           onClick?.(e);
-          handleSelect();
+          if (!e.defaultPrevented) {
+            handleSelect();
+          }
         },
       })}
     >
       {children}
-    </button>
+    </Comp>
   );
 }
