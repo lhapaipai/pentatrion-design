@@ -4,6 +4,7 @@ import { Button } from "../button/Button";
 import { Input } from "../input/Input";
 import { Checkbox } from "../input/Checkbox";
 import { Select } from "../select";
+import { separatorVariant } from "../separator";
 
 const meta = {
   title: "Components/QuickSettings",
@@ -51,29 +52,29 @@ export const Basic = () => {
       </div>
       <div className="actions flex gap-2">
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
-          <span className="w-full flex-center">
+          <span className="flex-center w-full">
             <i className="fe-isochrone text-2xl"></i>
           </span>
         </Button>
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
-          <span className="w-full flex-center">
+          <span className="flex-center w-full">
             <i className="fe-route text-2xl"></i>
           </span>
         </Button>
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
-          <span className="w-full flex-center">RAW</span>
+          <span className="flex-center w-full">RAW</span>
         </Button>
       </div>
 
       <div className="actions flex gap-2">
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
-          <span className="w-full flex-center">
+          <span className="flex-center w-full">
             <i className="fe-stopwatch"></i>
             isochrone
           </span>
         </Button>
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
-          <span className="w-full flex-center">
+          <span className="flex-center w-full">
             <i className="fe-ruler"></i>
             isodistance
           </span>
@@ -160,7 +161,7 @@ export const Basic = () => {
         </div>
       </div>
 
-      <div className="p8n-separator"></div>
+      <div className={separatorVariant}></div>
 
       <div>
         <div className="p8n-setting">

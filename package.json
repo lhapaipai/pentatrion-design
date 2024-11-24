@@ -213,6 +213,10 @@
       "types": "./dist/components/resize-area/index.d.ts",
       "default": "./dist/components/resize-area/index.js"
     },
+    "./separator": {
+      "types": "./dist/components/separator/index.d.ts",
+      "default": "./dist/components/separator/index.js"
+    },
     "./scroll": {
       "types": "./dist/components/scroll/index.d.ts",
       "default": "./dist/components/scroll/index.js"

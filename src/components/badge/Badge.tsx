@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { buttonVariants } from "../button/Button";
-import { Href } from "../href";
 import { Tooltip } from "../tooltip/Tooltip";
 import { TooltipContent } from "../tooltip/TooltipContent";
 import { TooltipTrigger } from "../tooltip/TooltipTrigger";
@@ -50,13 +49,7 @@ export function Badge({
       )}
     </span>
   );
-  const wrappedBadge = url ? (
-    <Href href={url} ghost={true}>
-      {badge}
-    </Href>
-  ) : (
-    badge
-  );
+  const wrappedBadge = url ? <a href={url}>{badge}</a> : badge;
 
   if (!tooltip) {
     return wrappedBadge;

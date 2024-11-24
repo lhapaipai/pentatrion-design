@@ -44,10 +44,6 @@
   }
 }
 
-.p8n-separator {
-  @apply relative mx-auto h-1 w-1/2 rounded-sm bg-gray-1;
-}
-
 .p8n-setting {
   @apply flex items-center justify-between;
 

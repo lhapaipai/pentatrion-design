@@ -109,10 +109,11 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
           )}
         </div>
       </div>
+      {/* TODO ADD [&::range-thumb]:ease-[cubic-bezier(0.16,1,0.3,1)] */}
       <input
         type="range"
         className={clsx(
-          "h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem] [&::range-thumb]:h-8 [&::range-thumb]:w-8 [&::range-thumb]:scale-[0.45] [&::range-thumb]:bg-[rgb(var(--p8n-range-c-fg))] [&::range-thumb]:transition-transform [&::range-thumb]:ease-[cubic-bezier(0.16,1,0.3,1)] [&::range-thumb]:hover:scale-[0.55] [&::range-thumb]:active:scale-[0.6] [&::range-track]:h-8",
+          "h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem] [&::range-thumb]:h-8 [&::range-thumb]:w-8 [&::range-thumb]:scale-[0.45] [&::range-thumb]:bg-[rgb(var(--p8n-range-c-fg))] [&::range-thumb]:transition-transform [&::range-thumb]:hover:scale-[0.55] [&::range-thumb]:active:scale-[0.6] [&::range-track]:h-8",
         )}
         ref={ref}
         min={min}

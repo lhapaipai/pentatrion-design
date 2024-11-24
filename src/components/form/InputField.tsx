@@ -1,7 +1,7 @@
 import { ElementType, ForwardedRef, ReactNode, forwardRef, useId } from "react";
 import { Input } from "../input";
 import { type ThemeColor } from "../../types";
-import { type PolymorphicPropsWithRef } from "../../env.d";
+import { ComponentPropsWithRef } from "@react-spring/web";
 
 interface InputFieldOwnProps {
   label?: ReactNode;
@@ -13,7 +13,10 @@ interface InputFieldOwnProps {
 
 const defaultElement = Input;
 
-export type Props<E extends ElementType> = PolymorphicPropsWithRef<InputFieldOwnProps, E>;
+export type Props<E extends ElementType> = InputFieldOwnProps &
+  ComponentPropsWithRef<E> & {
+    as?: E;
+  };
 
 const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   { label, hint, description, error, warning, id: providedId, as, ...rest }: Props<E>,
@@ -23,7 +26,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const id = providedId ?? internalId;
   const Element: ElementType = as || defaultElement;
 
-  const labelElement = label && <span className="font-semibold">{label}</span>;
+  const labelElement = label && <span>{label}</span>;
   const hintElement = hint && <span className="ml-auto text-sm text-gray-6">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
     <span className="font-medium text-red-4 dark:text-red-2">

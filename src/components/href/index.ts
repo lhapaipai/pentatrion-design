@@ -1,1 +1,4 @@
-export { Href } from "./Href";
+export const decoratedLinkVariant =
+  "text-gray-8 underline decoration-gray-8 visited:text-gray-8 hover:decoration-yellow-5 hover:decoration-2 active:text-yellow-5";
+
+export const linkVariant = "text-gray-5 hover:text-gray-8 active:text-gray-6";
