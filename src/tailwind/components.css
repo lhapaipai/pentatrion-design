@@ -10,7 +10,7 @@
 }
 
 [disabled],
-[data-disabled] {
+[data-disabled="true"] {
   color: rgb(var(--color-gray-6) / 1);
   pointer-events: none;
   opacity: 0.5;

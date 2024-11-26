@@ -3,4 +3,3 @@ storybook-static/
 .fontello
 Makefile
 dist/
-pnpm-lock.yaml

@@ -39,10 +39,12 @@ function ContextWithHook() {
       <Input color="orange" />
       <Input color="green" />
       <Input color="blue" />
-      <Input variant="ghost" />
-      <Input color="gray" variant="ghost" />
-      <Input color="blue" variant="ghost" />
-
+      <Input variant="ghost" defaultValue="ghost" />
+      <Input color="gray" variant="ghost" defaultValue="gray ghost" />
+      <Input color="blue" variant="ghost" defaultValue="blue ghost" />
+      <Input size="small" defaultValue="size small" />
+      <Input size="large" defaultValue="size large" />
+      <Input size="custom" className="h-20" defaultValue="size custom h-20" />
       <Input disabled defaultValue="disabled input" />
       <Input
         readOnly
@@ -57,7 +59,7 @@ function ContextWithHook() {
       <Input placeholder="Your first name" />
       <Input
         prefix={
-          <span className="h-8 w-8 flex-center">
+          <span className="flex-center h-8 w-8">
             <i className="fe-search"></i>
           </span>
         }
@@ -66,7 +68,7 @@ function ContextWithHook() {
         prefix={
           <>
             <Loader size="medium" color="gray" />
-            <span className="-ml-8 h-8 w-8 flex-center">
+            <span className="flex-center -ml-8 h-8 w-8">
               <i className="fe-search"></i>
             </span>
           </>

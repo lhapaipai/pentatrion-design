@@ -2,16 +2,24 @@ import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
 import clsx from "clsx";
 import type { ThemeColor } from "../../types";
 
-export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix"> {
+export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
   variant?: "normal" | "ghost";
   disabled?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   color?: ThemeColor;
+  size?: "small" | "medium" | "large" | "custom";
 }
 
+const sizeVariant = {
+  small: "h-6",
+  medium: "h-8",
+  large: "h-12",
+  custom: "",
+};
+
 export const inputConfig = {
-  container: "p8n-input-text rounded-2xl outline-offset-[-1px] flex box-border h-8",
+  container: "p8n-input-text rounded-full outline-offset-[-1px] flex box-border",
   input: "h-full flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
 };
 
@@ -25,6 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       suffix,
       className,
       readOnly,
+      size = "medium",
       ...rest
     },
     ref,
@@ -35,7 +44,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         data-readOnly={readOnly}
         data-color={color}
         data-variant={variant}
-        className={clsx(inputConfig.container, className)}
+        className={clsx(inputConfig.container, sizeVariant[size], className)}
       >
         {prefix && (
           <div

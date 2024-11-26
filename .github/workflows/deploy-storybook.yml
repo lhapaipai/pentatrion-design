@@ -2,7 +2,7 @@ name: Deploy storybook
 
 on:
   push:
-    branches: [main]
+    branches: [gh-pages]
 
 permissions:
   pages: write
@@ -33,7 +33,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: "Install JS dependencies"
-        run: "pnpm i"
+        run: "pnpm i --frozen-lockfile"
 
       - name: Build storybook
         run: pnpm run storybook-build

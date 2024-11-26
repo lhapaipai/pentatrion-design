@@ -1,38 +1,24 @@
-import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
+import { forwardRef } from "react";
 import { useDropdownMenuContext } from "./useDropdownMenuContext";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "../button";
+import { Button, ButtonProps } from "../button";
 
-interface Props extends HTMLProps<HTMLElement> {
-  asChild?: boolean;
-}
-
-export const DropdownMenuTrigger = forwardRef<HTMLElement, Props>(
-  ({ children, asChild = false, ...props }, propRef) => {
+export const DropdownMenuTrigger = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = "text", color = "gray", children, asChild = false, ...props }, propRef) => {
     const context = useDropdownMenuContext();
     const childrenRef = (children as any).ref;
 
     const ref = useMergeRefs([context.refs.setReference, propRef, childrenRef]);
 
-    if (asChild && isValidElement(children)) {
-      return cloneElement(
-        children,
-        context.getReferenceProps({
-          ref,
-          ...props,
-          ...children.props,
-          "data-state": context.open ? "open" : "closed",
-        }),
-      );
-    }
-
     return (
       <Button
-        variant="text"
-        color="gray"
+        asChild={asChild}
+        variant={variant}
+        color={color}
         ref={ref}
         data-state={context.open ? "open" : "closed"}
-        {...context.getReferenceProps(props)}
+        {...context.getReferenceProps()}
+        {...props}
       >
         {children}
       </Button>
