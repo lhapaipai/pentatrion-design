@@ -20,8 +20,9 @@ pnpm add -D tailwindcss postcss autoprefixer postcss-load-config prettier-plugin
 
 # si vous utilisez le composant <input type="range" />
 pnpm add -D postcss-input-range
-```
 
+pnpm add pentatrion-design
+```
 Supprimer les fichiers inutiles
 
 ```
@@ -38,15 +39,22 @@ Supprimer les fichiers inutiles
 Créer un fichier `tailwind.config.js` et `postcss.config.js`.
 
 ```js
-// tailwind.config.js
+// tailwind.config.ts
+import { pentatrionTw } from "pentatrion-design/tailwind";
+import type { Config } from "tailwindcss";
 
-/** @type {import('tailwindcss').Config} */
-const config = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+export default {
+  content: [
+    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/pentatrion-design/dist/lib/**/*.js",
+    "./node_modules/pentatrion-design/dist/components/**/*.js",
+    "./node_modules/pentatrion-design/dist/hooks/**/*.js",
+    "./node_modules/pentatrion-design/dist/redux/**/*.js",
+  ],
   darkMode: ["class"],
-};
-
-export default config;
+  theme: {},
+  plugins: [pentatrionTw],
+} satisfies Config;
 
 
 // postcss.config.js
@@ -66,12 +74,8 @@ export default config;
 
 Mettre à jour le fichier `src/index.css`
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /**
- * ou bien on utilisera des imports pour faciliter l'intégration du design système
+ * on utilisera des imports pour faciliter l'intégration du design système
  */
 @import "tailwindcss/base";
 @import "pentatrion-design/tailwind/vars.css" layer(base);
@@ -98,58 +102,14 @@ Mettre à jour le fichier `src/index.css`
 }
 ```
 
-## Installation
 
-
-```bash
-pnpm add pentatrion-design
-```
-
-Mettre à jour la configuration de tailwind.
-
-```diff
-// tailwind.config.js
-+ import { pentatrionTw } from "pentatrion-design/tailwind";
-
-/** @type {import('tailwindcss').Config} */
-const config = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-+   "./node_modules/pentatrion-design/lib/**/*.js",
-+   "./node_modules/pentatrion-design/components/**/*.js",
-+   "./node_modules/pentatrion-design/hooks/**/*.js",
-+   "./node_modules/pentatrion-design/redux/**/*.js",
-  ],
-  darkMode: ["class"],
-+  plugins: [pentatrionTw()],
-};
-
-export default config;
-
-```
-
-fichier `tsconfig.json`.
-```json
-{
-  "compilerOptions": {
-    "paths": {
-      "pentatrion-design/*": ["./*"]
-    },
-  }
-}
-```
 
 
 La dépendance `pentatrion-fonts` est optionnelle.
 
 Mettre à jour `src/App.tsx`
 ```tsx
-// import global
-import { Button } from "pentatrion-design";
-
-// import minimal
-import { Button } from "pentatrion-design/components/button";
+import { Button } from "pentatrion-design/button";
 
 import { useState } from "react"
 
@@ -166,16 +126,6 @@ function App() {
 }
 
 export default App
-```
-
-L'import minimal `import { Button } from "pentatrion-design/components/button";` est plus contraignant et n'est pas nécessaire si votre projet utilise toutes les dépendances de `pentatrion-design`. si par contre votre projet n'utilise que certains composants et n'utilise pas certains dépendances comme `react-sortablejs` il vaut mieux utiliser l'import `pentatrion-design/components/button`. Cela allégera le build (que notre compilateur fasse du tree shaking ou non).
-
-## projet sans TypeScript
-
-pour faciliter l'expérience de développement, `pentatrion-design` fait référence par défaut aux fichiers TypeScript non compilés. Si votre projet n'utilise pas TypeScript il faudra faire référence au dossier `dist`
-
-```js
-import { Button } from "pentatrion-design/dist";
 ```
 
 ## VsCode
@@ -201,6 +151,19 @@ anciennement dans le `package.json`. plus nécessaire pour le moment
     "dev:tsc": "tsc -w -p tsconfig.build.json",
     "dev:alias": "tsc-alias -w -p tsconfig.build.json",
     "dev": "run-p dev:tsc dev:alias",
+  }
+}
+```
+
+## Inclure le design-système dans un autre projet sans dépendance npm
+
+fichier `tsconfig.json`.
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "pentatrion-design/*": ["./*"]
+    },
   }
 }
 ```
