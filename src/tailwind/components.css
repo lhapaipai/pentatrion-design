@@ -8,11 +8,11 @@
     text-decoration-color: rgb(var(--color-gray-7) / 1);
   }
 }
-.disabled {
-  pointer-events: none;
+
+[disabled],
+[data-disabled] {
   color: rgb(var(--color-gray-6) / 1);
-}
-.disabled[disabled] {
+  pointer-events: none;
   opacity: 0.5;
 }
 
@@ -59,4 +59,12 @@
   &.multiple {
     align-items: flex-start;
   }
+}
+
+.separator-sm {
+  @apply relative mx-auto my-2 h-px rounded-sm border-t-0 bg-gray-1;
+}
+
+.separator-xl {
+  @apply relative mx-auto my-2 h-1 w-1/2 rounded-sm border-t-0 bg-gray-1;
 }

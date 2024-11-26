@@ -16,7 +16,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
   const inputRef = useRef<HTMLInputElement>(null);
   const combinedRef = useCombinedRefs(inputRef, ref);
   return (
-    <label className={clsx("flex cursor-pointer items-center", disabled && "disabled")}>
+    <label data-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
       <input
         data-color={color}
         ref={combinedRef}
@@ -24,7 +24,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
         type="checkbox"
         className={clsx(
           "p8n-input-checkbox",
-          "my-0 mr-1 inline-block h-5 w-5 shrink-0 select-none appearance-none rounded bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
+          "my-1 mr-2 inline-block h-6 w-6 shrink-0 select-none appearance-none rounded bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
           indeterminate && "indeterminate",
           className,
         )}

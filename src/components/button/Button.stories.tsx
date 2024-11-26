@@ -102,6 +102,53 @@ export const Context = () => {
           <a>as link</a>
         </Button>
       </div>
+      <h3 className="sb-h3">Icons</h3>
+      <div className="mb-4 flex items-center gap-4">
+        <Button icon variant="contained" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outlined" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost" color="gray">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="contained" color="gray" icon>
+          <i className="fe-cancel"></i>
+          <span>Cancel</span>
+        </Button>
+        <Button icon color="gray" disabled={true}>
+          <Loader color="gray" />
+        </Button>
+      </div>
+      <div className="mb-4 flex items-center gap-4">
+        <Button icon variant="contained">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="outlined">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="text">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="ghost">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button variant="contained" icon>
+          <i className="fe-cancel"></i>
+          <span>Cancel</span>
+        </Button>
+        <Button icon color="yellow" disabled={true}>
+          <Loader color="yellow" />
+        </Button>
+        <Button icon color="yellow" loading={true}>
+          <i className="fe-cancel"></i>
+        </Button>
+      </div>
+
       <h3 className="sb-h3">Default state</h3>
       <Table>
         <TableHeader>
@@ -160,49 +207,6 @@ export const Context = () => {
           ))}
         </TableBody>
       </Table>
-      <h3 className="sb-h3">Icons</h3>
-      <div className="mb-4 flex items-center gap-4">
-        <Button icon variant="contained" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="outlined" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="text" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="ghost" color="gray">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="contained" color="gray" icon>
-          <i className="fe-cancel"></i>
-          <span>Cancel</span>
-        </Button>
-        <Button icon color="gray" disabled={true}>
-          <Loader color="gray" />
-        </Button>
-      </div>
-      <div className="mb-4 flex items-center gap-4">
-        <Button icon variant="contained">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="outlined">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="text">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button icon variant="ghost">
-          <i className="fe-cancel"></i>
-        </Button>
-        <Button variant="contained" icon>
-          <i className="fe-cancel"></i>
-          <span>Cancel</span>
-        </Button>
-        <Button icon color="yellow" disabled={true}>
-          <Loader color="yellow" />
-        </Button>
-      </div>
     </div>
   );
 };

@@ -31,19 +31,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <div
+        data-disabled={disabled}
+        data-readOnly={readOnly}
         data-color={color}
         data-variant={variant}
-        className={clsx(
-          inputConfig.container,
-          disabled && "disabled",
-          readOnly && "readonly",
-          className,
-        )}
+        className={clsx(inputConfig.container, className)}
       >
         {prefix && (
           <div
             className={clsx([
-              "relative flex-center",
+              "flex-center relative",
               typeof prefix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >
@@ -66,7 +63,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {suffix && (
           <div
             className={clsx([
-              "relative flex-center",
+              "flex-center relative",
               typeof suffix === "string" && "mx-2 select-none text-gray-6",
             ])}
           >

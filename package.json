@@ -54,6 +54,7 @@
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react-swc": "^3.7.1",
     "chokidar": "^4.0.1",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -86,6 +87,7 @@
   "peerDependencies": {
     "@floating-ui/react": "*",
     "@reduxjs/toolkit": "*",
+    "class-variance-authority": "*",
     "clsx": "*",
     "react": "*",
     "react-dom": "*",
@@ -99,6 +101,9 @@
       "optional": true
     },
     "@reduxjs/toolkit": {
+      "optional": true
+    },
+    "class-variance-authority": {
       "optional": true
     },
     "clsx": {

@@ -4,6 +4,7 @@ import { ThemeColor } from "~/types";
 import { Loader } from "../loader";
 import { useRipple } from "~/hooks";
 import { Slot } from "../slot";
+import { cva } from "class-variance-authority";
 
 export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "color"> {
   withRipple?: boolean;
@@ -37,7 +38,42 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
   asChild?: boolean;
 }
 
-export const buttonVariants = {
+export const buttonVariants = cva(
+  "relative box-border inline-flex cursor-pointer items-center overflow-clip text-center leading-5 no-underline focus-visible:outline focus-visible:outline-2 active:translate-y-[1px]",
+  {
+    variants: {
+      size: {
+        small: "h-6",
+        medium: "h-8",
+        large: "h-12",
+        custom: "",
+      },
+      icon: {
+        true: "rounded-full min-w-8 [&_i]:w-[calc(2rem-4px)] justify-center [&_:last-child:not(i,img,svg)]:pr-4",
+        false: "rounded-2xl px-4",
+        custom: "",
+      },
+      variant: {
+        contained:
+          "shadow hover:shadow-md active-full:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] focus-visible:outline-[rgb(var(--color-custom-5))]",
+        light:
+          "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-4))]",
+        outlined:
+          "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-5))] focus-visible:border-[rgb(var(--color-custom-4))]",
+        text: "bg-transparent hover:shadow-sm active-full:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 focus-visible:outline-[rgb(var(--color-custom-5))]",
+        ghost:
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 focus-visible:outline-[rgb(var(--color-custom-5))]",
+      },
+    },
+    defaultVariants: {
+      size: "medium",
+      icon: false,
+      variant: "contained",
+    },
+  },
+);
+
+export const buttonVariantsLegacy = {
   size(icon: boolean, size: "small" | "medium" | "large" | "custom") {
     if (size === "custom") {
       return false;
@@ -109,19 +145,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         role="button"
         ref={inputRef}
         className={clsx(
-          "relative box-border inline-flex cursor-pointer items-center overflow-clip text-center leading-5 no-underline focus-visible:outline focus-visible:outline-2 active:translate-y-[1px]",
-          icon ? "rounded-full" : "rounded-2xl",
+          buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
           className,
-          buttonVariants.size(icon, size),
-          buttonVariants.variant[variant],
-          icon && "justify-center [&_:last-child:not(i,img,svg)]:pr-4",
           selected && "active",
-          notClickable && "disabled",
         )}
         data-color={color}
         data-variant={variant}
         data-selected={selected}
-        disabled={disabled}
+        disabled={notClickable}
         aria-busy={loading}
         {...props}
       >
@@ -131,13 +162,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <>
             {!notClickable && withRipple && ripples}
             {children}
-            {loading !== undefined && (
-              <span className="">
-                <Loader
-                  color={color}
-                  size="small"
-                  className={clsx("-mr-2 ml-2", !loading && "invisible")}
-                />
+            {loading && (
+              <span className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+                <Loader color={color} size="small" className={clsx("")} />
               </span>
             )}
           </>

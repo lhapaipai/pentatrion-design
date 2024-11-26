@@ -259,11 +259,11 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         />
         <div
           data-color={color}
+          data-disabled={disabled}
           className={clsx(
             "p8n-input-text box-border flex cursor-pointer rounded-2xl outline-offset-[-1px]",
             selectionClassName,
             isOpen && "focus",
-            disabled && "disabled",
           )}
           data-variant={variant}
           ref={ref}

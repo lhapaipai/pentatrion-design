@@ -10,17 +10,20 @@
   @apply focus-full:bg-gray-0;
 }
 
-:is(.p8n-input-text, .p8n-textarea, .p8n-input-checkbox, .p8n-input-radio):is(
-    [data-color="yellow"]
-  ) {
-  @apply border-gray-2 hover:bg-gray-1/25;
+:is(
+    .p8n-input-text,
+    .p8n-textarea,
+    .p8n-input-checkbox:not(:checked, .indeterminate),
+    .p8n-input-radio:not(:checked)
+  ):is([data-color="yellow"]) {
+  @apply border-gray-2 hover:bg-gray-1 dark:hover:bg-gray-1/25;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio) {
   @apply text-[rgb(var(--color-custom-3))];
 }
 
-:is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .checked, .indeterminate) {
+:is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .indeterminate) {
   @apply bg-current bg-full bg-center bg-no-repeat outline-gray-1;
 }
 .p8n-input-checkbox:not(.p8n-input-toggle):where(:checked, .checked) {

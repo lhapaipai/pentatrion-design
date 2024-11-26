@@ -20,8 +20,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         ref={ref}
         className={clsx(
           "p8n-textarea h-full w-full min-w-0 appearance-none rounded-2xl bg-transparent p-2 outline-offset-[-1px] filter-none",
-          disabled && "disabled",
-          readOnly && "readonly",
         )}
         readOnly={readOnly}
         onFocus={(e) => {

@@ -13,7 +13,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label className={clsx("flex cursor-pointer items-center", disabled && "disabled")}>
+      <label data-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
         <input
           data-color={color}
           ref={combinedRef}
