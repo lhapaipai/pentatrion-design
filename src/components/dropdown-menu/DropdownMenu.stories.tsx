@@ -37,7 +37,7 @@ export const Advanced = ({ placement }: { placement?: Placement }) => (
   <DropdownMenu placement={placement}>
     <DropdownMenuTrigger>Menu</DropdownMenuTrigger>
     <DropdownMenuContent className="min-w-64">
-      <div className="p-2 text-sm">
+      <div className="text-body-sm p-2">
         <div className="font-semibold">lhapaipai</div>
         <div className="text-gray-5">info@domain.com</div>
       </div>

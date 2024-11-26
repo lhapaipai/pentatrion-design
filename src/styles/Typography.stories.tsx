@@ -13,34 +13,6 @@ export default {
   title: "Styles/Typography",
 };
 
-type HeaderTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-
-export const Headers = () => (
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderCell>Usage</TableHeaderCell>
-        <TableHeaderCell>Example</TableHeaderCell>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {[1, 2, 3, 4, 5, 6].map((level) => {
-        const HeaderTag = `h${level}` as HeaderTag;
-        return (
-          <TableRow key={level}>
-            <TableCell label="Usage">
-              <Code>{`h${level}`}</Code>
-            </TableCell>
-            <TableCell label="Example">
-              <HeaderTag>Lorem ipsum</HeaderTag>
-            </TableCell>
-          </TableRow>
-        );
-      })}
-    </TableBody>
-  </Table>
-);
-
 export const TextSizes = () => (
   <Table>
     <TableHeader>
@@ -51,15 +23,21 @@ export const TextSizes = () => (
     </TableHeader>
     <TableBody>
       {[
-        "text-5xl",
-        "text-4xl",
-        "text-3xl",
-        "text-2xl",
-        "text-xl",
-        "text-lg",
-        "text-base",
-        "text-sm",
-        "text-xs",
+        "text-h1",
+        "text-h2",
+        "text-h3",
+        "text-h4",
+        "text-h5",
+        "text-h6",
+        "text-body-3xl",
+        "text-body-2xl",
+        "text-body-xl",
+        "text-body-lg",
+        "text-body-md",
+        "text-body-base",
+        "text-body-sm",
+        "text-body-xs",
+        "text-body-2xs",
       ].map((sizeClass) => {
         return (
           <TableRow key={sizeClass}>

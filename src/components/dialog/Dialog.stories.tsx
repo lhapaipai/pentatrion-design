@@ -150,7 +150,7 @@ export const Options = () => {
           </div>
           <div className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
-            <span className="text-sm">point intermédiaire</span>
+            <span className="text-body-sm">point intermédiaire</span>
           </div>
           <div className="option">
             <span className="bullet">B</span>
@@ -158,7 +158,7 @@ export const Options = () => {
           </div>
           <div className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
-            <span className="text-sm">point intermédiaire</span>
+            <span className="text-body-sm">point intermédiaire</span>
           </div>
           <div className="option">
             <span className="bullet">C</span>
@@ -166,7 +166,7 @@ export const Options = () => {
           </div>
           <div className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
-            <span className="text-sm">point intermédiaire</span>
+            <span className="text-body-sm">point intermédiaire</span>
           </div>
           <div className="option">
             <span className="bullet">D</span>
@@ -188,7 +188,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">B</span>
@@ -196,7 +196,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">C</span>
@@ -204,7 +204,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">D</span>
@@ -212,7 +212,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">E</span>
@@ -220,7 +220,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">F</span>
@@ -228,7 +228,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">G</span>
@@ -236,7 +236,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">H</span>
@@ -244,7 +244,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">I</span>
@@ -252,7 +252,7 @@ export const Options = () => {
             </div>
             <div className="option text-gray-6">
               <i className="fe-point-inter mr-2"></i>
-              <span className="text-sm">point intermédiaire</span>
+              <span className="text-body-sm">point intermédiaire</span>
             </div>
             <div className="option">
               <span className="bullet">J</span>

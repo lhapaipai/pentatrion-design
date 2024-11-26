@@ -27,7 +27,7 @@ const directionOptions = [
 ];
 
 // const quicksettingConfig = {
-//   setting: "flex items-center justify-between first:text-gray-6 first:text-sm",
+//   setting: "flex items-center justify-between first:text-gray-6 first:text-body-sm",
 // };
 
 export const Basic = () => {
@@ -39,26 +39,26 @@ export const Basic = () => {
         <div className="p8n-setting">
           <div>Coordonnées</div>
           <div>
-            <span className="text-sm text-gray-6">lon/lat </span>
+            <span className="text-body-sm text-gray-6">lon/lat </span>
             6.497886, 46.091857
           </div>
         </div>
         <div className="p8n-setting">
           <div>Altitude</div>
           <div>
-            500 <span className="text-sm text-gray-6">m</span>
+            500 <span className="text-body-sm text-gray-6">m</span>
           </div>
         </div>
       </div>
       <div className="actions flex gap-2">
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
           <span className="flex-center w-full">
-            <i className="fe-isochrone text-2xl"></i>
+            <i className="fe-isochrone text-body-xl"></i>
           </span>
         </Button>
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
           <span className="flex-center w-full">
-            <i className="fe-route text-2xl"></i>
+            <i className="fe-route text-body-xl"></i>
           </span>
         </Button>
         <Button variant="text" color="gray" size="large" className="min-w-0 flex-1">
@@ -167,7 +167,7 @@ export const Basic = () => {
         <div className="p8n-setting">
           <div>Distance</div>
           <div>
-            325 <span className="text-sm text-gray-6">km</span>
+            325 <span className="text-body-sm text-gray-6">km</span>
           </div>
         </div>
         <div className="p8n-setting">

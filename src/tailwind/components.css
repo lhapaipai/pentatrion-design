@@ -48,7 +48,7 @@
   @apply flex items-center justify-between;
 
   & > :first-child {
-    @apply text-sm text-gray-6;
+    @apply text-body-sm text-gray-6;
   }
   & > :nth-child(2) {
     text-align: right;

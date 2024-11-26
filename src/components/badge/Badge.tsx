@@ -30,7 +30,7 @@ export function Badge({
       data-color={color}
       className={clsx(
         "ll-badge",
-        "inline-flex w-fit items-stretch overflow-hidden rounded-full text-xs shadow",
+        "text-body-xs inline-flex w-fit items-stretch overflow-hidden rounded-full shadow",
         buttonVariants.variant.contained,
         className,
       )}

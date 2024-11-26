@@ -45,11 +45,14 @@ export const buttonVariants = {
 
     switch (size) {
       case "small":
-        return clsx("text-sm h-6", icon ? "min-w-6 [&_i]:w-[calc(1.5rem-4px)]" : "px-2");
+        return clsx("text-body-sm h-6", icon ? "min-w-6 [&_i]:w-[calc(1.5rem-4px)]" : "px-2");
       case "medium":
         return clsx("h-8", icon ? "min-w-8 [&_i]:w-[calc(2rem-4px)]" : "px-4");
       case "large":
-        return clsx("h-12", icon ? "text-2xl min-w-12 [&_i]:w-[calc(3rem-4px)]" : "text-xl px-8");
+        return clsx(
+          "h-12",
+          icon ? "text-body-xl min-w-12 [&_i]:w-[calc(3rem-4px)]" : "text-body-lg px-8",
+        );
     }
   },
   variant: {

@@ -35,7 +35,7 @@ export const Shadow = () => {
             alignItems: "center",
           }}
         >
-          <Code className="text-xs">.{s}</Code>
+          <Code className="text-body-xs">.{s}</Code>
         </div>
       ))}
     </div>

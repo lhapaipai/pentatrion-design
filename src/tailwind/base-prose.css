@@ -1,30 +1,107 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply relative font-semibold;
-}
-h1 {
-  @apply text-3xl;
-}
-h2 {
-  @apply text-2xl;
-}
-h3 {
-  @apply text-xl;
-}
-h4 {
-  @apply text-lg;
-}
-h5 {
-  @apply text-base;
-}
-h6 {
-  @apply text-base;
-}
+.prose {
+  p {
+    @apply mb-5 mt-0;
+  }
 
-a:not(.ghost-link) {
-  @apply text-gray-8 underline decoration-gray-8 visited:text-gray-8 hover:decoration-yellow-5 hover:decoration-2 active:text-yellow-5;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply relative font-semibold text-gray-8;
+  }
+  h1 {
+    @apply text-h1 mb-8 mt-0;
+  }
+  h2 {
+    @apply text-h2 mb-2 mt-6;
+  }
+  h3 {
+    @apply text-h3 mb-2 mt-6;
+  }
+  h4 {
+    @apply text-h4 mb-2 mt-6;
+  }
+  h5 {
+    @apply text-h5 mb-2 mt-6;
+  }
+  h6 {
+    @apply text-h6 mb-2 mt-6;
+  }
+  img {
+    @apply my-8;
+  }
+  picture {
+    @apply my-8;
+  }
+  picture > img {
+    @apply my-0;
+  }
+  video {
+    @apply my-8;
+  }
+
+  code {
+    @apply text-body-sm font-bold;
+  }
+  code::before {
+    content: "`";
+  }
+  code::after {
+    content: "`";
+  }
+  pre {
+    @apply text-body-sm my-6 overflow-x-auto rounded-md bg-gray-1 py-4 pe-4 ps-4;
+  }
+  ol {
+    @apply my-5 list-decimal ps-7;
+  }
+  ul {
+    @apply my-5 list-disc ps-6;
+  }
+  li {
+    @apply my-2;
+  }
+  ol > li {
+    @apply ps-1.5 marker:text-gray-5;
+  }
+  ul > li {
+    @apply ps-1.5 marker:text-gray-3;
+  }
+  blockquote {
+    @apply my-8 border-s-4 border-s-gray-3 ps-5 italic text-gray-8;
+  }
+  hr + * {
+    @apply mt-0;
+  }
+  h2 + * {
+    @apply mt-0;
+  }
+  h3 + * {
+    @apply mt-0;
+  }
+  h4 + * {
+    @apply mt-0;
+  }
+
+  figure {
+    @apply my-8;
+  }
+  figure > * {
+    @apply my-0;
+  }
+  figcaption {
+    @apply text-body-sm mt-3;
+  }
+
+  a {
+    @apply text-gray-8 underline decoration-gray-8 visited:text-gray-8 hover:decoration-yellow-5 hover:decoration-2 active:text-yellow-5;
+  }
+  mark {
+    @apply bg-yellow-1 text-gray-8;
+  }
+  abbr {
+    @apply cursor-help underline decoration-dashed;
+  }
 }

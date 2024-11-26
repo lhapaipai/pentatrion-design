@@ -25,7 +25,10 @@ export const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
         >
           <Dialog
             placement={context.placement}
-            className={clsx("max-w-80 px-2 py-1 text-sm motion-safe:animate-fade-in", className)}
+            className={clsx(
+              "text-body-sm max-w-80 px-2 py-1 motion-safe:animate-fade-in",
+              className,
+            )}
             color={context.color}
           >
             {children}

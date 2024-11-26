@@ -3,6 +3,7 @@
 @import "tailwindcss/base";
 @import "../src/tailwind/vars.css" layer(base);
 @import "../src/tailwind/base.css" layer(base);
+@import "../src/tailwind/base-prose.css" layer(base);
 
 @import "tailwindcss/components";
 @import "../src/tailwind/components.css" layer(components);

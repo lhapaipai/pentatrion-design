@@ -63,10 +63,10 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
     <div className={clsx("group relative flex", className)} style={cssVars}>
       {showMinMax && (
         <>
-          <div className="absolute left-4 top-6 -translate-x-2/4 text-xs opacity-0 transition-opacity group-hover:opacity-100">
+          <div className="text-body-xs absolute left-4 top-6 -translate-x-2/4 opacity-0 transition-opacity group-hover:opacity-100">
             {formatter(min)}
           </div>
-          <div className="absolute right-4 top-6 translate-x-2/4 text-xs opacity-0 group-hover:opacity-100">
+          <div className="text-body-xs absolute right-4 top-6 translate-x-2/4 opacity-0 group-hover:opacity-100">
             {formatter(max)}
           </div>
         </>
@@ -82,7 +82,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
             )}
           ></div>
           {showValue && (
-            <div className="pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4 text-sm">
+            <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
               {formatter(value)}
             </div>
           )}

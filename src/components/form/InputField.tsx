@@ -27,7 +27,7 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
   const Element: ElementType = as || defaultElement;
 
   const labelElement = label && <span>{label}</span>;
-  const hintElement = hint && <span className="ml-auto text-sm text-gray-6">{hint}</span>;
+  const hintElement = hint && <span className="text-body-sm ml-auto text-gray-6">{hint}</span>;
   const errorElement = error && typeof error !== "boolean" && (
     <span className="font-medium text-red-4 dark:text-red-2">
       <i className="fe-circle-exclamation"></i>
@@ -53,9 +53,9 @@ const InputFieldBase = <E extends ElementType = typeof defaultElement>(
       ) : (
         <label htmlFor={id} className="invisible"></label>
       )}
-      {description && <div className="mb-2 text-sm text-gray-6">{description}</div>}
+      {description && <div className="text-body-sm mb-2 text-gray-6">{description}</div>}
       <Element ref={ref} id={id} color={color} {...rest} />
-      <div className="mt-1 min-h-5 text-sm text-gray-6">{errorElement || warningElement}</div>
+      <div className="text-body-sm mt-1 min-h-5 text-gray-6">{errorElement || warningElement}</div>
     </div>
   );
 };

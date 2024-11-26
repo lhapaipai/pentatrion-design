@@ -1,39 +1,9 @@
 import plugin from "tailwindcss/plugin";
-
 import defaultTheme from "tailwindcss/defaultTheme";
-
-export const pentatrionTypographyExtend = {
-  DEFAULT: {
-    css: {
-      maxWidth: "none",
-      a: {
-        color: "rgb(var(--color-gray-8))",
-        textDecoration: "underline",
-        textDecorationColor: "rgb(var(--color-gray-8))",
-      },
-      "a:visited": {
-        color: "rgb(var(--color-gray-8))",
-      },
-      "a:hover": {
-        color: "rgb(var(--color-gray-8))",
-        textDecorationColor: "rgb(var(--color-yellow-5))",
-        textDecorationThickness: 2,
-      },
-      "a:active": {
-        color: "rgb(var(--color-yellow-5))",
-      },
-      mark: {
-        color: "rgb(var(--color-gray-8))",
-        backgroundColor: "rgb(var(--color-yellow-1))",
-      },
-      abbr: {
-        textDecoration: "underline",
-        textDecorationStyle: "dashed",
-        cursor: "help",
-      },
-    },
-  },
-};
+/**
+ * configuration par défaut
+ * https://github.com/tailwindlabs/tailwindcss/blob/main/stubs/config.full.js
+ */
 
 export const pentatrionTw = plugin(
   ({ addVariant }) => {
@@ -173,7 +143,39 @@ export const pentatrionTw = plugin(
           "loader-stroke": "loader-stroke 1s linear infinite",
         },
         fontSize: {
-          "2xs": ["0.688rem", { lineHeight: "1rem" }],
+          /** 80px size / 84px high / bold */
+          mega: ["5rem", { lineHeight: "5.25rem", fontWeight: "700" }],
+          /** 56px size / 62px high / bold */
+          h1: ["2.25rem", { lineHeight: "1.1", fontWeight: "700" }],
+          /** 40px size / 48px high / bold */
+          h2: ["1.5rem", { lineHeight: "1.3", fontWeight: "700" }],
+          /** 32px size / 36px high / bold */
+          h3: ["1.25rem", { lineHeight: "1.6", fontWeight: "700" }],
+          /** 28px size / 36px high / bold */
+          h4: ["1rem", { lineHeight: "1.5", fontWeight: "700" }],
+          /** 24px size / 32px high / bold */
+          h5: ["1rem", { lineHeight: "1.5", fontWeight: "700" }],
+          /** 16px size / 20px high / bold */
+          h6: ["1rem", { lineHeight: "1.5", fontWeight: "700" }],
+
+          /** 32px size / 36px high / normal */
+          "body-3xl": ["2rem", { lineHeight: "2.25rem" }],
+          /** 32px size / 36px high / normal */
+          "body-2xl": ["1.75rem", { lineHeight: "2.25rem" }],
+          /** 28px size / 36px high / normal */
+          "body-xl": ["1.5rem", { lineHeight: "2rem" }],
+          /** 24px size / 32px high / normal */
+          "body-lg": ["1.25rem", { lineHeight: "1.75rem" }],
+          /** 20px size / 28px high / normal */
+          "body-md": ["1.125rem", { lineHeight: "1.5rem" }],
+          /** 16px size / 20px high / normal */
+          "body-base": ["1rem", { lineHeight: "1.25rem" }],
+          /** 14px size / 18px high / normal */
+          "body-sm": ["0.875rem", { lineHeight: "1.125rem" }],
+          /** 12px size / 16px high / normal */
+          "body-xs": ["0.75rem", { lineHeight: "1rem" }],
+
+          "body-2xs": ["0.688rem", { lineHeight: "1rem" }],
         },
         keyframes: {
           ripple: {

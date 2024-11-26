@@ -54,13 +54,13 @@ export const Icons = () => {
       <div className="mt-4 grid grid-cols-repeat-fill-160 gap-4">
         {iconResults.map((glyph) => (
           <div
-            className="flex-col rounded-2xl border border-gray-2 p-2 flex-center"
+            className="flex-center flex-col rounded-2xl border border-gray-2 p-2"
             key={glyph.uid}
           >
             <div>
               <i className={`fe-${glyph.css} text-5xl`}></i>
             </div>
-            <pre className="text-xs">{`.fe-${glyph.css}`}</pre>
+            <pre className="text-body-xs">{`.fe-${glyph.css}`}</pre>
           </div>
         ))}
       </div>
