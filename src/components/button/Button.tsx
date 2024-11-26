@@ -15,14 +15,11 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
 
   color?: ThemeColor;
 
-  children?: React.ReactNode;
-
   loading?: boolean;
 
   disabled?: boolean;
 
   focusable?: boolean;
-
   /**
    * For a selected item inside a group.
    */

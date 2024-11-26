@@ -1,33 +1,10 @@
 import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
-import { ThemeColor } from "../../types";
 import { useRipple } from "../../hooks/useRipple";
-import { buttonVariants } from "./Button";
+import { ButtonProps, buttonVariants } from "./Button";
 
-export interface LinkButtonProps extends ComponentPropsWithRef<"a"> {
-  href: string;
-
-  withRipple?: boolean;
-
-  variant?: "contained" | "light" | "outlined" | "text" | "ghost";
-
-  size?: "small" | "medium" | "large" | "custom";
-
-  color?: ThemeColor;
-
-  children?: React.ReactNode;
-
-  fullWidth?: boolean;
-
-  focusable?: boolean;
-
-  /**
-   * For a selected item inside a group.
-   */
-  selected?: boolean;
-
-  icon?: boolean;
-}
+export type LinkButtonProps = ComponentPropsWithRef<"a"> &
+  Pick<ButtonProps, "withRipple" | "variant" | "size" | "color" | "selected" | "icon" | "disabled">;
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(function LinkButton(
   {
@@ -35,9 +12,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
     variant = "contained",
     color = "yellow",
     size = "medium",
-    focusable = true,
-    fullWidth,
     className,
+    disabled,
     children,
     selected = false,
     icon = false,
@@ -55,28 +31,23 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
 
   const ripples = useRipple(anchorRef);
 
-  // check if overflow-clip-margin: 1px; is needed ?
   return (
     <a
-      tabIndex={focusable ? 0 : -1}
       role="button"
       href={href}
       ref={anchorRef}
-      data-color={color}
       className={clsx(
-        "relative inline-flex cursor-pointer items-center overflow-clip border-0 text-center leading-5 no-underline duration-300 focus-visible:outline focus-visible:outline-2 motion-safe:transition-color-shadow",
-        icon ? "rounded-full" : "rounded-2xl",
+        buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
         className,
-        buttonVariants.size(icon, size),
-        buttonVariants.variant[variant],
-        icon && "justify-center [&_:last-child:not(i,img)]:pr-4",
-        fullWidth && "w-full",
         selected && "active",
       )}
+      data-color={color}
       data-variant={variant}
+      data-selected={selected}
+      data-disabled={disabled}
       {...props}
     >
-      {withRipple && ripples}
+      {!disabled && withRipple && ripples}
       {children}
     </a>
   );
