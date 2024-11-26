@@ -3,7 +3,7 @@ import { PartialStoryFn } from "@storybook/types";
 
 import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
 
-import { Button } from "./Button";
+import { Button, buttonVariants } from "./Button";
 import { Loader } from "../loader";
 
 const meta = {
@@ -120,6 +120,9 @@ export const Context = () => {
           <i className="fe-cancel"></i>
           <span>Cancel</span>
         </Button>
+        <Button icon color="gray" loading={true}>
+          <i className="fe-cancel"></i>
+        </Button>
         <Button icon color="gray" disabled={true}>
           <Loader color="gray" />
         </Button>
@@ -141,14 +144,55 @@ export const Context = () => {
           <i className="fe-cancel"></i>
           <span>Cancel</span>
         </Button>
+        <Button icon color="yellow" loading={true}>
+          <i className="fe-cancel"></i>
+        </Button>{" "}
         <Button icon color="yellow" disabled={true}>
           <Loader color="yellow" />
         </Button>
-        <Button icon color="yellow" loading={true}>
-          <i className="fe-cancel"></i>
+      </div>
+      <h3 className="sb-h3">Custom</h3>
+      <div className="mb-4 flex items-center gap-4">
+        <Button size="custom" className="rounded-2xl">
+          Text without margin
+        </Button>
+        <Button size="custom" className="rounded-2xl p-4">
+          Text with margin
+        </Button>
+        <Button size="custom" className="rounded-2xl p-4">
+          Long text
+          <br /> with multiple
+          <br />
+          lines
+        </Button>
+        <Button size="custom" className="rounded-2xl p-1">
+          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        </Button>
+        <Button size="custom" className="rounded-full p-2">
+          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
+        </Button>
+        <Button color="gray" size="custom" className="rounded-2xl p-1">
+          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        </Button>
+        <Button color="gray" size="custom" className="rounded-full p-2">
+          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
+        </Button>
+        <Button color="gray" variant="text" size="custom" className="rounded-2xl p-1">
+          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        </Button>
+        <Button color="gray" variant="text" size="custom" className="rounded-full p-2">
+          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
         </Button>
       </div>
-
+      <h3 className="sb-h3">Class only</h3>
+      <div className="mb-4 flex items-center gap-4">
+        <div className={buttonVariants()} data-color="yellow" tabIndex={0}>
+          simple &lt;div&gt;
+        </div>
+        <button className={buttonVariants()} data-color="gray">
+          simple &lt;button&gt;
+        </button>
+      </div>
       <h3 className="sb-h3">Default state</h3>
       <Table>
         <TableHeader>
