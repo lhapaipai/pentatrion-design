@@ -5,7 +5,7 @@ import { colorVariants } from "../../lib/tailwindVariants";
 
 interface Props extends ComponentPropsWithoutRef<"svg"> {
   size?: "small" | "medium" | "large";
-  color?: ThemeColor;
+  color?: ThemeColor | "custom";
 }
 
 const sizeConfig = {
@@ -36,7 +36,12 @@ export function Loader({ size = "medium", color = "blue", className, ...rest }: 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx("inline-block", sizeConfig[size], colorVariants[color].text, className)}
+      className={clsx(
+        "inline-block",
+        sizeConfig[size],
+        color !== "custom" && colorVariants[color].text,
+        className,
+      )}
       viewBox="0 0 16 16"
       {...rest}
     >

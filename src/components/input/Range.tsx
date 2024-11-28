@@ -13,7 +13,7 @@ export interface RangeProps
   max?: number;
   step?: number;
 
-  showMinMax?: boolean;
+  showMinMax?: "onHover" | "always" | "never";
 
   showValue?: boolean;
 
@@ -35,7 +35,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
     min = 0,
     max = 100,
     color = "yellow",
-    showMinMax = true,
+    showMinMax = "onHover",
     step = 1,
     valuesByTick,
     showValue = true,
@@ -61,12 +61,22 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
 
   return (
     <div className={clsx("group relative flex", className)} style={cssVars}>
-      {showMinMax && (
+      {showMinMax !== "never" && (
         <>
-          <div className="text-body-xs absolute left-4 top-6 -translate-x-2/4 opacity-0 transition-opacity group-hover:opacity-100">
+          <div
+            className={clsx(
+              "absolute left-4 top-6 -translate-x-2/4 text-body-xs",
+              showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
+            )}
+          >
             {formatter(min)}
           </div>
-          <div className="text-body-xs absolute right-4 top-6 translate-x-2/4 opacity-0 group-hover:opacity-100">
+          <div
+            className={clsx(
+              "absolute right-4 top-6 translate-x-2/4 text-body-xs",
+              showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
+            )}
+          >
             {formatter(max)}
           </div>
         </>
@@ -82,7 +92,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
             )}
           ></div>
           {showValue && (
-            <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
+            <div className="pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4 text-body-sm">
               {formatter(value)}
             </div>
           )}
@@ -109,11 +119,10 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
           )}
         </div>
       </div>
-      {/* TODO ADD [&::range-thumb]:ease-[cubic-bezier(0.16,1,0.3,1)] */}
       <input
         type="range"
         className={clsx(
-          "h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem] [&::range-thumb]:h-8 [&::range-thumb]:w-8 [&::range-thumb]:scale-[0.45] [&::range-thumb]:bg-[rgb(var(--p8n-range-c-fg))] [&::range-thumb]:transition-transform [&::range-thumb]:hover:scale-[0.55] [&::range-thumb]:active:scale-[0.6] [&::range-track]:h-8",
+          "p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]",
         )}
         ref={ref}
         min={min}

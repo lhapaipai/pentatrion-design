@@ -18,9 +18,6 @@ cd my-app
 
 pnpm add -D tailwindcss postcss autoprefixer postcss-load-config prettier-plugin-tailwindcss
 
-# si vous utilisez le composant <input type="range" />
-pnpm add -D postcss-input-range
-
 pnpm add pentatrion-design
 ```
 Supprimer les fichiers inutiles
@@ -63,10 +60,6 @@ const config = {
   plugins: {
     "tailwindcss/nesting": {},
     tailwindcss: {},
-
-    // si vous utilisez le composant <input type="range" />
-    // bien le mettre en dernier car tailwind génère du contenu à transformer
-    "postcss-input-range": {}
   },
 };
 export default config;

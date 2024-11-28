@@ -33,5 +33,7 @@ export const Context = () => (
     <Loader size="large" color="red" />
     <br />
     <Loader size="medium" color="gray" />
+    <br />
+    <Loader color="custom" className="text-[#ff0000]" />
   </div>
 );
