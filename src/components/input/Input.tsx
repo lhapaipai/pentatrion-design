@@ -41,7 +41,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         data-disabled={disabled}
-        data-readOnly={readOnly}
+        data-readonly={readOnly}
         data-color={color}
         data-variant={variant}
         className={clsx(inputConfig.container, sizeVariant[size], className)}
