@@ -16,7 +16,7 @@
     .p8n-input-checkbox:not(:checked, .indeterminate),
     .p8n-input-radio:not(:checked)
   ):is([data-color="yellow"]) {
-  @apply border-gray-2 hover:bg-gray-1 dark:hover:bg-gray-1/25;
+  @apply border-gray-2 hover:bg-gray-1 focus-full:bg-gray-0 dark:hover:bg-gray-1/25;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio) {
