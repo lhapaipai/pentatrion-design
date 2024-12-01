@@ -13,6 +13,7 @@ export function DropdownMenuItem({
   children,
   className,
   onClick,
+  type,
   asChild = false,
   ...rest
 }: Props) {
@@ -27,7 +28,7 @@ export function DropdownMenuItem({
     <Comp
       className={clsx("option", isActive && "bg-gray-1", className)}
       ref={ref}
-      role="option"
+      role="menuitem"
       data-presentation="large"
       aria-selected={isActive}
       tabIndex={isActive ? 0 : -1}
@@ -35,7 +36,7 @@ export function DropdownMenuItem({
         ...rest,
         onClick: (e: MouseEvent<HTMLButtonElement>) => {
           onClick?.(e);
-          if (!e.defaultPrevented) {
+          if (type !== "submit" && !e.defaultPrevented) {
             handleSelect();
           }
         },

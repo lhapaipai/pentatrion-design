@@ -1,5 +1,5 @@
 import * as React from "react";
-import { composeRefs } from "~/lib";
+import { composeRefs } from "../../lib";
 
 /* -------------------------------------------------------------------------------------------------
  * Slot
