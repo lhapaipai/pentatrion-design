@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 
-export function useEventCallback<Args extends unknown[], R>(
+export function useEffectEvent<Args extends unknown[], R>(
   callback: ((...args: Args) => R) | null,
 ) {
   const ref = useRef<typeof callback>(() => {

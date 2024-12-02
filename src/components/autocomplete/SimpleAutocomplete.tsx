@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from "./Autocomplete";
 import { Option, OptionLike } from "../select";
-import { useEventCallback } from "../../hooks";
+import { useEffectEvent } from "../../hooks";
 import { getOptionLabel } from "./util";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -30,7 +30,7 @@ export function SimpleAutocomplete<O extends OptionLike = Option>({
   onChangeSelection,
   ...rest
 }: Props<O>) {
-  const onChangeSelectionStable = useEventCallback(onChangeSelection);
+  const onChangeSelectionStable = useEffectEvent(onChangeSelection);
 
   const [searchValue, setSearchValue] = useState(selection ? getOptionLabel(selection) : "");
 

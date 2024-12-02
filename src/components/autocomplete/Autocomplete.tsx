@@ -28,7 +28,7 @@ import {
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext";
 import clsx from "clsx";
-import { useEventCallback } from "../../hooks";
+import { useEffectEvent } from "../../hooks";
 
 import { getOptionLabel, getOptionValue } from "./util";
 import { Button } from "../button";
@@ -111,8 +111,8 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const onChangeSearchValueStable = useEventCallback(onChangeSearchValue);
-  const onChangeSelectionStable = useEventCallback(onChangeSelection);
+  const onChangeSearchValueStable = useEffectEvent(onChangeSearchValue);
+  const onChangeSelectionStable = useEffectEvent(onChangeSelection);
 
   const OptionComponent = autocompleteOptionComponent ?? AutocompleteOption;
 
@@ -220,10 +220,10 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
         data-color={color}
       >
         {icon !== false && (
-          <div className="relative flex-center">
+          <div className="flex-center relative">
             {loading && <Loader size="medium" color="gray" className="absolute left-0 top-0" />}
             {icon === true ? (
-              <span className="h-8 w-8 flex-center">
+              <span className="flex-center h-8 w-8">
                 <i className="fe-search"></i>
               </span>
             ) : (
@@ -271,7 +271,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
             },
           })}
         />
-        <div className="relative flex-center">
+        <div className="flex-center relative">
           {suffix}
           {showClearSearchButton && (
             <Button

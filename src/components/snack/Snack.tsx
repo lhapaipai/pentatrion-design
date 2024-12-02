@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useEffect } from "react";
 
 import { Button } from "../button";
-import { useEventCallback } from "../../hooks";
+import { useEffectEvent } from "../../hooks";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
 import { Message } from "../../types";
@@ -19,7 +19,7 @@ export function Snack({
   canClose = false,
   onRemove = () => {},
 }: SnackProps) {
-  const onRemoveStable = useEventCallback(onRemove);
+  const onRemoveStable = useEffectEvent(onRemove);
 
   useEffect(() => {
     if (expiration === -1) {

@@ -36,7 +36,7 @@ import type { Option } from "./interface";
 import clsx from "clsx";
 import { Input } from "../input/Input";
 import { Button } from "../button/Button";
-import { useEventCallback } from "../../hooks/useEventCallback";
+import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";
 import { ThemeColor } from "~/types";
 
@@ -100,7 +100,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
   ) => {
     const isControlled = onChange !== null;
 
-    const onChangeStable = useEventCallback(onChange);
+    const onChangeStable = useEffectEvent(onChange);
 
     const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(
       () => {

@@ -27,7 +27,7 @@ import {
 
 import { ContextMenuItemProps } from "./ContextMenuItem";
 import { Dialog } from "../dialog/Dialog";
-import { useEventCallback, useRefDebounce } from "../../hooks";
+import { useEffectEvent, useRefDebounce } from "../../hooks";
 
 type CustomContextEvent = CustomEvent<{ emulated: boolean; originalEvent: Event }>;
 
@@ -96,7 +96,7 @@ export function ContextMenu({ targetRef, children, style, eventName = "contextme
     typeahead,
   ]);
 
-  const onContextMenuStable = useEventCallback(function onContextMenu(
+  const onContextMenuStable = useEffectEvent(function onContextMenu(
     e: MouseEvent | CustomContextEvent,
   ) {
     e.preventDefault();

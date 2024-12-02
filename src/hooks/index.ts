@@ -3,7 +3,7 @@ export { useIsMounted } from "./useIsMounted";
 export { useCombinedRefs } from "./useCombinedRefs";
 export { useIsClosing } from "./useIsClosing";
 export { usePrevious } from "./usePrevious";
-export { useEventCallback } from "./useEventCallback";
+export { useEffectEvent } from "./useEffectEvent";
 export { useDebounce, useStateDebounce, useRefDebounce } from "./useDebounce";
 export { useCopyToClipboard } from "./useCopyToClipboard";
 export { useEventListener } from "./useEventListener";
