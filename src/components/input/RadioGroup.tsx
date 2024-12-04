@@ -45,6 +45,7 @@ interface Props {
   placement?: "inline" | "inline-grid" | "block";
   className?: string;
   color?: ThemeColor;
+  name?: string;
 }
 
 const placementVariants = {
@@ -62,6 +63,7 @@ export function RadioGroup({
   disabled = false,
   className,
   color = "yellow",
+  name,
 }: Props) {
   const id = useId();
   return (
@@ -72,7 +74,8 @@ export function RadioGroup({
           key={option.value}
           checked={option.value === value}
           onChange={() => onChange(option.value)}
-          name={id}
+          name={name ?? id}
+          value={option.value}
           className={className}
           color={color}
         >
