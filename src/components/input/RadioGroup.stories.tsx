@@ -5,6 +5,7 @@ import { RadioGroup } from "./RadioGroup";
 const meta = {
   title: "Components/Input/RadioGroup",
   component: RadioGroup,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RadioGroup>;
 export default meta;
 

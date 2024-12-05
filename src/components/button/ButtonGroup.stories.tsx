@@ -1,5 +1,5 @@
 import { ThemeColor } from "../../types";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { useState } from "react";
 
 import { Button } from "./Button";
@@ -8,17 +8,16 @@ import { ButtonGroup } from "./ButtonGroup";
 const meta = {
   title: "Components/ButtonGroup",
   component: ButtonGroup,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof ButtonGroup>;
 export default meta;
-
-type Story = StoryObj<typeof ButtonGroup>;
 
 const buttonLabels = ["one", "two", "three"];
 const colors: ThemeColor[] = ["yellow", "gray", "blue", "red"];
 const variants = ["contained", "light", "outlined", "text"] as const;
 const directions = ["horizontal", "vertical"] as const;
 
-function ContextWithHook() {
+export const Context = () => {
   const [val, setVal] = useState("one");
   return (
     <div className="grid grid-cols-1 gap-8">
@@ -48,7 +47,4 @@ function ContextWithHook() {
       ))}
     </div>
   );
-}
-export const Context: Story = {
-  render: () => <ContextWithHook />,
 };

@@ -8,6 +8,7 @@ import { RadioGroup } from "../input/RadioGroup";
 const meta = {
   title: "Components/Form/InputField",
   component: InputField,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof InputField>;
 export default meta;
 
@@ -25,7 +26,7 @@ export const Basic: Story = {
   },
 };
 
-const PlaybookWithHook = () => {
+export const Playbook = () => {
   const [value, setValue] = useState("");
   const [label, setLabel] = useState("Your label");
   const [hint, setHint] = useState("Any hint related to input field");
@@ -87,11 +88,8 @@ const PlaybookWithHook = () => {
     </>
   );
 };
-export const Playbook: Story = {
-  render: () => <PlaybookWithHook />,
-};
 
-const ContextWithHook = () => {
+export const Context = () => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState<string | null>("female");
   const [isAgree, setIsAgree] = useState(true);
@@ -243,7 +241,4 @@ const ContextWithHook = () => {
       </pre>
     </div>
   );
-};
-export const Context: Story = {
-  render: () => <ContextWithHook />,
 };

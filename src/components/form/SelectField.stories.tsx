@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { ChangeEvent, useState } from "react";
 import { SelectField } from "./SelectField";
 import { options } from "../select/_fixtures";
@@ -7,12 +7,11 @@ import { InputField } from "./InputField";
 const meta = {
   title: "Components/Form/SelectField",
   component: SelectField,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof SelectField>;
 export default meta;
 
-type Story = StoryObj<typeof SelectField>;
-
-const PlaybookWithHook = () => {
+export const Playbook = () => {
   const [value, setValue] = useState<number | string | null>("");
   const [label, setLabel] = useState("Your label");
   const [hint, setHint] = useState("Any hint related to input field");
@@ -77,7 +76,4 @@ const PlaybookWithHook = () => {
       </div>
     </>
   );
-};
-export const Playbook: Story = {
-  render: () => <PlaybookWithHook />,
 };

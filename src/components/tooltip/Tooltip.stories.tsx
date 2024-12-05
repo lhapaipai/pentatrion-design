@@ -7,12 +7,13 @@ import { SimpleTooltip } from "./SimpleTooltip";
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
+  decorators: [(Story) => <Story />],
 };
 
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
-    className="h-[100px] w-[100px] bg-gray-2 shadow-lg flex-center"
+    className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
     style={{
       margin: "100px",
     }}
@@ -114,7 +115,7 @@ export const Draggable = () => {
       <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
         <animated.div
           {...bind()}
-          className="h-[100px] w-[100px] bg-gray-2 shadow-lg flex-center"
+          className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
           style={{
             x,
             y,

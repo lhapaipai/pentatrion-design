@@ -7,6 +7,7 @@ const meta = {
   title: "Components/Input/MappedStars",
 
   component: MappedStars,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof MappedStars>;
 export default meta;
 
@@ -26,7 +27,7 @@ export const Default: Story = {
   },
 };
 
-const ContextWithHook = () => {
+export const Context = () => {
   const [value1, setValue1] = useState("beginner");
   const [value2, setValue2] = useState("beginner");
   return (
@@ -44,8 +45,4 @@ const ContextWithHook = () => {
       />
     </div>
   );
-};
-
-export const Context = {
-  render: () => <ContextWithHook />,
 };

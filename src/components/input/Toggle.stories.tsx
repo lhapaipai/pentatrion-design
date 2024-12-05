@@ -5,6 +5,7 @@ import { Toggle } from "./Toggle";
 const meta = {
   title: "Components/Input/Toggle",
   component: Toggle,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Toggle>;
 export default meta;
 

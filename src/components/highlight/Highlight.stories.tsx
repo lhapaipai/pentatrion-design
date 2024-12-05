@@ -8,6 +8,7 @@ import { InputField } from "../form/InputField";
 const meta = {
   title: "Components/Highlight",
   component: Highlight,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Highlight>;
 export default meta;
 

@@ -19,6 +19,7 @@ const onChangeAction = action("onChange");
 const meta = {
   title: "Components/Select",
   component: Select,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Select>;
 export default meta;
 

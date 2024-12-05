@@ -9,6 +9,7 @@ import { ReactSortable } from "react-sortablejs";
 const meta = {
   title: "Components/Steps",
   component: Steps,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Steps>;
 
 export default meta;

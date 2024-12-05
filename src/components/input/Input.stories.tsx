@@ -15,6 +15,7 @@ const meta = {
       control: "text",
     },
   },
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Input>;
 export default meta;
 

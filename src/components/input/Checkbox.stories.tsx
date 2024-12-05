@@ -5,6 +5,7 @@ import { Checkbox } from "./Checkbox";
 const meta = {
   title: "Components/Input/Checkbox",
   component: Checkbox,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Checkbox>;
 export default meta;
 

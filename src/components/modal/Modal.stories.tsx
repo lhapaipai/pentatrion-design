@@ -12,6 +12,7 @@ import { type Tab, Tabs } from "../tabs/Tabs";
 const meta = {
   title: "Components/Modal",
   component: Modal,
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Modal>;
 export default meta;
 

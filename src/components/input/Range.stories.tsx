@@ -5,6 +5,10 @@ import { useState } from "react";
 const meta = {
   title: "Components/Input/Range",
   component: Range,
+
+  // prevent Storybook bug: https://github.com/storybookjs/storybook/issues/29189
+  // Storybook preview hooks can only be called inside decorators and story functions.
+  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Range>;
 export default meta;
 
@@ -18,21 +22,9 @@ export const Basic = () => {
 
   return (
     <div className="grid gap-8">
-      <Range
-        valuesByTick={1}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
-      <Range
-        valuesByTick={5}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
-      <Range
-        valuesByTick={50}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
+      <Range valuesByTick={1} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+      <Range valuesByTick={5} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+      <Range valuesByTick={50} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
       <Range
         color="gray"
         valuesByTick={5}

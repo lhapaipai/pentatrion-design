@@ -9,6 +9,7 @@ import { Option } from "../select";
 
 const meta = {
   title: "Components/Form",
+  decorators: [(Story) => <Story />],
 } satisfies Meta;
 export default meta;
 
