@@ -79,8 +79,11 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 [data-color="yellow"] {
-  --color-custom-1: var(--color-yellow-1);
-  --color-custom-2: var(--color-yellow-2);
+  /**
+   * for readability 1 and 2 are gray
+   */
+  --color-custom-1: var(--color-gray-1);
+  --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-yellow-3);
   --color-custom-4: var(--color-yellow-4);
   --color-custom-5: var(--color-yellow-5);

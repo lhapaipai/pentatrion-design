@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ComponentPropsWithRef, forwardRef, useState } from "react";
+import { ChangeEvent, ComponentPropsWithRef, forwardRef, useState } from "react";
 
 export interface StarsProps
   extends Omit<
@@ -31,12 +31,24 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
     }
   }
 
+  /**
+   * for a11y
+   */
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    const nextValue = event.target.valueAsNumber;
+    if (isControlled) {
+      onChange(nextValue);
+    } else {
+      setUnControlledValue(nextValue);
+    }
+  }
+
   const currentValue = hoveredValue !== -1 ? hoveredValue : value;
 
   return (
     <div>
       <input
-        readOnly
+        onChange={handleInputChange}
         {...rest}
         value={value}
         type="range"
@@ -44,27 +56,32 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
         max={max}
         step={step}
         ref={ref}
-        className="hidden"
+        className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
       />
-      {Array.from({ length: max }).map((_, i) => {
-        const hasChanged = hoveredValue !== value;
-        return (
-          <i
-            key={i}
-            onMouseOver={() => setHoveredValue(i + 1)}
-            onMouseOut={() => setHoveredValue(-1)}
-            onClick={() => handleClickStar(i + 1)}
-            className={clsx(
-              "cursor-pointer",
-              i < currentValue
-                ? hasChanged && hoveredValue !== -1
-                  ? "fe-star text-yellow-3"
-                  : "fe-star text-yellow-4"
-                : "fe-star-empty text-gray-2",
-            )}
-          />
-        );
-      })}
+      <span
+        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-[rgb(var(--color-custom-5))]"
+        data-color="yellow"
+      >
+        {Array.from({ length: max }).map((_, i) => {
+          const hasChanged = hoveredValue !== value;
+          return (
+            <i
+              key={i}
+              onMouseOver={() => setHoveredValue(i + 1)}
+              onMouseOut={() => setHoveredValue(-1)}
+              onClick={() => handleClickStar(i + 1)}
+              className={clsx(
+                "cursor-pointer",
+                i < currentValue
+                  ? hasChanged && hoveredValue !== -1
+                    ? "fe-star text-yellow-3"
+                    : "fe-star text-yellow-4"
+                  : "fe-star-empty text-gray-2",
+              )}
+            />
+          );
+        })}
+      </span>
     </div>
   );
 });

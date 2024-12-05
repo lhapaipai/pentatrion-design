@@ -31,7 +31,7 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
 }
 
 export const buttonVariants = cva(
-  "relative box-border inline-flex cursor-pointer items-center overflow-clip text-center leading-5 no-underline focus-visible:outline focus-visible:outline-2 active:translate-y-[1px]",
+  "relative box-border inline-flex cursor-pointer items-center overflow-clip text-center leading-5 no-underline focus-visible-has:outline focus-visible-has:outline-2 active:translate-y-[1px]",
   {
     variants: {
       size: {
@@ -47,14 +47,14 @@ export const buttonVariants = cva(
       },
       variant: {
         contained:
-          "shadow hover:shadow-md active-full:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] focus-visible:outline-[rgb(var(--color-custom-5))]",
+          "shadow hover:shadow-md active:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] data-[selected=true]:bg-[rgb(var(--color-custom-4))] has-[:checked]:bg-[rgb(var(--color-custom-4))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
         light:
-          "shadow hover:shadow-md focus:shadow-md active-full:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-4))]",
+          "shadow hover:shadow-md has-[:checked]:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] data-[selected=true]:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-4))]",
         outlined:
-          "bg-gray-0 hover:shadow-sm active-full:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible:outline-[rgb(var(--color-custom-5))] focus-visible:border-[rgb(var(--color-custom-4))]",
-        text: "bg-transparent hover:shadow-sm active-full:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 focus-visible:outline-[rgb(var(--color-custom-5))]",
+          "bg-gray-0 hover:shadow-sm active:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]  data-[selected=true]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] focus-visible-has:border-[rgb(var(--color-custom-4))]",
+        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 data-[selected=true]:bg-[rgb(var(--color-custom-1))] has-[:checked]:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
         ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 focus-visible:outline-[rgb(var(--color-custom-5))]",
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 data-[selected=true]:bg-[rgb(var(--color-custom-1))] has-[:checked]:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
       },
     },
     defaultVariants: {
@@ -108,7 +108,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={clsx(
           buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
           className,
-          selected && "active",
           loading && !icon && "text-transparent",
         )}
         data-color={color}

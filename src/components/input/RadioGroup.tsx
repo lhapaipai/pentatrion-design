@@ -2,10 +2,13 @@ import { ComponentPropsWithRef, forwardRef, useId, useRef } from "react";
 import { type ThemeColor } from "../../types";
 import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
+import { buttonVariants } from "../button";
+import { buttonGroupVariants } from "../button/ButtonGroup";
 
 interface RadioProps extends ComponentPropsWithRef<"input"> {
   disabled?: boolean;
   color?: ThemeColor;
+  variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 }
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ disabled = false, color = "yellow", checked, children, name, className, ...rest }, ref) => {
@@ -33,7 +36,48 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   },
 );
 
-interface Props {
+export const RadioButton = forwardRef<HTMLInputElement, RadioProps>(
+  (
+    {
+      disabled = false,
+      color = "yellow",
+      checked,
+      children,
+      name,
+      className,
+      variant = "light",
+      ...rest
+    },
+    ref,
+  ) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const combinedRef = useCombinedRefs(inputRef, ref);
+    const id = useId();
+    return (
+      <label
+        htmlFor={id}
+        data-disabled={disabled}
+        className={clsx(className, buttonVariants({ variant }))}
+        data-color={color}
+        data-checked={checked}
+      >
+        <input
+          id={id}
+          ref={combinedRef}
+          disabled={disabled}
+          type="radio"
+          checked={checked}
+          name={name}
+          className="h-0 w-0 -translate-x-[9999px] overflow-hidden"
+          {...rest}
+        />
+        <span>{children}</span>
+      </label>
+    );
+  },
+);
+
+interface RadioGroupProps {
   value: string | null;
   options: {
     label: string;
@@ -42,45 +86,62 @@ interface Props {
   // onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onChange?: (newValue: string | null) => void;
   disabled?: boolean;
-  placement?: "inline" | "inline-grid" | "block";
+  placement?: "inline" | "inline-grid" | "block" | "custom";
   className?: string;
+  radioClassName?: string;
   color?: ThemeColor;
   name?: string;
+  shape?: "radio" | "button" | "button-group";
+
+  /**
+   * only if shape is button
+   */
+  variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 }
 
 const placementVariants = {
   inline: "flex gap-2",
   "inline-grid": "grid gap-2 grid-cols-repeat-fill-160",
   block: "",
+  custom: "",
 };
 
 export function RadioGroup({
   value,
   options,
   onChange = () => {},
-  // onValue = () => {},
   placement = "block",
   disabled = false,
   className,
+  radioClassName,
   color = "yellow",
   name,
-}: Props) {
+  shape = "radio",
+  variant,
+}: RadioGroupProps) {
   const id = useId();
+  const Comp = shape === "radio" ? Radio : RadioButton;
   return (
-    <div className={clsx(placementVariants[placement])}>
+    <div
+      className={clsx(
+        className,
+        shape === "button-group" ? buttonGroupVariants() : placementVariants[placement],
+      )}
+    >
       {options.map((option) => (
-        <Radio
+        <Comp
           disabled={disabled}
           key={option.value}
           checked={option.value === value}
           onChange={() => onChange(option.value)}
           name={name ?? id}
           value={option.value}
-          className={className}
+          className={radioClassName}
           color={color}
+          variant={variant}
         >
           {option.label}
-        </Radio>
+        </Comp>
       ))}
     </div>
   );
