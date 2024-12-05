@@ -23,7 +23,9 @@ const ContextWithHook = () => {
   const [value, setValue] = useState(3);
   return (
     <div>
+      <h3 className="text-body-md">Uncontrolled</h3>
       <Stars defaultValue={4} />
+      <h3 className="mt-4 text-body-md">Controlled</h3>
       <Stars value={value} onChange={(val) => setValue(val)} />
     </div>
   );

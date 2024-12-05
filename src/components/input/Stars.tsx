@@ -18,18 +18,20 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
   ref,
 ) {
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
-  const [hoveredValue, setHoveredValue] = useState<number | null>(null);
+  const [hoveredValue, setHoveredValue] = useState(-1);
 
   const isControlled = typeof onChange !== "undefined";
   const value = isControlled ? controlledValue : unControlledValue;
 
-  function handleClickStar(val: number) {
+  function handleClickStar(nextValue: number) {
     if (isControlled) {
-      onChange(val);
+      onChange(nextValue);
     } else {
-      setUnControlledValue(val);
+      setUnControlledValue(nextValue);
     }
   }
+
+  const currentValue = hoveredValue !== -1 ? hoveredValue : value;
 
   return (
     <div>
@@ -46,16 +48,16 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
       />
       {Array.from({ length: max }).map((_, i) => {
         const hasChanged = hoveredValue !== value;
-        const val = hoveredValue !== null ? hoveredValue : value;
         return (
           <i
             key={i}
             onMouseOver={() => setHoveredValue(i + 1)}
-            onMouseOut={() => setHoveredValue(null)}
+            onMouseOut={() => setHoveredValue(-1)}
             onClick={() => handleClickStar(i + 1)}
             className={clsx(
-              i < val
-                ? hasChanged && hoveredValue !== null
+              "cursor-pointer",
+              i < currentValue
+                ? hasChanged && hoveredValue !== -1
                   ? "fe-star text-yellow-3"
                   : "fe-star text-yellow-4"
                 : "fe-star-empty text-gray-2",
