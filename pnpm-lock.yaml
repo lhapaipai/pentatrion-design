@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      sortablejs:
+        specifier: ^1.15.6
+        version: 1.15.6
     devDependencies:
       '@conform-to/react':
         specifier: ^1.2.2
@@ -86,6 +90,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.1
         version: 18.3.1
+      '@types/sortablejs':
+        specifier: ^1.15.8
+        version: 1.15.8
       '@use-gesture/react':
         specifier: ^10.3.1
         version: 10.3.1(react@18.3.1)
@@ -151,7 +158,7 @@ importers:
         version: 9.1.2(@types/react@18.3.13)(react@18.3.1)(redux@5.0.1)
       react-sortablejs:
         specifier: ^6.1.4
-        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.2)
+        version: 6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.6)
       storybook:
         specifier: ^8.4.6
         version: 8.4.6(prettier@3.4.2)
@@ -2816,8 +2823,8 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
 
-  sortablejs@1.15.2:
-    resolution: {integrity: sha512-FJF5jgdfvoKn1MAKSdGs33bIqLi3LmsgVTliuX6iITj834F+JRQZN90Z93yql8h0K2t0RwDPBmxwlbZfDcxNZA==}
+  sortablejs@1.15.6:
+    resolution: {integrity: sha512-aNfiuwMEpfBM/CN6LY0ibyhxPfPbyFeBTYJKCvzkJ2GkUpazIt3H+QIPAMHwqQ7tMKaHz1Qj+rJJCqljnf4p3A==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -5679,13 +5686,13 @@ snapshots:
       '@types/react': 18.3.13
       redux: 5.0.1
 
-  react-sortablejs@6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.2):
+  react-sortablejs@6.1.4(@types/sortablejs@1.15.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sortablejs@1.15.6):
     dependencies:
       '@types/sortablejs': 1.15.8
       classnames: 2.3.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      sortablejs: 1.15.2
+      sortablejs: 1.15.6
       tiny-invariant: 1.2.0
 
   react@18.3.1:
@@ -5868,7 +5875,7 @@ snapshots:
 
   slash@3.0.0: {}
 
-  sortablejs@1.15.2: {}
+  sortablejs@1.15.6: {}
 
   source-map-js@1.2.1: {}
 
