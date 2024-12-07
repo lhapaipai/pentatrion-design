@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import { InputField } from "./InputField";
 import { Toggle } from "../input/Toggle";
 import { Checkbox } from "../input/Checkbox";
-import { RadioGroup } from "../input/RadioGroup";
+import { Radio } from "../input/Radio";
 
 const meta = {
   title: "Components/Form/InputField",

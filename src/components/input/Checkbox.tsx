@@ -10,7 +10,7 @@ export interface CheckboxProps extends ComponentPropsWithRef<"input"> {
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  { color = "yellow", indeterminate, disabled = false, checked, className, children, ...rest },
+  { color = "yellow", indeterminate, disabled = false, className, children, ...rest },
   ref,
 ) {
   return (
@@ -26,7 +26,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
           indeterminate && "indeterminate",
           className,
         )}
-        checked={checked}
         {...rest}
       />
       {children}
@@ -35,12 +34,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
 });
 
 interface CheckboxButtonProps extends ComponentPropsWithRef<"input"> {
-  disabled?: boolean;
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 }
 export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(function Checkbox(
-  { color = "yellow", disabled = false, variant, checked, className, children, ...rest },
+  { color = "yellow", disabled = false, variant, className, children, ...rest },
   ref,
 ) {
   return (
@@ -50,12 +48,10 @@ export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(
       data-color={color}
     >
       <input
-        data-color={color}
         ref={ref}
         disabled={disabled}
         type="checkbox"
         className="h-0 w-0 -translate-x-[9999px] overflow-hidden"
-        checked={checked}
         {...rest}
       />
       {children}
