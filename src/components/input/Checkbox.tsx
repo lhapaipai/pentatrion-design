@@ -1,6 +1,5 @@
-import { ComponentPropsWithRef, forwardRef, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { type ThemeColor } from "../../types";
-import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 import { buttonVariants } from "../button";
 
@@ -14,13 +13,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
   { color = "yellow", indeterminate, disabled = false, checked, className, children, ...rest },
   ref,
 ) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const combinedRef = useCombinedRefs(inputRef, ref);
   return (
-    <label data-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
+    <label aria-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
       <input
         data-color={color}
-        ref={combinedRef}
+        ref={ref}
         disabled={disabled}
         type="checkbox"
         className={clsx(
@@ -46,18 +43,15 @@ export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(
   { color = "yellow", disabled = false, variant, checked, className, children, ...rest },
   ref,
 ) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const combinedRef = useCombinedRefs(inputRef, ref);
   return (
     <label
-      data-disabled={disabled}
+      aria-disabled={disabled}
       className={clsx(className, buttonVariants({ variant }))}
       data-color={color}
-      data-checked={checked}
     >
       <input
         data-color={color}
-        ref={combinedRef}
+        ref={ref}
         disabled={disabled}
         type="checkbox"
         className="h-0 w-0 -translate-x-[9999px] overflow-hidden"

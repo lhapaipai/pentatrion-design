@@ -40,7 +40,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <div
-        data-disabled={disabled}
+        aria-disabled={disabled}
         data-readonly={readOnly}
         data-color={color}
         data-variant={variant}

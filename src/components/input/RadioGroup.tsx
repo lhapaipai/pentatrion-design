@@ -15,7 +15,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     const inputRef = useRef<HTMLInputElement>(null);
     const combinedRef = useCombinedRefs(inputRef, ref);
     return (
-      <label data-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
+      <label aria-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
         <input
           data-color={color}
           ref={combinedRef}
@@ -56,7 +56,7 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioProps>(
     return (
       <label
         htmlFor={id}
-        data-disabled={disabled}
+        aria-disabled={disabled}
         className={clsx(className, buttonVariants({ variant }))}
         data-color={color}
         data-checked={checked}
