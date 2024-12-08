@@ -1,6 +1,5 @@
-import { ComponentPropsWithRef, forwardRef, useRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 import { type ThemeColor } from "../../types";
-import { useCombinedRefs } from "../../hooks";
 import clsx from "clsx";
 
 export interface ToggleProps extends ComponentPropsWithRef<"input"> {
@@ -10,13 +9,11 @@ export interface ToggleProps extends ComponentPropsWithRef<"input"> {
 
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
   ({ color = "yellow", disabled = false, checked, className, children, ...rest }, ref) => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const combinedRef = useCombinedRefs(inputRef, ref);
     return (
       <label aria-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
         <input
           data-color={color}
-          ref={combinedRef}
+          ref={ref}
           disabled={disabled}
           type="checkbox"
           className={clsx(

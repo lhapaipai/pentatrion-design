@@ -1,14 +1,14 @@
-import { HTMLProps, cloneElement, forwardRef, isValidElement } from "react";
+import { cloneElement, forwardRef, isValidElement } from "react";
 import { useMergeRefs } from "@floating-ui/react";
-import { Button } from "../button/Button";
+import { Button, ButtonProps } from "../button/Button";
 import { useModalContext } from "./useModalContext";
 
-interface Props extends HTMLProps<HTMLElement> {
+interface Props extends ButtonProps {
   asChild?: boolean;
 }
 
 export const ModalTrigger = forwardRef<HTMLElement, Props>(
-  ({ children, asChild = false, ...props }, propRef) => {
+  ({ children, asChild = false, size, ...props }, propRef) => {
     const context = useModalContext();
     const childrenRef = (children as any).ref;
 
@@ -28,7 +28,9 @@ export const ModalTrigger = forwardRef<HTMLElement, Props>(
 
     return (
       <Button
+        type="button"
         ref={ref}
+        size={size}
         data-state={context.open ? "open" : "closed"}
         {...context.getReferenceProps(props)}
       >

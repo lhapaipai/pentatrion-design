@@ -28,13 +28,15 @@ export const Default: Story = {
 };
 
 export const Context = () => {
-  const [value1, setValue1] = useState("beginner");
-  const [value2, setValue2] = useState("beginner");
+  const [value1, setValue1] = useState<string | null>("beginner");
+  const [value2, setValue2] = useState<string | null>("beginner");
+  const [value3, setValue3] = useState<string | null>("beginner");
   return (
     <div>
       <h3 className="text-body-md">Uncontrolled</h3>
       <MappedStars options={options} defaultValue="intermediate" />
       <MappedStars showLabel={true} options={options} defaultValue="intermediate" />
+      <MappedStars required={true} showLabel={true} options={options} defaultValue="intermediate" />
       <h3 className="mt-4 text-body-md">Controlled</h3>
       <MappedStars options={options} value={value1} onChange={(val) => setValue1(val)} />
       <MappedStars
@@ -42,6 +44,13 @@ export const Context = () => {
         options={options}
         value={value2}
         onChange={(val) => setValue2(val)}
+      />
+      <MappedStars
+        required={true}
+        showLabel={true}
+        options={options}
+        value={value3}
+        onChange={(val) => setValue3(val)}
       />
     </div>
   );

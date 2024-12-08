@@ -89,6 +89,8 @@ export const Basic = () => {
           max={2}
         />
       </div>
+      <h3 className="mb-4 mt-8">Uncontrolled</h3>
+      <Range defaultValue={value2} step={0.01} min={0} max={2} />
     </div>
   );
 };

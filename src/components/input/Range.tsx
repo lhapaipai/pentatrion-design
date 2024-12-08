@@ -1,14 +1,13 @@
-import { forwardRef, useMemo, ComponentPropsWithRef } from "react";
+import { forwardRef, useMemo, ComponentPropsWithRef, useState, ChangeEvent } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
 
-// import styles from "./Range.module.css";
-// console.log(Object.keys(styles));
-
 export interface RangeProps
-  extends Omit<ComponentPropsWithRef<"input">, "value" | "min" | "max" | "step"> {
-  value: number;
+  extends Omit<ComponentPropsWithRef<"input">, "value" | "defaultValue" | "min" | "max" | "step"> {
+  defaultValue?: number;
+  value?: number;
+
   min?: number;
   max?: number;
   step?: number;
@@ -31,7 +30,8 @@ const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
   {
     className,
-    value,
+    defaultValue,
+    value: controlledValue,
     min = 0,
     max = 100,
     color = "yellow",
@@ -41,10 +41,17 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
     showValue = true,
     ticks = false,
     formatter = (str) => str.toString(),
+    onChange,
     ...rest
   }: RangeProps,
   ref,
 ) {
+  const isControlled = typeof controlledValue !== "undefined";
+
+  const [unControlledValue, setUnControlledValue] = useState(defaultValue);
+
+  const value = (isControlled ? controlledValue : unControlledValue)!;
+
   const range = max - min;
   const percent = (value - min) / range;
 
@@ -58,6 +65,15 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
     }),
     [color, percent],
   );
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!isControlled) {
+      setUnControlledValue(e.target.valueAsNumber);
+    }
+    if (onChange) {
+      onChange(e);
+    }
+  };
 
   return (
     <div className={clsx("group relative flex", className)} style={cssVars}>
@@ -128,7 +144,9 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
         min={min}
         max={max}
         step={step}
-        value={value}
+        defaultValue={defaultValue}
+        value={controlledValue}
+        onChange={handleChange}
         {...rest}
       />
     </div>

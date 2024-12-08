@@ -1,5 +1,7 @@
 import clsx from "clsx";
-import { ChangeEvent, ComponentPropsWithRef, forwardRef, useState } from "react";
+import { ChangeEvent, ComponentPropsWithRef, forwardRef, useRef, useState } from "react";
+import { useCombinedRefs } from "../../hooks";
+import { Button } from "../button";
 
 export type MappedStarOption = {
   value: string;
@@ -7,41 +9,56 @@ export type MappedStarOption = {
 };
 
 export interface MappedStarsProps
-  extends Omit<ComponentPropsWithRef<"input">, "defaultValue" | "onChange" | "value" | "step"> {
-  defaultValue?: string;
-  onChange?: (value: string) => void;
+  extends Omit<ComponentPropsWithRef<"input">, "defaultValue" | "onChange" | "value"> {
+  onChange?: (value: string | null) => void;
+  value?: string | null;
+  defaultValue?: string | null;
   options: MappedStarOption[];
-  value?: string;
   showLabel?: boolean;
   labelClassName?: string;
 }
 
 export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(function MappedStars(
   {
-    defaultValue,
     onChange,
-    options,
     value: controlledValue,
+    defaultValue,
+    options,
     showLabel = false,
     labelClassName,
+    required = false,
     ...rest
   },
   ref,
 ) {
+  const isControlled = typeof controlledValue !== "undefined";
+
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
-  const isControlled = typeof onChange !== "undefined";
+  const [hoveredRangeValue, setHoveredRangeValue] = useState(-1);
+
   const value = isControlled ? controlledValue : unControlledValue;
+
+  if (typeof value === "undefined") {
+    throw Error("you have to define either value or defaultValue");
+  }
+
+  const inputTextRef = useRef<HTMLInputElement>(null!);
+  const combinedRef = useCombinedRefs(inputTextRef, ref);
+  const inputRangeRef = useRef<HTMLInputElement>(null!);
 
   const rangeValue = options.findIndex((o) => o.value === value);
 
-  const [hoveredRangeValue, setHoveredRangeValue] = useState(-1);
-
   function handleClickStar(nextRangeValue: number) {
     const nextValue = options[nextRangeValue].value;
-    if (isControlled) {
-      onChange(nextValue);
-    } else {
+    inputTextRef.current.value = nextValue.toString();
+
+    if (!isControlled) {
+      inputRangeRef.current.value = nextValue.toString();
       setUnControlledValue(nextValue);
+    }
+
+    if (onChange) {
+      onChange(nextValue);
     }
   }
 
@@ -50,20 +67,41 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
    */
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const nextValue = options[event.target.valueAsNumber].value;
-    if (isControlled) {
-      onChange(nextValue);
-    } else {
+    inputTextRef.current.value = nextValue.toString();
+
+    if (!isControlled) {
       setUnControlledValue(nextValue);
     }
+
+    if (onChange) {
+      onChange(nextValue);
+    }
+  }
+
+  function handleReset() {
+    if (!isControlled) {
+      setUnControlledValue(null);
+    }
+
+    onChange && onChange(null);
   }
 
   const currentValue = hoveredRangeValue !== -1 ? hoveredRangeValue : rangeValue;
 
   return (
     <div>
-      <input readOnly {...rest} value={value} type="hidden" ref={ref} />
       <input
+        readOnly
+        {...rest}
+        value={value ?? /* any value, control is disabled */ ""}
+        disabled={value === null}
+        type="hidden"
+        ref={combinedRef}
+      />
+      <input
+        ref={inputRangeRef}
         onChange={handleInputChange}
+        disabled={rangeValue === -1}
         value={rangeValue}
         type="range"
         min={0}
@@ -94,11 +132,18 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
           );
         })}
       </span>
-      {showLabel && (
+      {!required && rangeValue !== -1 && (
+        <Button icon size="small" onClick={handleReset} variant="text">
+          <i className="fe-cancel"></i>
+        </Button>
+      )}
+      {showLabel && currentValue !== -1 && (
         <span className={clsx(labelClassName ?? "ml-2 text-body-sm text-gray-7")}>
           {options[currentValue].label}
         </span>
       )}
+      {/* {rangeValue === null ? "null" : (rangeValue ?? "undefined")}|
+      {value === null ? "null" : (value ?? "undefined")} */}
     </div>
   );
 });
