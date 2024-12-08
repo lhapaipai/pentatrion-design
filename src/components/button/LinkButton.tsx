@@ -43,8 +43,8 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
       )}
       data-color={color}
       data-variant={variant}
-      data-selected={selected}
-      data-disabled={disabled}
+      aria-checked={selected}
+      aria-disabled={disabled}
       {...props}
     >
       {!disabled && withRipple && ripples}

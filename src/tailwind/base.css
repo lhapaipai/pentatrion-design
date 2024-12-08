@@ -18,7 +18,7 @@ body {
 }
 
 textarea[readonly],
-[data-readonly] {
+[aria-readonly="true"] {
   @apply bg-gray-1;
 }
 :is(input, textarea)[readonly] {
