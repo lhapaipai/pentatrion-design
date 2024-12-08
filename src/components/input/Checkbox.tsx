@@ -37,13 +37,25 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
   );
 });
 
-interface CheckboxButtonProps extends ComponentPropsWithRef<"input"> {
+interface CheckboxButtonProps extends Omit<ComponentPropsWithRef<"input">, "size"> {
   disabled?: boolean;
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
+  size?: "small" | "medium" | "large" | "custom";
+  icon?: boolean;
 }
 export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(function Checkbox(
-  { color = "yellow", disabled = false, variant, checked, className, children, ...rest },
+  {
+    color = "yellow",
+    disabled = false,
+    size,
+    icon,
+    variant,
+    checked,
+    className,
+    children,
+    ...rest
+  },
   ref,
 ) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,7 +63,7 @@ export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(
   return (
     <label
       data-disabled={disabled}
-      className={clsx(className, buttonVariants({ variant }))}
+      className={clsx(className, buttonVariants({ variant, size, icon }))}
       data-color={color}
       data-checked={checked}
     >

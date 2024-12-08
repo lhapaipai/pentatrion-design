@@ -77,13 +77,14 @@ export const RadioButton = forwardRef<HTMLInputElement, RadioProps>(
   },
 );
 
+interface RadioGroupOption {
+  label: string;
+  value: string;
+}
+
 interface RadioGroupProps {
   value: string | null;
-  options: {
-    label: string;
-    value: string;
-  }[];
-  // onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  options: RadioGroupOption[];
   onChange?: (newValue: string | null) => void;
   disabled?: boolean;
   placement?: "inline" | "inline-grid" | "block" | "custom";
