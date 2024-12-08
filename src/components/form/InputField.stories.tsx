@@ -4,6 +4,7 @@ import { InputField } from "./InputField";
 import { Toggle } from "../input/Toggle";
 import { Checkbox } from "../input/Checkbox";
 import { Radio } from "../input/Radio";
+import { Input } from "../input";
 
 const meta = {
   title: "Components/Form/InputField",
@@ -18,12 +19,24 @@ export const Basic: Story = {
   args: {
     label: "Nom",
     hint: "Votre nom complet",
-    placeholder: "Dupond",
     description: "Nom + Prénom",
-    value: "",
     error: false,
     warning: false,
+    children: <Input />,
   },
+};
+
+export const Simple = () => {
+  const [label, setLabel] = useState("Your label");
+  return (
+    <InputField label="Label" error="il y a une erreur !">
+      <Input
+        placeholder="What is your name ?"
+        value={label}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
+      />
+    </InputField>
+  );
 };
 
 export const Playbook = () => {
@@ -41,49 +54,48 @@ export const Playbook = () => {
         <InputField
           label={label}
           hint={hint}
-          placeholder={placeholder}
           description={description}
-          value={value}
           warning={warning}
           error={error}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-        />
+        >
+          <Input
+            placeholder={placeholder}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </InputField>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <InputField
-          label="Label"
-          placeholder="What is your name ?"
-          value={label}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
-        />
-        <InputField
-          label="Hint"
-          placeholder="One hint ?"
-          value={hint}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setHint(e.target.value)}
-        />
-        <InputField
-          label="Placeholder"
-          value={placeholder}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setPlaceholder(e.target.value)}
-        />
-        <InputField
-          label="Help"
-          value={description}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setDescription(e.target.value)}
-        />
-        <InputField
-          label="Warning"
-          placeholder="warning message"
-          value={warning}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setWarning(e.target.value)}
-        />
-        <InputField
-          label="Error"
-          placeholder="Error message"
-          value={error}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setError(e.target.value)}
-        />
+        <InputField label="Label">
+          <Input
+            placeholder="What is your name ?"
+            value={label}
+            onChange={(e) => setLabel(e.target.value)}
+          />
+        </InputField>
+        <InputField label="Hint">
+          <Input placeholder="One hint ?" value={hint} onChange={(e) => setHint(e.target.value)} />
+        </InputField>
+        <InputField label="Placeholder">
+          <Input value={placeholder} onChange={(e) => setPlaceholder(e.target.value)} />
+        </InputField>
+        <InputField label="Help">
+          <Input value={description} onChange={(e) => setDescription(e.target.value)} />
+        </InputField>
+        <InputField label="Warning">
+          <Input
+            placeholder="warning message"
+            value={warning}
+            onChange={(e) => setWarning(e.target.value)}
+          />
+        </InputField>
+        <InputField label="Error">
+          <Input
+            placeholder="Error message"
+            value={error}
+            onChange={(e) => setError(e.target.value)}
+          />
+        </InputField>
       </div>
     </>
   );
@@ -100,136 +112,116 @@ export const Context = () => {
       <InputField
         label="What is your name"
         hint="Any hint related to input field"
-        placeholder="Ex: Fernando"
         description="Description message at the top of the field"
-        value={name}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-      />
+      >
+        <Input placeholder="Ex: Fernando" value={name} onChange={(e) => setName(e.target.value)} />
+      </InputField>
       <InputField
         label="What is your name"
         hint="Any hint related to input field"
-        placeholder="Ex: Fernando"
         description="Description message at the top of the field"
         error="Input is required"
-        value={name}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-      />
+      >
+        <Input placeholder="Ex: Fernando" value={name} onChange={(e) => setName(e.target.value)} />
+      </InputField>
       <InputField
         label="What is your name"
         hint="Any hint related to input field"
-        placeholder="Ex: Fernando"
         description="Description message at the top of the field"
         warning="Only your firstname"
-        value={name}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
-      />
-      <InputField
-        value={gender}
-        onChange={(value: string | null) => {
-          setGender(value);
-        }}
-        label="What is your gender"
-        hint="You don't have to answer"
-        as={RadioGroup}
-        options={[
-          { label: "Male", value: "male" },
-          { label: "Female", value: "female" },
-          { label: "I don't want to answer", value: "undefined" },
-        ]}
-        description="You still have to check a box"
-      />
-      <InputField
-        value={gender}
-        onChange={(value: string | null) => {
-          setGender(value);
-        }}
-        label="What is your gender"
-        hint="You don't have to answer"
-        as={RadioGroup}
-        error="This field is required"
-        options={[
-          { label: "Male", value: "male" },
-          { label: "Female", value: "female" },
-          { label: "I don't want to answer", value: "undefined" },
-        ]}
-        description="You still have to check a box"
-      />
+      >
+        <Input value={name} placeholder="Ex: Fernando" onChange={(e) => setName(e.target.value)} />
+      </InputField>
+      <div className="mb-8 grid grid-cols-3 gap-4">
+        <InputField
+          label="What is your gender"
+          hint="You don't have to answer"
+          description="You still have to check a box"
+        >
+          <div>
+            <Radio name="gender" value="male">
+              Male
+            </Radio>
+            <Radio name="gender" value="female">
+              Female
+            </Radio>
+            <Radio name="gender" value="undefined">
+              I don't want to answer
+            </Radio>
+          </div>
+        </InputField>
+        <InputField
+          label="What is your gender"
+          hint="You don't have to answer"
+          error="This field is required"
+          description="You still have to check a box"
+        >
+          <div>
+            <Radio name="gender" value="male">
+              Male
+            </Radio>
+            <Radio name="gender" value="female">
+              Female
+            </Radio>
+            <Radio name="gender" value="undefined">
+              I don't want to answer
+            </Radio>
+          </div>
+        </InputField>
 
-      <InputField
-        value={gender}
-        onChange={(value: string | null) => {
-          setGender(value);
-        }}
-        label="What is your gender"
-        hint="You don't have to answer"
-        as={RadioGroup}
-        warning="Make your choice"
-        options={[
-          { label: "Male", value: "male" },
-          { label: "Female", value: "female" },
-          { label: "I don't want to answer", value: "undefined" },
-        ]}
-        description="You still have to check a box"
-      />
-      <InputField
-        checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
-        label="Gender"
-        hint="One hint"
-        as={Checkbox}
-      >
-        I agree
-      </InputField>
-      <InputField
-        checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
-        label="Gender"
-        hint="One hint"
-        warning="Make your choice"
-        as={Checkbox}
-      >
-        I agree
-      </InputField>
-      <InputField
-        checked={isAgree}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsAgree(e.target.checked)}
-        label="Gender"
-        hint="One hint"
-        error="This field is required"
-        as={Checkbox}
-      >
-        I agree
-      </InputField>
-
-      <InputField
-        checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
-        label="Label"
-        hint=""
-        as={Toggle}
-      >
-        Enabled
-      </InputField>
-      <InputField
-        checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
-        label="Label"
-        hint="One hint"
-        warning="Make your choice"
-        as={Toggle}
-      >
-        Enabled
-      </InputField>
-      <InputField
-        checked={isEnabled}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setIsEnabled(e.target.checked)}
-        label="Label"
-        hint="One hint"
-        error="This field is required"
-        as={Toggle}
-      >
-        Enabled
-      </InputField>
+        <InputField
+          label="What is your gender"
+          hint="You don't have to answer"
+          warning="Make your choice"
+          description="You still have to check a box"
+        >
+          <div>
+            <Radio name="gender" value="male">
+              Male
+            </Radio>
+            <Radio name="gender" value="female">
+              Female
+            </Radio>
+            <Radio name="gender" value="undefined">
+              I don't want to answer
+            </Radio>
+          </div>
+        </InputField>
+      </div>
+      <div className="mb-8 grid grid-cols-3 gap-4">
+        <InputField label="Gender" hint="One hint">
+          <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
+            I agree
+          </Checkbox>
+        </InputField>
+        <InputField label="Gender" hint="One hint" warning="Make your choice">
+          <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
+            I agree
+          </Checkbox>
+        </InputField>
+        <InputField label="Gender" hint="One hint" error="This field is required">
+          <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
+            I agree
+          </Checkbox>
+        </InputField>
+      </div>
+      <div className="mb-8 grid grid-cols-3 gap-4">
+        <InputField label="Label" hint="">
+          <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
+            Enabled
+          </Toggle>
+        </InputField>
+        <InputField label="Label" hint="One hint" warning="Make your choice">
+          <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
+            Enabled
+          </Toggle>
+        </InputField>
+        <InputField label="Label" hint="One hint" error="This field is required">
+          <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
+            Enabled
+          </Toggle>
+        </InputField>
+      </div>
       <pre>
         name: {name}
         <br />
