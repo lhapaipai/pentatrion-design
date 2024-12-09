@@ -52,7 +52,7 @@ export const buttonVariants = cva(
           "shadow hover:shadow-md has-[:checked]:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] aria-[checked=true]:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-4))]",
         outlined:
           "bg-gray-0 hover:shadow-sm active:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]  aria-[checked=true]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] focus-visible-has:border-transparent",
-        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 aria-[checked=true]:bg-[rgb(var(--color-custom-1))] has-[:checked]:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 aria-[checked=true]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
         ghost:
           "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 aria-[checked=true]:bg-[rgb(var(--color-custom-1))] has-[:checked]:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
       },
@@ -65,73 +65,71 @@ export const buttonVariants = cva(
   },
 );
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      withRipple = true,
-      variant = "contained",
-      loading = false,
-      color = "yellow",
-      size = "medium",
-      focusable = true,
-      className,
-      disabled,
-      children,
-      selected = false,
-      icon = false,
-      asChild = false,
-      ...props
-    },
-    ref,
-  ) => {
-    const inputRef = useRef<HTMLButtonElement>(null);
-
-    useImperativeHandle<HTMLButtonElement | null, HTMLButtonElement | null>(
-      ref,
-      () => inputRef.current,
-    );
-
-    const notClickable = loading || disabled;
-
-    const ripples = useRipple(
-      inputRef,
-      ["text", "outlined", "ghost"].includes(variant) ? true : false,
-    );
-
-    const Comp = asChild ? Slot : "button";
-
-    return (
-      <Comp
-        tabIndex={focusable ? 0 : -1}
-        role="button"
-        ref={inputRef}
-        className={clsx(
-          buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
-          className,
-          loading && !icon && "text-transparent",
-        )}
-        data-color={color}
-        data-variant={variant}
-        aria-checked={selected}
-        disabled={disabled}
-        aria-busy={loading}
-        {...props}
-      >
-        {asChild ? (
-          children
-        ) : (
-          <>
-            {!notClickable && withRipple && ripples}
-            {children}
-            {loading && (
-              <Loader
-                color={color}
-                className={clsx("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2")}
-              />
-            )}
-          </>
-        )}
-      </Comp>
-    );
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    withRipple = true,
+    variant = "contained",
+    loading = false,
+    color = "yellow",
+    size = "medium",
+    focusable = true,
+    className,
+    disabled,
+    children,
+    selected = false,
+    icon = false,
+    asChild = false,
+    ...props
   },
-);
+  ref,
+) {
+  const inputRef = useRef<HTMLButtonElement>(null);
+
+  useImperativeHandle<HTMLButtonElement | null, HTMLButtonElement | null>(
+    ref,
+    () => inputRef.current,
+  );
+
+  const notClickable = loading || disabled;
+
+  const ripples = useRipple(
+    inputRef,
+    ["text", "outlined", "ghost"].includes(variant) ? true : false,
+  );
+
+  const Comp = asChild ? Slot : "button";
+
+  return (
+    <Comp
+      tabIndex={focusable ? 0 : -1}
+      role="button"
+      ref={inputRef}
+      className={clsx(
+        buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
+        className,
+        loading && !icon && "text-transparent",
+      )}
+      data-color={color}
+      data-variant={variant}
+      aria-checked={selected}
+      disabled={disabled}
+      aria-busy={loading}
+      {...props}
+    >
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {!notClickable && withRipple && ripples}
+          {children}
+          {loading && (
+            <Loader
+              color={color}
+              className={clsx("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2")}
+            />
+          )}
+        </>
+      )}
+    </Comp>
+  );
+});

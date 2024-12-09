@@ -9,7 +9,7 @@ export const pentatrionTw = plugin(
   ({ addVariant }) => {
     // addVariant("active-full", ["&:active", "&.active"]);
 
-    addVariant("focus-visible-has", ["&:focus-visible", "&:has(:focus)"]);
+    addVariant("focus-visible-has", ["&:focus-visible", "&:has(:focus)", "&:has(:active)"]);
     // dbl :focus:focus else :hover will have priority to focus-full variant.
     addVariant("focus-full", ["&:has(input:focus)", "&.focus", "&:focus:focus"]);
   },
