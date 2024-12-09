@@ -8,6 +8,8 @@ import {
   forwardRef,
   ForwardedRef,
   ReactNode,
+  ComponentProps,
+  CSSProperties,
 } from "react";
 import type { OptionLike, Option } from "../select";
 import { AutocompleteOption, AutocompleteOptionProps } from "./AutocompleteOption";
@@ -34,14 +36,10 @@ import { getOptionLabel, getOptionValue } from "./util";
 import { Button } from "../button";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
-import { inputConfig } from "../input/Input";
+import { inputConfig, sizeVariant } from "../input/Input";
 import { ThemeColor } from "../../types";
 
-export interface AutocompleteProps<O extends OptionLike = Option> {
-  className?: string;
-
-  autoFocus?: boolean;
-
+export interface AutocompleteProps<O extends OptionLike = Option> extends ComponentProps<"input"> {
   icon?: boolean | ReactNode;
 
   color?: ThemeColor;
@@ -54,7 +52,6 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   suffix?: ReactNode;
 
   placement?: Placement;
-  placeholder?: string;
   /**
    * search string used as value for <input>
    */
@@ -81,8 +78,6 @@ export interface AutocompleteProps<O extends OptionLike = Option> {
   clearSearchButton?: boolean;
 
   selectOnFocus?: boolean;
-
-  readOnly?: boolean;
 }
 
 export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLike = Option>(
@@ -105,6 +100,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
     options,
     selectOnFocus = true,
     readOnly = false,
+    ...rest
   }: AutocompleteProps<O>,
   inputRef: ForwardedRef<HTMLInputElement>,
 ) {
@@ -215,7 +211,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
   return (
     <div className={className}>
       <div
-        className={clsx(inputConfig.container, readOnly && "readonly")}
+        className={clsx(inputConfig.container, sizeVariant.medium, readOnly && "readonly")}
         ref={refs.setReference}
         data-color={color}
       >
@@ -270,6 +266,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
               }
             },
           })}
+          {...rest}
         />
         <div className="flex-center relative">
           {suffix}
@@ -305,7 +302,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
               <div
                 className="z-dialog outline-none"
                 ref={refs.setFloating}
-                style={floatingStyles}
+                style={floatingStyles as CSSProperties}
                 {...getFloatingProps()}
               >
                 <Dialog

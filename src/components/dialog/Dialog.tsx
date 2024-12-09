@@ -19,7 +19,11 @@ export const dialogVariants = cva("relative rounded-2xl shadow dark:shadow-dark"
       blue: "border-t-4 border-t-blue-3 bg-blue-1",
       green: "border-t-4 border-t-green-3 bg-green-1",
       orange: "border-t-4 border-t-orange-3 bg-orange-1",
+      default: "bg-gray-0",
     },
+  },
+  defaultVariants: {
+    color: "default",
   },
 });
 
@@ -28,7 +32,7 @@ export function Dialog({ placement, color, children, className, ...rest }: Props
     <div
       className={clsx(dialogVariants({ color }), className)}
       data-placement={placement}
-      data-color={color}
+      data-color={color ?? "gray"}
       {...rest}
     >
       {children}

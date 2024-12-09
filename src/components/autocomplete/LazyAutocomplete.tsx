@@ -6,22 +6,9 @@ import { useStateDebounce, useEffectEvent } from "../../hooks";
 
 interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
-  extends Pick<
+  extends Omit<
     AutocompleteProps<O>,
-    | "autoFocus"
-    | "className"
-    | "icon"
-    | "color"
-    | "suffix"
-    | "noSearchSuffix"
-    | "placement"
-    | "placeholder"
-    | "selection"
-    | "onChangeSelection"
-    | "autocompleteOptionComponent"
-    | "loading"
-    | "clearSearchButton"
-    | "readOnly"
+    "searchValue" | "onChangeSearchValue" | "options" | "selectOnFocus"
   > {
   onChangeSearchValueCallback: (searchValue: string) => Promise<O[]>;
   debounce?: number;

@@ -11,7 +11,7 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
   size?: "small" | "medium" | "large" | "custom";
 }
 
-const sizeVariant = {
+export const sizeVariant = {
   small: "h-6",
   medium: "h-8",
   large: "h-12",

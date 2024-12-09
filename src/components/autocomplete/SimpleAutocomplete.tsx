@@ -6,22 +6,9 @@ import { getOptionLabel } from "./util";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props<O extends OptionLike = Option>
-  extends Pick<
+  extends Omit<
     AutocompleteProps<O>,
-    | "autoFocus"
-    | "className"
-    | "icon"
-    | "color"
-    | "suffix"
-    | "noSearchSuffix"
-    | "placement"
-    | "placeholder"
-    | "selection"
-    | "onChangeSelection"
-    | "autocompleteOptionComponent"
-    | "options"
-    | "selection"
-    | "readOnly"
+    "searchValue" | "onChangeSearchValue" | "loading" | "clearSearchButton" | "selectOnFocus"
   > {}
 
 export function SimpleAutocomplete<O extends OptionLike = Option>({
