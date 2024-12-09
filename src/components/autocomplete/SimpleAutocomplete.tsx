@@ -1,7 +1,7 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from "./Autocomplete";
 import { Option, OptionLike } from "../select";
-import { useEffectEvent } from "../../hooks";
+import { useEffectEvent, useIsomorphicLayoutEffect } from "../../hooks";
 import { getOptionLabel } from "./util";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -28,7 +28,7 @@ export function SimpleAutocomplete<O extends OptionLike = Option>({
 
   // side effect, update the searchValue <input /> value when
   // selection come from outside
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (selection === null) {
       if (document.activeElement !== inputRef.current) {
         setSearchValue("");

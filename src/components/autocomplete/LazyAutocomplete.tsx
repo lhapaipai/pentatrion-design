@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from "./Autocomplete";
 import { OptionLike, Option } from "../select";
 import { getOptionLabel } from "./util";
-import { useStateDebounce, useEffectEvent } from "../../hooks";
+import { useStateDebounce, useEffectEvent, useIsomorphicLayoutEffect } from "../../hooks";
 
 interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
@@ -50,7 +50,7 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
 
   // side effect, update the searchValue <input /> value when
   // selection come from outside
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (selection === null) {
       if (document.activeElement !== inputRef.current) {
         setSearchValue("", true);
