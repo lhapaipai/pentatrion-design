@@ -228,6 +228,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           </div>
         )}
         <input
+          autoComplete="off"
           autoFocus={autoFocus}
           spellCheck="false"
           className={clsx(inputConfig.input, icon === false && "pl-4")}
@@ -272,6 +273,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           {suffix}
           {showClearSearchButton && (
             <Button
+              type="button"
               withRipple={false}
               icon
               color="gray"
