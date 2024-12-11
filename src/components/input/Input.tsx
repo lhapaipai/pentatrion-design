@@ -9,6 +9,7 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
   suffix?: ReactNode;
   color?: ThemeColor;
   size?: "small" | "medium" | "large" | "custom";
+  flexibleWidth?: boolean;
 }
 
 export const sizeVariant = {
@@ -34,6 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className,
       readOnly,
       size = "medium",
+      flexibleWidth = true,
       ...rest
     },
     ref,
@@ -59,7 +61,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           autoFocus={true}
           ref={ref}
-          className={clsx(inputConfig.input, !prefix && "pl-4", !suffix && "pr-4")}
+          className={clsx(
+            inputConfig.input,
+            !prefix && "pl-4",
+            !suffix && "pr-4",
+            flexibleWidth && "w-0",
+          )}
           disabled={disabled}
           readOnly={readOnly}
           onClick={(e) => {
