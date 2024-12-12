@@ -34,6 +34,7 @@ export function Badge({
           variant: "contained",
           icon: null,
           size: null,
+          clickable: onClick !== undefined,
         }),
         className,
       )}

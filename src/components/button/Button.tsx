@@ -31,9 +31,13 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
 }
 
 export const buttonVariants = cva(
-  "relative box-border inline-flex cursor-pointer items-center overflow-clip text-center leading-5 no-underline focus-visible-has:outline focus-visible-has:outline-2 active:translate-y-[1px]",
+  "relative box-border inline-flex items-center overflow-clip text-center leading-5 no-underline focus-visible-has:outline focus-visible-has:outline-2",
   {
     variants: {
+      clickable: {
+        true: "cursor-pointer active:translate-y-[1px]",
+        false: "pointer-events-none",
+      },
       size: {
         small: "h-6",
         medium: "h-8",
@@ -61,6 +65,7 @@ export const buttonVariants = cva(
       size: "medium",
       icon: false,
       variant: "contained",
+      clickable: true,
     },
   },
 );
