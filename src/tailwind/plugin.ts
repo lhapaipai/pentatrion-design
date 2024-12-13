@@ -132,6 +132,7 @@ export const pentatrionTw = plugin(
         },
         gridTemplateColumns: {
           "repeat-fill-300": "repeat(auto-fill, minmax(300px, 1fr))",
+          "repeat-fill-200": "repeat(auto-fill, minmax(200px, 1fr))",
           "repeat-fill-160": "repeat(auto-fill, minmax(160px, 1fr))",
         },
         animation: {
