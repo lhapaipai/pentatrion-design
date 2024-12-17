@@ -1,5 +1,8 @@
+import { StoryFn } from "@storybook/react";
+
 export default {
   title: "Styles/Themes",
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 export const TextColors = () => {
@@ -18,8 +21,8 @@ export const TextColors = () => {
                   style={{ backgroundColor: `rgb(var(--color-${color}-${variant}))` }}
                 ></div>
                 <div className="px-0.5">
-                  <div className="text-body-xs w-6 font-medium">{variant}</div>
-                  <div className="text-body-xs font-mono">{`--color-${color}-${variant}`}</div>
+                  <div className="w-6 text-body-xs font-medium">{variant}</div>
+                  <div className="font-mono text-body-xs">{`--color-${color}-${variant}`}</div>
                 </div>
               </div>
             ))}

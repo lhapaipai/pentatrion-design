@@ -1,11 +1,13 @@
 export default {
   title: "Fonts/Icons",
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 import { useState } from "react";
 
 import jsonFile from "../../.storybook/fontello/config.json";
 import { Input } from "../components/input/Input";
+import { StoryFn } from "@storybook/react";
 const fontelloConfig = jsonFile as FontelloConfig;
 
 interface FontelloConfig {

@@ -22,20 +22,13 @@ export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
     return (
       <FloatingPortal>
         <FloatingOverlay
-          className={clsx([
-            "z-overlay bg-gray-7/40 flex-center",
-            "motion-safe:animate-fade-in-opacity",
-          ])}
+          className="flex-center z-overlay bg-gray-7/40 motion-safe:animate-fade-in-opacity"
           lockScroll
         >
           <FloatingFocusManager context={floatingContext}>
             <Dialog
-              className={clsx(
-                "mx-4",
-                `border-${context.color}-2`,
-                "motion-safe:animate-fade-in",
-                className,
-              )}
+              color={context.color}
+              className={clsx("mx-4 motion-safe:animate-fade-in", className)}
               style={style}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}

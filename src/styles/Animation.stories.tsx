@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button } from "~/components/button";
 import { useIsClosing } from "~/hooks";
 import clsx from "clsx";
+import { StoryFn } from "@storybook/react";
 
 export default {
   title: "Styles/Animation",
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 export const Basic = () => {
@@ -16,7 +18,7 @@ export const Basic = () => {
         <Button onClick={() => setIsOpen((v) => !v)}>{isOpen ? "Masquer" : "Afficher"}</Button>
       </div>
       {isOpen && (
-        <div className="h-[300px] w-[300px] origin-top-left shadow-xl flex-center motion-safe:animate-fade-in">
+        <div className="flex-center h-[300px] w-[300px] origin-top-left shadow-xl motion-safe:animate-fade-in">
           Modal
         </div>
       )}

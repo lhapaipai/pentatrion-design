@@ -1,3 +1,4 @@
+import { StoryFn } from "@storybook/react";
 import { Code } from "../components/code/Code";
 import {
   Table,
@@ -11,6 +12,7 @@ import { Content } from "./Content";
 
 export default {
   title: "Styles/Typography",
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 export const TextSizes = () => (

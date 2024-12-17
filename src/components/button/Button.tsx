@@ -79,7 +79,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     size = "medium",
     focusable = true,
     className,
-    disabled,
+    disabled = false,
     children,
     selected = false,
     icon = false,

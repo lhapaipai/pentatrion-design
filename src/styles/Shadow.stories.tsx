@@ -1,7 +1,9 @@
+import { StoryFn } from "@storybook/react";
 import { Code } from "../components/code/Code";
 
 export default {
   title: "Styles",
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 export const Shadow = () => {

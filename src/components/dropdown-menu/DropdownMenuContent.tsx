@@ -29,10 +29,8 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"di
           >
             <Dialog
               placement={context.placement}
-              className={clsx(
-                `border-${context.color}-2 border p-2`,
-                "motion-safe:animate-fade-in",
-              )}
+              color={context.color}
+              className="p-2 motion-safe:animate-fade-in"
             >
               <div className="box">
                 <FloatingList elementsRef={context.elementsRef} labelsRef={context.labelsRef}>

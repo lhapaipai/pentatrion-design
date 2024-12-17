@@ -6,7 +6,7 @@ export function useModal({
   initialOpen = false,
   open: controlledOpen,
   onOpen: setControlledOpen,
-  color = "default",
+  color,
 }: ModalOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
