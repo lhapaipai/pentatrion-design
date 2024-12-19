@@ -35,7 +35,7 @@ export const buttonVariants = cva(
   {
     variants: {
       clickable: {
-        true: "cursor-pointer active:translate-y-[1px]",
+        true: "cursor-pointer active:translate-y-[1px] focus-visible-has:z-10",
         false: "pointer-events-none",
       },
       size: {
