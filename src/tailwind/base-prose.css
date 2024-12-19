@@ -2,6 +2,9 @@
   p {
     @apply mb-5 mt-0;
   }
+  p:last-child {
+    @apply mb-0;
+  }
 
   h1,
   h2,
@@ -12,22 +15,22 @@
     @apply relative font-semibold text-gray-8;
   }
   h1 {
-    @apply text-h1 mb-8 mt-0;
+    @apply mb-8 mt-0 text-h1;
   }
   h2 {
-    @apply text-h2 mb-2 mt-6;
+    @apply mb-2 mt-6 text-h2;
   }
   h3 {
-    @apply text-h3 mb-2 mt-6;
+    @apply mb-2 mt-6 text-h3;
   }
   h4 {
-    @apply text-h4 mb-2 mt-6;
+    @apply mb-2 mt-6 text-h4;
   }
   h5 {
-    @apply text-h5 mb-2 mt-6;
+    @apply mb-2 mt-6 text-h5;
   }
   h6 {
-    @apply text-h6 mb-2 mt-6;
+    @apply mb-2 mt-6 text-h6;
   }
   img {
     @apply my-8;
@@ -52,7 +55,7 @@
     content: "`";
   }
   pre {
-    @apply text-body-sm my-6 overflow-x-auto rounded-md bg-gray-1 py-4 pe-4 ps-4;
+    @apply my-6 overflow-x-auto rounded-md bg-gray-1 py-4 pe-4 ps-4 text-body-sm;
   }
   ol {
     @apply my-5 list-decimal ps-7;
@@ -92,7 +95,7 @@
     @apply my-0;
   }
   figcaption {
-    @apply text-body-sm mt-3;
+    @apply mt-3 text-body-sm;
   }
 
   a {
