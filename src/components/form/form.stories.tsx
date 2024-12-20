@@ -6,6 +6,7 @@ import { Button } from "../button";
 import { InputField } from "./InputField";
 import { SelectField } from "./SelectField";
 import { Option } from "../select";
+import { Input } from "../input";
 
 const meta = {
   title: "Components/Form",
@@ -44,11 +45,13 @@ export const WithConform = () => {
       {/**
        * required, id, name, form, aria-invalid, aria-describedby, type
        */}
-      <InputField label="email" error={email.errors} {...getInputProps(email, { type: "email" })} />
+      <InputField label="email" errors={email.errors}>
+        <Input {...getInputProps(email, { type: "email" })} />
+      </InputField>
       <SelectField
         label="gender"
         options={options}
-        error={gender.errors}
+        errors={gender.errors}
         required={false}
         {...getSelectProps(gender)}
       />

@@ -3,11 +3,12 @@ import { useDrag } from "@use-gesture/react";
 import { useSpring, animated } from "@react-spring/web";
 import { Tooltip } from "./Tooltip";
 import { SimpleTooltip } from "./SimpleTooltip";
+import { StoryFn } from "@storybook/react";
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
-  decorators: [(Story) => <Story />],
+  decorators: [(Story: StoryFn) => <Story />],
 };
 
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (

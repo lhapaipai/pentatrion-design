@@ -33,7 +33,6 @@ export const Basic: Story = {
   },
   args: {
     initialOpen: false,
-    color: "default",
   },
 };
 
@@ -56,7 +55,6 @@ export const BasicLongText: Story = {
   },
   args: {
     initialOpen: false,
-    color: "default",
   },
 };
 

@@ -6,7 +6,7 @@ interface InputFieldProps {
   label?: ReactNode;
   hint?: ReactNode;
   description?: ReactNode;
-  error?: ReactNode | boolean;
+  errors?: ReactNode | boolean;
   warning?: ReactNode | boolean;
   children: ReactNode;
   id?: string;
@@ -16,7 +16,7 @@ export function InputField({
   label,
   hint,
   description,
-  error,
+  errors,
   warning,
   id: providedId,
   children,
@@ -26,10 +26,10 @@ export function InputField({
 
   const labelElement = label && <span>{label}</span>;
   const hintElement = hint && <span className="ml-auto text-body-sm text-gray-6">{hint}</span>;
-  const errorElement = error && typeof error !== "boolean" && (
+  const errorsElement = errors && typeof errors !== "boolean" && (
     <span className="font-medium text-red-4 dark:text-red-2">
       <i className="fe-circle-exclamation"></i>
-      <span>{error}</span>
+      <span>{errors}</span>
     </span>
   );
   const warningElement = warning && typeof warning !== "boolean" && (
@@ -39,7 +39,7 @@ export function InputField({
     </span>
   );
 
-  const color: ThemeColor = error ? "red" : warning ? "orange" : "yellow";
+  const color: ThemeColor = errors ? "red" : warning ? "orange" : "yellow";
 
   return (
     <div>
@@ -55,7 +55,7 @@ export function InputField({
       <Slot id={id} color={color}>
         {children}
       </Slot>
-      <div className="mt-1 min-h-5 text-body-sm text-gray-6">{errorElement || warningElement}</div>
+      <div className="mt-1 min-h-5 text-body-sm text-gray-6">{errorsElement || warningElement}</div>
     </div>
   );
 }

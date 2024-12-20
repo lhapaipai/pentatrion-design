@@ -40,6 +40,9 @@ import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";
 import { ThemeColor } from "~/types";
 
+// readonly string[] -> nécessaire uniquement pour @conform-to/react
+// voir getSelectProps()
+// src/components/form/form.stories.tsx
 export type SelectValue = number | string | readonly string[] | null;
 type ChangeEventLike = {
   target: {

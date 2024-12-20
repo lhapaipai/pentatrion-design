@@ -4,6 +4,7 @@ import { ChangeEvent, ReactNode, useState } from "react";
 import { Toggle } from "../input/Toggle";
 import { Highlight } from "./Highlight";
 import { InputField } from "../form/InputField";
+import { Input } from "../input";
 
 const meta = {
   title: "Components/Highlight",
@@ -59,70 +60,88 @@ export const Playbook = () => {
     <>
       <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">{PreviewElement}</div>
       <div className="grid grid-cols-2 gap-4">
-        <InputField
-          label="Search string"
-          value={search}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-        />
-        <InputField
-          label="parseHighlightIndices minLength"
-          value={minLength}
-          type="number"
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid && setMinLength(e.target.valueAsNumber)
-          }
-        />
+        <InputField label="Search string">
+          <Input
+            value={search}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+          />
+        </InputField>
+        <InputField label="parseHighlightIndices minLength">
+          <Input
+            value={minLength}
+            type="number"
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              e.target.validity.valid && setMinLength(e.target.valueAsNumber)
+            }
+          />
+        </InputField>
         <InputField
           label="fuse.js isCaseSensitive"
           description="Indicates whether comparisons should be case sensitive."
-          checked={isCaseSensitive}
-          as={Toggle}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setIsCaseSensitive(e.target.checked)}
-        />
+        >
+          <Toggle
+            checked={isCaseSensitive}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setIsCaseSensitive(e.target.checked)}
+          />
+        </InputField>
         <InputField
           label="fuse.js minMatchCharLength"
-          type="number"
-          value={minMatchCharLength}
           description="Only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character matches in the result, set it to 2)."
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid && setMinMatchCharLength(e.target.valueAsNumber)
-          }
-        />
+        >
+          <Input
+            type="number"
+            value={minMatchCharLength}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              e.target.validity.valid && setMinMatchCharLength(e.target.valueAsNumber)
+            }
+          />
+        </InputField>
         <InputField
           label="fuse.js location"
-          type="number"
-          value={location}
           description="Determines approximately where in the text is the pattern expected to be found."
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid && setLocation(e.target.valueAsNumber)
-          }
-        />
+        >
+          <Input
+            type="number"
+            value={location}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              e.target.validity.valid && setLocation(e.target.valueAsNumber)
+            }
+          />
+        </InputField>
         <InputField
           label="fuse.js threshold"
-          type="number"
-          value={threshold}
-          step="0.1"
           description="At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything."
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid && setThreshold(e.target.valueAsNumber)
-          }
-        />
+        >
+          <Input
+            type="number"
+            value={threshold}
+            step="0.1"
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              e.target.validity.valid && setThreshold(e.target.valueAsNumber)
+            }
+          />
+        </InputField>
         <InputField
           label="fuse.js distance"
-          type="number"
           description="Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of 0 requires the match be at the exact location specified. A distance of 1000 would require a perfect match to be within 800 characters of the location to be found using a threshold of 0.8."
-          value={distance}
-          onChange={(e: ChangeEvent<HTMLInputElement>) =>
-            e.target.validity.valid && setDistance(e.target.valueAsNumber)
-          }
-        />
+        >
+          <Input
+            type="number"
+            value={distance}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              e.target.validity.valid && setDistance(e.target.valueAsNumber)
+            }
+          />
+        </InputField>
         <InputField
           label="fuse.js ignoreLocation"
-          as={Toggle}
           description="When true, search will ignore location and distance, so it won't matter where in the string the pattern appears."
-          checked={ignoreLocation}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setIgnoreLocation(e.target.checked)}
-        />
+        >
+          <Toggle
+            checked={ignoreLocation}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setIgnoreLocation(e.target.checked)}
+          />
+        </InputField>
       </div>
     </>
   );

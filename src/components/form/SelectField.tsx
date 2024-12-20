@@ -6,23 +6,23 @@ interface SelectFieldOwnProps {
   label?: ReactNode;
   hint?: ReactNode;
   description?: ReactNode;
-  error?: ReactNode | boolean;
+  errors?: ReactNode | boolean;
   warning?: ReactNode | boolean;
 }
 
 export type Props<O extends Option = Option> = SelectFieldOwnProps & SelectProps<O>;
 
 export const SelectField = forwardRef<Element, Props>(
-  ({ label, hint, description, error, warning, id: providedId, ...rest }, ref) => {
+  ({ label, hint, description, errors, warning, id: providedId, ...rest }, ref) => {
     const internalId = useId();
     const id = providedId ?? internalId;
 
     const labelElement = label && <span className="font-semibold">{label}</span>;
-    const hintElement = hint && <span className="text-body-sm ml-auto text-gray-6">{hint}</span>;
-    const errorElement = error && typeof error !== "boolean" && (
+    const hintElement = hint && <span className="ml-auto text-body-sm text-gray-6">{hint}</span>;
+    const errorsElement = errors && typeof errors !== "boolean" && (
       <span className="font-medium text-red-4 dark:text-red-2">
         <i className="fe-circle-exclamation"></i>
-        <span>{error}</span>
+        <span>{errors}</span>
       </span>
     );
     const warningElement = warning && typeof warning !== "boolean" && (
@@ -32,7 +32,7 @@ export const SelectField = forwardRef<Element, Props>(
       </span>
     );
 
-    const color: ThemeColor = error ? "red" : warning ? "orange" : "yellow";
+    const color: ThemeColor = errors ? "red" : warning ? "orange" : "yellow";
 
     return (
       <div>
@@ -44,10 +44,10 @@ export const SelectField = forwardRef<Element, Props>(
         ) : (
           <label htmlFor={id} className="invisible"></label>
         )}
-        {description && <div className="text-body-sm mb-2 text-gray-6">{description}</div>}
+        {description && <div className="mb-2 text-body-sm text-gray-6">{description}</div>}
         <Select ref={ref as any} color={color} id={id} {...rest} />
-        <div className="text-body-sm mt-1 min-h-5 text-gray-6">
-          {errorElement || warningElement}
+        <div className="mt-1 min-h-5 text-body-sm text-gray-6">
+          {errorsElement || warningElement}
         </div>
       </div>
     );

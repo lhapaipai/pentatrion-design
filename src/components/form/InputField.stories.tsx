@@ -20,7 +20,7 @@ export const Basic: Story = {
     label: "Nom",
     hint: "Votre nom complet",
     description: "Nom + Prénom",
-    error: false,
+    errors: false,
     warning: false,
     children: <Input />,
   },
@@ -29,7 +29,7 @@ export const Basic: Story = {
 export const Simple = () => {
   const [label, setLabel] = useState("Your label");
   return (
-    <InputField label="Label" error="il y a une erreur !">
+    <InputField label="Label" errors="il y a une erreur !">
       <Input
         placeholder="What is your name ?"
         value={label}
@@ -46,7 +46,7 @@ export const Playbook = () => {
   const [placeholder, setPlaceholder] = useState("Ex: Fernando");
   const [description, setDescription] = useState("Description message at the top of the field");
   const [warning, setWarning] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState("");
 
   return (
     <>
@@ -56,7 +56,7 @@ export const Playbook = () => {
           hint={hint}
           description={description}
           warning={warning}
-          error={error}
+          errors={errors}
         >
           <Input
             placeholder={placeholder}
@@ -89,11 +89,11 @@ export const Playbook = () => {
             onChange={(e) => setWarning(e.target.value)}
           />
         </InputField>
-        <InputField label="Error">
+        <InputField label="Errors">
           <Input
-            placeholder="Error message"
-            value={error}
-            onChange={(e) => setError(e.target.value)}
+            placeholder="Errors message"
+            value={errors}
+            onChange={(e) => setErrors(e.target.value)}
           />
         </InputField>
       </div>
@@ -103,7 +103,6 @@ export const Playbook = () => {
 
 export const Context = () => {
   const [name, setName] = useState("");
-  const [gender, setGender] = useState<string | null>("female");
   const [isAgree, setIsAgree] = useState(true);
   const [isEnabled, setIsEnabled] = useState(true);
 
@@ -120,7 +119,7 @@ export const Context = () => {
         label="What is your name"
         hint="Any hint related to input field"
         description="Description message at the top of the field"
-        error="Input is required"
+        errors="Input is required"
       >
         <Input placeholder="Ex: Fernando" value={name} onChange={(e) => setName(e.target.value)} />
       </InputField>
@@ -153,7 +152,7 @@ export const Context = () => {
         <InputField
           label="What is your gender"
           hint="You don't have to answer"
-          error="This field is required"
+          errors="This field is required"
           description="You still have to check a box"
         >
           <div>
@@ -199,7 +198,7 @@ export const Context = () => {
             I agree
           </Checkbox>
         </InputField>
-        <InputField label="Gender" hint="One hint" error="This field is required">
+        <InputField label="Gender" hint="One hint" errors="This field is required">
           <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
             I agree
           </Checkbox>
@@ -216,7 +215,7 @@ export const Context = () => {
             Enabled
           </Toggle>
         </InputField>
-        <InputField label="Label" hint="One hint" error="This field is required">
+        <InputField label="Label" hint="One hint" errors="This field is required">
           <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
             Enabled
           </Toggle>
@@ -224,8 +223,6 @@ export const Context = () => {
       </div>
       <pre>
         name: {name}
-        <br />
-        gender: {gender}
         <br />
         agree: {isAgree ? "True" : "False"}
         <br />
