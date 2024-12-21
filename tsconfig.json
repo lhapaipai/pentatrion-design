@@ -14,7 +14,7 @@
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
+    "noEmit": true,
     "jsx": "react-jsx",
     /* Linting */
     "strict": true,
@@ -28,10 +28,18 @@
     "declaration": true,
     "types": ["react/experimental", "@testing-library/jest-dom"],
     "baseUrl": ".",
+    /**
+     * We define project rootDir but set noEmit to true
+     * in tsconfig.build.json we define rootDir to "./src"
+     * and noEmit to false.
+     * With this TypeScript TypeCheck ts config file who are defined
+     * outside src/ directory (eg: tailwind.config.ts)
+     */
+    "rootDir": ".",
     "paths": {
       "~/*": ["./src/*"]
     }
   },
   "exclude": ["**/node_modules", "./dist"],
-  "include": ["src", "*.ts", ".storybook"]
+  "include": ["src/**/*", "*.ts", ".storybook"]
 }

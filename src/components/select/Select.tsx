@@ -89,7 +89,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
       required = true,
       defaultValue,
       name = "",
-      value = null,
+      value: controlledValue,
       onChange = null,
       placeholder = "Select ...",
       getSearchableValue,
@@ -101,7 +101,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     },
     propRef,
   ) => {
-    const isControlled = onChange !== null;
+    // const isControlled = onChange !== null;
+    const isControlled = typeof controlledValue !== "undefined";
 
     const onChangeStable = useEffectEvent(onChange);
 
@@ -131,8 +132,8 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
 
     let selectedIndex: number | null = null;
     if (isControlled) {
-      if (value !== null) {
-        const pos = filteredOptions.findIndex((o) => o.value === value);
+      if (controlledValue !== null) {
+        const pos = filteredOptions.findIndex((o) => o.value === controlledValue);
         if (pos !== -1) {
           selectedIndex = pos;
         }
@@ -226,14 +227,14 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
         setIsOpen(false);
         setSearch("");
 
-        if (isControlled) {
-          const event: ChangeEventLike = {
-            target: {
-              value: index === null ? null : filteredOptions[index].value,
-            },
-          };
-          onChangeStable(event);
-        } else {
+        const event: ChangeEventLike = {
+          target: {
+            value: index === null ? null : filteredOptions[index].value,
+          },
+        };
+        onChangeStable?.(event);
+
+        if (!isControlled) {
           setUncontrolledSelectedIndex(index);
         }
       },

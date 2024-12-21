@@ -1,4 +1,5 @@
 export { Input, inputConfig } from "./Input";
+export { InputButton } from "./InputButton";
 export { Checkbox, CheckboxButton } from "./Checkbox";
 export { Radio, RadioButton } from "./Radio";
 export { Toggle } from "./Toggle";
