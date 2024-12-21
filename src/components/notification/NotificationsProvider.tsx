@@ -15,6 +15,28 @@ interface Props {
 export function NotificationsProvider({ children }: Props) {
   const [notifications, setNotifications] = useState<Message[]>([]);
   const container = useRef<HTMLDivElement>(null!);
+
+  useEffect(() => {
+    const currentContainer = container.current;
+    return () => {
+      currentContainer?.remove();
+    };
+  }, []);
+
+  const managerRef = useRef<NotificationsManager>();
+
+  if (!managerRef.current) {
+    managerRef.current = createNotificationsManager(setNotifications);
+  }
+
+  const manager = managerRef.current;
+
+  if (typeof window === "undefined") {
+    return (
+      <NotificationsContext.Provider value={manager}>{children}</NotificationsContext.Provider>
+    );
+  }
+
   if (!container.current) {
     container.current = document.createElement("div");
     container.current.id = Math.floor(Math.random() * 100000).toString();
@@ -29,20 +51,6 @@ export function NotificationsProvider({ children }: Props) {
     );
     document.body.append(container.current);
   }
-
-  useEffect(() => {
-    return () => {
-      container.current && container.current.remove();
-    };
-  }, []);
-
-  const managerRef = useRef<NotificationsManager>();
-
-  if (!managerRef.current) {
-    managerRef.current = createNotificationsManager(setNotifications);
-  }
-
-  const manager = managerRef.current;
 
   return (
     <>

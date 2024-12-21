@@ -7,7 +7,7 @@ import { Button } from "../button/Button";
 import { useContextNotifications } from "./useContextNotifications";
 
 const meta = {
-  title: "Components/NotificationsProvider",
+  title: "Components/NotificationsProviderLegacy",
   component: NotificationsProvider,
   decorators: [
     (Story) => (
