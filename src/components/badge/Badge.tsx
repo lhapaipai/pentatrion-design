@@ -35,6 +35,7 @@ export function Badge({
           icon: null,
           size: null,
           clickable: onClick !== undefined,
+          width: "custom",
         }),
         className,
       )}
