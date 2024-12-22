@@ -38,16 +38,27 @@ interface CheckboxButtonProps extends Omit<ComponentPropsWithRef<"input">, "size
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
   size?: "small" | "medium" | "large" | "custom";
+  width?: "fit" | "full" | "custom";
   icon?: boolean;
 }
 export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(function Checkbox(
-  { color = "yellow", disabled = false, size, icon, variant, className, children, ...rest },
+  {
+    color = "yellow",
+    disabled = false,
+    width = "fit",
+    size,
+    icon,
+    variant,
+    className,
+    children,
+    ...rest
+  },
   ref,
 ) {
   return (
     <label
       aria-disabled={disabled}
-      className={clsx(className, buttonVariants({ variant, size, icon }))}
+      className={clsx(className, buttonVariants({ variant, size, icon, width }))}
       data-color={color}
     >
       <input

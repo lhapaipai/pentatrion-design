@@ -3,7 +3,7 @@ import { ComponentPropsWithRef, forwardRef, ReactNode } from "react";
 import { ThemeColor } from "~/types";
 import { inputConfig, sizeVariant } from "./Input";
 
-interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
+export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
   label?: string;
   variant?: "normal" | "ghost";
   disabled?: boolean;
@@ -56,7 +56,7 @@ export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(functi
         aria-readonly={readOnly}
         className={clsx("flex flex-1 items-center", flexibleWidth && "w-0")}
       >
-        <span className="flex flex-1 items-center px-2">
+        <span className="flex flex-1 items-center truncate px-2">
           <span>{label || placeholder}</span>
         </span>
         <span className="box-border inline-flex h-8 min-w-8 items-center justify-center rounded-full text-gray-7">

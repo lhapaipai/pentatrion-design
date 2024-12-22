@@ -9,7 +9,7 @@ import { separatorVariant } from "../separator";
 const meta = {
   title: "Components/QuickSettings",
   decorators: (Story) => (
-    <div className="grid grid-cols-1 gap-8" style={{ width: "350px" }}>
+    <div className="grid grid-cols-1 gap-8" style={{ maxWidth: "350px" }}>
       <Story />
     </div>
   ),
@@ -31,6 +31,91 @@ const directionOptions = [
 // };
 
 export const Basic = () => {
+  const [profile, setProfile] = useState<string | null>("car");
+  const [direction, setDirection] = useState<string | null>("departure");
+  return (
+    <div className="grid grid-cols-1 gap-2">
+      <div className="p8n-setting">
+        <div>Temps</div>
+        <Input suffix="min" defaultValue="0" className="w-32" />
+      </div>
+      <div className="p8n-setting">
+        <div>Distance</div>
+        <Input suffix="km" className="w-32" />
+      </div>
+
+      <div className="p8n-setting">
+        <div>Mode de transport</div>
+        <div>
+          <Select
+            variant="ghost"
+            options={profileOptions}
+            value={profile}
+            onChange={(o) => {
+              // @ts-ignore
+              setProfile(o.target.value);
+            }}
+          ></Select>
+        </div>
+      </div>
+      <div className="p8n-setting">
+        <div>Sens de parcours</div>
+        <Select
+          variant="ghost"
+          options={directionOptions}
+          value={direction}
+          onChange={(o) => {
+            // @ts-ignore
+            setDirection(o.target.value);
+          }}
+        ></Select>
+      </div>
+      <div className="p8n-setting multiple">
+        <div>Passages autorisés</div>
+        <div className="">
+          <Checkbox checked={true}>Péages</Checkbox>
+          <Checkbox checked={false}>Ponts</Checkbox>
+        </div>
+      </div>
+
+      <div className="p8n-setting multiple">
+        <div>Éviter</div>
+        <div className="">
+          <Checkbox checked={true}>
+            <span>Sections à péage</span>
+          </Checkbox>
+          <Checkbox checked={false}>
+            <span>Ponts</span>
+          </Checkbox>
+          <Checkbox checked={false}>
+            <span>Tunnels</span>
+          </Checkbox>
+        </div>
+      </div>
+
+      <div className={separatorVariant}></div>
+
+      <div>
+        <div className="p8n-setting">
+          <div>Distance</div>
+          <div>
+            325 <span className="text-body-sm text-gray-6">km</span>
+          </div>
+        </div>
+        <div className="p8n-setting">
+          <div>Durée</div>
+          <div>3h 25min</div>
+        </div>
+      </div>
+
+      <div className="text-right">
+        <Button>Calculer</Button>
+      </div>
+    </div>
+  );
+};
+
+export const Full = () => {
   const [profile, setProfile] = useState<string | null>("car");
   const [direction, setDirection] = useState<string | null>("departure");
   return (

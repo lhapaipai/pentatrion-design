@@ -9,6 +9,11 @@ export const pentatrionTw = plugin(
   ({ addVariant }) => {
     // addVariant("active-full", ["&:active", "&.active"]);
 
+    /**
+     *  aria-[checked=true]:bg-[rgb(var(--color-custom-3))] aria-[current]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))]
+     */
+    addVariant("current", [`&[aria-checked="true"]`, `&[aria-current="page"]`, `&:has(:checked)`]);
+
     addVariant("focus-visible-has", ["&:focus-visible", "&:has(:focus)", "&:has(:active)"]);
     // dbl :focus:focus else :hover will have priority to focus-full variant.
     addVariant("focus-full", ["&:has(input:focus)", "&.focus", "&:focus:focus"]);
@@ -133,7 +138,15 @@ export const pentatrionTw = plugin(
         gridTemplateColumns: {
           "repeat-fill-300": "repeat(auto-fill, minmax(300px, 1fr))",
           "repeat-fill-200": "repeat(auto-fill, minmax(200px, 1fr))",
-          "repeat-fill-160": "repeat(auto-fill, minmax(160px, 1fr))",
+
+          /**
+           * smartphone width: 375px
+           * 0.5rem <1col> gap: 0.5rem <1col> 0.5rem
+           * 1col = (375px - (1.5rem = 24px)) = 175.5px
+           * on laisse une petite marge 170
+           */
+          "repeat-fill-170": "repeat(auto-fill, minmax(170px, 1fr))",
+          "repeat-fit-170": "repeat(auto-fit, minmax(170px, 1fr))",
         },
         animation: {
           ripple: "ripple .9s linear",
@@ -148,11 +161,11 @@ export const pentatrionTw = plugin(
           /** 80px size / 84px high / bold */
           mega: ["5rem", { lineHeight: "5.25rem", fontWeight: "700" }],
           /** 56px size / 62px high / bold */
-          h1: ["2.25rem", { lineHeight: "1.1", fontWeight: "700" }],
+          h1: ["1.6rem", { lineHeight: "1.1", fontWeight: "700" }],
           /** 40px size / 48px high / bold */
-          h2: ["1.5rem", { lineHeight: "1.3", fontWeight: "700" }],
+          h2: ["1.4rem", { lineHeight: "1.3", fontWeight: "700" }],
           /** 32px size / 36px high / bold */
-          h3: ["1.25rem", { lineHeight: "1.6", fontWeight: "700" }],
+          h3: ["1.2rem", { lineHeight: "1.6", fontWeight: "700" }],
           /** 28px size / 36px high / bold */
           h4: ["1rem", { lineHeight: "1.5", fontWeight: "700" }],
           /** 24px size / 32px high / bold */

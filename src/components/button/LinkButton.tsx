@@ -4,7 +4,10 @@ import { useRipple } from "../../hooks/useRipple";
 import { ButtonProps, buttonVariants } from "./Button";
 
 export type LinkButtonProps = ComponentPropsWithRef<"a"> &
-  Pick<ButtonProps, "withRipple" | "variant" | "size" | "color" | "selected" | "icon" | "disabled">;
+  Pick<
+    ButtonProps,
+    "withRipple" | "variant" | "size" | "color" | "selected" | "icon" | "disabled" | "width"
+  >;
 
 export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(function LinkButton(
   {
@@ -12,6 +15,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
     variant = "contained",
     color = "yellow",
     size = "medium",
+    width = "fit",
     className,
     disabled,
     children,
@@ -37,7 +41,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
       href={href}
       ref={anchorRef}
       className={clsx(
-        buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
+        buttonVariants({ variant, size, width, icon: size === "custom" ? "custom" : icon }),
         className,
         selected && "active",
       )}

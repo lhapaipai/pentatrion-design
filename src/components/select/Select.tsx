@@ -277,7 +277,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
           }}
           {...getReferenceProps()}
         >
-          <span className={clsx("flex h-8 flex-1 items-center px-2")}>
+          <span className="flex h-8 flex-1 items-center truncate px-2">
             {selectedIndex !== null ? (
               <SelectSelectionComponent {...filteredOptions[selectedIndex]} key={selectedIndex} />
             ) : (

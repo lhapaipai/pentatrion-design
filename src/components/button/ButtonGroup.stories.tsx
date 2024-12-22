@@ -35,6 +35,7 @@ export const Context = () => {
                       key={label}
                       selected={val === label}
                       onClick={() => setVal(label)}
+                      width={direction === "vertical" ? "full" : "fit"}
                     >
                       {label}
                     </Button>

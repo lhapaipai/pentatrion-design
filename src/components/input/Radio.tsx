@@ -6,6 +6,7 @@ import { buttonVariants } from "../button";
 export interface RadioProps extends ComponentPropsWithRef<"input"> {
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
+  width?: "fit" | "full" | "custom";
 }
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ disabled = false, color = "yellow", children, className, ...rest }, ref) => {
@@ -31,13 +32,21 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
 export const RadioButton = forwardRef<HTMLInputElement, RadioProps>(
   (
-    { disabled = false, color = "yellow", children, className, variant = "light", ...rest },
+    {
+      disabled = false,
+      color = "yellow",
+      children,
+      className,
+      variant = "light",
+      width = "fit",
+      ...rest
+    },
     ref,
   ) => {
     return (
       <label
         aria-disabled={disabled}
-        className={clsx(className, buttonVariants({ variant }))}
+        className={clsx(className, buttonVariants({ variant, width }))}
         data-color={color}
       >
         <input

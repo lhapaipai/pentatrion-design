@@ -15,6 +15,8 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
 
   color?: ThemeColor;
 
+  width?: "fit" | "full" | "custom";
+
   loading?: boolean;
 
   disabled?: boolean;
@@ -39,26 +41,39 @@ export const buttonVariants = cva(
         false: "pointer-events-none",
       },
       size: {
-        small: "h-6",
-        medium: "h-8",
-        large: "h-12",
+        small: "truncate h-6",
+        medium: "truncate h-8",
+        large: "truncate h-12",
         custom: "",
       },
       icon: {
         true: "rounded-full min-w-8 [&_i]:w-[calc(2rem-4px)] justify-center [&_:last-child:not(i,img,svg)]:pr-4",
-        false: "rounded-2xl px-4",
+        false: "rounded-2xl",
         custom: "",
       },
       variant: {
+        /**
+         * src/tailwind/plugin.ts
+         *   addVariant("current", [
+         *    `&[aria-checked="true"]`,
+         *    `&[aria-current="page"]`,
+         *    `&:has(:checked)`
+         *   ])
+         */
         contained:
-          "shadow hover:shadow-md active:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] aria-[checked=true]:bg-[rgb(var(--color-custom-4))] has-[:checked]:bg-[rgb(var(--color-custom-4))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "shadow hover:shadow-md active:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] current:bg-[rgb(var(--color-custom-4))]  focus-visible-has:outline-[rgb(var(--color-custom-5))]",
         light:
-          "shadow hover:shadow-md has-[:checked]:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] aria-[checked=true]:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-4))]",
+          "shadow hover:shadow-md has-[:checked]:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] current:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-4))]",
         outlined:
-          "bg-gray-0 hover:shadow-sm active:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]  aria-[checked=true]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] focus-visible-has:border-transparent",
-        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 aria-[checked=true]:bg-[rgb(var(--color-custom-3))] has-[:checked]:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "bg-gray-0 hover:shadow-sm active:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))] current:bg-[rgb(var(--color-custom-3))] focus-visible-has:border-transparent",
+        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 current:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
         ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 aria-[checked=true]:bg-[rgb(var(--color-custom-1))] has-[:checked]:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+      },
+      width: {
+        fit: "w-full max-w-fit px-4",
+        full: "w-full",
+        custom: "",
       },
     },
     defaultVariants: {
@@ -66,6 +81,7 @@ export const buttonVariants = cva(
       icon: false,
       variant: "contained",
       clickable: true,
+      width: "fit",
     },
   },
 );
@@ -84,6 +100,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     selected = false,
     icon = false,
     asChild = false,
+    width = "fit",
     ...props
   },
   ref,
@@ -110,7 +127,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       role="button"
       ref={inputRef}
       className={clsx(
-        buttonVariants({ variant, size, icon: size === "custom" ? "custom" : icon }),
+        buttonVariants({
+          variant,
+          size,
+          width: icon ? "custom" : width,
+          icon: size === "custom" ? "custom" : icon,
+        }),
         className,
         loading && !icon && "text-transparent",
       )}

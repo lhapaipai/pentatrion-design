@@ -53,7 +53,7 @@ export const Icons = () => {
           placeholder={`Search ${fontelloConfig.glyphs.length} icons by name`}
         />
       </div>
-      <div className="mt-4 grid grid-cols-repeat-fill-160 gap-4">
+      <div className="grid-cols-repeat-fill-170 mt-4 grid gap-4">
         {iconResults.map((glyph) => (
           <div
             className="flex-center flex-col rounded-2xl border border-gray-2 p-2"
