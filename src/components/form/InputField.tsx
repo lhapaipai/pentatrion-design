@@ -25,7 +25,7 @@ export function InputField({
   const id = providedId ?? internalId;
 
   const labelElement = label && <span>{label}</span>;
-  const hintElement = hint && <span className="ml-auto text-body-sm text-gray-6">{hint}</span>;
+  const hintElement = hint && <span className="text-body-sm text-gray-6">{hint}</span>;
   const errorsElement = errors && typeof errors !== "boolean" && (
     <span className="font-medium text-red-4 dark:text-red-2">
       <i className="fe-circle-exclamation"></i>
@@ -44,7 +44,7 @@ export function InputField({
   return (
     <div>
       {label || hint ? (
-        <label className="mb-1 flex items-end" htmlFor={id}>
+        <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>
           {labelElement}
           {hintElement}
         </label>

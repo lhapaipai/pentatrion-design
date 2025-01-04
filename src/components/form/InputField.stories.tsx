@@ -44,7 +44,7 @@ export const Playbook = () => {
   const [label, setLabel] = useState("Your label");
   const [hint, setHint] = useState("Any hint related to input field");
   const [placeholder, setPlaceholder] = useState("Ex: Fernando");
-  const [description, setDescription] = useState("Description message at the top of the field");
+  const [description, setDescription] = useState("");
   const [warning, setWarning] = useState("");
   const [errors, setErrors] = useState("");
 

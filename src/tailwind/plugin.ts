@@ -142,11 +142,14 @@ export const pentatrionTw = plugin(
           /**
            * smartphone width: 375px
            * 0.5rem <1col> gap: 0.5rem <1col> 0.5rem
-           * 1col = (375px - (1.5rem = 24px)) = 175.5px
+           * 1col = (375px - (1.5rem = 24px)) / 2 = 175.5px
            * on laisse une petite marge 170
+           *
+           * 1col = (360px - 24px) / 2 = 168 px
+           * on laisse une petite marge 160 px
            */
-          "repeat-fill-170": "repeat(auto-fill, minmax(170px, 1fr))",
-          "repeat-fit-170": "repeat(auto-fit, minmax(170px, 1fr))",
+          "repeat-fill-160": "repeat(auto-fill, minmax(160px, 1fr))",
+          "repeat-fit-160": "repeat(auto-fit, minmax(160px, 1fr))",
         },
         animation: {
           ripple: "ripple .9s linear",
