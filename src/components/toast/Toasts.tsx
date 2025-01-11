@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Snack } from "pentatrion-design/snack";
+import { Snack } from "../snack";
 import { Message } from "./types";
 
 import { manager } from "./toastsManager";
