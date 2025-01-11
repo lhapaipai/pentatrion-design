@@ -25,10 +25,12 @@
   },
   "type": "module",
   "devDependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "^1.4.0",
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@conform-to/react": "^1.2.2",
     "@conform-to/zod": "^1.2.2",
     "@eslint/js": "^9.17.0",
-    "@floating-ui/react": "^0.27.2",
+    "@floating-ui/react": "^0.27.3",
     "@floating-ui/react-dom": "^2.1.2",
     "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.5.0",

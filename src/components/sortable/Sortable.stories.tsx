@@ -6,8 +6,7 @@ import { Input } from "../input/Input";
 import { Sortable } from "./Sortable";
 
 const meta = {
-  title: "Components/Sortable",
-  component: Sortable,
+  title: "Components/SortableLegacy",
   decorators: [(Story) => <Story />],
 } satisfies Meta;
 export default meta;
