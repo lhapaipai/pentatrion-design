@@ -891,6 +891,12 @@
       ]
     },
     {
+      "uid": "107ce08c7231097c7447d8f4d059b55f",
+      "css": "ellipsis",
+      "code": 61761,
+      "src": "fontawesome"
+    },
+    {
       "uid": "24b7643d8401ffb5bd0872b14261d9ee",
       "css": "climbing-outdoor",
       "code": 59402,

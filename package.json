@@ -26,6 +26,7 @@
   "type": "module",
   "devDependencies": {
     "@atlaskit/pragmatic-drag-and-drop": "^1.4.0",
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "^2.1.0",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.0.3",
     "@conform-to/react": "^1.2.2",
     "@conform-to/zod": "^1.2.2",
@@ -174,6 +175,10 @@
     "./dropdown-menu": {
       "types": "./dist/components/dropdown-menu/index.d.ts",
       "default": "./dist/components/dropdown-menu/index.js"
+    },
+    "./dropdown-menu-legacy": {
+      "types": "./dist/components/dropdown-menu-legacy/index.d.ts",
+      "default": "./dist/components/dropdown-menu-legacy/index.js"
     },
     "./dropdown-menu-nested": {
       "types": "./dist/components/dropdown-menu-nested/index.d.ts",

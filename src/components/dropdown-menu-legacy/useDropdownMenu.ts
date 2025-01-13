@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from "react";
-import type { UseDropdownMenuOptions } from "./interface";
+import type { DropdownMenuOptions } from "./interface";
 import {
   autoUpdate,
   flip,
@@ -23,7 +23,7 @@ export function useDropdownMenu({
   onOpen: setControlledOpen,
   color,
   modal = false,
-}: UseDropdownMenuOptions) {
+}: DropdownMenuOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;

@@ -50,7 +50,7 @@ export function DropIndicator({ edge, gap }: Props) {
         } as CSSProperties
       }
       className={clsx(
-        "pointer-events-none absolute z-10 box-border bg-gray-5 before:absolute before:block before:h-[--circle-size] before:w-[--circle-size] before:rounded-full before:border-[length:--line-thickness] before:border-solid before:border-gray-5",
+        "pointer-events-none absolute z-10 box-border bg-gray-6 before:absolute before:block before:h-[--circle-size] before:w-[--circle-size] before:rounded-full before:border-[length:--line-thickness] before:border-solid before:border-gray-6 before:bg-white",
         orientationStyles[orientation],
         edgeStyles[edge],
       )}

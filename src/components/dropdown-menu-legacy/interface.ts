@@ -1,7 +1,7 @@
 import { Placement } from "@floating-ui/react";
 import { ThemeColor } from "../../types";
 
-export interface UseDropdownMenuOptions {
+export interface DropdownMenuOptions {
   initialOpen?: boolean;
   placement?: Placement;
   open?: boolean;

@@ -7,6 +7,7 @@ import { useDraggableItem } from "./useDraggableItem";
 import { DropIndicator } from "./DropIndicator";
 import { createPortal } from "react-dom";
 import { dragStateStyles } from "./util";
+import { Button } from "../button";
 
 const meta = {
   title: "Components/Draggable",
@@ -38,17 +39,19 @@ function PostCard({ post }: { post: Post }) {
       <div className="relative">
         <div
           className={clsx(
-            "flex flex-row items-center rounded border border-solid border-gray-2 bg-white p-2 pl-0 text-sm hover:cursor-grab hover:bg-gray-1",
+            "flex h-8 flex-row items-center rounded-2xl border border-solid border-gray-2 bg-white pl-0 pr-4 text-sm hover:cursor-grab hover:bg-gray-1",
             dragStateStyles[state.type] ?? "",
           )}
           // Adding data-attribute as a way to query for this for our post drop flash
           data-item-id={post.id}
           ref={ref}
         >
-          <div className="flex w-6 justify-center">
+          <div className="flex w-8 items-center justify-center">
             <i className="fe-vertical-grip"></i>
           </div>
-          <span className="flex-shrink flex-grow truncate">{post.name}</span>
+          <span className="flex-shrink flex-grow truncate">
+            {post.name} [{state.type}]
+          </span>
         </div>
         {state.type === "is-dragging-over" && state.closestEdge ? (
           <DropIndicator edge={state.closestEdge} gap={"8px"} />
@@ -84,26 +87,21 @@ export const Basic = () => {
 };
 
 function InputCard({ post }: { post: Post }) {
-  const { ref, state } = useDraggableItem({
+  const { ref, state, refHandle } = useDraggableItem({
     id: post.id,
   });
 
   return (
-    <div className="relative">
-      <div
-        className={clsx(
-          "flex flex-row items-center rounded border border-solid border-gray-2 bg-white p-2 pl-0 text-sm hover:cursor-grab hover:bg-gray-1",
-          dragStateStyles[state.type] ?? "",
-        )}
-        // Adding data-attribute as a way to query for this for our post drop flash
-        data-item-id={post.id}
-        ref={ref}
-      >
-        <div className="flex w-6 justify-center">
-          <i className="fe-vertical-grip"></i>
-        </div>
-        <Input className="flex-1" defaultValue={post.name} />
-      </div>
+    <div className="relative rounded-2xl" ref={ref} data-item-id={post.id}>
+      <Input
+        prefix={
+          <Button variant="text" icon ref={refHandle} className="hover:cursor-grab" color="gray">
+            <i className="fe-vertical-grip"></i>
+          </Button>
+        }
+        className={clsx(dragStateStyles[state.type] ?? "")}
+        defaultValue={post.name}
+      />
       {state.type === "is-dragging-over" && state.closestEdge ? (
         <DropIndicator edge={state.closestEdge} gap={"8px"} />
       ) : null}
@@ -124,6 +122,35 @@ export const WithInputs = () => {
         {posts.map((post) => (
           <InputCard key={post.id} post={post} />
         ))}
+      </div>
+    </div>
+  );
+};
+
+export const DropIndicatorContext = () => {
+  return (
+    <div className="flex max-w-96 flex-col gap-4">
+      <div className="flex flex-col gap-2">
+        <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 1</div>
+        <div className="relative">
+          <DropIndicator edge="top" gap="0.5rem" />
+          <DropIndicator edge="bottom" gap="0.5rem" />
+          <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 2</div>
+        </div>
+        <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 3</div>
+      </div>
+      <div className="flex gap-2">
+        <div className="h-12 flex-1 rounded border border-solid border-gray-2 bg-white p-2">
+          Item 1
+        </div>
+        <div className="relative flex-1">
+          <DropIndicator edge="left" gap="0.5rem" />
+          <DropIndicator edge="right" gap="0.5rem" />
+          <div className="h-12 rounded border border-solid border-gray-2 bg-white p-2">Item 2</div>
+        </div>
+        <div className="h-12 flex-1 rounded border border-solid border-gray-2 bg-white p-2">
+          Item 3
+        </div>
       </div>
     </div>
   );

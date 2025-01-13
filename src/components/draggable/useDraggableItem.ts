@@ -22,13 +22,16 @@ type UseDraggableItemOptions = {
 
 export const useDraggableItem = ({ id, customPreview = false }: UseDraggableItemOptions) => {
   const ref = useRef<HTMLDivElement>(null!);
+  const refHandle = useRef(null!);
   const [state, setState] = useState<DraggableState>(idle);
 
   useEffect(() => {
     const element = ref.current;
+    const dragHandle = refHandle.current ?? undefined;
     return combine(
       draggable({
         element,
+        dragHandle,
         getInitialData() {
           return getItemData(id);
         },
@@ -101,5 +104,5 @@ export const useDraggableItem = ({ id, customPreview = false }: UseDraggableItem
     );
   }, [id, customPreview]);
 
-  return { ref, state };
+  return { ref, refHandle, state };
 };
