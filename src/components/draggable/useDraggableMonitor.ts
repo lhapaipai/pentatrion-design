@@ -1,10 +1,11 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect } from "react";
 
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 import { extractClosestEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge";
 import { reorderWithEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/reorder-with-edge";
 import { flushSync } from "react-dom";
 import { isItemData, triggerPostMoveFlash } from "./util";
+import { useEffectEvent } from "~/hooks";
 
 type Item = Record<string, any>;
 
@@ -14,7 +15,7 @@ function defaultGetItemIndexById(list: Item[], id: string | number) {
 
 export type UseDraggableMonitorOptions<I extends Item> = {
   list: I[];
-  setList: Dispatch<SetStateAction<I[]>>;
+  setList: (list: I[]) => void;
   /** use a stable accessor */
   getItemIndexById?: (list: I[], id: string | number) => number;
 };
@@ -24,6 +25,8 @@ export const useDraggableMonitor = <I extends Item>({
   setList,
   getItemIndexById = defaultGetItemIndexById,
 }: UseDraggableMonitorOptions<I>) => {
+  const stableSetList = useEffectEvent(setList);
+
   useEffect(() => {
     return monitorForElements({
       canMonitor({ source }) {
@@ -53,7 +56,7 @@ export const useDraggableMonitor = <I extends Item>({
 
         // Using `flushSync` so we can query the DOM straight after this line
         flushSync(() => {
-          setList(
+          stableSetList(
             reorderWithEdge({
               list,
               startIndex: indexOfSource,
@@ -74,5 +77,5 @@ export const useDraggableMonitor = <I extends Item>({
         }
       },
     });
-  }, [list, setList, getItemIndexById]);
+  }, [list, stableSetList, getItemIndexById]);
 };
