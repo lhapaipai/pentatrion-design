@@ -152,6 +152,26 @@ export const Context = () => {
           <Loader color="yellow" />
         </Button>
       </div>
+      <div className="mb-4 flex items-center gap-4">
+        <Button icon variant="contained" color="gray" size="small">
+          <i className="fe-cancel text-body-sm"></i>
+        </Button>
+        <Button icon variant="contained" color="gray" size="medium">
+          <i className="fe-cancel"></i>
+        </Button>
+        <Button icon variant="contained" color="gray" size="large">
+          <i className="fe-cancel text-body-2xl"></i>
+        </Button>
+        <Button
+          icon
+          variant="contained"
+          color="gray"
+          size="custom"
+          className="h-20 w-20 justify-center rounded-full"
+        >
+          <i className="fe-cancel text-body-3xl"></i>
+        </Button>
+      </div>
       <h3 className="sb-h3">Custom</h3>
       <div className="mb-4 flex items-center gap-4">
         <Button size="custom" className="rounded-2xl">
@@ -166,22 +186,34 @@ export const Context = () => {
           <br />
           lines
         </Button>
-        <Button size="custom" className="rounded-2xl p-1">
+        <Button size="custom" className="rounded-2xl p-1" width="custom">
           <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
         </Button>
-        <Button size="custom" className="rounded-full p-2">
+        <Button size="custom" className="rounded-full p-2" width="custom">
           <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
         </Button>
-        <Button color="gray" size="custom" className="rounded-2xl p-1">
+        <Button color="gray" size="custom" className="rounded-2xl p-1" width="custom">
           <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
         </Button>
-        <Button color="gray" size="custom" className="rounded-full p-2">
+        <Button color="gray" size="custom" className="rounded-full p-2" width="custom">
           <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
         </Button>
-        <Button color="gray" variant="text" size="custom" className="rounded-2xl p-1">
+        <Button
+          color="gray"
+          variant="text"
+          size="custom"
+          className="rounded-2xl p-1"
+          width="custom"
+        >
           <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
         </Button>
-        <Button color="gray" variant="text" size="custom" className="rounded-full p-2">
+        <Button
+          color="gray"
+          variant="text"
+          size="custom"
+          className="rounded-full p-2"
+          width="custom"
+        >
           <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
         </Button>
       </div>

@@ -47,7 +47,8 @@ export const buttonVariants = cva(
         custom: "",
       },
       icon: {
-        true: "rounded-full min-w-8 [&_i]:w-[calc(2rem-4px)] justify-center [&_:last-child:not(i,img,svg)]:pr-4",
+        /* if size is custom icon is not used */
+        true: "rounded-full [&_i]:w-[calc(2rem-4px)] justify-center [&_:last-child:not(i,img,svg)]:pr-4",
         false: "rounded-2xl",
         custom: "",
       },
@@ -85,6 +86,13 @@ export const buttonVariants = cva(
     },
   },
 );
+
+const iconSizeVariants = {
+  small: "min-w-6",
+  medium: "min-w-8",
+  large: "min-w-12",
+  custom: "",
+};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
@@ -133,6 +141,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
           width: icon ? "custom" : width,
           icon: size === "custom" ? "custom" : icon,
         }),
+        icon && iconSizeVariants[size],
         className,
         loading && !icon && "text-transparent",
       )}

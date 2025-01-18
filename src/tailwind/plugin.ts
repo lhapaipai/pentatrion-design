@@ -177,7 +177,13 @@ export const pentatrionTw = plugin(
           h6: ["1rem", { lineHeight: "1.5", fontWeight: "700" }],
 
           /** 32px size / 36px high / normal */
-          "body-3xl": ["2rem", { lineHeight: "2.25rem" }],
+          "body-6xl": ["5rem", { lineHeight: "6rem" }],
+          /** 32px size / 36px high / normal */
+          "body-5xl": ["4rem", { lineHeight: "5rem" }],
+          /** 32px size / 36px high / normal */
+          "body-4xl": ["3rem", { lineHeight: "4rem" }],
+          /** 32px size / 36px high / normal */
+          "body-3xl": ["2rem", { lineHeight: "2.5rem" }],
           /** 32px size / 36px high / normal */
           "body-2xl": ["1.75rem", { lineHeight: "2.25rem" }],
           /** 28px size / 36px high / normal */
