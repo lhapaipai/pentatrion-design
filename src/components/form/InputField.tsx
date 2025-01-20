@@ -10,6 +10,7 @@ interface InputFieldProps {
   warning?: ReactNode | boolean;
   children: ReactNode;
   id?: string;
+  preventLayerShift?: boolean;
 }
 
 export function InputField({
@@ -20,6 +21,7 @@ export function InputField({
   warning,
   id: providedId,
   children,
+  preventLayerShift = true,
 }: InputFieldProps) {
   const internalId = useId();
   const id = providedId ?? internalId;
@@ -49,13 +51,17 @@ export function InputField({
           {hintElement}
         </label>
       ) : (
-        <label htmlFor={id} className="invisible"></label>
+        preventLayerShift && <label htmlFor={id} className="invisible"></label>
       )}
       {description && <div className="mb-2 text-body-sm text-gray-6">{description}</div>}
       <Slot id={id} color={color}>
         {children}
       </Slot>
-      <div className="mt-1 min-h-5 text-body-sm text-gray-6">{errorsElement || warningElement}</div>
+      {(preventLayerShift || errorsElement || warningElement) && (
+        <div className="mt-1 min-h-5 text-body-sm text-gray-6">
+          {errorsElement || warningElement}
+        </div>
+      )}
     </div>
   );
 }
