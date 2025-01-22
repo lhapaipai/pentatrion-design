@@ -43,21 +43,25 @@ export function InputField({
 
   const color: ThemeColor = errors ? "red" : warning ? "orange" : "yellow";
 
+  const showLabel = preventLayerShift || label || hint;
+  const showFooter = preventLayerShift || errorsElement || warningElement;
+
   return (
     <div>
-      {label || hint ? (
-        <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>
-          {labelElement}
-          {hintElement}
-        </label>
-      ) : (
-        preventLayerShift && <label htmlFor={id} className="invisible"></label>
-      )}
+      {showLabel &&
+        (label || hint ? (
+          <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>
+            {labelElement}
+            {hintElement}
+          </label>
+        ) : (
+          <label htmlFor={id} className="invisible"></label>
+        ))}
       {description && <div className="mb-2 text-body-sm text-gray-6">{description}</div>}
       <Slot id={id} color={color}>
         {children}
       </Slot>
-      {(preventLayerShift || errorsElement || warningElement) && (
+      {showFooter && (
         <div className="mt-1 min-h-5 text-body-sm text-gray-6">
           {errorsElement || warningElement}
         </div>

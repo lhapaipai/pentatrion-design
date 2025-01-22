@@ -208,6 +208,10 @@
       "types": "./dist/components/loader/index.d.ts",
       "default": "./dist/components/loader/index.js"
     },
+    "./media-preview": {
+      "types": "./dist/components/media-preview/index.d.ts",
+      "default": "./dist/components/media-preview/index.js"
+    },
     "./modal": {
       "types": "./dist/components/modal/index.d.ts",
       "default": "./dist/components/modal/index.js"

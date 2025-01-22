@@ -148,7 +148,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       data-color={color}
       data-variant={variant}
       aria-checked={selected}
-      disabled={disabled}
+      disabled={typeof disabled === "boolean" ? disabled : undefined}
       aria-busy={loading}
       {...props}
     >
