@@ -1,22 +1,44 @@
-import { ReactNode } from "react";
+import { ComponentProps, ReactNode } from "react";
 import clsx from "clsx";
 import { Media } from "./types";
 import { isMediaImage } from "./util";
 import { FileIcon } from "./FileIcon";
 
-interface Props {
+interface Props extends ComponentProps<"div"> {
   children?: ReactNode;
   media: Media | null;
   src?: string;
   width?: number;
   height?: number;
+  squareContainer?: boolean;
 }
 
-export function MediaPreview({ children, media, src, width, height }: Props) {
+export function MediaPreview({
+  children,
+  media,
+  src,
+  width,
+  height,
+  squareContainer,
+  className,
+  ...rest
+}: Props) {
   return (
-    <div className="group relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-1 shadow-sm">
+    <div
+      className={clsx(
+        "group relative overflow-hidden rounded-xl bg-gray-1 shadow-sm",
+        squareContainer && "aspect-[4/3]",
+        className,
+      )}
+      {...rest}
+    >
       {isMediaImage(media) ? (
-        <div className="flex aspect-[4/3] items-center justify-center p-2">
+        <div
+          className={clsx(
+            "flex items-center justify-center",
+            squareContainer && "aspect-[4/3] p-2",
+          )}
+        >
           <img
             src={media.src ?? src}
             width={width ?? media.width}

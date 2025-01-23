@@ -28,11 +28,11 @@ export const pentatrionTw = plugin(
         30: "30",
         40: "40",
         50: "50",
+        toast: "80",
         dialog: "100",
         overlay: "100",
         tooltip: "100",
         "context-menu": "90",
-        notification: "80",
       },
       transitionDuration: {
         ...defaultTheme.transitionDuration,

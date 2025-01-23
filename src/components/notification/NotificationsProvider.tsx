@@ -46,7 +46,7 @@ export function NotificationsProvider({ children }: Props) {
       "bottom-0",
       "left-0",
       "right-0",
-      "z-notification",
+      "z-toast",
       "pointer-events-none",
     );
     document.body.append(container.current);

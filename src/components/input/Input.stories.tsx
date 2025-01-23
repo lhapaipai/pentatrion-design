@@ -15,7 +15,6 @@ const meta = {
       control: "text",
     },
   },
-  decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Input>;
 export default meta;
 
@@ -29,11 +28,11 @@ export const Playbook: Story = {
   },
 };
 
-function ContextWithHook() {
+export const Context = () => {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="my-4 flex flex-col gap-2">
       <Input />
       <Input color="gray" />
       <Input color="red" />
@@ -112,10 +111,7 @@ function ContextWithHook() {
         <Input className="flex-1" />
         <Button>Valider</Button>
       </div>
+      <Input type="date" />
     </div>
   );
-}
-
-export const Context: Story = {
-  render: () => <ContextWithHook />,
 };

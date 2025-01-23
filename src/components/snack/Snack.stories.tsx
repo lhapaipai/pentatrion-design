@@ -8,7 +8,7 @@ export default meta;
 
 export const Basic = () => {
   return (
-    <div className="ll-snack-bar fixed bottom-0 left-0 right-0 z-notification">
+    <div className="ll-snack-bar z-toast fixed bottom-0 left-0 right-0">
       <div className="snack-bar-inner mx-4 mb-4 flex flex-col items-center gap-4">
         <Snack id={"a"} content="Hello world" expiration={-1} color="yellow" canClose={true} />
         <Snack

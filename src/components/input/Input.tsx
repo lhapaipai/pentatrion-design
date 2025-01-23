@@ -36,6 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       readOnly,
       size = "medium",
       flexibleWidth = true,
+      type,
       ...rest
     },
     ref,
@@ -59,11 +60,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           </div>
         )}
         <input
+          type={type}
           ref={ref}
           className={clsx(
             inputConfig.input,
             !prefix && "pl-4",
-            !suffix && "pr-4",
+            type !== "date" ? !suffix && "pr-4" : "pr-1",
             flexibleWidth && "w-0",
           )}
           disabled={disabled}
