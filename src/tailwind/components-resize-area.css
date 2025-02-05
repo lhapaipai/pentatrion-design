@@ -18,7 +18,7 @@
     }
 
     &:hover::before {
-      background-color: rgb(var(--color-gray-5));
+      background-color: var(--color-gray-5);
     }
   }
 

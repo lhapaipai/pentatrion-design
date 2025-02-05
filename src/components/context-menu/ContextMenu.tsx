@@ -152,7 +152,7 @@ export function ContextMenu({ targetRef, children, style, eventName = "contextme
       {isOpen && (
         <FloatingFocusManager context={context} initialFocus={refs.floating}>
           <div
-            className="z-dialog outline-none"
+            className="z-dialog outline-hidden"
             ref={refs.setFloating}
             style={{ ...floatingStyles, ...style }}
             {...getFloatingProps()}

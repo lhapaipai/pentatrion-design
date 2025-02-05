@@ -81,7 +81,7 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
       />
       <span
-        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-[rgb(var(--color-custom-5))]"
+        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
         data-color="yellow"
       >
         {Array.from({ length: max }).map((_, i) => {

@@ -74,9 +74,9 @@ const gallery: (Media | null)[] = [
 export const Context = () => {
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-repeat-fill-200 gap-4">
+      <div className="grid-cols-repeat-fill-200 grid gap-4">
         {gallery.map((media, i) => (
-          <MediaPreview media={media} key={media?.id ?? i} squareContainer={true}>
+          <MediaPreview media={media} key={i} squareContainer={true}>
             <Button type="button" icon color="gray" size="large">
               <i className="fe-trash text-body-xl"></i>
             </Button>
@@ -85,7 +85,7 @@ export const Context = () => {
       </div>
       <div className="flex flex-wrap items-start gap-4">
         {gallery.map((media, i) => (
-          <MediaPreview media={media} key={media?.id ?? i} className="w-48">
+          <MediaPreview media={media} key={i} className="w-48">
             <Button type="button" icon color="gray" size="large">
               <i className="fe-trash text-body-xl"></i>
             </Button>

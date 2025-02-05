@@ -15,7 +15,7 @@ const CardPrimitive = forwardRef<HTMLDivElement, CardPrimitiveProps>(function Ca
   const { avatarUrl, name, role, userId } = item;
 
   return (
-    <div className="relative box-border grid cursor-grab grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border border-gray-2 bg-white p-2 shadow-sm hover:bg-gray-1">
+    <div className="border-gray-2 hover:bg-gray-1 relative box-border grid cursor-grab grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border bg-white p-2 shadow-xs">
       <div className="relative inline-block">
         <div className="pointer-events-none">
           <img className="h-10 w-10 rounded-full" src={avatarUrl} />

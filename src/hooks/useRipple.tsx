@@ -68,7 +68,7 @@ export const useRipple = <T extends HTMLElement>(ref: React.RefObject<T>, invert
           ...style,
           //should be absolutely positioned
           position: "absolute",
-          backgroundColor: inverted ? "rgb(var(--color-custom-4))" : "#ffffff",
+          backgroundColor: inverted ? "var(--color-custom-4)" : "#ffffff",
           opacity: inverted ? "75%" : "50%",
           transform: "scale(0)",
           borderRadius: "50%",

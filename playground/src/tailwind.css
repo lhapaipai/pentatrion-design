@@ -1,15 +1,7 @@
-@import "tailwindcss/base";
-@import "../../src/tailwind/vars.css" layer(base);
-@import "../../src/tailwind/base.css" layer(base);
+@import "tailwindcss" source(none);
+
+@source ".";
+@source "../../src";
+
+@import "../../src/tailwind/index.css";
 @import "../../src/tailwind/base-prose.css" layer(base);
-
-@import "tailwindcss/components";
-@import "../../src/tailwind/components.css" layer(components);
-@import "../../src/tailwind/components-input-outline.css" layer(components);
-@import "../../src/tailwind/components-resize-area.css" layer(components);
-@import "../../src/tailwind/components-step.css" layer(components);
-@import "../../src/tailwind/components-range.css" layer(components);
-
-@import "tailwindcss/utilities";
-@import "../../src/tailwind/utilities.css" layer(utilities);
-@import "../../src/tailwind/utilities-dialog.css" layer(utilities);

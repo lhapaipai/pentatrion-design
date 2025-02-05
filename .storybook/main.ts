@@ -35,9 +35,7 @@ const config: StorybookConfig = {
     const { mergeConfig } = await import("vite");
 
     return mergeConfig(config, {
-      optimizeDeps: {
-        include: ["@storybook/addon-themes"],
-      },
+      optimizeDeps: {},
     } satisfies UserConfig);
   },
 };

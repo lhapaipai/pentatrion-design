@@ -109,7 +109,7 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
       />
       <span
-        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-[rgb(var(--color-custom-5))]"
+        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
         data-color="yellow"
       >
         {Array.from({ length: options.length }).map((_, i) => {
@@ -138,7 +138,7 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
         </Button>
       )}
       {showLabel && currentValue !== -1 && (
-        <span className={clsx(labelClassName ?? "ml-2 text-body-sm text-gray-7")}>
+        <span className={clsx(labelClassName ?? "text-body-sm text-gray-7 ml-2")}>
           {options[currentValue].label}
         </span>
       )}

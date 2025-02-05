@@ -21,7 +21,7 @@ export const sizeVariant = {
 
 export const inputConfig = {
   container: "p8n-input-text rounded-full outline-offset-[-1px] flex box-border",
-  input: "h-full flex-1 appearance-none outline-none filter-none min-w-0 bg-transparent",
+  input: "h-full flex-1 appearance-none outline-hidden filter-none min-w-0 bg-transparent",
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

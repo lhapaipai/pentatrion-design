@@ -2,7 +2,7 @@
   transform-origin: bottom; /* border-top-width: 4px; */
 
   & .p8n-arrow {
-    @apply absolute top-full h-0 w-0 border-x-8 border-t-8 border-x-transparent border-t-current drop-shadow-arrow dark:drop-shadow-[0_1px_0_rgb(var(--color-gray-2))];
+    @apply drop-shadow-arrow dark:drop-shadow-arrow-dark absolute top-full h-0 w-0 border-x-8 border-t-8 border-x-transparent border-t-current;
     clip: rect(0px, 16px, 12px, 0px);
   }
 }
@@ -19,7 +19,7 @@
   transform-origin: top;
 
   & .p8n-arrow {
-    @apply absolute bottom-full h-0 w-0 border-x-8 border-b-8 border-x-transparent border-b-current drop-shadow-arrow dark:drop-shadow-[0_-1px_0_rgb(var(--color-gray-2))];
+    @apply drop-shadow-arrow dark:drop-shadow-arrow-dark absolute bottom-full h-0 w-0 border-x-8 border-b-8 border-x-transparent border-b-current;
     clip: rect(-4px, 16px, 8px, 0px);
   }
 }
@@ -36,7 +36,7 @@
   transform-origin: right;
 
   & .p8n-arrow {
-    @apply absolute left-full h-0 w-0 border-y-8 border-l-8 border-y-transparent border-l-current drop-shadow-arrow dark:drop-shadow-[1px_0_0_rgb(var(--color-gray-2))];
+    @apply drop-shadow-arrow dark:drop-shadow-arrow-dark absolute left-full h-0 w-0 border-y-8 border-l-8 border-y-transparent border-l-current;
     clip: rect(0px, 12px, 16px, 0px);
   }
 }
@@ -52,7 +52,7 @@
 [data-placement^="right"] {
   transform-origin: left;
   & .p8n-arrow {
-    @apply absolute right-full h-0 w-0 border-y-8 border-r-8 border-y-transparent border-r-current drop-shadow-arrow dark:drop-shadow-[-1px_0_0_rgb(var(--color-gray-2))];
+    @apply drop-shadow-arrow dark:drop-shadow-arrow-dark absolute right-full h-0 w-0 border-y-8 border-r-8 border-y-transparent border-r-current;
     clip: rect(0px, 8px, 16px, -4px);
   }
 }

@@ -16,7 +16,7 @@ export const Basic = () => {
     <>
       <div className="flex flex-col gap-4">
         {colors.map((color) => (
-          <div>
+          <div key={color}>
             <Radio color={color} name={`sport-${color}`} value="climbing">
               Climbing
             </Radio>

@@ -23,7 +23,7 @@ export const DropdownMenuContent = forwardRef<HTMLDivElement, ComponentProps<"di
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
             ref={ref}
-            className={clsx("z-dialog outline-none", className)}
+            className={clsx("z-dialog outline-hidden", className)}
             style={{ ...context.floatingStyles, ...style }}
             {...context.getFloatingProps(props)}
           >

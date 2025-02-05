@@ -202,13 +202,13 @@ export default function Column({ column }: { column: ColumnType }) {
     <ColumnContext.Provider value={contextValue}>
       <div
         className={clsx(
-          "relative box-border flex w-60 flex-col rounded bg-gray-1 transition-colors",
+          "relative box-border flex w-60 flex-col rounded-sm bg-gray-1 transition-colors",
           stateStyles[state.type],
         )}
         ref={columnRef}
       >
-        <div className="flex min-h-0 flex-grow flex-col" ref={columnInnerRef}>
-          <div className={clsx("flex min-h-0 flex-grow flex-col", isDragging && isDraggingStyles)}>
+        <div className="flex min-h-0 grow flex-col" ref={columnInnerRef}>
+          <div className={clsx("flex min-h-0 grow flex-col", isDragging && isDraggingStyles)}>
             <div
               className="box-border flex select-none items-center justify-between pl-4 pr-2 pt-2"
               ref={headerRef}

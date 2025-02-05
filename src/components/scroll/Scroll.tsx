@@ -11,15 +11,15 @@ export const scrollVariants = {
   vertical: {
     inner: "overflow-y-auto h-full",
     shadow: "h-1 left-0 right-0",
-    shadowStart: "top-0 bg-gradient-to-b from-gray-8/10",
-    shadowEnd: "bottom-0 bg-gradient-to-t from-gray-8/10",
+    shadowStart: "top-0 bg-linear-to-b from-gray-8/10",
+    shadowEnd: "bottom-0 bg-linear-to-t from-gray-8/10",
     child: "",
   },
   horizontal: {
     inner: "overflow-x-auto",
     shadow: "w-1 top-0 bottom-0",
-    shadowStart: "left-0 bg-gradient-to-r from-gray-8/10",
-    shadowEnd: "right-0 bg-gradient-to-l from-gray-8/10",
+    shadowStart: "left-0 bg-linear-to-r from-gray-8/10",
+    shadowEnd: "right-0 bg-linear-to-l from-gray-8/10",
     child: "inline-block",
   },
 };
@@ -83,7 +83,7 @@ export function Scroll({ horizontal = false, className, children, ...rest }: Pro
     <div className={clsx("ll-scroll-zone", "relative", className)} {...rest}>
       <div
         className={clsx(
-          "scroll-shadow z-[1] absolute opacity-0 transition-all",
+          "scroll-shadow-sm absolute z-1 opacity-0 transition-all",
           scrollVariants[position].shadow,
           scrollVariants[position].shadowStart,
           showStartShadow && "opacity-100",
@@ -91,7 +91,7 @@ export function Scroll({ horizontal = false, className, children, ...rest }: Pro
       ></div>
       <div
         className={clsx(
-          "scroll-shadow z-[1] absolute opacity-0 transition-all",
+          "scroll-shadow-sm absolute z-1 opacity-0 transition-all",
           scrollVariants[position].shadow,
           scrollVariants[position].shadowEnd,
           showEndShadow && "opacity-100",

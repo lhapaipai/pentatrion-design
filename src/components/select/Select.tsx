@@ -312,7 +312,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             {isOpen && (
               <FloatingFocusManager context={context} modal={false}>
                 <div
-                  className="z-dialog outline-none"
+                  className="z-dialog outline-hidden"
                   data-testid="select-list"
                   ref={refs.setFloating}
                   style={{

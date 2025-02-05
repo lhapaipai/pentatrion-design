@@ -40,7 +40,7 @@ const data: Item[] = [
 ];
 
 const twClasses = {
-  item: "row-item rounded-2xl p-2 flex items-center [&.sortable-chosen]:shadow",
+  item: "row-item rounded-2xl p-2 flex items-center [&.sortable-chosen]:shadow-sm",
 };
 
 /**

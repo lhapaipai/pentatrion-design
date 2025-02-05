@@ -22,7 +22,7 @@ export const PopoverContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
       <FloatingPortal>
         <FloatingFocusManager context={floatingContext} modal={context.modal}>
           <div
-            className="outline-none"
+            className="outline-hidden"
             ref={ref}
             style={{ ...context.floatingStyles, ...style }}
             aria-labelledby={context.labelId}

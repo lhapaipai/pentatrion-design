@@ -187,7 +187,7 @@ export const MenuItemWithChildren = forwardRef<HTMLButtonElement, Props>(
                 returnFocus={!isNested}
               >
                 <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                  <div ref={refs.setFloating} style={floatingStyles} className="outline-none">
+                  <div ref={refs.setFloating} style={floatingStyles} className="outline-hidden">
                     <Dialog {...getFloatingProps()}>{children}</Dialog>
                   </div>
                 </FloatingList>

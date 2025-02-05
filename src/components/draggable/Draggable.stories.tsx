@@ -49,7 +49,7 @@ function PostCard({ post }: { post: Post }) {
           <div className="flex w-8 items-center justify-center">
             <i className="fe-vertical-grip"></i>
           </div>
-          <span className="flex-shrink flex-grow truncate">
+          <span className="shrink grow truncate">
             {post.name} [{state.type}]
           </span>
         </div>
@@ -59,7 +59,7 @@ function PostCard({ post }: { post: Post }) {
       </div>
       {state.type === "preview"
         ? createPortal(
-            <div className="rounded border border-solid border-gray-2 bg-white p-2 text-sm">
+            <div className="rounded-sm border border-solid border-gray-2 bg-white p-2 text-sm">
               {post.name}
             </div>,
             state.container,
@@ -131,24 +131,24 @@ export const DropIndicatorContext = () => {
   return (
     <div className="flex max-w-96 flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 1</div>
+        <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 1</div>
         <div className="relative">
           <DropIndicator edge="top" gap="0.5rem" />
           <DropIndicator edge="bottom" gap="0.5rem" />
-          <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 2</div>
+          <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 2</div>
         </div>
-        <div className="rounded border border-solid border-gray-2 bg-white p-2">Item 3</div>
+        <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 3</div>
       </div>
       <div className="flex gap-2">
-        <div className="h-12 flex-1 rounded border border-solid border-gray-2 bg-white p-2">
+        <div className="h-12 flex-1 rounded-sm border border-solid border-gray-2 bg-white p-2">
           Item 1
         </div>
         <div className="relative flex-1">
           <DropIndicator edge="left" gap="0.5rem" />
           <DropIndicator edge="right" gap="0.5rem" />
-          <div className="h-12 rounded border border-solid border-gray-2 bg-white p-2">Item 2</div>
+          <div className="h-12 rounded-sm border border-solid border-gray-2 bg-white p-2">Item 2</div>
         </div>
-        <div className="h-12 flex-1 rounded border border-solid border-gray-2 bg-white p-2">
+        <div className="h-12 flex-1 rounded-sm border border-solid border-gray-2 bg-white p-2">
           Item 3
         </div>
       </div>

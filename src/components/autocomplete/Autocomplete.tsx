@@ -302,7 +302,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
               visuallyHiddenDismiss
             >
               <div
-                className="z-dialog outline-none"
+                className="z-dialog outline-hidden"
                 ref={refs.setFloating}
                 style={floatingStyles as CSSProperties}
                 {...getFloatingProps()}

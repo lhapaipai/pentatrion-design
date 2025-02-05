@@ -17,7 +17,7 @@ export const TooltipContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
         <div
           ref={ref}
           className={clsx(
-            "z-tooltip outline-none",
+            "z-tooltip outline-hidden",
             context.middlewareData.hide?.referenceHidden && "invisible",
           )}
           style={{ ...context.floatingStyles, ...style }}

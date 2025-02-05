@@ -18,16 +18,16 @@ const edgeToOrientationMap: Record<Edge, Orientation> = {
 
 const orientationStyles: Record<Orientation, string> = {
   horizontal:
-    "h-[--line-thickness] left-[--circle-radius] right-0 before:left-[calc(-1*var(--circle-size))]",
+    "h-(--line-thickness) left-(--circle-radius) right-0 before:left-[calc(-1*var(--circle-size))]",
   vertical:
-    "w-[--line-thickness] top-[--circle-radius] bottom-0 before:top-[calc(-1*var(--circle-size))]",
+    "w-(--line-thickness) top-(--circle-radius) bottom-0 before:top-[calc(-1*var(--circle-size))]",
 };
 
 const edgeStyles: Record<Edge, string> = {
-  top: "top-[--line-offset] before:top-[--circle-offset]",
-  right: "right-[--line-offset] before:right-[--circle-offset]",
-  bottom: "bottom-[--line-offset] before:bottom-[--circle-offset]",
-  left: "left-[--line-offset] before:left-[--circle-offset]",
+  top: "top-(--line-offset) before:top-(--circle-offset)",
+  right: "right-(--line-offset) before:right-(--circle-offset)",
+  bottom: "bottom-(--line-offset) before:bottom-(--circle-offset)",
+  left: "left-(--line-offset) before:left-(--circle-offset)",
 };
 
 const lineThickness = 2;
@@ -50,7 +50,7 @@ export function DropIndicator({ edge, gap }: Props) {
         } as CSSProperties
       }
       className={clsx(
-        "pointer-events-none absolute z-10 box-border bg-gray-6 before:absolute before:block before:h-[--circle-size] before:w-[--circle-size] before:rounded-full before:border-[length:--line-thickness] before:border-solid before:border-gray-6 before:bg-white",
+        "pointer-events-none absolute z-10 box-border bg-gray-6 before:absolute before:block before:h-(--circle-size) before:w-(--circle-size) before:rounded-full before:border-(length:--line-thickness) before:border-solid before:border-gray-6 before:bg-white",
         orientationStyles[orientation],
         edgeStyles[edge],
       )}

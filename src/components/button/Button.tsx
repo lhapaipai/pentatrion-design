@@ -62,14 +62,14 @@ export const buttonVariants = cva(
          *   ])
          */
         contained:
-          "shadow hover:shadow-md active:shadow-md-active outline-offset-0 text-[rgb(var(--color-custom-text))] bg-[rgb(var(--color-custom-3))] hover:bg-[rgb(var(--color-custom-4))] current:bg-[rgb(var(--color-custom-4))]  focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "shadow-sm hover:shadow-md active:shadow-md-active outline-offset-0 text-(--color-custom-text) bg-(--color-custom-3) hover:bg-(--color-custom-4) current:bg-(--color-custom-4)  focus-visible-has:outline-(--color-custom-5)",
         light:
-          "shadow hover:shadow-md has-[:checked]:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-[rgb(var(--color-custom-1))] text-gray-text hover:text-[rgb(var(--color-custom-text))] hover:bg-[rgb(var(--color-custom-3))] current:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-4))]",
+          "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-(--color-custom-1) text-gray-text hover:text-(--color-custom-text) hover:bg-(--color-custom-3) current:bg-(--color-custom-3) focus-visible-has:outline-(--color-custom-4)",
         outlined:
-          "bg-gray-0 hover:shadow-sm active:shadow-sm-active text-gray-7 outline-offset-0 border-2 hover:bg-[rgb(var(--color-custom-1)/50%)] border-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))] current:bg-[rgb(var(--color-custom-3))] focus-visible-has:border-transparent",
-        text: "bg-transparent hover:shadow-sm active:shadow-sm-active outline-offset-0 hover:bg-[rgb(var(--color-custom-1))] dark:hover:bg-[rgb(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 current:bg-[rgb(var(--color-custom-3))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-[--alpha(var(--color-custom-1)/50%)] border-(--color-custom-3) focus-visible-has:outline-(--color-custom-5) current:bg-(--color-custom-3) focus-visible-has:border-transparent",
+        text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-(--color-custom-1) dark:hover:bg-[--alpha(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 current:bg-(--color-custom-3) focus-visible-has:outline-(--color-custom-5)",
         ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-[rgb(var(--color-custom-1))] focus-visible-has:outline-[rgb(var(--color-custom-5))]",
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-(--color-custom-1) focus-visible-has:outline-(--color-custom-5)",
       },
       width: {
         fit: "w-full max-w-fit px-4",
@@ -161,7 +161,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
           {loading && (
             <Loader
               color={color}
-              className={clsx("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2")}
+              className={clsx("absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")}
             />
           )}
         </>

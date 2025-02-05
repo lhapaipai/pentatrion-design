@@ -22,7 +22,7 @@ export const dragStateStyles: { [Key in DraggableState["type"]]?: string } = {
  * in order to highlight where the element has moved to.
  */
 export function triggerPostMoveFlash(element: HTMLElement) {
-  element.animate([{ backgroundColor: "rgb(var(--color-gray-2))" }, {}], {
+  element.animate([{ backgroundColor: "var(--color-gray-2)" }, {}], {
     duration: 700,
     /**
      * This is equivalent to the browser default, but we are making it

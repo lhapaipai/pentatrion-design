@@ -81,7 +81,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
         <>
           <div
             className={clsx(
-              "absolute left-4 top-6 -translate-x-2/4 text-body-xs",
+              "text-body-xs absolute top-6 left-4 -translate-x-2/4",
               showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
             )}
           >
@@ -89,7 +89,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
           </div>
           <div
             className={clsx(
-              "absolute right-4 top-6 translate-x-2/4 text-body-xs",
+              "text-body-xs absolute top-6 right-4 translate-x-2/4",
               showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
             )}
           >
@@ -98,17 +98,17 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
         </>
       )}
 
-      <div className={clsx(trackBase, "bottom-0 right-0 flex items-center justify-center")}>
+      <div className={clsx(trackBase, "right-0 bottom-0 flex items-center justify-center")}>
         <div className="relative h-2 w-[calc(100%-2rem)]">
           {/* track full */}
           <div
             className={clsx(
               trackBase,
-              "track w-full bg-[rgb(var(--p8n-range-c-bg))] after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:bg-[rgb(var(--p8n-range-c-bg))]",
+              "track w-full bg-(--p8n-range-c-bg) after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:bg-(--p8n-range-c-bg)",
             )}
           ></div>
           {showValue && (
-            <div className="pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4 text-body-sm">
+            <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
               {formatter(value)}
             </div>
           )}
@@ -117,7 +117,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
           <div
             className={clsx(
               trackBase,
-              "w-[var(--p8n-range-progress-percent)] rounded-[3px] bg-[rgb(var(--p8n-range-c-fg))] before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-[rgb(var(--p8n-range-c-fg))]",
+              "w-[var(--p8n-range-progress-percent)] rounded-[3px] bg-(--p8n-range-c-fg) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-fg)",
             )}
           ></div>
           {/* ticks */}
@@ -129,7 +129,7 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
               )}
             >
               {Array.from({ length: nbOfTicks }).map((_, i) => (
-                <span key={i} className="h-1 w-1 rounded-full bg-gray-0"></span>
+                <span key={i} className="bg-gray-0 h-1 w-1 rounded-full"></span>
               ))}
             </div>
           )}

@@ -16,7 +16,7 @@ pnpm create vite my-app
 
 cd my-app
 
-pnpm add -D tailwindcss postcss autoprefixer postcss-load-config prettier-plugin-tailwindcss
+pnpm add -D tailwindcss @tailwindcss/vite prettier-plugin-tailwindcss
 
 pnpm add pentatrion-design
 ```
@@ -24,68 +24,55 @@ Supprimer les fichiers inutiles
 
 ```
 .
-├── src
-│   ├── App.tsx
-│   ├── index.css
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── tailwind.config.js
-└── postcss.config.js
+└── src
+    ├── App.tsx
+    ├── index.css
+    ├── main.tsx
+    └── vite-env.d.ts
 ```
 
-Créer un fichier `tailwind.config.js` et `postcss.config.js`.
-
-```js
-// tailwind.config.ts
-import { pentatrionTw } from "pentatrion-design/tailwind";
-import type { Config } from "tailwindcss";
-
-export default {
-  content: [
-    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/pentatrion-design/dist/lib/**/*.js",
-    "./node_modules/pentatrion-design/dist/components/**/*.js",
-    "./node_modules/pentatrion-design/dist/hooks/**/*.js",
-    "./node_modules/pentatrion-design/dist/redux/**/*.js",
-  ],
-  darkMode: ["class"],
-  theme: {},
-  plugins: [pentatrionTw],
-} satisfies Config;
-
-
-// postcss.config.js
-/** @type {import("postcss-load-config").Config} */
-const config = {
-  plugins: {
-    "tailwindcss/nesting": {},
-    tailwindcss: {},
-  },
-};
-export default config;
-```
 
 Mettre à jour le fichier `src/index.css`
+
 ```css
-/**
- * on utilisera des imports pour faciliter l'intégration du design système
- */
-@import "tailwindcss/base";
+@import "tailwindcss";
+
+@source "./node_modules/pentatrion-design/dist/lib";
+@source "./node_modules/pentatrion-design/dist/components";
+@source "./node_modules/pentatrion-design/dist/hooks";
+@source "./node_modules/pentatrion-design/dist/redux";
+
+@import "pentatrion-design/tailwind/index.css";
+
+/* facultatif */
+@import "pentatrion-design/tailwind/base-prose.css";
+```
+
+si on désire plus de contrôle sur nos imports
+
+```css
+@import "tailwindcss";
+
+@source "./node_modules/pentatrion-design/dist/lib";
+@source "./node_modules/pentatrion-design/dist/components";
+@source "./node_modules/pentatrion-design/dist/hooks";
+@source "./node_modules/pentatrion-design/dist/redux";
+
+@import "pentatrion-design/tailwind/variants.css";
+
 @import "pentatrion-design/tailwind/vars.css" layer(base);
 @import "pentatrion-design/tailwind/base.css" layer(base);
+@import "pentatrion-design/tailwind/base-prose.css";
 
-@import "tailwindcss/components";
-@import "pentatrion-design/tailwind/components.css" layer(components);
 @import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
+@import "pentatrion-design/tailwind/components-range.css" layer(components);
 @import "pentatrion-design/tailwind/components-resize-area.css" layer(components);
 @import "pentatrion-design/tailwind/components-step.css" layer(components);
+@import "pentatrion-design/tailwind/components.css" layer(components);
 
-@import "tailwindcss/utilities";
-@import "pentatrion-design/tailwind/utilities.css" layer(utilities);
+@import "pentatrion-design/tailwind/utilities.css";
 @import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
 
-/* Optionel */
-@import "pentatrion-fonts/fontello-lonlat";
 ```
 
 ```json
@@ -94,9 +81,6 @@ Mettre à jour le fichier `src/index.css`
   "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
-
-
-
 
 La dépendance `pentatrion-fonts` est optionnelle.
 
@@ -148,7 +132,7 @@ anciennement dans le `package.json`. plus nécessaire pour le moment
 }
 ```
 
-## Inclure le design-système dans un autre projet sans dépendance npm
+## Inclure le design-system dans un autre projet sans dépendance npm
 
 fichier `tsconfig.json`.
 ```json

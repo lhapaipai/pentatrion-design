@@ -16,7 +16,7 @@
 
   &[data-marker="circle"] {
     .marker {
-      @apply bg-gray-1 shadow;
+      @apply bg-gray-1 shadow-xs;
       width: calc(var(--step-circle-radius) * 2);
       height: calc(var(--step-circle-radius) * 2);
 
@@ -28,7 +28,7 @@
 
   &[data-marker="bullet"] {
     .marker {
-      @apply text-body-2xs bg-gray-0 outline outline-2 outline-gray-2;
+      @apply text-body-2xs bg-gray-0 outline-gray-2 outline outline-2;
       margin: calc(var(--step-circle-radius) / 2);
       width: calc(var(--step-circle-radius));
       height: calc(var(--step-circle-radius));
@@ -121,7 +121,7 @@
 
   &[data-global-line="true"] {
     &::after {
-      @apply border-2 border-gray-2;
+      @apply border-gray-2 border-2;
     }
 
     &.status-done::after {
@@ -133,7 +133,7 @@
 .ll-step {
   [data-global-line="false"] &:not(:last-child) {
     &::after {
-      @apply border-2 border-gray-2;
+      @apply border-gray-2 border-2;
     }
 
     &.status-done::after {
@@ -142,7 +142,7 @@
   }
 
   .handle {
-    @apply cursor-row-resize text-gray-6 transition-all;
+    @apply text-gray-6 cursor-row-resize transition-all;
 
     &.active {
       &:hover {

@@ -1,3 +1,55 @@
-.flex-center {
-  @apply flex items-center justify-center;
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility grid-cols-repeat-fill-300 {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+@utility grid-cols-repeat-fill-200 {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/**
+  * smartphone width: 375px
+  * 0.5rem <1col> gap: 0.5rem <1col> 0.5rem
+  * 1col = (375px - (1.5rem = 24px)) / 2 = 175.5px
+  * on laisse une petite marge 170
+  *
+  * 1col = (360px - 24px) / 2 = 168 px
+  * on laisse une petite marge 160 px
+  */
+@utility grid-cols-repeat-fill-160 {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+@utility grid-cols-repeat-fit-160 {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+/**
+        auto: "auto",
+        0: "0",
+        10: "10",
+        20: "20",
+        30: "30",
+        40: "40",
+        50: "50",
+*/
+@utility z-toast {
+  z-index: 80;
+}
+@utility z-dialog {
+  z-index: 100;
+}
+@utility z-overlay {
+  z-index: 100;
+}
+@utility z-tooltip {
+  z-index: 100;
+}
+@utility z-context-menu {
+  z-index: 90;
 }

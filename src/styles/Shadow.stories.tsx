@@ -8,8 +8,8 @@ export default {
 
 export const Shadow = () => {
   const shadows = [
+    "shadow-xs",
     "shadow-sm",
-    "shadow",
     "shadow-md",
     "shadow-lg",
     "shadow-xl",
