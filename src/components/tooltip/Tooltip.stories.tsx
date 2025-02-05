@@ -1,6 +1,6 @@
 import { HTMLProps, forwardRef } from "react";
-import { useDrag } from "@use-gesture/react";
-import { useSpring, animated } from "@react-spring/web";
+// import { useDrag } from "@use-gesture/react";
+// import { useSpring, animated } from "@react-spring/web";
 import { Tooltip } from "./Tooltip";
 import { SimpleTooltip } from "./SimpleTooltip";
 import { StoryFn } from "@storybook/react";
@@ -14,7 +14,7 @@ export default {
 const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
   <div
     ref={ref}
-    className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
+    className="flex-center bg-gray-2 h-[100px] w-[100px] shadow-lg"
     style={{
       margin: "100px",
     }}
@@ -63,7 +63,7 @@ export const Basic = () => {
         Eveniet ut quam voluptatum accusantium aspernatur?
       </p>
 
-      <div className="grid grid-cols-repeat-fill-300 gap-8">
+      <div className="grid-cols-repeat-fill-300 grid gap-8">
         <SimpleTooltip color="yellow" open={true} placement="right-start" content="infos">
           <Box />
         </SimpleTooltip>
@@ -105,27 +105,27 @@ export const Basic = () => {
   );
 };
 
-export const Draggable = () => {
-  const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
-  const bind = useDrag(({ event, offset: [x, y] }) => {
-    event.preventDefault();
-    api.start({ x, y, immediate: true });
-  });
-  return (
-    <div className="container">
-      <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
-        <animated.div
-          {...bind()}
-          className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
-          style={{
-            x,
-            y,
-            cursor: "pointer",
-          }}
-        >
-          <span>Box</span>
-        </animated.div>
-      </SimpleTooltip>
-    </div>
-  );
-};
+// export const Draggable = () => {
+//   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
+//   const bind = useDrag(({ event, offset: [x, y] }) => {
+//     event.preventDefault();
+//     api.start({ x, y, immediate: true });
+//   });
+//   return (
+//     <div className="container">
+//       <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
+//         <animated.div
+//           {...bind()}
+//           className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
+//           style={{
+//             x,
+//             y,
+//             cursor: "pointer",
+//           }}
+//         >
+//           <span>Box</span>
+//         </animated.div>
+//       </SimpleTooltip>
+//     </div>
+//   );
+// };

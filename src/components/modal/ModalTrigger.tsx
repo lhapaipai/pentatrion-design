@@ -20,7 +20,8 @@ export const ModalTrigger = forwardRef<HTMLElement, Props>(
         context.getReferenceProps({
           ref,
           ...props,
-          ...children.props,
+          ...(children.props ?? {}),
+          // @ts-ignore
           "data-state": context.open ? "open" : "closed",
         }),
       );

@@ -23,7 +23,7 @@ export function NotificationsProvider({ children }: Props) {
     };
   }, []);
 
-  const managerRef = useRef<NotificationsManager>();
+  const managerRef = useRef<NotificationsManager>(null!);
 
   if (!managerRef.current) {
     managerRef.current = createNotificationsManager(setNotifications);

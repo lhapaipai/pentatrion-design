@@ -20,7 +20,7 @@ export const Color = forwardRef<HTMLButtonElement, ColorProps>(
   ) => {
     const valueToShow = label ?? (showValue ? value : null);
 
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null!);
 
     useImperativeHandle<HTMLButtonElement | null, HTMLButtonElement | null>(
       ref,

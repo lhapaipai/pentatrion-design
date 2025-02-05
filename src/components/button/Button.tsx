@@ -113,7 +113,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   },
   ref,
 ) {
-  const inputRef = useRef<HTMLButtonElement>(null);
+  const inputRef = useRef<HTMLButtonElement>(null!);
 
   useImperativeHandle<HTMLButtonElement | null, HTMLButtonElement | null>(
     ref,

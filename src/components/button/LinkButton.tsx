@@ -26,7 +26,7 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
   },
   ref,
 ) {
-  const anchorRef = useRef<HTMLAnchorElement>(null);
+  const anchorRef = useRef<HTMLAnchorElement>(null!);
 
   useImperativeHandle<HTMLAnchorElement | null, HTMLAnchorElement | null>(
     ref,
