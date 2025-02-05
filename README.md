@@ -6,7 +6,7 @@
 
 ## Prérequis
 
-Créez un nouveau projet Vite + React + TailwindCSS. [Official doc](https://tailwindcss.com/docs/guides/vite)
+Créez un nouveau projet Vite + React v19 + TailwindCSS v4. [Official doc](https://tailwindcss.com/docs/installation/using-vite)
 
 ```bash
 pnpm create vite my-app
@@ -31,6 +31,17 @@ Supprimer les fichiers inutiles
     └── vite-env.d.ts
 ```
 
+Configuration de vite
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+```
 
 Mettre à jour le fichier `src/index.css`
 
