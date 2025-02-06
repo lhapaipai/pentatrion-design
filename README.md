@@ -16,6 +16,7 @@ pnpm create vite my-app
 
 cd my-app
 
+# dépendances
 pnpm add -D tailwindcss @tailwindcss/vite prettier-plugin-tailwindcss
 
 pnpm add pentatrion-design
@@ -46,6 +47,7 @@ export default defineConfig({
 Mettre à jour le fichier `src/index.css`
 
 ```css
+/* src/index.css */
 @import "tailwindcss";
 
 @source "./node_modules/pentatrion-design/dist/lib";
@@ -56,12 +58,13 @@ Mettre à jour le fichier `src/index.css`
 @import "pentatrion-design/tailwind/index.css";
 
 /* facultatif */
-@import "pentatrion-design/tailwind/base-prose.css";
+@import "pentatrion-design/tailwind/prose.css";
 ```
 
 si on désire plus de contrôle sur nos imports
 
 ```css
+/* src/index.css */
 @import "tailwindcss";
 
 @source "./node_modules/pentatrion-design/dist/lib";
@@ -71,9 +74,8 @@ si on désire plus de contrôle sur nos imports
 
 @import "pentatrion-design/tailwind/variants.css";
 
-@import "pentatrion-design/tailwind/vars.css" layer(base);
+@import "pentatrion-design/tailwind/theme.css" layer(theme);
 @import "pentatrion-design/tailwind/base.css" layer(base);
-@import "pentatrion-design/tailwind/base-prose.css";
 
 @import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
 @import "pentatrion-design/tailwind/components-range.css" layer(components);
@@ -84,6 +86,7 @@ si on désire plus de contrôle sur nos imports
 @import "pentatrion-design/tailwind/utilities.css";
 @import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
 
+@import "pentatrion-design/tailwind/prose.css";
 ```
 
 ```json
