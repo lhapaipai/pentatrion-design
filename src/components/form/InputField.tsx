@@ -1,4 +1,4 @@
-import { ReactNode, useId } from "react";
+import { isValidElement, ReactNode, useId } from "react";
 import { type ThemeColor } from "../../types";
 import { Slot } from "../slot";
 
@@ -24,18 +24,20 @@ export function InputField({
   preventLayerShift = true,
 }: InputFieldProps) {
   const internalId = useId();
-  const id = providedId ?? internalId;
+  const id = isValidElement<{ id?: string }>(children)
+    ? children?.props.id
+    : (providedId ?? internalId);
 
   const labelElement = label && <span>{label}</span>;
   const hintElement = hint && <span className="text-body-sm text-gray-6">{hint}</span>;
   const errorsElement = errors && typeof errors !== "boolean" && (
-    <span className="font-medium text-red-4 dark:text-red-2">
+    <span className="text-red-4 dark:text-red-2 font-medium" aria-live="polite" role="status">
       <i className="fe-circle-exclamation"></i>
       <span>{errors}</span>
     </span>
   );
   const warningElement = warning && typeof warning !== "boolean" && (
-    <span className="font-medium text-orange-4 dark:text-orange-2">
+    <span className="text-orange-4 dark:text-orange-2 font-medium" aria-live="polite" role="status">
       <i className="fe-circle-exclamation"></i>
       <span>{warning}</span>
     </span>
@@ -57,12 +59,12 @@ export function InputField({
         ) : (
           <label htmlFor={id} className="invisible"></label>
         ))}
-      {description && <div className="mb-2 text-body-sm text-gray-6">{description}</div>}
+      {description && <div className="text-body-sm text-gray-6 mb-2">{description}</div>}
       <Slot id={id} color={color}>
         {children}
       </Slot>
       {showFooter && (
-        <div className="mt-1 min-h-5 text-body-sm text-gray-6">
+        <div className="text-body-sm text-gray-6 mt-1 min-h-5">
           {errorsElement || warningElement}
         </div>
       )}

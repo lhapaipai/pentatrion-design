@@ -17,6 +17,8 @@ export function Flash({ color = "yellow", children, className }: Props) {
         colorVariants[color].border,
         className,
       )}
+      aria-live="polite"
+      role="status"
     >
       {children}
     </div>
