@@ -10,6 +10,7 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
   color?: ThemeColor;
   size?: "small" | "medium" | "large" | "custom";
   flexibleWidth?: boolean;
+  children?: ReactNode;
 }
 
 export const sizeVariant = {
@@ -37,6 +38,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       size = "medium",
       flexibleWidth = true,
       type,
+      children,
       ...rest
     },
     ref,
@@ -53,7 +55,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div
             className={clsx([
               "flex-center relative",
-              typeof prefix === "string" && "mx-2 select-none text-gray-6",
+              typeof prefix === "string" && "text-gray-6 mx-2 select-none",
             ])}
           >
             {prefix}
@@ -81,12 +83,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div
             className={clsx([
               "flex-center relative",
-              typeof suffix === "string" && "mx-2 select-none text-gray-6",
+              typeof suffix === "string" && "text-gray-6 mx-2 select-none",
             ])}
           >
             {suffix}
           </div>
         )}
+        {children}
       </div>
     );
   },
