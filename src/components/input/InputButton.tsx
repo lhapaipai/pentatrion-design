@@ -3,7 +3,7 @@ import { ComponentPropsWithRef, forwardRef, ReactNode } from "react";
 import { ThemeColor } from "~/types";
 import { inputConfig, sizeVariant } from "./Input";
 
-export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
+export interface InputButtonProps extends Omit<ComponentPropsWithRef<"button">, "prefix"> {
   label?: string;
   variant?: "normal" | "ghost";
   disabled?: boolean;
@@ -11,8 +11,11 @@ export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "
   color?: ThemeColor;
   size?: "small" | "medium" | "large" | "custom";
   flexibleWidth?: boolean;
+
+  readOnly?: boolean;
+  placeholder?: string;
 }
-export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(function InputButton(
+export const InputButton = forwardRef<HTMLButtonElement, InputButtonProps>(function InputButton(
   {
     variant = "normal",
     color = "yellow",
@@ -22,8 +25,6 @@ export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(functi
     readOnly = false,
     size = "medium",
     flexibleWidth = true,
-    name,
-    value,
     label,
     placeholder = "",
     ...rest
@@ -31,38 +32,45 @@ export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(functi
   ref,
 ) {
   return (
-    <div
-      aria-disabled={disabled}
-      aria-readonly={readOnly}
-      data-color={color}
-      data-variant={variant}
-      className={clsx("cursor-pointer", inputConfig.container, sizeVariant[size], className)}
-      {...rest}
-    >
-      {prefix && (
-        <div
-          className={clsx([
-            "flex-center relative",
-            typeof prefix === "string" && "mx-2 select-none text-gray-6",
-          ])}
-        >
-          {prefix}
-        </div>
-      )}
-      <input ref={ref} type="hidden" readOnly={true} name={name} value={value} />
-      <div
-        data-color="yellow"
+    <div className="w-full">
+      <button
+        ref={ref}
         aria-disabled={disabled}
         aria-readonly={readOnly}
-        className={clsx("flex flex-1 items-center", flexibleWidth && "w-0")}
+        data-color={color}
+        data-variant={variant}
+        className={clsx(
+          "w-full cursor-pointer",
+          inputConfig.container,
+          sizeVariant[size],
+          className,
+        )}
+        {...rest}
       >
-        <span className="flex flex-1 items-center truncate px-2">
-          <span>{label || placeholder}</span>
-        </span>
-        <span className="box-border inline-flex h-8 min-w-8 items-center justify-center rounded-full text-gray-7">
-          <i className="fe-angle-down"></i>
-        </span>
-      </div>
+        {prefix && (
+          <div
+            className={clsx([
+              "flex-center relative",
+              typeof prefix === "string" && "text-gray-6 mx-2 select-none",
+            ])}
+          >
+            {prefix}
+          </div>
+        )}
+        <div
+          data-color="yellow"
+          aria-disabled={disabled}
+          aria-readonly={readOnly}
+          className={clsx("flex flex-1 items-center", flexibleWidth && "w-0")}
+        >
+          <span className={clsx("flex flex-1 items-center truncate px-2", !label && "text-gray-5")}>
+            {label || placeholder}
+          </span>
+          <span className="text-gray-7 box-border inline-flex h-8 min-w-8 items-center justify-center rounded-full">
+            <i className="fe-angle-down"></i>
+          </span>
+        </div>
+      </button>
     </div>
   );
 });

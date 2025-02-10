@@ -17,8 +17,8 @@ export function Flash({ color = "yellow", children, className }: Props) {
         colorVariants[color].border,
         className,
       )}
-      aria-live="polite"
-      role="status"
+      aria-live={color !== "red" ? "polite" : "assertive"}
+      role={color !== "red" ? "status" : "alert"}
     >
       {children}
     </div>

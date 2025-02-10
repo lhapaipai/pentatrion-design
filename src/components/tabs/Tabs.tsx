@@ -51,6 +51,7 @@ export function Tabs({
           return (
             <div
               key={id}
+              role="tab"
               className={clsx(
                 "tabs-list-item hover:text-gray-7 border-t-4",
                 fullWidth && "flex-1 text-center",
@@ -74,7 +75,9 @@ export function Tabs({
         })}
         {children && <div className="extra mr-2 ml-auto flex items-center">{children}</div>}
       </div>
-      <div className={clsx("bg-gray-0 p-2 shadow-sm", contentClassName)}>{content}</div>
+      <div className={clsx("bg-gray-0 p-2 shadow-sm", contentClassName)} role="tabpanel">
+        {content}
+      </div>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export const ModalContent = forwardRef<HTMLDivElement, ComponentProps<"div">>(
           <FloatingFocusManager context={floatingContext}>
             <Dialog
               color={context.color}
-              className={clsx("mx-4 motion-safe:animate-fade-in", className)}
+              className={clsx("motion-safe:animate-fade-in mx-4", className)}
               style={style}
               aria-labelledby={context.labelId}
               aria-describedby={context.descriptionId}

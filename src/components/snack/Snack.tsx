@@ -32,9 +32,10 @@ export function Snack({
 
   return (
     <Dialog
-      className={clsx("pointer-events-auto motion-safe:animate-fade-in", "ll-snack")}
+      className={clsx("motion-safe:animate-fade-in pointer-events-auto", "ll-snack")}
       placement="top"
       color={color}
+      role={color !== "red" ? "status" : "alertdialog"}
     >
       <div className="flex w-fit min-w-60 items-center px-2 py-1">
         <span className="flex-1 pr-4">{content}</span>

@@ -4,6 +4,18 @@
   justify-content: center;
 }
 
+@utility hidden-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  whitespace: nowrap;
+  border: 0;
+}
+
 @utility grid-cols-repeat-fill-300 {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }

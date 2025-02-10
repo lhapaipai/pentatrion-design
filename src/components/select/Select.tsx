@@ -101,7 +101,6 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     },
     propRef,
   ) => {
-    // const isControlled = onChange !== null;
     const isControlled = typeof controlledValue !== "undefined";
 
     const onChangeStable = useEffectEvent(onChange);
@@ -323,7 +322,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
                 >
                   <Dialog
                     placement={context.placement}
-                    className="max-h-80 overflow-auto motion-safe:animate-fade-in-list"
+                    className="motion-safe:animate-fade-in-list max-h-80 overflow-auto"
                   >
                     {searchable && (
                       <div className="p-2">

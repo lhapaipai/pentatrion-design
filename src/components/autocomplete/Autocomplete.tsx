@@ -209,7 +209,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
     clearSearchButton && (searchValue.trim() !== "" || selection !== null);
 
   return (
-    <div className={className}>
+    <div className={className} role="combobox">
       <div
         className={clsx(inputConfig.container, sizeVariant.medium, readOnly && "readonly")}
         ref={refs.setReference}
@@ -217,7 +217,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
       >
         {icon !== false && (
           <div className="flex-center relative">
-            {loading && <Loader size="medium" color="gray" className="absolute left-0 top-0" />}
+            {loading && <Loader size="medium" color="gray" className="absolute top-0 left-0" />}
             {icon === true ? (
               <span className="flex-center h-8 w-8">
                 <i className="fe-search"></i>
@@ -309,7 +309,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
               >
                 <Dialog
                   placement={context.placement}
-                  className="overflow-auto motion-safe:animate-fade-in-list"
+                  className="motion-safe:animate-fade-in-list overflow-auto"
                 >
                   <FloatingList elementsRef={listRef}>
                     {options.map((option) => {
