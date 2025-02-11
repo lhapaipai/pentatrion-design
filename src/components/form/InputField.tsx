@@ -2,7 +2,7 @@ import { isValidElement, ReactNode, useId } from "react";
 import { type ThemeColor } from "../../types";
 import { Slot } from "../slot";
 
-interface InputFieldProps {
+export interface InputFieldProps {
   label?: ReactNode;
   hint?: ReactNode;
   description?: ReactNode;
