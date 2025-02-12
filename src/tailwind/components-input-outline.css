@@ -1,17 +1,17 @@
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):not(
     [data-variant="ghost"]
   ) {
-  @apply border border-(--color-custom-2);
+  @apply border-custom-2 border;
 }
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea) {
-  @apply focus-full:outline focus-full:outline-2 focus-full:outline-(--color-custom-4) hover:bg-[--alpha(var(--color-custom-1)/25%)];
+  @apply focus-full:outline focus-full:outline-2 focus-full:outline-custom-4 hover:bg-custom-1/25;
 }
 :is(.p8n-input-text, .p8n-textarea) {
   @apply focus-full:bg-gray-0;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio) {
-  @apply text-(--color-custom-3);
+  @apply text-custom-3;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-radio):is(:checked, .indeterminate) {

@@ -51,6 +51,16 @@
   --color-red-5: #b32626;
   --color-red-text: var(--color-gray-7);
 
+  /**
+   * to be overwritted with "data-color" attribute
+   */
+  --color-custom-1: var(--color-gray-1);
+  --color-custom-2: var(--color-gray-2);
+  --color-custom-3: var(--color-gray-3);
+  --color-custom-4: var(--color-gray-4);
+  --color-custom-5: var(--color-gray-5);
+  --color-custom-text: var(--color-gray-text);
+
   --color-gray-0: #ffffff;
   --color-gray-1: #f2f2f2;
   --color-gray-2: #e4e4e4;

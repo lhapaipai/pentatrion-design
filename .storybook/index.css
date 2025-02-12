@@ -3,7 +3,7 @@
 @import "tailwindcss" source("../src");
 
 @import "../src/tailwind/index.css";
-@import "../src/tailwind/base-prose.css";
+@import "../src/tailwind/prose.css";
 
 .sb-h1 {
   color: var(--tw-prose-headings);
