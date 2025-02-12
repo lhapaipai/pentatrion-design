@@ -18,15 +18,15 @@ export const SelectField = forwardRef<Element, Props>(
     const id = providedId ?? internalId;
 
     const labelElement = label && <span className="font-semibold">{label}</span>;
-    const hintElement = hint && <span className="ml-auto text-body-sm text-gray-6">{hint}</span>;
+    const hintElement = hint && <span className="text-body-sm text-gray-6 ml-auto">{hint}</span>;
     const errorsElement = errors && typeof errors !== "boolean" && (
-      <span className="font-medium text-red-4 dark:text-red-2">
+      <span className="text-red-4 dark:text-red-2 font-medium">
         <i className="fe-circle-exclamation"></i>
         <span>{errors}</span>
       </span>
     );
     const warningElement = warning && typeof warning !== "boolean" && (
-      <span className="font-medium text-orange-4 dark:text-orange-2">
+      <span className="text-orange-4 dark:text-orange-2 font-medium">
         <i className="fe-circle-exclamation"></i>
         <span>{warning}</span>
       </span>
@@ -35,7 +35,7 @@ export const SelectField = forwardRef<Element, Props>(
     const color: ThemeColor = errors ? "red" : warning ? "orange" : "yellow";
 
     return (
-      <div>
+      <div role="group">
         {label || hint ? (
           <label className="mb-1 flex items-end" htmlFor={id}>
             {labelElement}
@@ -44,9 +44,9 @@ export const SelectField = forwardRef<Element, Props>(
         ) : (
           <label htmlFor={id} className="invisible"></label>
         )}
-        {description && <div className="mb-2 text-body-sm text-gray-6">{description}</div>}
+        {description && <div className="text-body-sm text-gray-6 mb-2">{description}</div>}
         <Select ref={ref as any} color={color} id={id} {...rest} />
-        <div className="mt-1 min-h-5 text-body-sm text-gray-6">
+        <div className="text-body-sm text-gray-6 mt-1 min-h-5">
           {errorsElement || warningElement}
         </div>
       </div>
