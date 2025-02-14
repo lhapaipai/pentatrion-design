@@ -11,6 +11,7 @@ export interface InputFieldProps {
   children: ReactNode;
   id?: string;
   preventLayerShift?: boolean;
+  "data-testid"?: string;
 }
 
 export function InputField({
@@ -22,6 +23,7 @@ export function InputField({
   id: providedId,
   children,
   preventLayerShift = true,
+  "data-testid": dataTestId,
 }: InputFieldProps) {
   const internalId = useId();
   const id = isValidElement<{ id?: string }>(children)
@@ -31,7 +33,12 @@ export function InputField({
   const labelElement = label && <span>{label}</span>;
   const hintElement = hint && <span className="text-body-sm text-gray-6">{hint}</span>;
   const errorsElement = errors && typeof errors !== "boolean" && (
-    <span className="text-red-4 dark:text-red-2 font-medium" aria-live="polite" role="status">
+    <span
+      className="text-red-4 dark:text-red-2 font-medium"
+      aria-live="polite"
+      role="status"
+      data-testid={dataTestId ? `input-field/alert/${dataTestId}` : undefined}
+    >
       <i className="fe-circle-exclamation"></i>
       <span>{errors}</span>
     </span>
@@ -39,7 +46,9 @@ export function InputField({
   const warningElement = warning && typeof warning !== "boolean" && (
     <span className="text-orange-4 dark:text-orange-2 font-medium" aria-live="polite" role="status">
       <i className="fe-circle-exclamation"></i>
-      <span>{warning}</span>
+      <span data-testid={dataTestId ? `input-field/warning/${dataTestId}` : undefined}>
+        {warning}
+      </span>
     </span>
   );
 
