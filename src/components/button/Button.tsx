@@ -11,7 +11,7 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
 
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 
-  size?: "small" | "medium" | "large" | "custom";
+  size?: "small" | "medium" | "large" | "custom" | "input";
 
   color?: ThemeColor;
 
@@ -32,24 +32,33 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
   asChild?: boolean;
 }
 
+/**
+ * TODO
+ * removed overflow-clip text-center
+ */
 export const buttonVariants = cva(
-  "relative box-border inline-flex items-center overflow-clip text-center leading-5 no-underline focus-visible-has:outline focus-visible-has:outline-2",
+  "relative box-border inline-flex items-center leading-5 no-underline focus-visible:outline-2 truncate",
   {
     variants: {
       clickable: {
-        true: "cursor-pointer active:translate-y-[1px] focus-visible-has:z-10",
+        true: "cursor-pointer active:translate-y-[1px] focus-visible:z-10",
         false: "pointer-events-none",
       },
       size: {
-        small: "truncate h-6",
-        medium: "truncate h-8",
-        large: "truncate h-12",
+        small: "[--h-button:1.5rem] h-(--h-button)",
+        medium: "[--h-button:2rem] h-(--h-button)",
+        large: "[--h-button:3rem] h-(--h-button)",
+        input: "[--h-button:calc(var(--h-input)-2px)] h-(--h-button)",
         custom: "",
       },
       icon: {
-        /* if size is custom icon is not used */
-        true: "rounded-full [&_i]:w-[calc(2rem-4px)] justify-center [&_:last-child:not(i,img,svg)]:pr-4",
-        false: "rounded-2xl",
+        true: "rounded-[calc(var(--h-button)/2)] min-w-(--h-button) [&_i,&_img,&_svg]:w-(--h-button) justify-center [&_:last-child:not(i,img,svg)]:pr-4",
+        false: "rounded-2xl px-4",
+        custom: "",
+      },
+      width: {
+        fit: "w-full max-w-fit",
+        full: "w-full",
         custom: "",
       },
       variant: {
@@ -62,19 +71,14 @@ export const buttonVariants = cva(
          *   ])
          */
         contained:
-          "shadow-sm hover:shadow-md active:shadow-md-active outline-offset-0 text-custom-text bg-custom-3 hover:bg-custom-4 current:bg-custom-4  focus-visible-has:outline-custom-5",
+          "shadow-sm hover:shadow-md active:shadow-md-active outline-offset-0 text-custom-text bg-custom-3 hover:bg-custom-4 current:bg-custom-4  focus-visible:outline-custom-5",
         light:
-          "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-custom-1 text-gray-text hover:text-custom-text hover:bg-custom-3 current:bg-custom-3 focus-visible-has:outline-custom-4",
+          "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-custom-1 text-gray-text hover:text-custom-text hover:bg-custom-3 current:bg-custom-3 focus-visible:outline-custom-4",
         outlined:
-          "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-custom-1/50 border-custom-3 focus-visible-has:outline-custom-5 current:bg-custom-3 focus-visible-has:border-transparent",
-        text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-custom-1 dark:hover:bg-custom-1/50 text-gray-7 hover:text-gray-8 current:bg-custom-3 focus-visible-has:outline-custom-5",
+          "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-custom-1/50 border-custom-3 focus-visible:outline-custom-5 current:bg-custom-3 focus-visible:border-transparent",
+        text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-custom-1 dark:hover:bg-custom-1/50 text-gray-7 hover:text-gray-8 current:bg-custom-3 focus-visible:outline-custom-5",
         ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-custom-1 focus-visible-has:outline-custom-5",
-      },
-      width: {
-        fit: "w-full max-w-fit px-4",
-        full: "w-full",
-        custom: "",
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-custom-1 focus-visible:outline-custom-5",
       },
     },
     defaultVariants: {
@@ -86,13 +90,6 @@ export const buttonVariants = cva(
     },
   },
 );
-
-const iconSizeVariants = {
-  small: "min-w-6",
-  medium: "min-w-8",
-  large: "min-w-12",
-  custom: "",
-};
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
@@ -135,13 +132,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       role="button"
       ref={inputRef}
       className={clsx(
-        buttonVariants({
-          variant,
-          size,
-          width: icon ? "custom" : width,
-          icon: size === "custom" ? "custom" : icon,
-        }),
-        icon && iconSizeVariants[size],
+        buttonVariants({ variant, size, width, icon }),
         className,
         loading && !icon && "text-transparent",
       )}

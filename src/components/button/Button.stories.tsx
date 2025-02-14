@@ -167,13 +167,13 @@ export const Context = () => {
           variant="contained"
           color="gray"
           size="custom"
-          className="h-20 w-20 justify-center rounded-full"
+          className="h-(--h-button) justify-center rounded-full [--h-button:6rem]"
         >
           <i className="fe-cancel text-body-3xl"></i>
         </Button>
       </div>
       <h3 className="sb-h3">Custom</h3>
-      <div className="mb-4 flex items-center gap-4">
+      <div className="mb-4 flex flex-wrap items-center gap-4">
         <Button size="custom" className="rounded-2xl">
           Text without margin
         </Button>
@@ -186,35 +186,23 @@ export const Context = () => {
           <br />
           lines
         </Button>
-        <Button size="custom" className="rounded-2xl p-1" width="custom">
-          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        <Button icon size="small">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full" />
         </Button>
-        <Button size="custom" className="rounded-full p-2" width="custom">
-          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
+        <Button icon size="medium">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full" />
         </Button>
-        <Button color="gray" size="custom" className="rounded-2xl p-1" width="custom">
-          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        <Button icon color="gray" size="small">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full p-0.5" />
         </Button>
-        <Button color="gray" size="custom" className="rounded-full p-2" width="custom">
-          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
+        <Button icon color="gray" size="medium">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full p-1" />
         </Button>
-        <Button
-          color="gray"
-          variant="text"
-          size="custom"
-          className="rounded-2xl p-1"
-          width="custom"
-        >
-          <img src="/profil.jpg" width={200} height={200} className="h-6 w-6 rounded-full" />
+        <Button icon color="gray" variant="text" size="medium">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full p-1" />
         </Button>
-        <Button
-          color="gray"
-          variant="text"
-          size="custom"
-          className="rounded-full p-2"
-          width="custom"
-        >
-          <img src="/profil.jpg" width={200} height={200} className="h-12 w-12 rounded-full" />
+        <Button icon color="gray" variant="text" size="large">
+          <img src="/profil.jpg" width={200} height={200} className="rounded-full p-1" />
         </Button>
       </div>
       <h3 className="sb-h3">Class only</h3>

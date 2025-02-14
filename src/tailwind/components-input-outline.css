@@ -3,6 +3,9 @@
   ) {
   @apply border-custom-2 border;
 }
+:is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea):has(:focus-visible) {
+  @apply border-transparent;
+}
 :is(.p8n-input-checkbox, .p8n-input-radio, .p8n-input-text, .p8n-textarea) {
   @apply focus-full:outline focus-full:outline-2 focus-full:outline-custom-4 hover:bg-custom-1/25;
 }

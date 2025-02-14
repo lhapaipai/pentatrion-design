@@ -1,3 +1,15 @@
-@custom-variant focus-full (&:has(input:focus), &.focus, &:focus:focus);
-@custom-variant focus-visible-has (&:focus-visible, &:has(:focus), &:has(:active));
-@custom-variant current (&[aria-checked="true"], &[aria-current="page"], &:has(:checked));
+@custom-variant focus-full {
+  &:has(input:focus),
+  &.focus,
+  &:focus:focus {
+    @slot;
+  }
+}
+
+@custom-variant current {
+  &[aria-checked="true"],
+  &[aria-current="page"],
+  &:has(:checked) {
+    @slot;
+  }
+}

@@ -14,14 +14,14 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
 }
 
 export const sizeVariant = {
-  small: "h-6",
-  medium: "h-8",
-  large: "h-12",
+  small: "[--h-input:24px] h-(--h-input)",
+  medium: "[--h-input:32px] h-(--h-input)",
+  large: "[--h-input:48px] h-(--h-input)",
   custom: "",
 };
 
 export const inputConfig = {
-  container: "p8n-input-text rounded-full outline-offset-[-1px] flex box-border",
+  container: "p8n-input-text rounded-full flex box-border",
   input: "h-full flex-1 appearance-none outline-hidden filter-none min-w-0 bg-transparent",
 };
 

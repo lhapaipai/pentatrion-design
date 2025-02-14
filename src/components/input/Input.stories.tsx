@@ -50,12 +50,11 @@ export const Context = () => {
         readOnly
         defaultValue="readonly input"
         suffix={
-          <Button withRipple={false} icon variant="text" color="gray">
+          <Button withRipple={true} icon size="input" variant="text" color="gray">
             <i className="fe-clipboard-copy"></i>
           </Button>
         }
       />
-
       <Input placeholder="Your first name" />
       <Input
         prefix={
@@ -76,7 +75,14 @@ export const Context = () => {
       />
       <Input
         suffix={
-          <Button withRipple={false} icon variant="ghost" color="gray">
+          <Button size="input" withRipple={true} icon variant="text" color="gray">
+            <i className="fe-cancel"></i>
+          </Button>
+        }
+      />{" "}
+      <Input
+        suffix={
+          <Button size="input" withRipple={true} icon variant="ghost" color="gray">
             <i className="fe-cancel"></i>
           </Button>
         }
@@ -84,7 +90,7 @@ export const Context = () => {
       <Input
         suffix={
           <>
-            <Button withRipple={false} icon variant="ghost" color="gray">
+            <Button size="input" withRipple={true} icon variant="ghost" color="gray">
               <i className="fe-cancel"></i>
             </Button>
             <Loader size="medium" color="gray" />
