@@ -62,14 +62,14 @@ export const buttonVariants = cva(
          *   ])
          */
         contained:
-          "shadow-sm hover:shadow-md active:shadow-md-active outline-offset-0 text-(--color-custom-text) bg-(--color-custom-3) hover:bg-(--color-custom-4) current:bg-(--color-custom-4)  focus-visible-has:outline-(--color-custom-5)",
+          "shadow-sm hover:shadow-md active:shadow-md-active outline-offset-0 text-custom-text bg-custom-3 hover:bg-custom-4 current:bg-custom-4  focus-visible-has:outline-custom-5",
         light:
-          "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-(--color-custom-1) text-gray-text hover:text-(--color-custom-text) hover:bg-(--color-custom-3) current:bg-(--color-custom-3) focus-visible-has:outline-(--color-custom-4)",
+          "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-custom-1 text-gray-text hover:text-custom-text hover:bg-custom-3 current:bg-custom-3 focus-visible-has:outline-custom-4",
         outlined:
-          "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-[--alpha(var(--color-custom-1)/50%)] border-(--color-custom-3) focus-visible-has:outline-(--color-custom-5) current:bg-(--color-custom-3) focus-visible-has:border-transparent",
-        text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-(--color-custom-1) dark:hover:bg-[--alpha(var(--color-custom-1)/50%)] text-gray-7 hover:text-gray-8 current:bg-(--color-custom-3) focus-visible-has:outline-(--color-custom-5)",
+          "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-custom-1/50 border-custom-3 focus-visible-has:outline-custom-5 current:bg-custom-3 focus-visible-has:border-transparent",
+        text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-custom-1 dark:hover:bg-custom-1/50 text-gray-7 hover:text-gray-8 current:bg-custom-3 focus-visible-has:outline-custom-5",
         ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-(--color-custom-1) focus-visible-has:outline-(--color-custom-5)",
+          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-custom-1 focus-visible-has:outline-custom-5",
       },
       width: {
         fit: "w-full max-w-fit px-4",
