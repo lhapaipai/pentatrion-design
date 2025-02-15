@@ -23,6 +23,7 @@ export const sizeVariant = {
 export const inputConfig = {
   container: "p8n-input-text rounded-full flex box-border",
   input: "h-full flex-1 appearance-none outline-hidden filter-none min-w-0 bg-transparent",
+  icon: "[--h-icon:calc(var(--h-input)-2px)] h-(--h-icon) w-(--h-icon) inline-flex-center",
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

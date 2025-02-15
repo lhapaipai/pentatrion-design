@@ -17,7 +17,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           disabled={disabled}
           type="checkbox"
           className={clsx(
-            "p8n-input-toggle ll-toggle p8n-input-checkbox relative mr-1 box-border inline-block h-[18px] w-[30px] cursor-pointer appearance-none rounded-xl bg-gray-1 outline-offset-[-1px] after:absolute after:left-[2px] after:top-[2px] after:h-[12px] after:w-[12px] after:rounded-full after:bg-gray-2 after:outline after:outline-1 after:outline-gray-3 after:transition-all after:duration-100 checked:bg-gray-2 checked:after:translate-x-[12px] checked:after:bg-current checked:after:outline-current",
+            "p8n-input-toggle bg-gray-1 after:bg-gray-2 after:outline-gray-3 checked:bg-gray-2 relative mr-1 box-border inline-block h-[18px] w-[30px] cursor-pointer appearance-none rounded-xl outline-offset-[-1px] after:absolute after:top-[2px] after:left-[2px] after:h-[12px] after:w-[12px] after:rounded-full after:outline after:outline-1 after:transition-all after:duration-100 checked:after:translate-x-[12px] checked:after:bg-current checked:after:outline-current",
             className,
           )}
           checked={checked}

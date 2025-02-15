@@ -1,17 +1,21 @@
-import { CSSProperties, ComponentPropsWithoutRef, useId } from "react";
+import { CSSProperties, ComponentPropsWithoutRef, ReactNode, useId } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { colorVariants } from "../../lib/tailwindVariants";
 
-interface Props extends ComponentPropsWithoutRef<"svg"> {
-  size?: "small" | "medium" | "large";
+interface Props extends ComponentPropsWithoutRef<"div"> {
+  size?: "small" | "medium" | "large" | "input";
   color?: ThemeColor | "custom";
+  children?: ReactNode;
+  loading?: boolean;
+  position?: CSSProperties["position"];
 }
 
 const sizeConfig = {
-  small: "w-6 h-6 text-body-base",
-  medium: "w-8 h-8 text-[2rem]",
-  large: "w-12 h-12 text-[3rem]",
+  small: "[--h-button:1.5rem]",
+  medium: "[--h-button:2rem]",
+  large: "[--h-button:3rem]",
+  input: "[--h-button:calc(var(--h-input)-2px)]",
 };
 
 const trackStyle: CSSProperties = {
@@ -31,29 +35,51 @@ const circleStyle: CSSProperties = {
   strokeDasharray: "17.45px, 26.21px",
 };
 
-export function Loader({ size = "medium", color = "blue", className, ...rest }: Props) {
+export function Loader({
+  size = "medium",
+  color = "blue",
+  loading = true,
+  className,
+  position = "relative",
+  children,
+  ...rest
+}: Props) {
   const id = useId();
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
+    <div
       className={clsx(
-        "inline-block",
+        "inline-block h-(--h-button) w-(--h-button)",
+        position,
         sizeConfig[size],
-        color !== "custom" && colorVariants[color].text,
         className,
       )}
-      viewBox="0 0 16 16"
       {...rest}
     >
-      <defs>
-        <circle id={id} cx="8" cy="8" r="7" />
-      </defs>
-      <use href={`#${id}`} className="fill-none stroke-current opacity-25" style={trackStyle} />
-      <use
-        href={`#${id}`}
-        className="animate-loader-stroke fill-none stroke-current"
-        style={circleStyle}
-      />
-    </svg>
+      {loading && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={clsx(
+            "inline-block h-(--h-button) w-(--h-button)",
+            color !== "custom" && colorVariants[color].text,
+          )}
+          viewBox="0 0 16 16"
+        >
+          <defs>
+            <circle id={id} cx="8" cy="8" r="7" />
+          </defs>
+          <use href={`#${id}`} className="fill-none stroke-current opacity-25" style={trackStyle} />
+          <use
+            href={`#${id}`}
+            className="animate-loader-stroke fill-none stroke-current"
+            style={circleStyle}
+          />
+        </svg>
+      )}
+      {children && (
+        <div className="absolute top-0 left-0 inline-flex h-(--h-button) w-(--h-button) items-center justify-center">
+          {children}
+        </div>
+      )}
+    </div>
   );
 }

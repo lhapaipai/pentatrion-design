@@ -13,3 +13,15 @@
     @slot;
   }
 }
+
+/**
+ * pour les boutons
+ * et les checkbox buttons qui sont composés d'un <input /> qui peut prendre le focus à l'intérieur
+ * d'une enveloppe d'apparence
+ */
+@custom-variant focus-visible-has {
+  &:focus-visible,
+  &:has(input:focus) {
+    @slot;
+  }
+}

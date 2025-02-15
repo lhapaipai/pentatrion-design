@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Button } from "../button/Button";
-import { Input } from "./Input";
+import { Input, inputConfig } from "./Input";
 import { Loader } from "../loader/Loader";
 
 const meta = {
@@ -30,6 +30,7 @@ export const Playbook: Story = {
 
 export const Context = () => {
   const [counter, setCounter] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="my-4 flex flex-col gap-2">
@@ -58,21 +59,22 @@ export const Context = () => {
       <Input placeholder="Your first name" />
       <Input
         prefix={
-          <span className="flex-center h-8 w-8">
+          <span className={inputConfig.icon}>
             <i className="fe-search"></i>
           </span>
         }
       />
-      <Input
-        prefix={
-          <>
-            <Loader size="medium" color="gray" />
-            <span className="flex-center -ml-8 h-8 w-8">
-              <i className="fe-search"></i>
-            </span>
-          </>
-        }
-      />
+      <div className="flex gap-2">
+        <Input
+          className="flex-1"
+          prefix={
+            <Loader loading={isLoading} size="input" color="gray" className="mr-2">
+              <i className="fe-search text-body-md" />
+            </Loader>
+          }
+        />
+        <Button onClick={() => setIsLoading((s) => !s)}>Toggle loading</Button>
+      </div>
       <Input
         suffix={
           <Button size="input" withRipple={true} icon variant="text" color="gray">
@@ -89,19 +91,23 @@ export const Context = () => {
       />
       <Input
         suffix={
-          <>
-            <Button size="input" withRipple={true} icon variant="ghost" color="gray">
-              <i className="fe-cancel"></i>
-            </Button>
-            <Loader size="medium" color="gray" />
-          </>
+          <Button
+            loading={isLoading}
+            size="input"
+            withRipple={true}
+            icon
+            variant="text"
+            color="gray"
+          >
+            <i className="fe-cancel"></i>
+          </Button>
         }
       />
       <Input
         suffix={
-          <>
-            <Loader size="medium" color="gray" />
-          </>
+          <Loader loading={isLoading} size="medium" color="gray">
+            <i className="fe-search text-body-md" />
+          </Loader>
         }
       />
       <Input prefix="prefix" />

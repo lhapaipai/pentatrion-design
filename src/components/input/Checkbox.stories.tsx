@@ -20,7 +20,13 @@ export const Basic = () => (
     <Checkbox color="blue">I agree</Checkbox>
     <Checkbox color="green">I agree</Checkbox>
 
-    <h3 className="mb-4 mt-8 text-body-md">Checkbox button</h3>
+    <h3 className="text-body-md mt-8 mb-4">Checkbox button</h3>
+
+    <p>
+      Attention pour les variantes contained et light le comportement n'est pas intuitif lorsqu'on
+      décoche le bouton il parait toujours coché car le curseur est sur le bouton. on ne peut pas
+      changer facilement le comportement car on importe les classes de bouton.
+    </p>
 
     {variants.map((variant) => (
       <div key={variant} className="mb-2 flex gap-2">

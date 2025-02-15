@@ -22,7 +22,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
         type="checkbox"
         className={clsx(
           "p8n-input-checkbox",
-          "my-1 mr-2 inline-block h-6 w-6 shrink-0 select-none appearance-none rounded-sm bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
+          "bg-gray-0 my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-sm bg-origin-border p-0 outline-offset-0 select-none",
           indeterminate && "indeterminate",
           className,
         )}

@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Loader } from "./Loader";
+import { useState } from "react";
+import { Button } from "../button";
 
 const meta = {
   title: "Components/Loader",
@@ -24,16 +26,31 @@ export const Playbook: Story = {
   },
 };
 
-export const Context = () => (
-  <div className="flex flex-col gap-2">
-    <Loader size="small" />
-    <br />
-    <Loader size="medium" color="yellow" />
-    <br />
-    <Loader size="large" color="red" />
-    <br />
-    <Loader size="medium" color="gray" />
-    <br />
-    <Loader color="custom" className="text-[#ff0000]" />
-  </div>
-);
+export const Context = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Loader size="small" />
+      <Loader size="medium" color="yellow" />
+      <Loader size="large" color="red" />
+      <Loader size="small">
+        <i className="fe-search text-body-xs" />
+      </Loader>
+      <Loader size="medium" color="yellow">
+        <i className="fe-search text-body-md" />
+      </Loader>
+      <Loader size="large" color="red">
+        <i className="fe-search text-body-xl" />
+      </Loader>
+      <Loader size="medium" color="gray" />
+      <Loader color="custom" className="text-[#ff0000]" />
+      <div className="flex">
+        <Loader loading={isLoading} size="medium" color="gray">
+          <i className="fe-search text-body-md" />
+        </Loader>
+        <Button onClick={() => setIsLoading((s) => !s)}>Toggle loading</Button>
+      </div>
+    </div>
+  );
+};
