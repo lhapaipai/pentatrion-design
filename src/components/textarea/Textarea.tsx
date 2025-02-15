@@ -1,17 +1,24 @@
 import clsx from "clsx";
-import { forwardRef, ComponentProps, ReactNode } from "react";
+import { ComponentProps, ReactNode, RefObject } from "react";
 import type { ThemeColor } from "../../types";
 
 export interface TextareaProps extends ComponentProps<"textarea"> {
   variant?: "normal" | "ghost";
   color?: ThemeColor;
   action?: ReactNode;
+  ref?: RefObject<HTMLTextAreaElement>;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  { variant = "normal", color = "yellow", disabled = false, className, readOnly, action, ...rest },
+export function Textarea({
+  variant = "normal",
+  color = "yellow",
+  disabled = false,
+  className,
+  readOnly,
+  action,
   ref,
-) {
+  ...rest
+}: TextareaProps) {
   return (
     <div className={clsx("relative block", className)}>
       <textarea
@@ -30,7 +37,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         disabled={disabled}
         {...rest}
       />
-      {action && <div className="absolute right-1 top-1">{action}</div>}
+      {action && <div className="absolute top-1 right-1">{action}</div>}
     </div>
   );
-});
+}

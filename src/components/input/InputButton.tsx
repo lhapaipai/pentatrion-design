@@ -2,9 +2,9 @@ import clsx from "clsx";
 import {
   ComponentPropsWithRef,
   FocusEventHandler,
-  forwardRef,
   MouseEventHandler,
   ReactNode,
+  RefObject,
   useRef,
 } from "react";
 import { ThemeColor } from "~/types";
@@ -21,26 +21,25 @@ export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "
 
   readOnly?: boolean;
   placeholder?: string;
+  ref?: RefObject<HTMLInputElement>;
 }
-export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(function InputButton(
-  {
-    variant = "normal",
-    color = "yellow",
-    disabled = false,
-    prefix,
-    className,
-    readOnly = false,
-    size = "medium",
-    flexibleWidth = true,
-    label,
-    placeholder = "",
-    onClick,
-    onFocus,
-    onBlur,
-    ...rest
-  },
+export function InputButton({
+  variant = "normal",
+  color = "yellow",
+  disabled = false,
+  prefix,
+  className,
+  readOnly = false,
+  size = "medium",
+  flexibleWidth = true,
+  label,
+  placeholder = "",
+  onClick,
+  onFocus,
+  onBlur,
   ref,
-) {
+  ...rest
+}: InputButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null!);
   return (
     <div className="w-full">
@@ -94,4 +93,4 @@ export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(functi
       </button>
     </div>
   );
-});
+}

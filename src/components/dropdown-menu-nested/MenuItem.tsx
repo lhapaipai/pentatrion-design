@@ -1,16 +1,14 @@
 import { useFloatingTree, useListItem, useMergeRefs } from "@floating-ui/react";
-import { ButtonHTMLAttributes, FocusEvent, MouseEvent, forwardRef, useContext } from "react";
+import { ButtonHTMLAttributes, FocusEvent, MouseEvent, RefObject, useContext } from "react";
 import { MenuContext } from "./MenuContext";
 
-interface Props {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   disabled?: boolean;
+  ref?: RefObject<HTMLButtonElement>;
 }
 
-export const MenuItem = forwardRef<
-  HTMLButtonElement,
-  Props & ButtonHTMLAttributes<HTMLButtonElement>
->(({ label, disabled, ...props }, forwardedRef) => {
+export function MenuItem({ label, disabled, ref, ...props }: Props) {
   const menu = useContext(MenuContext);
   const item = useListItem({ label: disabled ? null : label });
   const tree = useFloatingTree();
@@ -19,7 +17,7 @@ export const MenuItem = forwardRef<
   return (
     <button
       {...props}
-      ref={useMergeRefs([item.ref, forwardedRef])}
+      ref={useMergeRefs([item.ref, ref])}
       type="button"
       role="menuitem"
       className="option"
@@ -40,4 +38,4 @@ export const MenuItem = forwardRef<
       {label}
     </button>
   );
-});
+}

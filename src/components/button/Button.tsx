@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
+import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
 import { Loader } from "../loader";
@@ -6,7 +6,7 @@ import { useRipple } from "../../hooks";
 import { Slot } from "../slot";
 import { cva } from "class-variance-authority";
 
-export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "color"> {
+export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
   withRipple?: boolean;
 
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
@@ -30,12 +30,10 @@ export interface ButtonProps extends Omit<ComponentPropsWithRef<"button">, "colo
   icon?: boolean;
 
   asChild?: boolean;
+
+  ref?: RefObject<HTMLButtonElement>;
 }
 
-/**
- * TODO
- * removed overflow-clip text-center
- */
 export const buttonVariants = cva(
   "relative box-border inline-flex items-center leading-5 no-underline focus-visible-has:outline-2 truncate",
   {
@@ -91,25 +89,23 @@ export const buttonVariants = cva(
   },
 );
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  {
-    withRipple = true,
-    variant = "contained",
-    loading = false,
-    color = "yellow",
-    size = "medium",
-    focusable = true,
-    className,
-    disabled = false,
-    children,
-    selected = false,
-    icon = false,
-    asChild = false,
-    width = "fit",
-    ...props
-  },
+export function Button({
+  withRipple = true,
+  variant = "contained",
+  loading = false,
+  color = "yellow",
+  size = "medium",
+  focusable = true,
+  className,
+  disabled = false,
+  children,
+  selected = false,
+  icon = false,
+  asChild = false,
+  width = "fit",
   ref,
-) {
+  ...props
+}: ButtonProps) {
   const inputRef = useRef<HTMLButtonElement>(null!);
 
   useImperativeHandle<HTMLButtonElement | null, HTMLButtonElement | null>(
@@ -160,4 +156,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       )}
     </Comp>
   );
-});
+}

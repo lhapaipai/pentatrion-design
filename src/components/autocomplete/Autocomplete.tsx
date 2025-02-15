@@ -5,11 +5,10 @@ import {
   useMemo,
   useRef,
   useState,
-  forwardRef,
-  ForwardedRef,
   ReactNode,
   ComponentProps,
   CSSProperties,
+  RefObject,
 } from "react";
 import type { OptionLike, Option } from "../select";
 import { AutocompleteOption, AutocompleteOptionProps } from "./AutocompleteOption";
@@ -78,32 +77,32 @@ export interface AutocompleteProps<O extends OptionLike = Option> extends Compon
   clearSearchButton?: boolean;
 
   selectOnFocus?: boolean;
+
+  ref?: RefObject<HTMLInputElement>;
 }
 
-export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLike = Option>(
-  {
-    className,
-    autoFocus = false,
-    icon = true,
-    color = "yellow",
-    noSearchSuffix,
-    suffix,
-    placement = "bottom",
-    placeholder = "Search...",
-    selection = null,
-    onChangeSelection,
-    autocompleteOptionComponent,
-    loading = false,
-    clearSearchButton = false,
-    searchValue,
-    onChangeSearchValue,
-    options,
-    selectOnFocus = true,
-    readOnly = false,
-    ...rest
-  }: AutocompleteProps<O>,
-  inputRef: ForwardedRef<HTMLInputElement>,
-) {
+export function Autocomplete<O extends OptionLike = Option>({
+  className,
+  autoFocus = false,
+  icon = true,
+  color = "yellow",
+  noSearchSuffix,
+  suffix,
+  placement = "bottom",
+  placeholder = "Search...",
+  selection = null,
+  onChangeSelection,
+  autocompleteOptionComponent,
+  loading = false,
+  clearSearchButton = false,
+  searchValue,
+  onChangeSearchValue,
+  options,
+  selectOnFocus = true,
+  readOnly = false,
+  ref,
+  ...rest
+}: AutocompleteProps<O>) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -232,7 +231,7 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
           autoFocus={autoFocus}
           spellCheck="false"
           className={clsx(inputConfig.input, icon === false && "pl-4")}
-          ref={inputRef}
+          ref={ref}
           type="search"
           readOnly={readOnly}
           value={searchValue}
@@ -324,4 +323,4 @@ export const Autocomplete = forwardRef(function Autocomplete<O extends OptionLik
       </FloatingPortal>
     </div>
   );
-});
+}

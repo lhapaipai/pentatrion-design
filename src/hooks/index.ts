@@ -1,6 +1,5 @@
 export { useRipple } from "./useRipple";
 export { useIsMounted } from "./useIsMounted";
-export { useCombinedRefs } from "./useCombinedRefs";
 export { useIsClosing } from "./useIsClosing";
 export { usePrevious } from "./usePrevious";
 export { useEffectEvent } from "./useEffectEvent";
@@ -9,3 +8,4 @@ export { useCopyToClipboard } from "./useCopyToClipboard";
 export { useEventListener } from "./useEventListener";
 export { useOnClickOutside } from "./useOnClickOutside";
 export { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
+export { useMergeRefs } from "./useMergeRefs";

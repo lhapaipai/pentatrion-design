@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, ComponentPropsWithRef, useState, ChangeEvent } from "react";
+import { useMemo, ComponentPropsWithRef, useState, ChangeEvent, RefObject } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
@@ -23,29 +23,29 @@ export interface RangeProps
   color?: ThemeColor;
 
   formatter?: (str: number) => string;
+
+  ref?: RefObject<HTMLInputElement>;
 }
 
 const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 
-export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
-  {
-    className,
-    defaultValue,
-    value: controlledValue,
-    min = 0,
-    max = 100,
-    color = "yellow",
-    showMinMax = "onHover",
-    step = 1,
-    valuesByTick,
-    showValue = true,
-    ticks = false,
-    formatter = (str) => str.toString(),
-    onChange,
-    ...rest
-  }: RangeProps,
+export function Range({
+  className,
+  defaultValue,
+  value: controlledValue,
+  min = 0,
+  max = 100,
+  color = "yellow",
+  showMinMax = "onHover",
+  step = 1,
+  valuesByTick,
+  showValue = true,
+  ticks = false,
+  formatter = (str) => str.toString(),
+  onChange,
   ref,
-) {
+  ...rest
+}: RangeProps) {
   const isControlled = typeof controlledValue !== "undefined";
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
@@ -151,4 +151,4 @@ export const Range = forwardRef<HTMLInputElement, RangeProps>(function Range(
       />
     </div>
   );
-});
+}

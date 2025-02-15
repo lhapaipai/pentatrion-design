@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { ChangeEvent, ComponentPropsWithRef, forwardRef, useRef, useState } from "react";
-import { useCombinedRefs } from "../../hooks";
+import { ChangeEvent, ComponentPropsWithRef, RefObject, useRef, useState } from "react";
+import { useMergeRefs } from "../../hooks";
 import { Button } from "../button";
 
 export type MappedStarOption = {
@@ -16,21 +16,20 @@ export interface MappedStarsProps
   options: MappedStarOption[];
   showLabel?: boolean;
   labelClassName?: string;
+  ref?: RefObject<HTMLInputElement>;
 }
 
-export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(function MappedStars(
-  {
-    onChange,
-    value: controlledValue,
-    defaultValue,
-    options,
-    showLabel = false,
-    labelClassName,
-    required = false,
-    ...rest
-  },
+export function MappedStars({
+  onChange,
+  value: controlledValue,
+  defaultValue,
+  options,
+  showLabel = false,
+  labelClassName,
+  required = false,
   ref,
-) {
+  ...rest
+}: MappedStarsProps) {
   const isControlled = typeof controlledValue !== "undefined";
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
@@ -43,7 +42,7 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
   }
 
   const inputTextRef = useRef<HTMLInputElement>(null!);
-  const combinedRef = useCombinedRefs(inputTextRef, ref);
+  const combinedRef = useMergeRefs([inputTextRef, ref]);
   const inputRangeRef = useRef<HTMLInputElement>(null!);
 
   const rangeValue = options.findIndex((o) => o.value === value);
@@ -109,7 +108,7 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
       />
       <span
-        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
+        className="rounded-2xl peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
         data-color="yellow"
       >
         {Array.from({ length: options.length }).map((_, i) => {
@@ -146,4 +145,4 @@ export const MappedStars = forwardRef<HTMLInputElement, MappedStarsProps>(functi
       {value === null ? "null" : (value ?? "undefined")} */}
     </div>
   );
-});
+}

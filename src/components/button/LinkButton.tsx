@@ -1,31 +1,29 @@
-import { ComponentPropsWithRef, forwardRef, useImperativeHandle, useRef } from "react";
+import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { useRipple } from "../../hooks/useRipple";
 import { ButtonProps, buttonVariants } from "./Button";
 
-export type LinkButtonProps = ComponentPropsWithRef<"a"> &
+export type LinkButtonProps = ComponentProps<"a"> &
   Pick<
     ButtonProps,
     "withRipple" | "variant" | "size" | "color" | "selected" | "icon" | "disabled" | "width"
-  >;
+  > & { ref?: RefObject<HTMLAnchorElement> };
 
-export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(function LinkButton(
-  {
-    withRipple = true,
-    variant = "contained",
-    color = "yellow",
-    size = "medium",
-    width = "fit",
-    className,
-    disabled,
-    children,
-    selected = false,
-    icon = false,
-    href,
-    ...props
-  },
+export function LinkButton({
+  withRipple = true,
+  variant = "contained",
+  color = "yellow",
+  size = "medium",
+  width = "fit",
+  className,
+  disabled,
+  children,
+  selected = false,
+  icon = false,
+  href,
   ref,
-) {
+  ...props
+}: LinkButtonProps) {
   const anchorRef = useRef<HTMLAnchorElement>(null!);
 
   useImperativeHandle<HTMLAnchorElement | null, HTMLAnchorElement | null>(
@@ -55,4 +53,4 @@ export const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(functio
       {children}
     </a>
   );
-});
+}

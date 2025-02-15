@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { ChangeEvent, ComponentPropsWithRef, forwardRef, useRef, useState } from "react";
-import { useCombinedRefs } from "../../hooks";
+import { ChangeEvent, ComponentPropsWithRef, RefObject, useRef, useState } from "react";
 import { Button } from "../button";
+import { useMergeRefs } from "../../hooks";
 
 export interface StarsProps
   extends Omit<
@@ -14,12 +14,19 @@ export interface StarsProps
   max?: number;
   step?: number;
   zeroAsResetValue?: boolean;
+  ref?: RefObject<HTMLInputElement>;
 }
 
-export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
-  { onChange, defaultValue, value: controlledValue, max = 5, step = 1, required = false, ...rest },
+export function Stars({
+  onChange,
+  defaultValue,
+  value: controlledValue,
+  max = 5,
+  step = 1,
+  required = false,
   ref,
-) {
+  ...rest
+}: StarsProps) {
   const isControlled = typeof controlledValue !== "undefined";
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
@@ -32,7 +39,7 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
   }
 
   const inputRef = useRef<HTMLInputElement>(null!);
-  const combinedRef = useCombinedRefs(inputRef, ref);
+  const combinedRef = useMergeRefs([inputRef, ref]);
 
   function handleClickStar(nextValue: number) {
     if (!isControlled) {
@@ -81,7 +88,7 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
       />
       <span
-        className="rounded-2xl peer-focus:outline peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
+        className="rounded-2xl peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"
         data-color="yellow"
       >
         {Array.from({ length: max }).map((_, i) => {
@@ -112,4 +119,4 @@ export const Stars = forwardRef<HTMLInputElement, StarsProps>(function Stars(
       {/* {rangeValue === null ? "null" : (rangeValue ?? "undefined")} */}
     </div>
   );
-});
+}

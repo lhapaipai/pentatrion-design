@@ -34,7 +34,6 @@ export const BoardApp = () => {
   }, [data]);
 
   const [registry] = useState(createRegistry);
-  const { lastOperation } = data;
 
   const getColumns = useCallback(() => {
     const { columnMap, orderedColumnIds } = stableData.current;

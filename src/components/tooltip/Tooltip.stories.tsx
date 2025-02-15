@@ -1,4 +1,4 @@
-import { HTMLProps, forwardRef } from "react";
+import { HTMLProps, RefObject } from "react";
 // import { useDrag } from "@use-gesture/react";
 // import { useSpring, animated } from "@react-spring/web";
 import { Tooltip } from "./Tooltip";
@@ -11,16 +11,22 @@ export default {
   decorators: [(Story: StoryFn) => <Story />],
 };
 
-const Box = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>((props, ref) => (
-  <div
-    ref={ref}
-    className="flex-center bg-gray-2 h-[100px] w-[100px] shadow-lg"
-    style={{
-      margin: "100px",
-    }}
-    {...props}
-  ></div>
-));
+interface BoxProps extends HTMLProps<HTMLDivElement> {
+  ref?: RefObject<HTMLDivElement>;
+}
+
+function Box({ ref, ...props }: BoxProps) {
+  return (
+    <div
+      ref={ref}
+      className="flex-center bg-gray-2 h-[100px] w-[100px] shadow-lg"
+      style={{
+        margin: "100px",
+      }}
+      {...props}
+    ></div>
+  );
+}
 
 export const Basic = () => {
   return (

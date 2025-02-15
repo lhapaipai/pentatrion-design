@@ -1,4 +1,4 @@
-import { forwardRef, memo } from "react";
+import { memo, RefObject } from "react";
 import { Person } from "../types";
 
 type CardPrimitiveProps = {
@@ -6,16 +6,17 @@ type CardPrimitiveProps = {
   item: Person;
   // state: State;
   // actionMenuTriggerRef?: Ref<HTMLButtonElement>;
+  ref?: RefObject<HTMLDivElement>;
 };
 
-const CardPrimitive = forwardRef<HTMLDivElement, CardPrimitiveProps>(function CardPrimitive(
-  { item },
-  ref,
-) {
-  const { avatarUrl, name, role, userId } = item;
+function CardPrimitive({ item, ref }: CardPrimitiveProps) {
+  const { avatarUrl, name, role } = item;
 
   return (
-    <div className="border-gray-2 hover:bg-gray-1 relative box-border grid cursor-grab grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border bg-white p-2 shadow-xs">
+    <div
+      ref={ref}
+      className="border-gray-2 hover:bg-gray-1 relative box-border grid cursor-grab grid-cols-[auto_1fr_auto] items-center gap-2 rounded-lg border bg-white p-2 shadow-xs"
+    >
       <div className="relative inline-block">
         <div className="pointer-events-none">
           <img className="h-10 w-10 rounded-full" src={avatarUrl} />
@@ -29,11 +30,9 @@ const CardPrimitive = forwardRef<HTMLDivElement, CardPrimitiveProps>(function Ca
       <div className="box-border">...</div>
     </div>
   );
-});
+}
 
 export const Card = memo(function Card({ item }: { item: Person }) {
-  const { userId } = item;
-
   return (
     <>
       <CardPrimitive item={item} />

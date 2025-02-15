@@ -1,18 +1,24 @@
-import { ComponentPropsWithRef, forwardRef } from "react";
+import { ComponentProps, RefObject } from "react";
 import { type ThemeColor } from "../../types";
 import clsx from "clsx";
 import { buttonVariants } from "../button";
 
-export interface CheckboxProps extends ComponentPropsWithRef<"input"> {
+export interface CheckboxProps extends ComponentProps<"input"> {
   indeterminate?: boolean;
   disabled?: boolean;
   color?: ThemeColor;
+  ref?: RefObject<HTMLInputElement>;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  { color = "yellow", indeterminate, disabled = false, className, children, ...rest },
+export function Checkbox({
+  color = "yellow",
+  indeterminate,
+  disabled = false,
+  className,
+  children,
   ref,
-) {
+  ...rest
+}: CheckboxProps) {
   return (
     <label aria-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
       <input
@@ -31,30 +37,29 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
       {children}
     </label>
   );
-});
+}
 
-interface CheckboxButtonProps extends Omit<ComponentPropsWithRef<"input">, "size"> {
+interface CheckboxButtonProps extends Omit<ComponentProps<"input">, "size"> {
   disabled?: boolean;
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
   size?: "small" | "medium" | "large" | "custom";
   width?: "fit" | "full" | "custom";
   icon?: boolean;
+  ref?: RefObject<HTMLInputElement>;
 }
-export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(function Checkbox(
-  {
-    color = "yellow",
-    disabled = false,
-    width = "fit",
-    size,
-    icon,
-    variant,
-    className,
-    children,
-    ...rest
-  },
+export function CheckboxButton({
+  color = "yellow",
+  disabled = false,
+  width = "fit",
+  size,
+  icon,
+  variant,
+  className,
+  children,
   ref,
-) {
+  ...rest
+}: CheckboxButtonProps) {
   return (
     <label
       aria-disabled={disabled}
@@ -71,4 +76,4 @@ export const CheckboxButton = forwardRef<HTMLInputElement, CheckboxButtonProps>(
       {children}
     </label>
   );
-});
+}

@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, forwardRef } from "react";
+import { ComponentPropsWithRef, ReactNode } from "react";
 import clsx from "clsx";
 import type { ThemeColor } from "../../types";
 
@@ -26,72 +26,68 @@ export const inputConfig = {
   icon: "[--h-icon:calc(var(--h-input)-2px)] h-(--h-icon) w-(--h-icon) inline-flex-center",
 };
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      variant = "normal",
-      color = "yellow",
-      disabled = false,
-      prefix,
-      suffix,
-      className,
-      readOnly,
-      size = "medium",
-      flexibleWidth = true,
-      type,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
-    return (
-      <div
-        aria-disabled={disabled}
-        aria-readonly={readOnly}
-        data-color={color}
-        data-variant={variant}
-        className={clsx(inputConfig.container, sizeVariant[size], className)}
-      >
-        {prefix && (
-          <div
-            className={clsx([
-              "flex-center relative",
-              typeof prefix === "string" && "text-gray-6 mx-2 select-none",
-            ])}
-          >
-            {prefix}
-          </div>
+export function Input({
+  variant = "normal",
+  color = "yellow",
+  disabled = false,
+  prefix,
+  suffix,
+  className,
+  readOnly,
+  size = "medium",
+  flexibleWidth = true,
+  type,
+  children,
+  ref,
+  ...rest
+}: InputProps) {
+  return (
+    <div
+      aria-disabled={disabled}
+      aria-readonly={readOnly}
+      data-color={color}
+      data-variant={variant}
+      className={clsx(inputConfig.container, sizeVariant[size], className)}
+    >
+      {prefix && (
+        <div
+          className={clsx([
+            "flex-center relative",
+            typeof prefix === "string" && "text-gray-6 mx-2 select-none",
+          ])}
+        >
+          {prefix}
+        </div>
+      )}
+      <input
+        type={type}
+        ref={ref}
+        className={clsx(
+          inputConfig.input,
+          !prefix && "pl-4",
+          type !== "date" && type !== "datetime-local" ? !suffix && "pr-4" : "pr-1",
+          flexibleWidth && "w-0",
         )}
-        <input
-          type={type}
-          ref={ref}
-          className={clsx(
-            inputConfig.input,
-            !prefix && "pl-4",
-            type !== "date" && type !== "datetime-local" ? !suffix && "pr-4" : "pr-1",
-            flexibleWidth && "w-0",
-          )}
-          disabled={disabled}
-          readOnly={readOnly}
-          onClick={(e) => {
-            if (readOnly) {
-              (e.target as HTMLInputElement)?.select();
-            }
-          }}
-          {...rest}
-        />
-        {suffix && (
-          <div
-            className={clsx([
-              "flex-center relative",
-              typeof suffix === "string" && "text-gray-6 mx-2 select-none",
-            ])}
-          >
-            {suffix}
-          </div>
-        )}
-        {children}
-      </div>
-    );
-  },
-);
+        disabled={disabled}
+        readOnly={readOnly}
+        onClick={(e) => {
+          if (readOnly) {
+            (e.target as HTMLInputElement)?.select();
+          }
+        }}
+        {...rest}
+      />
+      {suffix && (
+        <div
+          className={clsx([
+            "flex-center relative",
+            typeof suffix === "string" && "text-gray-6 mx-2 select-none",
+          ])}
+        >
+          {suffix}
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}
