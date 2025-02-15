@@ -14,7 +14,7 @@ body {
 }
 
 :focus-visible {
-  @apply outline-yellow-5 rounded-sm outline outline-2 outline-offset-2;
+  @apply outline-yellow-4 rounded-sm outline outline-2 outline-offset-0;
 }
 
 textarea[readonly],

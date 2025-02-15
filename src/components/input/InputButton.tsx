@@ -1,9 +1,16 @@
 import clsx from "clsx";
-import { ComponentPropsWithRef, forwardRef, ReactNode } from "react";
+import {
+  ComponentPropsWithRef,
+  FocusEventHandler,
+  forwardRef,
+  MouseEventHandler,
+  ReactNode,
+  useRef,
+} from "react";
 import { ThemeColor } from "~/types";
 import { inputConfig, sizeVariant } from "./Input";
 
-export interface InputButtonProps extends Omit<ComponentPropsWithRef<"button">, "prefix"> {
+export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
   label?: string;
   variant?: "normal" | "ghost";
   disabled?: boolean;
@@ -15,7 +22,7 @@ export interface InputButtonProps extends Omit<ComponentPropsWithRef<"button">, 
   readOnly?: boolean;
   placeholder?: string;
 }
-export const InputButton = forwardRef<HTMLButtonElement, InputButtonProps>(function InputButton(
+export const InputButton = forwardRef<HTMLInputElement, InputButtonProps>(function InputButton(
   {
     variant = "normal",
     color = "yellow",
@@ -27,14 +34,25 @@ export const InputButton = forwardRef<HTMLButtonElement, InputButtonProps>(funct
     flexibleWidth = true,
     label,
     placeholder = "",
+    onClick,
+    onFocus,
+    onBlur,
     ...rest
   },
   ref,
 ) {
+  const buttonRef = useRef<HTMLButtonElement>(null!);
   return (
     <div className="w-full">
-      <button
+      <input
         ref={ref}
+        className="hidden-focusable"
+        tabIndex={-1}
+        onFocus={() => void buttonRef.current.focus()}
+        {...rest}
+      />
+      <button
+        ref={buttonRef}
         aria-disabled={disabled}
         aria-readonly={readOnly}
         data-color={color}
@@ -45,7 +63,10 @@ export const InputButton = forwardRef<HTMLButtonElement, InputButtonProps>(funct
           sizeVariant[size],
           className,
         )}
-        {...rest}
+        type="button"
+        onClick={onClick as MouseEventHandler<HTMLButtonElement>}
+        onFocus={onFocus as FocusEventHandler<HTMLButtonElement>}
+        onBlur={onBlur as FocusEventHandler<HTMLButtonElement>}
       >
         {prefix && (
           <div

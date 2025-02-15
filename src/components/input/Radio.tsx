@@ -19,7 +19,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           disabled={disabled}
           className={clsx(
             "p8n-input-radio",
-            "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer select-none appearance-none rounded-full bg-gray-0 bg-origin-border p-0 outline-offset-[-1px]",
+            "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-full bg-origin-border p-0 outline-offset-[-1px] select-none",
             className,
           )}
           {...rest}
