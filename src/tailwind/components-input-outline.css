@@ -29,7 +29,9 @@
     .p8n-input-toggle:focus,
     .p8n-input-radio:focus,
     .p8n-input-text:has(input:focus-visible),
-    button.p8n-input-text:focus,
+    button.p8n-input-text:focus, /* InputButton */
+    div.p8n-input-text:focus, /* Select */
+    .p8n-input-text.focus,
     .p8n-textarea:focus-visible
   ):not([data-variant="ghost"]) {
   @apply outline-custom-4 border-transparent outline-2 outline-offset-0;

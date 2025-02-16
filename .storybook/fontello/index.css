@@ -13,6 +13,12 @@
   font-style: normal;
 }
 */
+[class^="fe-"],
+[class*=" fe-"] {
+  /* in certain cases (<Button />) i can be of type block/inline-block */
+  text-align: center;
+}
+
 [class^="fe-"]:before,
 [class*=" fe-"]:before {
   font-family: "fontello-design";
@@ -22,7 +28,6 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  text-align: center;
   /* opacity: .8; */
 
   /* For safety - reset parent styles, that can break glyph codes*/

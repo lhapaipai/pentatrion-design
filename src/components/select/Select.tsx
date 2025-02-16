@@ -96,8 +96,11 @@ export function Select<O extends Option>({
   zIndex,
   color = "yellow",
   ref,
+  onFocus,
+  onBlur,
 }: SelectProps<O>) {
   const isControlled = typeof controlledValue !== "undefined";
+  const divSelectionRef = useRef<HTMLDivElement>(null!);
 
   const onChangeStable = useEffectEvent(onChange);
 
@@ -169,7 +172,7 @@ export function Select<O extends Option>({
     ],
   });
 
-  const mergedRef = useMergeRefs([refs.setReference, ref]);
+  const mergedRef = useMergeRefs([refs.setReference, ref, divSelectionRef]);
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
@@ -249,10 +252,13 @@ export function Select<O extends Option>({
   return (
     <div>
       <input
-        type="hidden"
+        className="hidden-focusable"
+        tabIndex={-1}
         id={id}
         name={name}
         value={selectedIndex !== null ? filteredOptions[selectedIndex].value : ""}
+        onFocus={() => void divSelectionRef.current.focus()}
+        readOnly
       />
       <div
         data-color={color}
@@ -268,7 +274,7 @@ export function Select<O extends Option>({
         style={{
           width: typeof width === "number" ? `${width}px` : width,
         }}
-        {...getReferenceProps()}
+        {...getReferenceProps({ onFocus, onBlur })}
       >
         <span className="flex h-8 flex-1 items-center truncate px-2">
           {selectedIndex !== null ? (
