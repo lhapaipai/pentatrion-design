@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { monitorForElements } from "@atlaskit/pragmatic-drag-and-drop/element/adapter";
 import { extractClosestEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge";
-import { reorderWithEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/reorder-with-edge";
+import { getReorderDestinationIndex } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/get-reorder-destination-index";
 
 import { flushSync } from "react-dom";
 import { isItemData, triggerPostMoveFlash } from "./util";
@@ -16,17 +16,17 @@ function defaultGetItemIndexById(list: Item[], id: string | number) {
 
 export type UseDraggableMonitorOptions<I extends Item> = {
   list: I[];
-  onListChange: (list: I[]) => void;
+  onIndexChange: (startIndex: number, finishIndex: number) => void;
   /** use a stable accessor */
   getItemIndexById?: (list: I[], id: string | number) => number;
 };
 
-export const useDraggableMonitor = <I extends Item>({
+export const useDraggableMonitorIndex = <I extends Item>({
   list,
-  onListChange,
+  onIndexChange,
   getItemIndexById = defaultGetItemIndexById,
 }: UseDraggableMonitorOptions<I>) => {
-  const stableOnListChange = useEffectEvent(onListChange);
+  const stableOnIndexChange = useEffectEvent(onIndexChange);
 
   useEffect(() => {
     return monitorForElements({
@@ -57,15 +57,13 @@ export const useDraggableMonitor = <I extends Item>({
 
         // Using `flushSync` so we can query the DOM straight after this line
         flushSync(() => {
-          stableOnListChange(
-            reorderWithEdge({
-              list,
-              startIndex: indexOfSource,
-              indexOfTarget,
-              closestEdgeOfTarget,
-              axis: "vertical",
-            }),
-          );
+          const finishIndex = getReorderDestinationIndex({
+            startIndex: indexOfSource,
+            indexOfTarget,
+            closestEdgeOfTarget,
+            axis: "vertical",
+          });
+          stableOnIndexChange(indexOfSource, finishIndex);
         });
 
         // Being simple and just querying for the item after the drop.
@@ -78,5 +76,5 @@ export const useDraggableMonitor = <I extends Item>({
         }
       },
     });
-  }, [list, stableOnListChange, getItemIndexById]);
+  }, [list, stableOnIndexChange, getItemIndexById]);
 };
