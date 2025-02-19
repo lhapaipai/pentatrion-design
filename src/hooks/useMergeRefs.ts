@@ -24,3 +24,24 @@ export function useMergeRefs<Instance>(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, refs);
 }
+
+export function useStrictMergeRefs<Instance>(
+  refs: Array<Ref<Instance> | undefined>,
+): RefCallback<Instance> {
+  return useMemo(() => {
+    if (refs.every((ref) => ref == null)) {
+      throw new Error("define at least one ref with useMergeRefs");
+    }
+
+    return (value) => {
+      refs.forEach((ref) => {
+        if (typeof ref === "function") {
+          ref(value);
+        } else if (ref != null) {
+          (ref as RefObject<Instance | null>).current = value;
+        }
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, refs);
+}

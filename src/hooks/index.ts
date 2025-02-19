@@ -8,4 +8,4 @@ export { useCopyToClipboard } from "./useCopyToClipboard";
 export { useEventListener } from "./useEventListener";
 export { useOnClickOutside } from "./useOnClickOutside";
 export { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
-export { useMergeRefs } from "./useMergeRefs";
+export { useMergeRefs, useStrictMergeRefs } from "./useMergeRefs";
