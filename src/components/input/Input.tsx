@@ -11,6 +11,7 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
   size?: "small" | "medium" | "large" | "custom";
   flexibleWidth?: boolean;
   children?: ReactNode;
+  inputClassName?: string;
 }
 
 export const sizeVariant = {
@@ -33,6 +34,7 @@ export function Input({
   prefix,
   suffix,
   className,
+  inputClassName,
   readOnly,
   size = "medium",
   flexibleWidth = true,
@@ -64,9 +66,12 @@ export function Input({
         ref={ref}
         className={clsx(
           inputConfig.input,
-          !prefix && "pl-4",
-          type !== "date" && type !== "datetime-local" ? !suffix && "pr-4" : "pr-1",
+          size !== "custom" && !prefix && "pl-4",
+          size !== "custom" && type !== "date" && type !== "datetime-local"
+            ? !suffix && "pr-4"
+            : "pr-1",
           flexibleWidth && "w-0",
+          inputClassName,
         )}
         disabled={disabled}
         readOnly={readOnly}
