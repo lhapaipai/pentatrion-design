@@ -40,7 +40,10 @@ export function MediaPreview({
             src={media.src ?? src}
             width={width ?? media.width}
             height={height ?? media.height}
-            className="h-auto max-h-full w-auto max-w-full rounded-xl"
+            className={clsx(
+              "h-auto rounded-xl",
+              squareContainer ? "max-h-full w-auto max-w-full" : "w-full",
+            )}
           />
         </div>
       ) : (

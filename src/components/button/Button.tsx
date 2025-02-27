@@ -128,7 +128,12 @@ export function Button({
       role="button"
       ref={inputRef}
       className={clsx(
-        buttonVariants({ variant, size, width, icon }),
+        buttonVariants({
+          variant,
+          size,
+          width,
+          icon: width === "custom" && !icon ? "custom" : icon,
+        }),
         className,
         loading && !icon && "text-transparent",
       )}

@@ -12,6 +12,7 @@ export interface InputFieldProps {
   id?: string;
   preventLayerShift?: boolean;
   "data-testid"?: string;
+  className?: string;
 }
 
 export function InputField({
@@ -24,6 +25,7 @@ export function InputField({
   children,
   preventLayerShift = true,
   "data-testid": dataTestId,
+  className,
 }: InputFieldProps) {
   const internalId = useId();
   const id = isValidElement<{ id?: string }>(children)
@@ -58,7 +60,7 @@ export function InputField({
   const showFooter = preventLayerShift || errorsElement || warningElement;
 
   return (
-    <div role="group">
+    <div role="group" className={className}>
       {showLabel &&
         (label || hint ? (
           <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>
