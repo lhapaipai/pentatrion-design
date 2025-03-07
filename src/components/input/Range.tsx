@@ -41,7 +41,7 @@ export function Range({
   valuesByTick,
   showValue = true,
   ticks = false,
-  formatter = (str) => str.toString(),
+  formatter = (str) => str?.toString(),
   onChange,
   ref,
   ...rest
