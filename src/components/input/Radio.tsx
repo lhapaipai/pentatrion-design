@@ -9,6 +9,7 @@ export interface RadioProps extends ComponentPropsWithRef<"input"> {
   width?: "fit" | "full" | "custom";
   ref?: RefObject<HTMLInputElement>;
 }
+
 export function Radio({
   disabled = false,
   color = "yellow",
@@ -36,6 +37,10 @@ export function Radio({
   );
 }
 
+export interface RadioButtonProps extends Omit<RadioProps, "size"> {
+  size?: "small" | "medium" | "large" | "custom" | "input";
+  icon?: boolean;
+}
 export function RadioButton({
   disabled = false,
   color = "yellow",
@@ -43,13 +48,16 @@ export function RadioButton({
   className,
   variant = "light",
   width = "fit",
+  size = "medium",
+  icon = false,
+
   ref,
   ...rest
-}: RadioProps) {
+}: RadioButtonProps) {
   return (
     <label
       aria-disabled={disabled}
-      className={clsx(className, buttonVariants({ variant, width }))}
+      className={clsx(className, buttonVariants({ variant, width, size, icon }))}
       data-color={color}
     >
       <input
