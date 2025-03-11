@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { Radio, RadioButton } from "./Radio";
+import { Radio, RadioButton, RadioWithLegend } from "./Radio";
 import { buttonGroupVariants } from "../button/ButtonGroup";
 import clsx from "clsx";
 
@@ -15,20 +15,48 @@ const colors = ["yellow", "gray", "orange", "red", "green", "blue"] as const;
 export const Basic = () => {
   return (
     <>
-      <div className="flex flex-col gap-4">
+      <div>
+        <h3 className="text-body-md mt-8 font-medium">With preChildren</h3>
+        <div className="grid-cols-repeat-fill-160 grid gap-x-2 lg:gap-x-4">
+          <RadioWithLegend name="sport-flex" value="climbing" label="Climbing">
+            <span className="text-body-4xl">
+              <i className="fe-raster"></i>
+            </span>
+          </RadioWithLegend>
+          <RadioWithLegend name="sport-flex" value="tennis" label="Tennis">
+            <span className="block">
+              <i className="fe-raster"></i>
+            </span>
+          </RadioWithLegend>
+          <RadioWithLegend name="sport-flex" value="soccer" label="Soccer">
+            <span className="block">
+              <i className="fe-raster"></i>
+            </span>
+          </RadioWithLegend>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-8">
         {colors.map((color) => (
           <div key={color}>
-            <Radio color={color} name={`sport-${color}`} value="climbing">
-              Climbing
-            </Radio>
-            <Radio color={color} name={`sport-${color}`} value="tennis">
-              Tennis
-            </Radio>
-            <Radio color={color} name={`sport-${color}`} value="soccer">
-              Soccer
-            </Radio>
+            <h3 className="text-body-md font-medium">{color}</h3>
+
+            <div>
+              <Radio color={color} name={`sport-${color}`} value="climbing">
+                Climbing
+              </Radio>
+              <Radio color={color} name={`sport-${color}`} value="tennis">
+                Tennis
+              </Radio>
+              <Radio color={color} name={`sport-${color}`} value="soccer">
+                Soccer
+              </Radio>
+            </div>
           </div>
         ))}
+      </div>
+      <div>
+        <h3 className="text-body-md mt-8 font-medium">Horizontal</h3>
         <div className="flex gap-2">
           <Radio name="sport-flex" value="climbing">
             Climbing
@@ -44,7 +72,7 @@ export const Basic = () => {
 
       {variants.map((variant) => (
         <div key={variant} className="flex flex-col gap-4">
-          <h3 className="text-body-md">Variant : {variant}</h3>
+          <h3 className="text-body-md mt-8 font-medium">Variant : {variant}</h3>
           <div className="grid grid-cols-2">
             <div
               className={clsx(

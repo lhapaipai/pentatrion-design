@@ -1,7 +1,7 @@
 export { Input, inputConfig } from "./Input";
 export { InputButton } from "./InputButton";
 export { Checkbox, CheckboxButton } from "./Checkbox";
-export { Radio, RadioButton } from "./Radio";
+export { Radio, RadioButton, RadioWithLegend } from "./Radio";
 export { Toggle } from "./Toggle";
 export { Range } from "./Range";
 export { Color } from "./Color";

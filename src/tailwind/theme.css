@@ -161,6 +161,9 @@
   --text-body-2xs: 0.688rem;
   --text-body-2xs--line-height: 1rem;
 
+  --text-body-3xs: 0.5rem;
+  --text-body-3xs--line-height: 0.8rem;
+
   --drop-shadow-arrow: 0 1px 3px var(--color-gray-3);
   --drop-shadow-arrow-dark: 0 1px 0 var(--color-gray-2);
 
