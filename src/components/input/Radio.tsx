@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ReactNode, RefObject } from "react";
+import { ComponentPropsWithRef, RefObject } from "react";
 import { type ThemeColor } from "../../types";
 import clsx from "clsx";
 import { buttonVariants } from "../button";
