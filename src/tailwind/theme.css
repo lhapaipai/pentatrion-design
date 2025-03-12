@@ -100,29 +100,32 @@
   --text-mega--line-height: 5.25rem;
   --text-mega--font-weight: 700;
   /** 56px size / 62px high / bold */
-  --text-h1: 1.6rem;
+  --text-h1: 1.6em;
   --text-h1--line-height: 1.1;
   --text-h1--font-weight: 700;
   /** 40px size / 48px high / bold */
-  --text-h2: 1.4rem;
+  --text-h2: 1.4em;
   --text-h2--line-height: 1.3;
   --text-h2--font-weight: 700;
   /** 32px size / 36px high / bold */
-  --text-h3: 1.2rem;
+  --text-h3: 1.2em;
   --text-h3--line-height: 1.6;
   --text-h3--font-weight: 500;
   /** 28px size / 36px high / bold */
-  --text-h4: 1.1rem;
+  --text-h4: 1.1em;
   --text-h4--line-height: 1.5;
   --text-h4--font-weight: 500;
   /** 24px size / 32px high / bold */
-  --text-h5: 1rem;
+  --text-h5: 1em;
   --text-h5--line-height: 1.5;
   --text-h5--font-weight: 500;
   /** 16px size / 20px high / bold */
-  --text-h6: 1rem;
+  --text-h6: 1em;
   --text-h6--line-height: 1.5;
   --text-h6--font-weight: 500;
+
+  --text-prose-base: 18px;
+  --text-prose-base--line-height: 28px;
 
   /** 32px size / 36px high / normal */
   --text-body-6xl: 5rem;
