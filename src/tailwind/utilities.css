@@ -67,7 +67,7 @@
         50: "50",
 */
 @utility z-toast {
-  z-index: 80;
+  z-index: 200;
 }
 @utility z-dialog {
   z-index: 100;
