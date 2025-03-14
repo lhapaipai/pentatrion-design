@@ -28,3 +28,29 @@
     @slot;
   }
 }
+
+@custom-variant pointer-fine {
+  @media (pointer: fine) {
+    @slot;
+  }
+}
+
+@custom-variant pointer-coarce {
+  @media not all and (pointer: fine) {
+    @slot;
+  }
+}
+
+/* 480px */
+@custom-variant 2sm {
+  @media (min-width: 30rem) {
+    @slot;
+  }
+}
+
+/* 360px */
+@custom-variant 3sm {
+  @media (min-width: 22.5rem) {
+    @slot;
+  }
+}

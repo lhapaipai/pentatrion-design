@@ -39,7 +39,7 @@ function PostCard({ post }: { post: Post }) {
       <div className="relative">
         <div
           className={clsx(
-            "flex h-8 flex-row items-center rounded-2xl border border-solid border-gray-2 bg-white pl-0 pr-4 text-sm hover:cursor-grab hover:bg-gray-1",
+            "border-gray-2 hover:bg-gray-1 flex h-8 flex-row items-center rounded-2xl border border-solid bg-white pr-4 pl-0 text-sm hover:cursor-grab",
             dragStateStyles[state.type] ?? "",
           )}
           // Adding data-attribute as a way to query for this for our post drop flash
@@ -59,7 +59,7 @@ function PostCard({ post }: { post: Post }) {
       </div>
       {state.type === "preview"
         ? createPortal(
-            <div className="rounded-sm border border-solid border-gray-2 bg-white p-2 text-sm">
+            <div className="border-gray-2 rounded-sm border border-solid bg-white p-2 text-sm">
               {post.name}
             </div>,
             state.container,
@@ -73,7 +73,7 @@ export const Basic = () => {
   const [posts, setPosts] = useState(initialPosts);
   useDraggableMonitor({
     list: posts,
-    setList: setPosts,
+    onListChange: setPosts,
   });
   return (
     <div className="max-w-[420px]">
@@ -113,7 +113,7 @@ export const WithInputs = () => {
   const [posts, setPosts] = useState(initialPosts);
   useDraggableMonitor({
     list: posts,
-    setList: setPosts,
+    onListChange: setPosts,
   });
   return (
     <div className="">
@@ -131,24 +131,26 @@ export const DropIndicatorContext = () => {
   return (
     <div className="flex max-w-96 flex-col gap-4">
       <div className="flex flex-col gap-2">
-        <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 1</div>
+        <div className="border-gray-2 rounded-sm border border-solid bg-white p-2">Item 1</div>
         <div className="relative">
           <DropIndicator edge="top" gap="0.5rem" />
           <DropIndicator edge="bottom" gap="0.5rem" />
-          <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 2</div>
+          <div className="border-gray-2 rounded-sm border border-solid bg-white p-2">Item 2</div>
         </div>
-        <div className="rounded-sm border border-solid border-gray-2 bg-white p-2">Item 3</div>
+        <div className="border-gray-2 rounded-sm border border-solid bg-white p-2">Item 3</div>
       </div>
       <div className="flex gap-2">
-        <div className="h-12 flex-1 rounded-sm border border-solid border-gray-2 bg-white p-2">
+        <div className="border-gray-2 h-12 flex-1 rounded-sm border border-solid bg-white p-2">
           Item 1
         </div>
         <div className="relative flex-1">
           <DropIndicator edge="left" gap="0.5rem" />
           <DropIndicator edge="right" gap="0.5rem" />
-          <div className="h-12 rounded-sm border border-solid border-gray-2 bg-white p-2">Item 2</div>
+          <div className="border-gray-2 h-12 rounded-sm border border-solid bg-white p-2">
+            Item 2
+          </div>
         </div>
-        <div className="h-12 flex-1 rounded-sm border border-solid border-gray-2 bg-white p-2">
+        <div className="border-gray-2 h-12 flex-1 rounded-sm border border-solid bg-white p-2">
           Item 3
         </div>
       </div>

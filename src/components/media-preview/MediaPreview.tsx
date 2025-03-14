@@ -26,7 +26,7 @@ export function MediaPreview({
   return (
     <div
       className={clsx(
-        "group bg-gray-1 relative overflow-hidden rounded-xl shadow-xs",
+        "group bg-gray-1 relative overflow-hidden rounded-2xl shadow-xs",
         squareContainer && "aspect-4/3",
         className,
       )}
@@ -41,7 +41,7 @@ export function MediaPreview({
             width={width ?? media.width}
             height={height ?? media.height}
             className={clsx(
-              "h-auto rounded-xl",
+              "h-auto rounded-2xl",
               squareContainer ? "max-h-full w-auto max-w-full" : "w-full",
             )}
           />
@@ -51,16 +51,16 @@ export function MediaPreview({
       )}
       <div
         className={clsx(
-          "absolute bottom-0 left-0 h-10 w-full overflow-hidden rounded-md",
+          "pointer-fine:h-10 pointer-fine:from-gray-7/25 absolute bottom-0 left-0 w-full overflow-hidden rounded-md",
           // gradient animation
-          "from-gray-7/25 to-gray-7/0 group-hover:from-gray-7/50 bg-linear-to-t transition-[height] duration-150 ease-out",
-          "group-hover:h-full",
+          "from-gray-7/50 to-gray-7/0 group-hover:from-gray-7/50 bg-linear-to-t transition-[height] duration-150 ease-out",
+          "h-full group-hover:h-full",
         )}
       ></div>
       <div
         className={clsx(
-          "absolute top-1/2 right-0 left-0 flex translate-y-0 items-center justify-center opacity-0 transition",
-          "group-hover:-translate-y-1/2 group-hover:opacity-100 [:has(:focus)]:-translate-y-1/2 [:has(:focus)]:opacity-100",
+          "pointer-fine:translate-y-0 pointer-fine:opacity-0 absolute top-1/2 right-0 left-0 flex items-center justify-center transition",
+          "-translate-y-1/2 group-hover:-translate-y-1/2 group-hover:opacity-100 [:has(:focus)]:-translate-y-1/2 [:has(:focus)]:opacity-100",
         )}
       >
         {children}

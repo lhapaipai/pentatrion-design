@@ -141,6 +141,7 @@ export function Button({
       data-variant={variant}
       aria-checked={selected}
       disabled={typeof disabled === "boolean" ? disabled : undefined}
+      suppressHydrationWarning
       aria-busy={loading}
       {...props}
     >

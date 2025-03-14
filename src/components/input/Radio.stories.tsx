@@ -19,17 +19,17 @@ export const Basic = () => {
         <h3 className="text-body-md mt-8 font-medium">With preChildren</h3>
         <div className="grid-cols-repeat-fill-160 grid gap-x-2 lg:gap-x-4">
           <RadioWithLegend name="sport-flex" value="climbing" label="Climbing">
-            <span className="text-body-4xl">
+            <span data-radio="legend" className="text-body-4xl">
               <i className="fe-raster"></i>
             </span>
           </RadioWithLegend>
           <RadioWithLegend name="sport-flex" value="tennis" label="Tennis">
-            <span className="block">
+            <span data-radio="legend" className="block">
               <i className="fe-raster"></i>
             </span>
           </RadioWithLegend>
           <RadioWithLegend name="sport-flex" value="soccer" label="Soccer">
-            <span className="block">
+            <span data-radio="legend" className="block">
               <i className="fe-raster"></i>
             </span>
           </RadioWithLegend>
