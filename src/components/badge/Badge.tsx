@@ -29,7 +29,7 @@ export function Badge({
     <span
       data-color={color}
       className={clsx(
-        "w-fit rounded-full text-body-xs",
+        "text-body-xs w-fit rounded-full",
         buttonVariants({
           variant: "contained",
           icon: null,
@@ -48,7 +48,7 @@ export function Badge({
         <span className="px-2">{children}</span>
       )}
       {onRemove && (
-        <button className="remove rounded-r-full pl-0.5 pr-1" onClick={onRemove}>
+        <button className="remove rounded-r-full pr-1 pl-0.5" onClick={onRemove}>
           <i className="fe-cancel"></i>
         </button>
       )}
