@@ -290,8 +290,5 @@
       "default": "./dist/redux/notification/index.js"
     },
     "./tailwind/*": "./src/tailwind/*"
-  },
-  "volta": {
-    "node": "20.14.0"
   }
 }
