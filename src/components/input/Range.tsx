@@ -59,11 +59,11 @@ export function Range({
 
   const cssVars = useMemo(
     () => ({
-      "--p8n-range-c-bg": `var(--color-${color}-2)`,
-      "--p8n-range-c-fg": `var(--color-${color}-4)`,
+      "--p8n-range-c-bg": `var(--color-custom-1)`,
+      "--p8n-range-c-fg": `var(--color-custom-4)`,
       "--p8n-range-progress-percent": `${percent * 100}%`,
     }),
-    [color, percent],
+    [percent],
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +76,7 @@ export function Range({
   };
 
   return (
-    <div className={clsx("group relative flex", className)} style={cssVars}>
+    <div className={clsx("group relative flex", className)} style={cssVars} data-color={color}>
       {showMinMax !== "never" && (
         <>
           <div

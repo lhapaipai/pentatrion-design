@@ -74,6 +74,7 @@
     "react-polymorphic-types": "^2.0.0",
     "react-redux": "^9.2.0",
     "react-sortablejs": "^6.1.4",
+    "sortablejs": "^1.15.6",
     "storybook": "^8.6.4",
     "tailwindcss": "^4.0.14",
     "tsc-alias": "^1.8.11",

@@ -54,6 +54,7 @@
   /**
    * to be overwritted with "data-color" attribute
    */
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-gray-1);
   --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-gray-3);

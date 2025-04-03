@@ -216,14 +216,9 @@ export function Autocomplete<O extends OptionLike = Option>({
       >
         {icon !== false && (
           <div className="flex-center relative">
-            {loading && <Loader size="medium" color="gray" className="absolute top-0 left-0" />}
-            {icon === true ? (
-              <span className="flex-center h-8 w-8">
-                <i className="fe-search"></i>
-              </span>
-            ) : (
-              icon
-            )}
+            <Loader loading={loading} size="input" color="gray" className="mr-2">
+              {icon === true ? <i className="fe-search text-body-md"></i> : icon}
+            </Loader>
           </div>
         )}
         <input
@@ -272,6 +267,7 @@ export function Autocomplete<O extends OptionLike = Option>({
           {suffix}
           {showClearSearchButton && (
             <Button
+              size="input"
               type="button"
               withRipple={false}
               icon
