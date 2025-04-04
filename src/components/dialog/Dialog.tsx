@@ -10,7 +10,7 @@ interface Props extends ComponentProps<"div"> {
   children: ReactNode;
 }
 
-export const dialogVariants = cva("relative rounded-2xl shadow-sm dark:shadow-dark", {
+export const dialogVariants = cva("relative rounded-2xl ", {
   variants: {
     color: {
       yellow: "border-t-4 border-t-yellow-3 bg-gray-0",
@@ -21,9 +21,14 @@ export const dialogVariants = cva("relative rounded-2xl shadow-sm dark:shadow-da
       orange: "border-t-4 border-t-orange-3 bg-orange-1",
       default: "bg-gray-0",
     },
+    shadow: {
+      true: "shadow-sm dark:shadow-dark",
+      false: "border border-gray-2",
+    },
   },
   defaultVariants: {
     color: "default",
+    shadow: true,
   },
 });
 
