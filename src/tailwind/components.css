@@ -14,6 +14,7 @@
   color: var(--color-gray-6);
   pointer-events: none;
   opacity: 0.5;
+  user-select: none;
 }
 
 [aria-busy="true"] {
