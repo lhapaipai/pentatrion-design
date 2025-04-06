@@ -26,7 +26,7 @@ export function Textarea({
         data-variant={variant}
         ref={ref}
         className={clsx(
-          "p8n-textarea h-full w-full min-w-0 appearance-none rounded-2xl bg-transparent p-2 outline-offset-[-1px] filter-none",
+          "p8n-textarea h-full w-full min-w-0 appearance-none rounded-2xl p-2 outline-offset-[-1px] filter-none",
         )}
         readOnly={readOnly}
         onFocus={(e) => {

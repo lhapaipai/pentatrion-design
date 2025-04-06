@@ -6,8 +6,11 @@
   .p8n-input-radio,
   .p8n-input-text,
   .p8n-textarea
-  ):not([data-variant="ghost"]  ) {
-  @apply border-custom-2 bg-gray-0 border;
+  ):not([data-variant="ghost"]) {
+  @apply border-custom-2 bg-gray-0/50 border;
+}
+.p8n-editor-input {
+  @apply bg-gray-0/50;
 }
 
 /* survol */
@@ -19,8 +22,8 @@
 ) {
   @apply hover:bg-custom-1/50;
 }
-:is(.p8n-input-text, .p8n-textarea) {
-  @apply hover:bg-custom-1/25; /* except when focus see below */
+:is(.p8n-input-text, .p8n-textarea, .p8n-editor-input) {
+  @apply hover:bg-gray-0/75; /* except when focus see below */
 }
 
 /* focus */
@@ -40,9 +43,10 @@
   /* ... keep the layout */
   .p8n-input-text:has(input:focus-visible),
   button.p8n-input-text:focus,
-  .p8n-textarea:focus-visible
+  .p8n-textarea:focus-visible,
+  .p8n-editor-input:focus-visible
 ) {
-  @apply hover:bg-gray-0;
+  @apply bg-gray-0;
 }
 
 :is(.p8n-input-checkbox, .p8n-input-toggle, .p8n-input-radio) {
