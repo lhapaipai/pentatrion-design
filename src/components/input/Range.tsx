@@ -5,8 +5,8 @@ import { ThemeColor } from "../../types";
 
 export interface RangeProps
   extends Omit<ComponentPropsWithRef<"input">, "value" | "defaultValue" | "min" | "max" | "step"> {
-  defaultValue?: number;
-  value?: number;
+  defaultValue?: number | string;
+  value?: number | string;
 
   min?: number;
   max?: number;
@@ -51,9 +51,10 @@ export function Range({
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
 
   const value = (isControlled ? controlledValue : unControlledValue)!;
+  const valueAsNumber = typeof value === "string" ? parseInt(value) : value;
 
   const range = max - min;
-  const percent = (value - min) / range;
+  const percent = (valueAsNumber - min) / range;
 
   const nbOfTicks = 1 + Math.floor(range / (valuesByTick ?? step ?? 5));
 
@@ -109,7 +110,7 @@ export function Range({
           ></div>
           {showValue && (
             <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
-              {formatter(value)}
+              {formatter(valueAsNumber)}
             </div>
           )}
 
