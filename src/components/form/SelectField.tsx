@@ -1,6 +1,6 @@
 import { ReactNode, useId } from "react";
 import { Option, Select, SelectProps } from "../select";
-import { ThemeColor } from "~/types";
+import { ThemeColor } from "../../types";
 
 interface SelectFieldOwnProps<O extends Option = Option> extends SelectProps<O> {
   label?: ReactNode;

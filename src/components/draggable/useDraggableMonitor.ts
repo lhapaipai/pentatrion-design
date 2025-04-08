@@ -6,7 +6,7 @@ import { reorderWithEdge } from "@atlaskit/pragmatic-drag-and-drop-hitbox/util/r
 
 import { flushSync } from "react-dom";
 import { isItemData, triggerPostMoveFlash } from "./util";
-import { useEffectEvent } from "~/hooks";
+import { useEffectEvent } from "../../hooks";
 
 type Item = Record<string, any>;
 

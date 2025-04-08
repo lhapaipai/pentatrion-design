@@ -7,7 +7,7 @@ import {
   RefObject,
   useRef,
 } from "react";
-import { ThemeColor } from "~/types";
+import { ThemeColor } from "../../types";
 import { inputConfig, sizeVariant } from "./Input";
 
 export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {

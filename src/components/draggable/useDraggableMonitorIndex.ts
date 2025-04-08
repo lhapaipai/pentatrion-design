@@ -6,7 +6,7 @@ import { getReorderDestinationIndex } from "@atlaskit/pragmatic-drag-and-drop-hi
 
 import { flushSync } from "react-dom";
 import { isItemData, triggerPostMoveFlash } from "./util";
-import { useEffectEvent } from "~/hooks";
+import { useEffectEvent } from "../../hooks";
 
 type Item = Record<string, any>;
 

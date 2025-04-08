@@ -1,4 +1,4 @@
-import { invariant } from "~/lib";
+import { invariant } from "../../lib";
 
 export type CardEntry = {
   element: HTMLElement;

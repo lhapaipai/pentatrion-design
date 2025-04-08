@@ -33,7 +33,6 @@
     "@eslint/js": "^9.23.0",
     "@floating-ui/react": "^0.27.6",
     "@floating-ui/react-dom": "^2.1.2",
-    "@reduxjs/toolkit": "^2.6.1",
     "@storybook/addon-actions": "^8.6.12",
     "@storybook/addon-docs": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
@@ -53,7 +52,6 @@
     "@types/geojson": "^7946.0.16",
     "@types/react": "19.1.0",
     "@types/react-dom": "^19.1.1",
-    "@types/sortablejs": "^1.15.8",
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "chokidar": "^4.0.3",
@@ -71,37 +69,37 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-polymorphic-types": "^2.0.0",
-    "react-redux": "^9.2.0",
-    "react-sortablejs": "^6.1.4",
-    "sortablejs": "^1.15.6",
     "storybook": "^8.6.12",
     "tailwindcss": "^4.1.2",
     "tsc-alias": "^1.8.13",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.29.0",
     "vite": "^6.2.5",
-    "vite-plugin-restart": "^0.4.2",
     "vitest": "^3.1.1",
     "zod": "^3.24.2"
   },
   "peerDependencies": {
+    "@atlaskit/pragmatic-drag-and-drop": "*",
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "*",
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": "*",
     "@floating-ui/react": "*",
-    "@reduxjs/toolkit": "*",
     "class-variance-authority": "*",
     "clsx": "*",
     "react": "*",
     "react-dom": "*",
-    "react-polymorphic-types": "*",
-    "react-redux": "*",
-    "react-sortablejs": "*",
     "tailwindcss": "*"
   },
   "peerDependenciesMeta": {
-    "@floating-ui/react": {
+    "@atlaskit/pragmatic-drag-and-drop": {
       "optional": true
     },
-    "@reduxjs/toolkit": {
+    "@atlaskit/pragmatic-drag-and-drop-hitbox": {
+      "optional": true
+    },
+    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": {
+      "optional": true
+    },
+    "@floating-ui/react": {
       "optional": true
     },
     "class-variance-authority": {
@@ -114,15 +112,6 @@
       "optional": true
     },
     "react-dom": {
-      "optional": true
-    },
-    "react-polymorphic-types": {
-      "optional": true
-    },
-    "react-redux": {
-      "optional": true
-    },
-    "react-sortablejs": {
       "optional": true
     },
     "tailwindcss": {
@@ -173,10 +162,6 @@
     "./dropdown-menu": {
       "types": "./dist/components/dropdown-menu/index.d.ts",
       "default": "./dist/components/dropdown-menu/index.js"
-    },
-    "./dropdown-menu-legacy": {
-      "types": "./dist/components/dropdown-menu-legacy/index.d.ts",
-      "default": "./dist/components/dropdown-menu-legacy/index.js"
     },
     "./dropdown-menu-nested": {
       "types": "./dist/components/dropdown-menu-nested/index.d.ts",
@@ -285,10 +270,6 @@
     "./lib": {
       "types": "./dist/lib/index.d.ts",
       "default": "./dist/lib/index.js"
-    },
-    "./redux/notification": {
-      "types": "./dist/redux/notification/index.d.ts",
-      "default": "./dist/redux/notification/index.js"
     },
     "./tailwind/*": "./src/tailwind/*"
   },

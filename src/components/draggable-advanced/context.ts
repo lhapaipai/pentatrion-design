@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { ColumnType } from "./types";
 import type { CleanupFn } from "@atlaskit/pragmatic-drag-and-drop/types";
-import { invariant } from "~/lib";
+import { invariant } from "../../lib";
 
 export type BoardContextValue = {
   getColumns: () => ColumnType[];

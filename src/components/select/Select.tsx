@@ -36,7 +36,7 @@ import { Input } from "../input/Input";
 import { Button } from "../button/Button";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";
-import { ThemeColor } from "~/types";
+import { ThemeColor } from "../../types";
 
 // readonly string[] -> nécessaire uniquement pour @conform-to/react
 // voir getSelectProps()
