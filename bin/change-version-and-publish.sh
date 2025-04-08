@@ -28,7 +28,7 @@ VERSION=$(npm --no-git-tag-version --allow-same-version version $VERSION_TYPE)
 VERSION=${VERSION:1}
 
 
-pnpm build
+pnpm build-for-publication
 
 git add .
 git commit -m "change pentatrion-design version v$VERSION"

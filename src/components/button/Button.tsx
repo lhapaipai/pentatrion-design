@@ -1,10 +1,10 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
-import { ThemeColor } from "../../types";
 import { Loader } from "../loader";
 import { useRipple } from "../../hooks";
 import { Slot } from "../slot";
 import { cva } from "class-variance-authority";
+import { ThemeColor } from "../../types";
 
 export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
   withRipple?: boolean;

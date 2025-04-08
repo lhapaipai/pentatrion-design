@@ -25,6 +25,12 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true,
     disableWhatsNewNotifications: true,
+    builder: {
+      name: "@storybook/builder-vite",
+      options: {
+        viteConfigPath: "./.storybook/vite.config.ts",
+      },
+    },
   },
   docs: {
     autodocs: "tag",

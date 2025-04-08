@@ -3,8 +3,6 @@ import { Step } from "./Step";
 import { Steps } from "./Steps";
 
 import { Input } from "../input";
-import { useState } from "react";
-import { ReactSortable } from "react-sortablejs";
 
 const meta = {
   title: "Components/Steps",
@@ -85,59 +83,5 @@ export const Context = () => {
         </Step>
       </Steps>
     </div>
-  );
-};
-
-interface Item {
-  id: number;
-  name: string;
-}
-
-const data: Item[] = [
-  {
-    id: 0,
-    name: "Rare Wind",
-  },
-  {
-    id: 1,
-    name: "Saint Petersburg",
-  },
-  {
-    id: 2,
-    name: "Deep Blue",
-  },
-  {
-    id: 3,
-    name: "Ripe Malinka",
-  },
-  {
-    id: 4,
-    name: "Near Moon",
-  },
-];
-
-export const WithSortable = () => {
-  const [items, setItems] = useState(data);
-  return (
-    <Steps markerType="bullet" lineStyle="dotted" associateLineWithStep={false}>
-      <ReactSortable
-        list={items}
-        setList={setItems}
-        animation={200}
-        handle=".handle"
-        className="ll-sortable"
-      >
-        {items.map((item, index) => (
-          <Step
-            key={item.id}
-            icon={index + 1}
-            status={index < items.length - 1 ? "done" : "current"}
-            markerClassName="handle"
-          >
-            <Input defaultValue={item.name} />
-          </Step>
-        ))}
-      </ReactSortable>
-    </Steps>
   );
 };

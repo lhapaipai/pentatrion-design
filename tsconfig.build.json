@@ -6,7 +6,6 @@
     "resolveFullPaths": true
   },
   "compilerOptions": {
-    "rootDir": "./src",
     "noEmit": false
   }
 }

@@ -1,33 +1,38 @@
 {
   "compilerOptions": {
+    /* permet de faire un check sur les fichiers storybooks, etc, même s'ils
+     * ne seront pas inclus dans le package final.
+     * tsconfig.build.json possède le `include` correct et un `noEmit` à false
+     */
+    "noEmit": true,
+
     /**
      * Base
      */
 
     "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": false,
+
     "useDefineForClassFields": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": false,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
     "jsx": "react-jsx",
+
+    "isolatedModules": true,
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "dist",
-    /**
-     * Package specific
-     */
-    "declaration": true,
-    "types": ["react/experimental", "@testing-library/jest-dom"],
-    "baseUrl": ".",
+    "outDir": "dist"
+
     /**
      * We define project rootDir but set noEmit to true
      * in tsconfig.build.json we define rootDir to "./src"
@@ -35,10 +40,6 @@
      * With this TypeScript TypeCheck ts config file who are defined
      * outside src/ directory (eg: tailwind.config.ts)
      */
-    "rootDir": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
   },
   "exclude": ["**/node_modules", "./dist"],
   "include": ["src/**/*", "*.ts", ".storybook"]
