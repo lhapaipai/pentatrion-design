@@ -180,6 +180,9 @@
   --animate-loader-stroke: loader-stroke 1s linear infinite;
 
   --default-transition-duration: 0.20s;
+
+  --breakpoint-3sm: 22.5rem;
+  --breakpoint-2sm: 30rem;
 }
 
 :root {
