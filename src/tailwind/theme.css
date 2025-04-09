@@ -182,7 +182,10 @@
   --default-transition-duration: 0.20s;
 
   --breakpoint-3sm: 22.5rem;
+  /* 480px mobile landscape */
   --breakpoint-2sm: 30rem;
+  /* 1920px */
+  --breakpoint-3xl: 120rem;
 }
 
 :root {
