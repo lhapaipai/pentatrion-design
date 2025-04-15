@@ -1,5 +1,5 @@
 @theme {
-  --color-*:initial;
+  --color-*: initial;
 
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -74,13 +74,12 @@
   --color-gray-8: #000000;
   --color-gray-text: var(--color-gray-7);
 
-
-  --shadow-*:initial;
+  --shadow-*: initial;
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --shadow-xs-active: 0 0px 2px 0 rgb(0 0 0 / 0.1);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15);
-  --shadow-md-active": 0 3px 6px -1px rgb(0 0 0 / 0.15), 0 1px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-md-active: 0 3px 6px -1px rgb(0 0 0 / 0.15), 0 1px 4px -2px rgb(0 0 0 / 0.15);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.15);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.35);
@@ -92,8 +91,9 @@
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-fontello: fontello;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 
   --text-*: initial;
   /** 80px size / 84px high / bold */
@@ -130,13 +130,13 @@
 
   /** 32px size / 36px high / normal */
   --text-body-6xl: 5rem;
-  --text-body-6xl--line-height: 6rem;
+  --text-body-6xl--line-height: 8rem;
   /** 32px size / 36px high / normal */
   --text-body-5xl: 4rem;
-  --text-body-5xl--line-height: 5rem;
+  --text-body-5xl--line-height: 7rem;
   /** 32px size / 36px high / normal */
   --text-body-4xl: 3rem;
-  --text-body-4xl--line-height: 4rem;
+  --text-body-4xl--line-height: 6rem;
   /** 32px size / 36px high / normal */
   --text-body-3xl: 2rem;
   --text-body-3xl--line-height: 2.5rem;
@@ -171,7 +171,7 @@
   --drop-shadow-arrow: 0 1px 3px var(--color-gray-3);
   --drop-shadow-arrow-dark: 0 1px 0 var(--color-gray-2);
 
-  --animate-ripple: ripple .9s linear;
+  --animate-ripple: ripple 0.9s linear;
   --animate-fade-in: fade-in 150ms ease both;
   --animate-fade-in-list: fade-in-list 150ms ease both;
   --animate-fade-out: fade-out 250ms ease both;
@@ -179,7 +179,7 @@
   --animate-flash: flash 1000ms ease both infinite;
   --animate-loader-stroke: loader-stroke 1s linear infinite;
 
-  --default-transition-duration: 0.20s;
+  --default-transition-duration: 0.2s;
 
   --breakpoint-3sm: 22.5rem;
   /* 480px mobile landscape */
@@ -250,7 +250,6 @@
   --color-gray-0: #151d1d;
   --color-gray-text: var(--color-gray-8);
 }
-
 
 @keyframes ripple {
   to {
