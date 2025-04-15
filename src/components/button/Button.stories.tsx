@@ -40,7 +40,7 @@ const meta = {
         <Story />
       </div>
     ),
-  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => React.JSX.Element)[],
 } satisfies Meta<typeof Button>;
 export default meta;
 

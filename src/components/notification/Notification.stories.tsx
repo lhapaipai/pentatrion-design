@@ -15,7 +15,7 @@ const meta = {
         <Story />
       </NotificationsProvider>
     ),
-  ] as ((story: PartialStoryFn<ReactRenderer, any>) => JSX.Element)[],
+  ] as ((story: PartialStoryFn<ReactRenderer, any>) => React.JSX.Element)[],
 } satisfies Meta<typeof NotificationsProvider>;
 export default meta;
 
