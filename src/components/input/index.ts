@@ -7,3 +7,4 @@ export { Range } from "./Range";
 export { Color } from "./Color";
 export { Stars } from "./Stars";
 export { MappedStars } from "./MappedStars";
+export { TotpInput } from "./TotpInput";

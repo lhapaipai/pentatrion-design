@@ -1,4 +1,4 @@
-import { ChangeEvent, Fragment, KeyboardEvent, RefObject, useEffect, useMemo, useRef } from "react";
+import { ChangeEvent, Fragment, KeyboardEvent, useEffect, useMemo, useRef } from "react";
 import { Input } from "./Input";
 import clsx from "clsx";
 
@@ -83,7 +83,7 @@ export function TotpInput({
               autoFocus={i === focusIndex ? autoFocus : undefined}
               type={type === "number" ? "tel" : "text"}
               inputMode={type === "number" ? "numeric" : undefined}
-              className={clsx("h-(--h-input) w-18 shrink-0 p-0 [--h-input:72px]")}
+              className={clsx("2sm:w-14 h-(--h-input) w-12 shrink-0 p-0 [--h-input:72px]")}
               inputClassName="text-center text-body-3xl"
               autoCapitalize="off"
               autoCorrect="off"
