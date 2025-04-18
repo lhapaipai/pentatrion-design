@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { LinkButton } from "./LinkButton";
+import { HrefButton } from "./HrefButton";
 
 const meta = {
-  title: "Components/LinkButton",
-  component: LinkButton,
-} satisfies Meta<typeof LinkButton>;
+  title: "Components/HrefButton",
+  component: HrefButton,
+} satisfies Meta<typeof HrefButton>;
 
 export default meta;
 

@@ -3,13 +3,13 @@ import clsx from "clsx";
 import { useRipple } from "../../hooks/useRipple";
 import { ButtonProps, buttonVariants } from "./Button";
 
-export type LinkButtonProps = ComponentProps<"a"> &
+export type HrefButtonProps = ComponentProps<"a"> &
   Pick<
     ButtonProps,
     "withRipple" | "variant" | "size" | "color" | "selected" | "icon" | "disabled" | "width"
   > & { ref?: RefObject<HTMLAnchorElement> };
 
-export function LinkButton({
+export function HrefButton({
   withRipple = true,
   variant = "contained",
   color = "yellow",
@@ -23,7 +23,7 @@ export function LinkButton({
   href,
   ref,
   ...props
-}: LinkButtonProps) {
+}: HrefButtonProps) {
   const anchorRef = useRef<HTMLAnchorElement>(null!);
 
   useImperativeHandle<HTMLAnchorElement | null, HTMLAnchorElement | null>(
