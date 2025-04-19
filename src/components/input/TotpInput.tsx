@@ -83,7 +83,7 @@ export function TotpInput({
               autoFocus={i === focusIndex ? autoFocus : undefined}
               type={type === "number" ? "tel" : "text"}
               inputMode={type === "number" ? "numeric" : undefined}
-              className={clsx("2sm:w-14 h-(--h-input) w-12 shrink-0 p-0 [--h-input:72px]")}
+              className={clsx("2sm:w-16 h-(--h-input) w-12 shrink-0 p-0 [--h-input:72px]")}
               inputClassName="text-center text-body-3xl"
               autoCapitalize="off"
               autoCorrect="off"

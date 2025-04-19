@@ -286,6 +286,7 @@ export function Select<O extends Option>({
         {showCancelButton && (
           <Button
             withRipple={false}
+            type="button"
             icon
             variant="text"
             color="gray"
@@ -301,7 +302,14 @@ export function Select<O extends Option>({
           </Button>
         )}
         {!showCancelButton && showArrow && (
-          <Button color="gray" withRipple={false} icon variant="text" focusable={false}>
+          <Button
+            color="gray"
+            withRipple={false}
+            icon
+            variant="text"
+            focusable={false}
+            type="button"
+          >
             <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
           </Button>
         )}
