@@ -1,14 +1,17 @@
-import { HTMLProps, RefObject } from "react";
-// import { useDrag } from "@use-gesture/react";
-// import { useSpring, animated } from "@react-spring/web";
+import { HTMLProps, MouseEvent, RefObject } from "react";
 import { Tooltip } from "./Tooltip";
 import { SimpleTooltip } from "./SimpleTooltip";
-import { StoryFn } from "@storybook/react";
+import { ReactRenderer } from "@storybook/react";
+import { Button, ButtonProps } from "../button";
+import { useDoubleCheck } from "../../hooks";
+import { PartialStoryFn } from "@storybook/types";
 
 export default {
   title: "Components/Tooltip",
   component: Tooltip,
-  decorators: [(Story: StoryFn) => <Story />],
+  decorators: [(Story) => <Story />] as ((
+    story: PartialStoryFn<ReactRenderer, any>,
+  ) => React.JSX.Element)[],
 };
 
 interface BoxProps extends HTMLProps<HTMLDivElement> {
@@ -68,6 +71,9 @@ export const Basic = () => {
         &nbsp; aut unde provident? Optio ipsum provident unde! Nulla, dignissimos recusandae.
         Eveniet ut quam voluptatum accusantium aspernatur?
       </p>
+      <SimpleTooltip color="yellow" placement="right-start" content="infos">
+        <Button>hello</Button>
+      </SimpleTooltip>
 
       <div className="grid-cols-repeat-fill-300 grid gap-8">
         <SimpleTooltip color="yellow" open={true} placement="right-start" content="infos">
@@ -107,6 +113,37 @@ export const Basic = () => {
           <Box />
         </SimpleTooltip>
       </div>
+    </div>
+  );
+};
+
+export const Context = () => {
+  // @ts-ignore
+  const dc = useDoubleCheck<ButtonProps>();
+
+  function handleClick(e: MouseEvent) {
+    console.log(e);
+    if (e.defaultPrevented) {
+      return;
+    }
+    console.log("delete !!");
+  }
+
+  return (
+    <div className="px-8">
+      <div>Double check</div>
+      <SimpleTooltip color="red" placement="top" open={dc.doubleCheck} content="Êtes-vous sûr ?">
+        <Button
+          color="red"
+          variant={dc.doubleCheck ? "light" : "text"}
+          icon
+          {...dc.getButtonProps({
+            onClick: handleClick,
+          })}
+        >
+          <i className="fe-trash"></i>
+        </Button>
+      </SimpleTooltip>
     </div>
   );
 };

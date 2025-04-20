@@ -17,7 +17,7 @@ export function TooltipTrigger({ children, asChild = false, ref, ...props }: Pro
     return cloneElement(
       children,
       context.getReferenceProps({
-        mergedRef,
+        ref: mergedRef,
         ...props,
         ...(children.props ?? {}),
         // @ts-ignore

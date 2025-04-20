@@ -18,7 +18,7 @@ export function PopoverTrigger({ children, asChild = false, ref, ...props }: Pro
     return cloneElement(
       children,
       context.getReferenceProps({
-        mergedRefs,
+        ref: mergedRefs,
         ...props,
         ...(children.props ?? {}),
         // @ts-ignore

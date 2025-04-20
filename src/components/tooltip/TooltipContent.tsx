@@ -20,7 +20,7 @@ export function TooltipContent({ style, children, className, ref, ...props }: Pr
       <div
         ref={mergedRef}
         className={clsx(
-          "z-tooltip outline-hidden",
+          "z-tooltip pointer-events-none outline-hidden",
           context.middlewareData.hide?.referenceHidden && "invisible",
         )}
         style={{ ...context.floatingStyles, ...style }}

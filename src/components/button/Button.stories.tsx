@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } f
 
 import { Button, buttonVariants } from "./Button";
 import { Loader } from "../loader";
-import { LinkButton } from "./LinkButton";
+import { HrefButton } from "./HrefButton";
 
 const meta = {
   title: "Components/Button",
@@ -214,9 +214,9 @@ export const Context = () => {
           simple &lt;button&gt;
         </button>
       </div>
-      <h3 className="sb-h3">LinkButton</h3>
+      <h3 className="sb-h3">HrefButton</h3>
       <div className="mb-4 flex items-center gap-4">
-        <LinkButton href="#">simple &lt;a&gt;</LinkButton>
+        <HrefButton href="#">simple &lt;a&gt;</HrefButton>
       </div>
 
       <h3 className="sb-h3">Default state</h3>
