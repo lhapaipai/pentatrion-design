@@ -75,8 +75,7 @@ export const buttonVariants = cva(
         outlined:
           "bg-gray-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-2 hover:bg-custom-1/50 border-custom-3 focus-visible-has:outline-custom-5 current:bg-custom-3 focus-visible-has:border-transparent",
         text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-custom-1 dark:hover:bg-custom-1/50 text-gray-7 hover:text-gray-8 current:bg-custom-3 focus-visible-has:outline-custom-5",
-        ghost:
-          "bg-transparent outline-offset-0 text-gray-7 hover:text-gray-8 current:bg-custom-1 focus-visible-has:outline-custom-5",
+        ghost: "outline-offset-0  current:bg-custom-1 focus-visible-has:outline-custom-5",
       },
     },
     defaultVariants: {
