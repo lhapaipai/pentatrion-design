@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import clsx from "clsx";
-import { Media } from "./types";
+import { BasicMedia } from "./types";
 import { isMediaImage } from "./util";
 import { FileIcon } from "./FileIcon";
 
 interface Props {
-  media: Media | null;
+  media: BasicMedia | null;
   src?: string;
   width?: number;
   height?: number;

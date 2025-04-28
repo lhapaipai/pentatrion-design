@@ -1,6 +1,6 @@
 type MediaOrigin = "s3Upload" | "localUpload" | "external" | "asset";
 
-export interface Media {
+export interface BasicMedia {
   id: string;
   origin: MediaOrigin;
   category: string;
@@ -10,7 +10,7 @@ export interface Media {
   src?: string | null;
 }
 
-export interface MediaImage {
+export interface BasicMediaImage {
   id: string;
   origin: MediaOrigin;
   category: string;
