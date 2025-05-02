@@ -210,6 +210,10 @@
       "types": "./dist/components/portal/index.d.ts",
       "default": "./dist/components/portal/index.js"
     },
+    "./resizable": {
+      "types": "./dist/components/resizable/index.d.ts",
+      "default": "./dist/components/resizable/index.js"
+    },
     "./resize-area": {
       "types": "./dist/components/resize-area/index.d.ts",
       "default": "./dist/components/resize-area/index.js"

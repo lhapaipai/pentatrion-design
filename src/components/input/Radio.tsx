@@ -52,6 +52,9 @@ export function RadioWithLegend({
   ref,
   ...rest
 }: RadioWithLegendProps) {
+  /**
+   * Add [data-radio="legend"] into parent of children
+   */
   return (
     <label aria-disabled={disabled} className={clsx("flex cursor-pointer flex-col")}>
       {children}

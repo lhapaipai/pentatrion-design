@@ -13,6 +13,9 @@ export default meta;
 const variants = ["contained", "light", "outlined", "text", "ghost"] as const;
 const colors = ["yellow", "gray", "orange", "red", "green", "blue"] as const;
 export const Basic = () => {
+  /**
+   * Add [data-radio="legend"] into parent of children
+   */
   return (
     <>
       <div>
