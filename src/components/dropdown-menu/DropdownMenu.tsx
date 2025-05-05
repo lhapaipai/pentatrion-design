@@ -17,6 +17,7 @@ type DropdownMenuProps = ComponentProps<"div"> &
   UseDropdownMenuOptions & {
     trigger: ReactNode;
     ref?: RefObject<HTMLDivElement>;
+    listClassName?: string;
   };
 
 export const DropdownMenu = ({
@@ -32,6 +33,7 @@ export const DropdownMenu = ({
   // ComponentProps
   style,
   className,
+  listClassName,
   children,
   ref,
   ...props
@@ -63,9 +65,9 @@ export const DropdownMenu = ({
               <Dialog
                 placement={popover.placement}
                 color={popover.color}
-                className="motion-safe:animate-fade-in p-2"
+                className="motion-safe:animate-fade-in p-1"
               >
-                <div className="box">
+                <div className={clsx("box", listClassName)}>
                   <FloatingList elementsRef={popover.elementsRef} labelsRef={popover.labelsRef}>
                     {children}
                   </FloatingList>

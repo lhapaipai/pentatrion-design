@@ -124,8 +124,8 @@
   --text-h6--line-height: 1.5;
   --text-h6--font-weight: 500;
 
-  --text-prose-base: 18px;
-  --text-prose-base--line-height: 28px;
+  --text-prose-base: 16px;
+  --text-prose-base--line-height: 24px;
 
   /** 32px size / 36px high / normal */
   --text-body-6xl: 5rem;
@@ -151,9 +151,9 @@
   /** 20px size / 28px high / normal */
   --text-body-md: 1.125rem;
   --text-body-md--line-height: 1.5rem;
-  /** 16px size / 20px high / normal */
+  /** 16px size / 28px high / normal */
   --text-body-base: 1rem;
-  --text-body-base--line-height: 1.25rem;
+  --text-body-base--line-height: 1.5rem;
   /** 14px size / 18px high / normal */
   --text-body-sm: 0.875rem;
   --text-body-sm--line-height: 1.125rem;
