@@ -2,9 +2,6 @@
   "extends": "./tsconfig.json",
   "include": ["src/**/*.ts"],
   "exclude": ["**/node_modules", "**/*.stories.ts", "**/*.stories.tsx", "**/*.test.ts"],
-  "tsc-alias": {
-    "resolveFullPaths": true
-  },
   "compilerOptions": {
     "noEmit": false
   }
