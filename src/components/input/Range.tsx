@@ -8,6 +8,8 @@ export interface RangeProps
   defaultValue?: number | string;
   value?: number | string;
 
+  additionalBarValue?: number;
+
   min?: number;
   max?: number;
   step?: number;
@@ -32,6 +34,7 @@ const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 export function Range({
   className,
   defaultValue,
+  additionalBarValue,
   value: controlledValue,
   min = 0,
   max = 100,
@@ -55,16 +58,18 @@ export function Range({
 
   const range = max - min;
   const percent = (valueAsNumber - min) / range;
-
+  const additionalPercent = additionalBarValue ? (additionalBarValue - min) / range : 0;
   const nbOfTicks = 1 + Math.floor(range / (valuesByTick ?? step ?? 5));
 
   const cssVars = useMemo(
     () => ({
       "--p8n-range-c-bg": `var(--color-custom-1)`,
+      "--p8n-range-c-bg-2": `var(--color-custom-2)`,
       "--p8n-range-c-fg": `var(--color-custom-4)`,
       "--p8n-range-progress-percent": `${percent * 100}%`,
+      "--p8n-range-additional-percent": `${additionalPercent * 100}%`,
     }),
-    [percent],
+    [percent, additionalPercent],
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -108,12 +113,19 @@ export function Range({
               "track w-full bg-(--p8n-range-c-bg) after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:bg-(--p8n-range-c-bg)",
             )}
           ></div>
+          {typeof additionalBarValue !== "undefined" && (
+            <div
+              className={clsx(
+                trackBase,
+                "w-[var(--p8n-range-additional-percent)] rounded-[3px] bg-(--p8n-range-c-bg-2) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-bg-2)",
+              )}
+            ></div>
+          )}
           {showValue && (
             <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
               {formatter(valueAsNumber)}
             </div>
           )}
-
           {/* active zone */}
           <div
             className={clsx(

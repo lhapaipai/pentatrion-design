@@ -20,7 +20,7 @@ export function FileIcon({ media, className, ...rest }: Props) {
           <div className="aspect-58/76 h-full w-auto rounded-2xl bg-white"></div>
           <span
             style={{ color }}
-            className="absolute top-1/2 left-1/2 z-1 h-full max-h-[60%] w-full max-w-[60%] -translate-x-1/2 -translate-y-1/2"
+            className="absolute top-1/2 left-1/2 h-full max-h-[60%] w-full max-w-[60%] -translate-x-1/2 -translate-y-1/2"
           >
             {icon}
           </span>

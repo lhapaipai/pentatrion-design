@@ -78,8 +78,8 @@ input[type="search"]::-webkit-search-results-decoration {
   /**
    * for readability 1 and 2 are gray
    */
-  --color-custom-0: color-mix(in srgb, var(--color-gray-0) 25%, transparent);
-  --color-custom-1: color-mix(in srgb, var(--color-gray-0) 50%, transparent);
+  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 25%, transparent);
+  --color-custom-1: var(--color-gray-1);
   --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-yellow-3);
   --color-custom-4: var(--color-yellow-4);
@@ -87,7 +87,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-text: var(--color-yellow-text);
 }
 [data-color="gray"] {
-  --color-custom-1: color-mix(in srgb, var(--color-gray-1) 50%, transparent);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-1) 50%, transparent);
   --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-gray-3);
   --color-custom-4: var(--color-gray-4);
