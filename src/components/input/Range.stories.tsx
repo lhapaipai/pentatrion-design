@@ -1,6 +1,7 @@
 import { Meta } from "@storybook/react";
 import { Range } from "./Range";
 import { useState } from "react";
+import { AudioRange } from "./AudioRange";
 
 const meta = {
   title: "Components/Input/Range",
@@ -22,6 +23,12 @@ export const Basic = () => {
 
   return (
     <div className="grid gap-8">
+      <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+
+      <div className="bg-[url(/bg-map.jpg)] p-2">
+        <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+      </div>
+
       <Range valuesByTick={1} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
       <Range valuesByTick={5} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
       <Range valuesByTick={50} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
@@ -89,7 +96,7 @@ export const Basic = () => {
           max={2}
         />
       </div>
-      <h3 className="mb-4 mt-8">Uncontrolled</h3>
+      <h3 className="mt-8 mb-4">Uncontrolled</h3>
       <Range defaultValue={value2} step={0.01} min={0} max={2} />
     </div>
   );

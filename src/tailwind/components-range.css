@@ -1,17 +1,48 @@
-/*
 
-.p8n-input-range::range-thumb {
-  @apply h-8 w-8 scale-[0.45] bg-(--p8n-range-c-fg) transition-transform hover:scale-[0.55] active:scale-[0.6];
+.p8n-input-audio-range::-moz-range-thumb {
+  @apply opacity-0 h-8 w-8 scale-45 bg-custom-4;
+}
+.p8n-input-audio-range:hover::-moz-range-thumb {
+  @apply opacity-100 ;
+}
+.p8n-input-audio-range::-moz-range-thumb:active {
+  @apply scale-55;
 }
 
-.p8n-input-range::range-track {
+.p8n-input-audio-range::-ms-thumb {
+  @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
+}
+.p8n-input-audio-range::-ms-thumb:hover {
+  @apply scale-55;
+}
+.p8n-input-audio-range::-ms-thumb:active {
+  @apply scale-60;
+}
+
+.p8n-input-audio-range::-webkit-slider-thumb {
+  @apply opacity-0 h-8 w-8 scale-45 bg-custom-4 transition-opacity duration-300;
+}
+.p8n-input-audio-range:hover::-webkit-slider-thumb {
+  @apply opacity-100 ;
+}
+.p8n-input-audio-range::-webkit-slider-thumb:active {
+  @apply scale-60;
+}
+
+.p8n-input-audio-range::-moz-range-track {
+  @apply h-8;
+}
+.p8n-input-audio-range::-ms-track {
+  @apply h-8;
+}
+.p8n-input-audio-range::-webkit-slider-runnable-track {
   @apply h-8;
 }
 
-*/
+
 
 .p8n-input-range::-moz-range-thumb {
-  @apply h-8 w-8 scale-45 bg-(--p8n-range-c-fg) transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
+  @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
 .p8n-input-range::-moz-range-thumb:hover {
   @apply scale-55;
@@ -21,7 +52,7 @@
 }
 
 .p8n-input-range::-ms-thumb {
-  @apply h-8 w-8 scale-45 bg-(--p8n-range-c-fg) transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
+  @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
 .p8n-input-range::-ms-thumb:hover {
   @apply scale-55;
@@ -31,7 +62,7 @@
 }
 
 .p8n-input-range::-webkit-slider-thumb {
-  @apply h-8 w-8 scale-45 bg-(--p8n-range-c-fg) transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
+  @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
 .p8n-input-range::-webkit-slider-thumb:hover {
   @apply scale-55;
