@@ -24,7 +24,6 @@ export const Basic = () => {
   return (
     <div className="grid gap-8">
       <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
-
       <div className="bg-[url(/bg-map.jpg)] p-2">
         <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
       </div>
@@ -98,6 +97,16 @@ export const Basic = () => {
       </div>
       <h3 className="mt-8 mb-4">Uncontrolled</h3>
       <Range defaultValue={value2} step={0.01} min={0} max={2} />
+
+      <div>
+        <Range
+          showMinMax="never"
+          showValue={false}
+          value={value}
+          className="w-32 -rotate-90"
+          onChange={(e) => setValue(e.target.valueAsNumber)}
+        />
+      </div>
     </div>
   );
 };
