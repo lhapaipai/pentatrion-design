@@ -60,9 +60,49 @@ export const Basic: Story = {
 };
 
 const variants = ["contained", "light", "outlined", "text", "ghost"] as const;
-const colors = ["yellow", "gray", "red", "orange", "green", "blue"] as const;
+const colors = [
+  "yellow",
+  "yellow-alpha",
+  "gray",
+  "gray-alpha",
+  "red",
+  "orange",
+  "green",
+  "blue",
+] as const;
 
 export const Context = () => {
+  const tableDefaultState = (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>
+            <></>
+          </TableHeaderCell>
+          {colors.map((color) => (
+            <TableHeaderCell key={color}>{color}</TableHeaderCell>
+          ))}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {variants.map((variant) => (
+          <TableRow key={variant}>
+            <TableCell>{variant}</TableCell>
+            {colors.map((color) => (
+              <TableCell key={color} label={color}>
+                <div className="flex gap-2">
+                  <Button variant={variant} color={color}>
+                    Lorem
+                  </Button>
+                </div>
+              </TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+
   return (
     <div>
       <h3 className="sb-h3">Sizes</h3>
@@ -85,6 +125,12 @@ export const Context = () => {
         <Button loading={false}>isLoading false</Button>
         <Button loading={true}>isLoading true</Button>
       </div>
+      <h3 className="sb-h3">Width</h3>
+      <div className="grid w-128 grid-cols-2 gap-2">
+        <Button width="fit">fit</Button>
+        <Button width="full">full</Button>
+      </div>
+
       <h3 className="sb-h3">As child</h3>
       <div className="flex items-center gap-2">
         <Button variant="contained" color="gray" asChild>
@@ -220,34 +266,12 @@ export const Context = () => {
       </div>
 
       <h3 className="sb-h3">Default state</h3>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>
-              <></>
-            </TableHeaderCell>
-            {colors.map((color) => (
-              <TableHeaderCell key={color}>{color}</TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {variants.map((variant) => (
-            <TableRow key={variant}>
-              <TableCell>{variant}</TableCell>
-              {colors.map((color) => (
-                <TableCell key={color} label={color}>
-                  <div className="flex gap-2">
-                    <Button variant={variant} color={color}>
-                      Lorem
-                    </Button>
-                  </div>
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+
+      {tableDefaultState}
+      <h3 className="sb-h3">Default state with bg</h3>
+
+      <div className="bg-[url(/bg-map.jpg)] p-2">{tableDefaultState}</div>
+
       <h3 className="sb-h3">Only Selected state</h3>
       <Table>
         <TableHeader>

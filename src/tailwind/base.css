@@ -78,7 +78,7 @@ input[type="search"]::-webkit-search-results-decoration {
   /**
    * for readability 1 and 2 are gray
    */
-  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 25%, transparent);
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-gray-1);
   --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-yellow-3);
@@ -86,15 +86,38 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-5: var(--color-yellow-5);
   --color-custom-text: var(--color-yellow-text);
 }
-[data-color="gray"] {
+[data-color="yellow-alpha"] {
+  /**
+   * for readability 1 and 2 are gray
+   */
+  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 50%, transparent);
   --color-custom-1: color-mix(in oklab, var(--color-gray-1) 50%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-2) 50%, transparent);
+  --color-custom-3:  var(--color-yellow-3);
+  --color-custom-4:  var(--color-yellow-4);
+  --color-custom-5:  var(--color-yellow-5);
+  --color-custom-text: var(--color-yellow-text);
+}
+[data-color="gray"] {
+  --color-custom-0: var(--color-gray-0);
+  --color-custom-1: var(--color-gray-1);
   --color-custom-2: var(--color-gray-2);
   --color-custom-3: var(--color-gray-3);
   --color-custom-4: var(--color-gray-4);
   --color-custom-5: var(--color-gray-5);
   --color-custom-text: var(--color-gray-text);
 }
+[data-color="gray-alpha"] {
+  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 50%, transparent);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-1) 50%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-2) 50%, transparent);
+  --color-custom-3: var(--color-gray-3);
+  --color-custom-4: var(--color-gray-4);
+  --color-custom-5: var(--color-gray-5);
+  --color-custom-text: var(--color-gray-text);
+}
 [data-color="red"] {
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-red-1);
   --color-custom-2: var(--color-red-2);
   --color-custom-3: var(--color-red-3);
@@ -103,6 +126,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-text: var(--color-red-text);
 }
 [data-color="orange"] {
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-orange-1);
   --color-custom-2: var(--color-orange-2);
   --color-custom-3: var(--color-orange-3);
@@ -111,6 +135,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-text: var(--color-orange-text);
 }
 [data-color="green"] {
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-green-1);
   --color-custom-2: var(--color-green-2);
   --color-custom-3: var(--color-green-3);
@@ -119,6 +144,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-text: var(--color-green-text);
 }
 [data-color="blue"] {
+  --color-custom-0: var(--color-gray-0);
   --color-custom-1: var(--color-blue-1);
   --color-custom-2: var(--color-blue-2);
   --color-custom-3: var(--color-blue-3);
