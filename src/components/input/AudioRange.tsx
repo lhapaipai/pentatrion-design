@@ -3,6 +3,18 @@ import { useMemo, ComponentPropsWithRef, useState, ChangeEvent, RefObject } from
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
 
+export const formatTime = (time: number) => {
+  let seconds: string | number = time % 60;
+  const foo = time - seconds;
+  const minutes = foo / 60;
+  if (seconds < 10) {
+    seconds = `0${Math.floor(seconds)}`;
+  } else {
+    seconds = Math.floor(seconds).toFixed(0);
+  }
+  return minutes + ":" + seconds;
+};
+
 export interface RangeProps
   extends Omit<ComponentPropsWithRef<"input">, "value" | "defaultValue" | "min" | "max" | "step"> {
   defaultValue?: number | string;
@@ -17,19 +29,22 @@ export interface RangeProps
   formatter?: (str: number) => string;
 
   ref?: RefObject<HTMLInputElement>;
+
+  valueClassName?: string;
 }
 
 const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 
 export function AudioRange({
   className,
+  valueClassName,
   defaultValue,
   value: controlledValue,
   min = 0,
   max = 100,
   color = "yellow",
   step = 1,
-  formatter = (str) => str?.toString(),
+  formatter = formatTime,
   onChange,
   ref,
   ...rest
@@ -64,7 +79,7 @@ export function AudioRange({
 
   return (
     <div className="flex items-center">
-      <div className={clsx("text-body-xs w-8 text-right")}>{formatter(valueAsNumber)}</div>
+      <div className={clsx("text-right", valueClassName)}>{formatter(valueAsNumber)}</div>
 
       <div
         className={clsx("group relative flex flex-1", className)}
@@ -85,7 +100,11 @@ export function AudioRange({
             <div
               className={clsx(
                 trackBase,
-                "bg-gray-3 before:bg-gray-3 group-hover:bg-custom-4 group-hover:before:bg-custom-4 w-[var(--p8n-range-progress-percent)] rounded-r-[4px] before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:mask-r-from-50% before:mask-r-to-transparent before:mask-r-to-50%",
+                "from-gray-8/70 to-gray-8/50 before:bg-gray-8/70 bg-linear-to-r from-5%",
+                "group-hover:from-custom-4 group-hover:to-custom-3 group-hover:before:bg-custom-4 group-hover:bg-linear-to-r",
+
+                "w-[var(--p8n-range-progress-percent)] rounded-r-[4px]",
+                "before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:mask-r-from-50% before:mask-r-to-transparent before:mask-r-to-50%",
               )}
             ></div>
           </div>
@@ -106,7 +125,7 @@ export function AudioRange({
           {...rest}
         />
       </div>
-      <div className={clsx("text-body-xs w-8")}>{formatter(max)}</div>
+      <div className={clsx(valueClassName)}>{formatter(max)}</div>
     </div>
   );
 }

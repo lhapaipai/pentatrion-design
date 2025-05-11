@@ -9,6 +9,13 @@
       "name": "pnpm run storybook",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "name": "Vitest unit current file",
+      "request": "launch",
+      "type": "node",
+      "runtimeExecutable": "vitest",
+      "runtimeArgs": ["-c", "vitest.config.ts", "${relativeFile}"]
     }
   ]
 }

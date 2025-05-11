@@ -3,6 +3,7 @@ export { InputButton } from "./InputButton";
 export { Checkbox, CheckboxButton } from "./Checkbox";
 export { Radio, RadioButton, RadioWithLegend } from "./Radio";
 export { Toggle } from "./Toggle";
+export { AudioRange } from "./AudioRange";
 export { Range } from "./Range";
 export { Color } from "./Color";
 export { Stars } from "./Stars";

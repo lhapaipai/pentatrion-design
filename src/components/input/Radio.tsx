@@ -1,7 +1,7 @@
 import { ComponentPropsWithRef, RefObject } from "react";
 import { type ThemeColor } from "../../types";
 import clsx from "clsx";
-import { buttonVariants } from "../button";
+import { ButtonProps, buttonVariants } from "../button";
 
 export interface RadioProps extends ComponentPropsWithRef<"input"> {
   color?: ThemeColor;
@@ -77,7 +77,8 @@ export function RadioWithLegend({
   );
 }
 
-export interface RadioButtonProps extends Omit<RadioProps, "size"> {
+export interface RadioButtonProps extends Omit<RadioProps, "size" | "color"> {
+  color?: ButtonProps["color"];
   size?: "small" | "medium" | "large" | "custom" | "input";
   icon?: boolean;
 }

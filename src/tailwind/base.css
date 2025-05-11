@@ -90,12 +90,12 @@ input[type="search"]::-webkit-search-results-decoration {
   /**
    * for readability 1 and 2 are gray
    */
-  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 50%, transparent);
-  --color-custom-1: color-mix(in oklab, var(--color-gray-1) 50%, transparent);
-  --color-custom-2: color-mix(in oklab, var(--color-gray-2) 50%, transparent);
-  --color-custom-3:  var(--color-yellow-3);
-  --color-custom-4:  var(--color-yellow-4);
-  --color-custom-5:  var(--color-yellow-5);
+  --color-custom-0: color-mix(in oklab, var(--color-gray-8) 5%, transparent);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
+  --color-custom-3: var(--color-yellow-3);
+  --color-custom-4: var(--color-yellow-4);
+  --color-custom-5: var(--color-yellow-5);
   --color-custom-text: var(--color-yellow-text);
 }
 [data-color="gray"] {
@@ -108,9 +108,9 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-text: var(--color-gray-text);
 }
 [data-color="gray-alpha"] {
-  --color-custom-0: color-mix(in oklab, var(--color-gray-0) 50%, transparent);
-  --color-custom-1: color-mix(in oklab, var(--color-gray-1) 50%, transparent);
-  --color-custom-2: color-mix(in oklab, var(--color-gray-2) 50%, transparent);
+  --color-custom-0: color-mix(in oklab, var(--color-gray-8) 5%, transparent);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
   --color-custom-3: var(--color-gray-3);
   --color-custom-4: var(--color-gray-4);
   --color-custom-5: var(--color-gray-5);
