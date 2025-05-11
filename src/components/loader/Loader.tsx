@@ -5,7 +5,7 @@ import { colorVariants } from "../../lib/tailwindVariants";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   size?: "small" | "medium" | "large" | "input";
-  color?: ThemeColor | "custom" | "yellow-alpha" | "gray-alpha";
+  color?: ThemeColor | "custom";
   children?: ReactNode;
   loading?: boolean;
   position?: CSSProperties["position"];

@@ -6,6 +6,17 @@ import { Slot } from "../slot";
 import { cva } from "class-variance-authority";
 import { ThemeColor } from "../../types";
 
+function loaderColor(color: ThemeColor | "yellow-alpha" | "gray-alpha"): ThemeColor {
+  switch (color) {
+    case "yellow-alpha":
+      return "yellow";
+    case "gray-alpha":
+      return "gray";
+    default:
+      return color;
+  }
+}
+
 export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
   withRipple?: boolean;
 
@@ -152,7 +163,7 @@ export function Button({
           {children}
           {loading && (
             <Loader
-              color={color}
+              color={loaderColor(color)}
               className={clsx("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")}
               position="absolute"
             />
