@@ -89,7 +89,7 @@ si on désire plus de contrôle sur nos imports
 @import "pentatrion-design/tailwind/prose.css";
 ```
 
-```json
+```jsonc
 // .prettierrc
 {
   "plugins": ["prettier-plugin-tailwindcss"]
