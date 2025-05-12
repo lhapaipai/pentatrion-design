@@ -1,7 +1,7 @@
 import { ComponentProps, RefObject } from "react";
 import { type ThemeColor } from "../../types";
 import clsx from "clsx";
-import { buttonVariants } from "../button";
+import { ButtonProps, buttonVariants } from "../button";
 
 export interface CheckboxProps extends ComponentProps<"input"> {
   indeterminate?: boolean;
@@ -41,7 +41,7 @@ export function Checkbox({
 
 interface CheckboxButtonProps extends Omit<ComponentProps<"input">, "size"> {
   disabled?: boolean;
-  color?: ThemeColor;
+  color?: ButtonProps["color"];
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
   size?: "small" | "medium" | "large" | "custom";
   width?: "fit" | "full" | "custom";
