@@ -23,7 +23,7 @@
   @apply hover:bg-custom-1/50;
 }
 :is(.p8n-input-text, .p8n-textarea, .p8n-editor-input) {
-  @apply hover:bg-gray-0/75; /* except when focus see below */
+  @apply hover:bg-gray-0; /* except when focus see below */
 }
 
 /* focus */

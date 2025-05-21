@@ -39,17 +39,24 @@ export function Color({
     <button
       ref={buttonRef}
       data-color={color}
-      className="p8n-input-text relative flex h-8 overflow-clip rounded-2xl p-1 outline-offset-[-1px]"
+      className="p8n-input-text group relative flex h-8 cursor-pointer overflow-clip rounded-2xl p-1 outline-offset-[-1px] active:translate-y-[1px]"
       {...rest}
     >
       {withRipple && ripples}
       <span
         className={clsx(
-          "flex h-full items-center justify-center rounded-2xl px-2",
+          "absolute inset-1 flex items-center justify-center rounded-2xl transition-transform group-hover:scale-150",
           valueToShow === null && "min-w-12",
           className,
         )}
         style={{ backgroundColor: value }}
+      ></span>
+      <span
+        className={clsx(
+          "relative flex h-full items-center justify-center px-2",
+          valueToShow === null && "min-w-12",
+          className,
+        )}
       >
         {valueToShow}
       </span>

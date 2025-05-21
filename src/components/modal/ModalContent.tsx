@@ -11,9 +11,10 @@ import { Dialog } from "../dialog/Dialog";
 
 interface Props extends ComponentProps<"div"> {
   ref?: RefObject<HTMLInputElement>;
+  zClassName?: string;
 }
 
-export function ModalContent({ style, className, children, ref, ...props }: Props) {
+export function ModalContent({ zClassName, style, className, children, ref, ...props }: Props) {
   const context = useModalContext();
   const floatingContext = context.context;
 
@@ -25,7 +26,10 @@ export function ModalContent({ style, className, children, ref, ...props }: Prop
   return (
     <FloatingPortal>
       <FloatingOverlay
-        className="flex-center z-overlay bg-gray-7/40 motion-safe:animate-fade-in-opacity"
+        className={clsx(
+          "flex-center bg-gray-7/40 motion-safe:animate-fade-in-opacity",
+          zClassName ?? "z-overlay",
+        )}
         lockScroll
       >
         <FloatingFocusManager context={floatingContext}>
