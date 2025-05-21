@@ -59,8 +59,10 @@ export function InputField({
   const showLabel = preventLayerShift || label || hint;
   const showFooter = preventLayerShift || errorsElement || warningElement;
 
+  const testIdProp = dataTestId ? { "data-testid": `input-field-${dataTestId}` } : {};
+
   return (
-    <div role="group" className={className}>
+    <div role="group" className={className} {...testIdProp}>
       {showLabel &&
         (label || hint ? (
           <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>

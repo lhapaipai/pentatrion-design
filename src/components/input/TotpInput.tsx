@@ -9,6 +9,7 @@ interface TotpInputProps {
   type?: "number" | "alphabet";
   autoFocus?: boolean;
   autoComplete?: "one-time-code";
+  name?: string;
 }
 
 const space = " ";
@@ -26,6 +27,7 @@ export function TotpInput({
   onValue,
   type = "alphabet",
   autoFocus,
+  name,
 }: TotpInputProps) {
   const list = useMemo(() => Array.from({ length }), [length]);
   const splitValues = value.split("");
@@ -79,13 +81,14 @@ export function TotpInput({
         return (
           <Fragment key={i}>
             <Input
+              name={name ? `${name}-chars[${i}]` : undefined}
               size="custom"
               autoFocus={i === focusIndex ? autoFocus : undefined}
               type={type === "number" ? "tel" : "text"}
               inputMode={type === "number" ? "numeric" : undefined}
               className={clsx("2sm:w-16 h-(--h-input) w-12 shrink-0 p-0 [--h-input:72px]")}
               inputClassName="text-center text-body-3xl"
-              autoCapitalize="off"
+              autoCapitalize="none"
               autoCorrect="off"
               spellCheck="false"
               ref={(ref) => {

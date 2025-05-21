@@ -61,7 +61,7 @@ export const buttonVariants = cva(
         custom: "",
       },
       icon: {
-        true: "rounded-[calc(var(--h-button)/2)] min-w-(--h-button) [&_i,&_img,&_svg]:w-(--h-button) justify-center [&_:last-child:not(i,img,svg)]:pr-4",
+        true: "rounded-[calc(var(--h-button)/2)] min-w-(--h-button) [&_i,&_img,&_svg]:w-(--h-button) justify-center [&_:last-child:not(i,img,svg,strong)]:pr-4",
         false: "rounded-2xl px-4",
         custom: "",
       },
