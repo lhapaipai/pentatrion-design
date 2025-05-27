@@ -8,4 +8,5 @@ export interface UseDropdownMenuOptions {
   onOpen?: (open: boolean) => void;
   color?: ThemeColor;
   modal?: boolean;
+  presentation?: "compact" | "large";
 }

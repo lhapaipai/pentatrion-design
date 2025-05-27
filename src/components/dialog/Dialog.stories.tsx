@@ -99,22 +99,34 @@ export const Options = () => {
     <div className="mb-4 flex flex-col gap-8">
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
-          <div className="option">Default state 1</div>
-          <div className="option active">Active state 2 (keyboard navigation)</div>
-          <div className="option">Default state 3</div>
-          <div className="selected option">Selected state 4</div>
-          <div className="option">Default state 5</div>
-          <div className="option">Default state 6</div>
+          <div data-presentation="compact" className="option">
+            Default state 1
+          </div>
+          <div data-presentation="compact" className="option active">
+            Active state 2 (keyboard navigation)
+          </div>
+          <div data-presentation="compact" className="option">
+            Default state 3
+          </div>
+          <div data-presentation="compact" className="selected option">
+            Selected state 4
+          </div>
+          <div data-presentation="compact" className="option">
+            Default state 5
+          </div>
+          <div data-presentation="compact" className="option">
+            Default state 6
+          </div>
         </Dialog>
       </div>
 
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <i className="fe-star mr-2"></i>
             <span>Default state 1</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <i className="fe-marker mr-2"></i>
             <span>State 2</span>
           </div>
@@ -123,19 +135,19 @@ export const Options = () => {
 
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">A</span>
             <span>Itinéraire depuis ce point</span>
           </div>
-          <div className="option text-gray-6">
+          <div data-presentation="compact" className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
             <span>Ajouter un point</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">B</span>
             <span>Itinéraire vers ce point</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <i className="fe-plus mr-2"></i>
             <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>
@@ -144,35 +156,35 @@ export const Options = () => {
 
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">A</span>
             <span>Itinéraire depuis ce point</span>
           </div>
-          <div className="option text-gray-6">
+          <div data-presentation="compact" className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
             <span className="text-body-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">B</span>
             <span>Déplacer ce point</span>
           </div>
-          <div className="option text-gray-6">
+          <div data-presentation="compact" className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
             <span className="text-body-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">C</span>
             <span>Déplacer ce point</span>
           </div>
-          <div className="option text-gray-6">
+          <div data-presentation="compact" className="option text-gray-6">
             <i className="fe-point-inter mr-2"></i>
             <span className="text-body-sm">point intermédiaire</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <span className="bullet">D</span>
             <span>Itinéraire vers ce point</span>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <i className="fe-plus mr-2"></i>
             <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>
@@ -182,7 +194,7 @@ export const Options = () => {
       <div>
         <Dialog placement="bottom" style={{ width: 300 }}>
           <div className="max-h-56 overflow-auto">
-            <div className="option">
+            <div data-presentation="compact" className="option">
               <span className="bullet">A</span>
               <span>Itinéraire depuis ce point</span>
             </div>
@@ -259,7 +271,7 @@ export const Options = () => {
               <span>Itinéraire vers ce point</span>
             </div>
           </div>
-          <div className="option">
+          <div data-presentation="compact" className="option">
             <i className="fe-plus"></i>
             <span>Prolonger l'itinéraire jusqu'ici</span>
           </div>

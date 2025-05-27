@@ -17,7 +17,7 @@ export function DropdownMenuItem({
   asChild = false,
   ...rest
 }: Props) {
-  const { activeIndex, getItemProps, handleSelect } = useDropdownMenuContext();
+  const { activeIndex, getItemProps, handleSelect, presentation } = useDropdownMenuContext();
 
   const { ref, index } = useListItem({ label: children?.toString() });
   const isActive = activeIndex === index;
@@ -29,7 +29,7 @@ export function DropdownMenuItem({
       className={clsx("option", isActive && "bg-gray-1", className)}
       ref={ref}
       role="menuitem"
-      data-presentation="large"
+      data-presentation={presentation}
       aria-selected={isActive}
       tabIndex={isActive ? 0 : -1}
       {...getItemProps({

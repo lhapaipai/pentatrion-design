@@ -29,6 +29,7 @@ export const DropdownMenu = ({
   onOpen,
   color,
   modal,
+  presentation,
 
   // ComponentProps
   style,
@@ -38,7 +39,7 @@ export const DropdownMenu = ({
   ref,
   ...props
 }: DropdownMenuProps) => {
-  const options = { initialOpen, placement, open, onOpen, color, modal };
+  const options = { initialOpen, placement, open, onOpen, color, modal, presentation };
   const popover = useDropdownMenu(options);
   const floatingContext = popover.context;
 
@@ -65,7 +66,10 @@ export const DropdownMenu = ({
               <Dialog
                 placement={popover.placement}
                 color={popover.color}
-                className="motion-safe:animate-fade-in p-1"
+                className={clsx(
+                  "motion-safe:animate-fade-in",
+                  popover.presentation === "large" && "p-1",
+                )}
               >
                 <div className={clsx("box", listClassName)}>
                   <FloatingList elementsRef={popover.elementsRef} labelsRef={popover.labelsRef}>

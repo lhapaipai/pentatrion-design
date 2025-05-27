@@ -30,10 +30,10 @@
   }
 
   &[data-presentation="compact"] {
-    @apply first:rounded-t-2xl last-of-type:rounded-b-2xl;
+    @apply first:rounded-t-2xl last:rounded-b-2xl;
   }
   &[data-presentation="large"] {
-    @apply rounded-xl;
+    @apply rounded-2xl;
   }
 
   .bullet {

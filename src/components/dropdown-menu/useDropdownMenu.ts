@@ -23,6 +23,7 @@ export function useDropdownMenu({
   onOpen: setControlledOpen,
   color,
   modal = false,
+  presentation = "large",
 }: UseDropdownMenuOptions) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
@@ -99,6 +100,7 @@ export function useDropdownMenu({
       modal,
       activeIndex,
       handleSelect,
+      presentation,
     }),
     [
       open,
@@ -110,6 +112,7 @@ export function useDropdownMenu({
       activeIndex,
       // getItemProps,
       handleSelect,
+      presentation,
     ],
   );
 }
