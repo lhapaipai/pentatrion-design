@@ -1,5 +1,5 @@
-import type { Meta, StoryObj, ReactRenderer } from "@storybook/react";
-import { PartialStoryFn } from "@storybook/types";
+import type { Meta, StoryObj, ReactRenderer } from "@storybook/react-vite";
+import { PartialStoryFn } from "storybook/internal/types";
 
 import { Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow } from "../table";
 

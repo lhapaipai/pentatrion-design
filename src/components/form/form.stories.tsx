@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { z } from "zod";
 import { useForm, getFormProps, getInputProps, getSelectProps } from "@conform-to/react";
 import { parseWithZod, getZodConstraint } from "@conform-to/zod";

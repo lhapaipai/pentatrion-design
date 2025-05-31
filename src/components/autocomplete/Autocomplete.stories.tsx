@@ -1,4 +1,4 @@
-import { Meta, ReactRenderer } from "@storybook/react";
+import { Meta, ReactRenderer } from "@storybook/react-vite";
 
 import { useState } from "react";
 import { NotificationsProvider } from "../notification";
@@ -7,7 +7,7 @@ import { SimpleAutocomplete } from "./SimpleAutocomplete";
 import { Autocomplete } from "./Autocomplete";
 import { LazyAutocomplete } from "./LazyAutocomplete";
 import { Option } from "../select";
-import { PartialStoryFn } from "@storybook/types";
+import { PartialStoryFn } from "storybook/internal/types";
 import { handleChangeSearchValue, options } from "./_fixtures";
 
 const meta = {

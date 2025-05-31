@@ -1,4 +1,4 @@
-import { create } from "@storybook/theming/create";
+import { create } from "storybook/theming/create";
 
 // complete options
 // https://storybook.js.org/docs/react/configure/theming#create-a-theme-quickstart

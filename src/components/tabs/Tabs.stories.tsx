@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../button/Button";
 import { Tabs } from "./Tabs";
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 
 export default {
   title: "Components/Tabs",

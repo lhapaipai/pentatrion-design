@@ -1,7 +1,7 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { ContextMenu } from "./ContextMenu";
 import { ContextMenuItem } from "./ContextMenuItem";
-import { action } from "@storybook/addon-actions";
+import { action } from "storybook/actions";
 
 const onChangeAction = action("onChange");
 

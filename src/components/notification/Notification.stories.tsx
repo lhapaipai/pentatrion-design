@@ -1,5 +1,5 @@
-import { Meta, ReactRenderer } from "@storybook/react";
-import { PartialStoryFn } from "@storybook/types";
+import { Meta, ReactRenderer } from "@storybook/react-vite";
+import { PartialStoryFn } from "storybook/internal/types";
 import { useRef } from "react";
 import { NotificationsProvider } from "./NotificationsProvider";
 import { useFetch } from "./useFetch";

@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { Radio, RadioButton, RadioWithLegend } from "./Radio";
 import { buttonGroupVariants } from "../button/ButtonGroup";
 import clsx from "clsx";

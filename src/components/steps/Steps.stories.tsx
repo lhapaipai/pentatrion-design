@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { Step } from "./Step";
 import { Steps } from "./Steps";
 

@@ -4,7 +4,7 @@ import { MenuItemWithChildren } from "./MenuItemWithChildren";
 
 import { Button } from "../button/Button";
 
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 
 const meta = {
   title: "Components/DropdownMenuNested",

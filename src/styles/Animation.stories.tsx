@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../components/button";
 import { useIsClosing } from "../hooks";
 import clsx from "clsx";
-import { StoryFn } from "@storybook/react";
+import { StoryFn } from "@storybook/react-vite";
 
 export default {
   title: "Styles/Animation",

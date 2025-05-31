@@ -1,5 +1,5 @@
 import { Placement } from "@floating-ui/react-dom";
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { Option, Select } from "../select";
 import { Button } from "../button";
 import { DropdownMenu } from "./DropdownMenu";

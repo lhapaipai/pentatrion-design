@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { ChangeEvent, useState } from "react";
 import { InputField } from "./InputField";
 import { Toggle } from "../input/Toggle";

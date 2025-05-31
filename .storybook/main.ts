@@ -2,7 +2,7 @@ import type { StorybookConfig } from "@storybook/react-vite";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import type {} from "@storybook/types";
+import type {} from "storybook/internal/types";
 import { UserConfig } from "vite";
 
 const projectDir = resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -12,16 +12,18 @@ const config: StorybookConfig = {
     `${projectDir}/src/styles/**/*.stories.@(ts|tsx)`,
     `${projectDir}/src/components/**/*.stories.@(ts|tsx)`,
   ],
+
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
     "@storybook/addon-themes",
+    "@storybook/addon-docs"
   ],
+
   framework: {
     name: "@storybook/react-vite",
     options: {},
   },
+
   core: {
     disableTelemetry: true,
     disableWhatsNewNotifications: true,
@@ -32,10 +34,9 @@ const config: StorybookConfig = {
       },
     },
   },
-  docs: {
-    autodocs: "tag",
-  },
+
   staticDirs: ["./public"],
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async viteFinal(config, options) {
     const { mergeConfig } = await import("vite");
@@ -43,6 +44,6 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       optimizeDeps: {},
     } satisfies UserConfig);
-  },
+  }
 };
 export default config;

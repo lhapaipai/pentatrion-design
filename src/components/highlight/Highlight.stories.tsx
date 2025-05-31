@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
 import { Toggle } from "../input/Toggle";

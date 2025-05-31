@@ -1,10 +1,10 @@
 import { HTMLProps, MouseEvent, RefObject } from "react";
 import { Tooltip } from "./Tooltip";
 import { SimpleTooltip } from "./SimpleTooltip";
-import { ReactRenderer } from "@storybook/react";
+import { ReactRenderer } from "@storybook/react-vite";
 import { Button, ButtonProps } from "../button";
 import { useDoubleCheck } from "../../hooks";
-import { PartialStoryFn } from "@storybook/types";
+import { PartialStoryFn } from "storybook/internal/types";
 
 export default {
   title: "Components/Tooltip",

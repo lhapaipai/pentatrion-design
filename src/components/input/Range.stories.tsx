@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import { Range } from "./Range";
 import { useState } from "react";
 import { AudioRange } from "./AudioRange";

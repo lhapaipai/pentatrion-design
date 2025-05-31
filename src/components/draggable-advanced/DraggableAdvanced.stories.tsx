@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/react";
+import { Meta } from "@storybook/react-vite";
 import Board from "./components/Board";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { BoardState, Outcome, Trigger } from "./types";
