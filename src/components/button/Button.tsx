@@ -46,7 +46,7 @@ export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
 }
 
 export const buttonVariants = cva(
-  "relative box-border inline-flex items-center leading-5 no-underline focus-visible-has:outline-2 truncate",
+  "relative box-border inline-flex items-center leading-5 no-underline focus-visible-has:outline-2",
   {
     variants: {
       clickable: {
@@ -54,10 +54,10 @@ export const buttonVariants = cva(
         false: "pointer-events-none",
       },
       size: {
-        small: "[--h-button:1.5rem] h-(--h-button)",
-        medium: "[--h-button:2rem] h-(--h-button)",
-        large: "[--h-button:3rem] h-(--h-button)",
-        input: "[--h-button:calc(var(--h-input)-2px)] h-(--h-button)",
+        small: "[--h-button:1.5rem] h-(--h-button) truncate",
+        medium: "[--h-button:2rem] h-(--h-button) truncate",
+        large: "[--h-button:3rem] h-(--h-button) truncate",
+        input: "[--h-button:calc(var(--h-input)-2px)] h-(--h-button) truncate",
         custom: "",
       },
       icon: {

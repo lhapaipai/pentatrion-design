@@ -28,26 +28,41 @@ export const Basic = () => (
       changer facilement le comportement car on importe les classes de bouton.
     </p>
 
-    {variants.map((variant) => (
-      <div key={variant} className="mb-2 flex gap-2">
-        <CheckboxButton variant={variant}>I agree</CheckboxButton>
-        <CheckboxButton variant={variant} color="gray">
-          I agree
-        </CheckboxButton>
-        <CheckboxButton variant={variant} color="red">
-          I agree
-        </CheckboxButton>
-        <CheckboxButton variant={variant} color="orange">
-          I agree
-        </CheckboxButton>
-        <CheckboxButton variant={variant} color="blue">
-          I agree
-        </CheckboxButton>
-        <CheckboxButton variant={variant} color="green">
-          I agree
-        </CheckboxButton>
-      </div>
-    ))}
+    {[false, true].map((showInput) => {
+      return (
+        <>
+          <h3 className="text-body-md mt-8 mb-4">Show Input : {showInput ? "true" : "false"}</h3>
+          {variants.map((variant) => (
+            <div key={variant} className="mb-2 flex gap-2">
+              <CheckboxButton showInput={showInput} variant={variant}>
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="yellow-alpha">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="gray">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="gray-alpha">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="red">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="orange">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="blue">
+                I agree
+              </CheckboxButton>
+              <CheckboxButton showInput={showInput} variant={variant} color="green">
+                I agree
+              </CheckboxButton>
+            </div>
+          ))}
+        </>
+      );
+    })}
   </div>
 );
 

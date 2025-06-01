@@ -46,6 +46,7 @@ interface CheckboxButtonProps extends Omit<ComponentProps<"input">, "size"> {
   size?: "small" | "medium" | "large" | "custom";
   width?: "fit" | "full" | "custom";
   icon?: boolean;
+  showInput?: boolean;
   ref?: RefObject<HTMLInputElement>;
 }
 export function CheckboxButton({
@@ -54,6 +55,7 @@ export function CheckboxButton({
   width = "fit",
   size,
   icon,
+  showInput,
   variant,
   className,
   children,
@@ -63,14 +65,24 @@ export function CheckboxButton({
   return (
     <label
       aria-disabled={disabled}
-      className={clsx(className, buttonVariants({ variant, size, icon, width }))}
+      className={clsx(
+        className,
+        showInput && "pr-2 pl-1",
+        buttonVariants({ variant, size, icon: icon || showInput, width }),
+      )}
       data-color={color}
     >
       <input
         ref={ref}
         disabled={disabled}
         type="checkbox"
-        className="h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        className={clsx(
+          showInput
+            ? "p8n-input-checkbox my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-2xl bg-origin-border p-0 outline-offset-0 select-none"
+            : "h-0 w-0 -translate-x-[9999px] overflow-hidden",
+          //indeterminate && "indeterminate",
+          className,
+        )}
         {...rest}
       />
       {children}
