@@ -42,9 +42,9 @@ export function Checkbox({
 interface CheckboxButtonProps extends Omit<ComponentProps<"input">, "size"> {
   disabled?: boolean;
   color?: ButtonProps["color"];
-  variant?: "contained" | "light" | "outlined" | "text" | "ghost";
-  size?: "small" | "medium" | "large" | "custom";
-  width?: "fit" | "full" | "custom";
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
+  width?: ButtonProps["width"];
   icon?: boolean;
   showInput?: boolean;
   ref?: RefObject<HTMLInputElement>;

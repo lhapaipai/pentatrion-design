@@ -22,7 +22,7 @@ export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
 
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
 
-  size?: "small" | "medium" | "large" | "custom" | "input";
+  size?: "small" | "medium" | "large" | "custom" | "input" | "scalable";
 
   color?: ThemeColor | "yellow-alpha" | "gray-alpha";
 
@@ -58,7 +58,8 @@ export const buttonVariants = cva(
         medium: "[--h-button:2rem] h-(--h-button) truncate",
         large: "[--h-button:3rem] h-(--h-button) truncate",
         input: "[--h-button:calc(var(--h-input)-2px)] h-(--h-button) truncate",
-        custom: "",
+        custom: "truncate",
+        scalable: "",
       },
       icon: {
         true: "rounded-[calc(var(--h-button)/2)] min-w-(--h-button) [&_i,&_img,&_svg]:w-(--h-button) justify-center [&_:last-child:not(i,img,svg,strong)]:pr-4",
