@@ -1,7 +1,6 @@
 import { CSSProperties, ComponentPropsWithoutRef, ReactNode, useId } from "react";
 import { ThemeColor } from "../../types";
 import clsx from "clsx";
-import { colorVariants } from "../../lib/tailwindVariants";
 
 interface Props extends ComponentPropsWithoutRef<"div"> {
   size?: "small" | "medium" | "large" | "input";
@@ -47,6 +46,7 @@ export function Loader({
   const id = useId();
   return (
     <div
+      data-color={color}
       className={clsx(
         "inline-block h-(--h-button) w-(--h-button)",
         position,
@@ -60,7 +60,7 @@ export function Loader({
           xmlns="http://www.w3.org/2000/svg"
           className={clsx(
             "inline-block h-(--h-button) w-(--h-button)",
-            color !== "custom" && colorVariants[color].text,
+            color !== "custom" && "text-custom-4",
           )}
           viewBox="0 0 16 16"
         >

@@ -1,22 +1,6 @@
+@import "./theme.css";
 @import "./variants.css";
-
-@import "./theme.css" layer(theme);
-@import "./base.css" layer(base);
-
-@import "./components-input-outline.css" layer(components);
-@import "./components-range.css" layer(components);
-@import "./components-resize-area.css" layer(components);
-@import "./components-step.css" layer(components);
-@import "./components.css" layer(components);
-
 @import "./utilities.css";
-@import "./utilities-dialog.css" layer(utilities);
 
-html {
-  font-size: 16px;
-  line-height: 24px;
-  color-scheme: normal;
-}
-body {
-  @apply bg-gray-0 text-gray-7 font-sans;
-}
+@import "./base.css" layer(base);
+@import "./components/index.css" layer(components);

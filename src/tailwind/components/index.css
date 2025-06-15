@@ -1,0 +1,10 @@
+@import "./input-outline.css";
+@import "./range.css";
+@import "./resize-area.css";
+@import "./step.css";
+@import "./others.css";
+@import "./dialog.css";
+
+.card {
+  @apply flex-center;
+}

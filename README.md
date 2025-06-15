@@ -46,19 +46,27 @@ export default defineConfig({
 
 Mettre à jour le fichier `src/index.css`
 
+Configuration recommandée
+
 ```css
 /* src/index.css */
 @import "tailwindcss";
 
-@source "./node_modules/pentatrion-design/dist/lib";
 @source "./node_modules/pentatrion-design/dist/components";
-@source "./node_modules/pentatrion-design/dist/hooks";
-@source "./node_modules/pentatrion-design/dist/redux";
 
-@import "pentatrion-design/tailwind/index.css";
+@import "pentatrion-design/tailwind";
 
 /* facultatif */
 @import "pentatrion-design/tailwind/prose.css";
+
+html {
+  font-size: 16px;
+  line-height: 24px;
+  color-scheme: normal;
+}
+body {
+  @apply bg-gray-0 text-gray-7 font-sans;
+}
 ```
 
 si on désire plus de contrôle sur nos imports
@@ -67,24 +75,13 @@ si on désire plus de contrôle sur nos imports
 /* src/index.css */
 @import "tailwindcss";
 
-@source "./node_modules/pentatrion-design/dist/lib";
 @source "./node_modules/pentatrion-design/dist/components";
-@source "./node_modules/pentatrion-design/dist/hooks";
-@source "./node_modules/pentatrion-design/dist/redux";
 
+@import "pentatrion-design/tailwind/theme.css";
 @import "pentatrion-design/tailwind/variants.css";
-
-@import "pentatrion-design/tailwind/theme.css" layer(theme);
-@import "pentatrion-design/tailwind/base.css" layer(base);
-
-@import "pentatrion-design/tailwind/components-input-outline.css" layer(components);
-@import "pentatrion-design/tailwind/components-range.css" layer(components);
-@import "pentatrion-design/tailwind/components-resize-area.css" layer(components);
-@import "pentatrion-design/tailwind/components-step.css" layer(components);
-@import "pentatrion-design/tailwind/components.css" layer(components);
-
 @import "pentatrion-design/tailwind/utilities.css";
-@import "pentatrion-design/tailwind/utilities-dialog.css" layer(utilities);
+@import "pentatrion-design/tailwind/base.css" layer(base);
+@import "pentatrion-design/tailwind/components/index.css" layer(components);
 
 @import "pentatrion-design/tailwind/prose.css";
 ```
@@ -132,19 +129,6 @@ Create a `.vscode/settings.json` file
 }
 ```
 
-## Développement avec watch
-
-anciennement dans le `package.json`. plus nécessaire pour le moment
-
-```json
-{
-  "scripts": {
-    "dev:tsc": "tsc -w -p tsconfig.build.json",
-    "dev:alias": "tsc-alias -w -p tsconfig.build.json",
-    "dev": "run-p dev:tsc dev:alias",
-  }
-}
-```
 
 ## Inclure le design-system dans un autre projet sans dépendance npm
 

@@ -270,6 +270,7 @@
       "types": "./dist/lib/index.d.ts",
       "default": "./dist/lib/index.js"
     },
+    "./tailwind": "./src/tailwind/index.css",
     "./tailwind/*": "./src/tailwind/*"
   },
   "packageManager": "pnpm@10.6.5"

@@ -1,3 +1,11 @@
+/**
+ * For reusable components with specific classes (buttons, cards, badges ...).
+ * @layer components {
+ *   .btn {
+ *     @apply px-4 py-2 rounded bg-blue-500 text-white;
+ *   }
+ * }
+ */
 .can-copy {
   text-decoration-line: underline;
   text-decoration-style: dashed;
