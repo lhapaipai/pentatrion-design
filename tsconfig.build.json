@@ -4,5 +4,8 @@
   "exclude": ["**/node_modules", "**/*.stories.ts", "**/*.stories.tsx", "**/*.test.ts"],
   "compilerOptions": {
     "noEmit": false
+  },
+  "tsc-alias": {
+    "resolveFullPaths": true
   }
 }
