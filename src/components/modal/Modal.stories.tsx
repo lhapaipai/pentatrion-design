@@ -153,7 +153,7 @@ export const Scrollable = () => {
       <ModalTrigger>open scrollable modal</ModalTrigger>
       <ModalContent>
         <ModalHeader>Header</ModalHeader>
-        <ModalDescription height={160}>
+        <ModalDescription className="max-h-[80vh]" scrollable={true}>
           <div className="px-4 text-justify">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium unde, blanditiis

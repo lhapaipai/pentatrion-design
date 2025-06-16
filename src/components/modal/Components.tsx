@@ -25,17 +25,22 @@ export function ModalHeader({
         </div>
       )}
       <header className={clsx("flex items-center px-2 pt-2", className)} {...props}>
-        <h4 className="font-semibold leading-6">{children}</h4>
+        <h4 className="leading-6 font-semibold">{children}</h4>
       </header>
     </>
   );
 }
 
 interface ModalDescriptionProps extends ComponentProps<"div"> {
-  height?: number;
+  scrollable?: boolean;
 }
-export function ModalDescription({ children, className, height, ...props }: ModalDescriptionProps) {
-  if (!height) {
+export function ModalDescription({
+  children,
+  className,
+  scrollable = false,
+  ...props
+}: ModalDescriptionProps) {
+  if (!scrollable) {
     return (
       <div className={clsx("p-2", className)} {...props}>
         {children}
@@ -43,9 +48,9 @@ export function ModalDescription({ children, className, height, ...props }: Moda
     );
   }
   return (
-    <div className={clsx("py-2", className)} {...props}>
-      <Scroll style={{ height: `${height}px` }}>{children}</Scroll>
-    </div>
+    <Scroll className={clsx("flex flex-col", className)} {...props}>
+      {children}
+    </Scroll>
   );
 }
 
