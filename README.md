@@ -19,7 +19,7 @@ cd my-app
 # dépendances
 pnpm add -D tailwindcss @tailwindcss/vite prettier-plugin-tailwindcss
 
-pnpm add pentatrion-design
+pnpm add pentatrion-design clsx class-variance-authority
 ```
 Supprimer les fichiers inutiles
 
@@ -52,7 +52,8 @@ Configuration recommandée
 /* src/index.css */
 @import "tailwindcss";
 
-@source "./node_modules/pentatrion-design/dist/components";
+@source "../node_modules/pentatrion-design/dist/components";
+@source "../node_modules/pentatrion-design/dist/hooks";
 
 @import "pentatrion-design/tailwind";
 
