@@ -6,11 +6,13 @@ import { cva } from "class-variance-authority";
 
 interface Props extends ComponentProps<"div"> {
   color?: ThemeColor;
+  shadow?: boolean;
+  rounded?: boolean;
   placement?: Placement;
   children: ReactNode;
 }
 
-export const dialogVariants = cva("relative rounded-2xl ", {
+export const dialogVariants = cva("relative", {
   variants: {
     color: {
       yellow: "border-t-4 border-t-yellow-3 bg-gray-0",
@@ -25,18 +27,32 @@ export const dialogVariants = cva("relative rounded-2xl ", {
       true: "shadow-sm dark:shadow-dark",
       false: "border border-gray-2",
     },
+    rounded: {
+      true: "rounded-2xl",
+      false: "",
+    },
   },
   defaultVariants: {
     color: "default",
     shadow: true,
+    rounded: true,
   },
 });
 
-export function Dialog({ placement, color, children, className, role = "dialog", ...rest }: Props) {
+export function Dialog({
+  placement,
+  color,
+  rounded,
+  shadow,
+  children,
+  className,
+  role = "dialog",
+  ...rest
+}: Props) {
   return (
     <div
       role={role}
-      className={clsx(dialogVariants({ color }), className)}
+      className={clsx(dialogVariants({ color, rounded, shadow }), className)}
       data-placement={placement}
       data-color={color ?? "gray"}
       {...rest}

@@ -26,26 +26,28 @@ export default meta;
 export const Basic = () => {
   const [value, setValue] = useState<SelectValue>(null);
   return (
-    <div className="grid grid-cols-1 gap-2">
-      <div>UnControlled</div>
-      <Select
-        searchable={false}
-        defaultValue="aixenprovence"
-        placeholder="Select your town..."
-        options={options}
-      ></Select>
-      <div>Controlled</div>
-      <Select
-        searchable={false}
-        placeholder="Select your town..."
-        options={options}
-        value={value}
-        onChange={(o) => {
-          onChangeAction(o);
-          setValue(o.target.value);
-        }}
-      ></Select>
-    </div>
+    <>
+      <div className="grid grid-cols-1 gap-2">
+        <div>UnControlled</div>
+        <Select
+          searchable={false}
+          defaultValue="aixenprovence"
+          placeholder="Select your town..."
+          options={options}
+        ></Select>
+        <div>Controlled</div>
+        <Select
+          searchable={false}
+          placeholder="Select your town..."
+          options={options}
+          value={value}
+          onChange={(o) => {
+            onChangeAction(o);
+            setValue(o.target.value);
+          }}
+        ></Select>
+      </div>
+    </>
   );
 };
 
@@ -79,6 +81,31 @@ export const Variants = () => {
         options={options}
         disabled={true}
         value={"aixenprovence"}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o.target.value);
+        }}
+      ></Select>
+
+      <Select
+        placeholder="Select your town..."
+        options={options}
+        size="large"
+        dialogClassName="[--h-input:48px] rounded-[calc(var(--h-input)/2)]"
+        value={value}
+        onChange={(o) => {
+          onChangeAction(o);
+          setValue(o.target.value);
+        }}
+      ></Select>
+
+      <Select
+        placeholder="Select your town..."
+        options={options}
+        size="custom"
+        selectionClassName="[--h-input:128px] h-(--h-input)"
+        dialogClassName="[--h-input:128px] rounded-[calc(var(--h-input)/2)]"
+        value={value}
         onChange={(o) => {
           onChangeAction(o);
           setValue(o.target.value);

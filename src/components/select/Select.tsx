@@ -17,7 +17,7 @@ import {
   autoUpdate,
   flip,
   offset,
-  size,
+  size as floatingUiSize,
   useClick,
   useDismiss,
   useFloating,
@@ -32,7 +32,7 @@ import { SelectContext } from "./useSelectContext";
 
 import type { Option } from "./interface";
 import clsx from "clsx";
-import { Input } from "../input/Input";
+import { Input, sizeVariant } from "../input/Input";
 import { Button } from "../button/Button";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";
@@ -52,11 +52,13 @@ export type SelectProps<O extends Option = Option> = {
   variant?: "normal" | "ghost";
   showArrow?: boolean;
   selectionClassName?: string;
+  dialogClassName?: string;
   width?: number | string;
   floatingMinWidth?: number;
   placement?: Placement;
   options: O[];
   color?: ThemeColor;
+  size?: "small" | "medium" | "large" | "custom";
   placeholder?: string;
   getSearchableValue?: (matchReg: RegExp, option: O) => string;
   searchable?: boolean;
@@ -67,7 +69,7 @@ export type SelectProps<O extends Option = Option> = {
   onChange?: ((e: ChangeEventLike) => void) | null;
   zIndex?: number;
   ref?: RefObject<HTMLDivElement>;
-} & Omit<ComponentProps<"select">, "onChange" | "value" | "defaultValue" | "multiple">;
+} & Omit<ComponentProps<"select">, "onChange" | "value" | "defaultValue" | "multiple" | "size">;
 
 function defaultGetSearchableValue(matchReg: RegExp, option: Option) {
   return matchReg.test(option.label.toLowerCase().trim());
@@ -79,6 +81,7 @@ export function Select<O extends Option>({
   disabled = false,
   showArrow = true,
   selectionClassName,
+  dialogClassName,
   width = "100%",
   floatingMinWidth = 130,
   placement = "bottom",
@@ -95,6 +98,7 @@ export function Select<O extends Option>({
   options = [],
   zIndex,
   color = "yellow",
+  size = "medium",
   ref,
   onFocus,
   onBlur,
@@ -157,7 +161,7 @@ export function Select<O extends Option>({
     middleware: [
       offset(5),
       flip({ padding: 10 }),
-      size({
+      floatingUiSize({
         apply({ rects, elements, availableHeight }) {
           Object.assign(elements.floating.style, {
             width: `${Math.max(floatingMinWidth, rects.reference.width)}px`,
@@ -264,8 +268,9 @@ export function Select<O extends Option>({
         data-color={color}
         aria-disabled={disabled}
         className={clsx(
-          "p8n-input-text box-border flex cursor-pointer rounded-2xl outline-offset-[-1px]",
+          "p8n-input-text box-border flex cursor-pointer rounded-[calc(var(--h-input)/2)] outline-offset-[-1px]",
           selectionClassName,
+          sizeVariant[size],
           isOpen && "focus",
         )}
         data-variant={variant}
@@ -276,7 +281,7 @@ export function Select<O extends Option>({
         }}
         {...getReferenceProps({ onFocus, onBlur })}
       >
-        <span className="flex h-8 flex-1 items-center truncate px-2">
+        <span className="flex flex-1 items-center truncate px-2">
           {selectedIndex !== null ? (
             <SelectSelectionComponent {...filteredOptions[selectedIndex]} key={selectedIndex} />
           ) : (
@@ -309,6 +314,7 @@ export function Select<O extends Option>({
             variant="text"
             focusable={false}
             type="button"
+            size="input"
           >
             <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
           </Button>
@@ -330,7 +336,11 @@ export function Select<O extends Option>({
               >
                 <Dialog
                   placement={context.placement}
-                  className="motion-safe:animate-fade-in-list max-h-80 overflow-auto"
+                  className={clsx(
+                    "motion-safe:animate-fade-in-list max-h-80 overflow-auto",
+                    dialogClassName,
+                  )}
+                  rounded={!dialogClassName}
                 >
                   {searchable && (
                     <div className="p-2">
