@@ -45,18 +45,20 @@ export const Playbook = () => {
   const [hint, setHint] = useState("Any hint related to input field");
   const [placeholder, setPlaceholder] = useState("Ex: Fernando");
   const [description, setDescription] = useState("");
+  const [footerDescription, setFooterDescription] = useState("");
   const [warning, setWarning] = useState("");
   const [errors, setErrors] = useState("");
 
   return (
     <>
-      <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">
+      <div className="dark:shadow-dark mb-12 rounded-2xl p-12 shadow-md">
         <InputField
           label={label}
           hint={hint}
           description={description}
           warning={warning}
           errors={errors}
+          footerDescription={footerDescription}
         >
           <Input
             placeholder={placeholder}
@@ -79,8 +81,11 @@ export const Playbook = () => {
         <InputField label="Placeholder">
           <Input value={placeholder} onChange={(e) => setPlaceholder(e.target.value)} />
         </InputField>
-        <InputField label="Help">
+        <InputField label="Description">
           <Input value={description} onChange={(e) => setDescription(e.target.value)} />
+        </InputField>
+        <InputField label="Footer Description">
+          <Input value={footerDescription} onChange={(e) => setFooterDescription(e.target.value)} />
         </InputField>
         <InputField label="Warning">
           <Input

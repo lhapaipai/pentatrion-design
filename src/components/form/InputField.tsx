@@ -6,6 +6,7 @@ export interface InputFieldProps {
   label?: ReactNode;
   hint?: ReactNode;
   description?: ReactNode;
+  footerDescription?: ReactNode;
   errors?: ReactNode | boolean;
   warning?: ReactNode | boolean;
   children: ReactNode;
@@ -19,6 +20,7 @@ export function InputField({
   label,
   hint,
   description,
+  footerDescription,
   errors,
   warning,
   id: providedId,
@@ -80,6 +82,9 @@ export function InputField({
         <div className="text-body-sm text-gray-6 mt-1 min-h-5">
           {errorsElement || warningElement}
         </div>
+      )}
+      {footerDescription && (
+        <div className="text-body-sm text-gray-6 mb-2">{footerDescription}</div>
       )}
     </div>
   );
