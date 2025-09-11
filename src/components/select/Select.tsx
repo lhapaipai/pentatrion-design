@@ -42,9 +42,11 @@ import { ThemeColor } from "../../types";
 // voir getSelectProps()
 // src/components/form/form.stories.tsx
 export type SelectValue = number | string | readonly string[] | null;
-type ChangeEventLike = {
+type SelectChangeEventLike = {
   target: {
+    type: "select-one";
     value: SelectValue;
+    name: string;
   };
 };
 
@@ -66,7 +68,7 @@ export type SelectProps<O extends Option = Option> = {
   selectSelectionComponent?: (props: SelectSelectionProps<O>) => ReactNode;
   defaultValue?: SelectValue;
   value?: SelectValue;
-  onChange?: ((e: ChangeEventLike) => void) | null;
+  onChange?: ((e: SelectChangeEventLike) => void) | null;
   zIndex?: number;
   ref?: RefObject<HTMLDivElement>;
 } & Omit<ComponentProps<"select">, "onChange" | "value" | "defaultValue" | "multiple" | "size">;
@@ -227,8 +229,10 @@ export function Select<O extends Option>({
       setIsOpen(false);
       setSearch("");
 
-      const event: ChangeEventLike = {
+      const event: SelectChangeEventLike = {
         target: {
+          type: "select-one",
+          name,
           value: index === null ? null : filteredOptions[index].value,
         },
       };
@@ -238,7 +242,7 @@ export function Select<O extends Option>({
         setUncontrolledSelectedIndex(index);
       }
     },
-    [isControlled, onChangeStable, filteredOptions],
+    [isControlled, onChangeStable, filteredOptions, name],
   );
 
   const selectContext = useMemo(
