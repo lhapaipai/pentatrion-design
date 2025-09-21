@@ -27,7 +27,7 @@ export function useMergeRefs<Instance>(
 
 export function useStrictMergeRefs<Instance>(
   refs: Array<Ref<Instance> | undefined>,
-): RefCallback<Instance> {
+): Ref<Instance> {
   return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       throw new Error("define at least one ref with useMergeRefs");
