@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react-vite";
-import { z } from "zod";
+import { z } from "zod/v4-mini";
 import { useForm, getFormProps, getInputProps, getSelectProps } from "@conform-to/react";
-import { parseWithZod, getZodConstraint } from "@conform-to/zod";
+import { parseWithZod, getZodConstraint } from "@conform-to/zod/v4";
 import { Button } from "../button";
 import { InputField } from "./InputField";
 import { SelectField } from "./SelectField";
@@ -15,8 +15,8 @@ const meta = {
 export default meta;
 
 const FormSchema = z.object({
-  email: z.string().email(),
-  gender: z.enum(["male", "female"]).optional(),
+  email: z.email(),
+  gender: z.optional(z.enum(["male", "female"])),
 });
 
 const options: Option[] = [

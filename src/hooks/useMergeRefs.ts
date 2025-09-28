@@ -1,4 +1,4 @@
-import { Ref, RefCallback, useMemo, RefObject } from "react";
+import { Ref, useMemo, RefObject } from "react";
 
 /**
  * Merges an array of refs into a single memoized callback ref or `null`.
@@ -6,7 +6,7 @@ import { Ref, RefCallback, useMemo, RefObject } from "react";
  */
 export function useMergeRefs<Instance>(
   refs: Array<Ref<Instance> | undefined>,
-): RefCallback<Instance> | null {
+): Ref<Instance> | null {
   return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       return null;
@@ -27,7 +27,7 @@ export function useMergeRefs<Instance>(
 
 export function useStrictMergeRefs<Instance>(
   refs: Array<Ref<Instance> | undefined>,
-): RefCallback<Instance> {
+): Ref<Instance> {
   return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       throw new Error("define at least one ref with useMergeRefs");
