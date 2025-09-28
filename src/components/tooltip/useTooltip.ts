@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { RefObject, useMemo, useRef, useState } from "react";
 import { TooltipOptions } from "./interface";
 import {
   arrow,
@@ -9,13 +9,24 @@ import {
   shift,
   useDismiss,
   useFloating,
+  UseFloatingReturn,
   useFocus,
   useHover,
   useInteractions,
+  UseInteractionsReturn,
   useRole,
 } from "@floating-ui/react";
+import { ThemeColor } from "../../types";
 
 const arrowWidth = 16;
+
+type UseTooltipReturn = {
+  open: boolean;
+  setOpen?: (open: boolean) => void;
+  color?: ThemeColor;
+  arrowRef: RefObject<HTMLDivElement | null>;
+} & UseInteractionsReturn &
+  UseFloatingReturn;
 
 export function useTooltip({
   initialOpen = false,
@@ -25,7 +36,7 @@ export function useTooltip({
   openDelay = 500,
   closeDelay = 500,
   color = "yellow",
-}: TooltipOptions = {}) {
+}: TooltipOptions = {}): UseTooltipReturn {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;

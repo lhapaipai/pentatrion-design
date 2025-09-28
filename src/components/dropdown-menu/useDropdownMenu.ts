@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { RefObject, useCallback, useMemo, useRef, useState } from "react";
 import type { UseDropdownMenuOptions } from "./interface";
 import {
   autoUpdate,
@@ -8,13 +8,29 @@ import {
   useClick,
   useDismiss,
   useFloating,
+  UseFloatingReturn,
   useInteractions,
+  UseInteractionsReturn,
   useListNavigation,
   useRole,
   useTypeahead,
 } from "@floating-ui/react";
+import { ThemeColor } from "../../types";
 
 const arrowWidth = 12;
+
+type UseDropdownMenuReturn = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  elementsRef: RefObject<(HTMLElement | null)[]>;
+  labelsRef: RefObject<(string | null)[]>;
+  color?: ThemeColor;
+  modal: boolean;
+  activeIndex: number | null;
+  handleSelect: () => void;
+  presentation: "compact" | "large";
+} & UseInteractionsReturn &
+  UseFloatingReturn;
 
 export function useDropdownMenu({
   initialOpen = false,
@@ -24,7 +40,7 @@ export function useDropdownMenu({
   color,
   modal = false,
   presentation = "large",
-}: UseDropdownMenuOptions) {
+}: UseDropdownMenuOptions): UseDropdownMenuReturn {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
 
   const isUncontrolled = controlledOpen === null || controlledOpen === undefined;

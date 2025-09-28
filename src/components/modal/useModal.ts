@@ -1,13 +1,33 @@
 import { Dispatch, SetStateAction, useMemo, useState } from "react";
 import { ModalOptions } from "./interface";
-import { useClick, useDismiss, useFloating, useInteractions, useRole } from "@floating-ui/react";
+import {
+  useClick,
+  useDismiss,
+  useFloating,
+  UseFloatingReturn,
+  useInteractions,
+  UseInteractionsReturn,
+  useRole,
+} from "@floating-ui/react";
+import { ThemeColor } from "../../types";
+
+type UseModalReturn = {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  color?: ThemeColor;
+  labelId?: string;
+  descriptionId?: string;
+  setLabelId: Dispatch<SetStateAction<string | undefined>>;
+  setDescriptionId: Dispatch<SetStateAction<string | undefined>>;
+} & UseInteractionsReturn &
+  UseFloatingReturn;
 
 export function useModal({
   initialOpen = false,
   open: controlledOpen,
   onOpen: setControlledOpen,
   color,
-}: ModalOptions = {}) {
+}: ModalOptions = {}): UseModalReturn {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
   const [descriptionId, setDescriptionId] = useState<string | undefined>();

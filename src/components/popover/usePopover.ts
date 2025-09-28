@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { Dispatch, RefObject, SetStateAction, useMemo, useRef, useState } from "react";
 import { PopoverOptions } from "./interface";
 import {
   arrow,
@@ -10,10 +10,26 @@ import {
   useDismiss,
   useFloating,
   useInteractions,
+  UseInteractionsReturn,
   useRole,
 } from "@floating-ui/react";
+import { ThemeColor } from "../../types";
+import { UseFloatingReturn } from "@floating-ui/react-dom";
 
 const arrowWidth = 12;
+
+type UsePopoverReturn = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  arrowRef: RefObject<HTMLDivElement | null>;
+  color?: ThemeColor;
+  modal: boolean;
+  labelId?: string;
+  descriptionId?: string;
+  setLabelId: Dispatch<SetStateAction<string | undefined>>;
+  setDescriptionId: Dispatch<SetStateAction<string | undefined>>;
+} & UseInteractionsReturn &
+  UseFloatingReturn;
 
 export function usePopover({
   initialOpen = false,
@@ -22,7 +38,7 @@ export function usePopover({
   onOpen: setControlledOpen,
   color,
   modal = false,
-}: PopoverOptions) {
+}: PopoverOptions): UsePopoverReturn {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
   const [descriptionId, setDescriptionId] = useState<string | undefined>();

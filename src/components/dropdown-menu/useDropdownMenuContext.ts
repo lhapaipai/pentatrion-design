@@ -5,7 +5,7 @@ type ContextType = ReturnType<typeof useDropdownMenu> | null;
 
 export const DropdownMenuContext = createContext<ContextType>(null);
 
-export function useDropdownMenuContext() {
+export function useDropdownMenuContext(): ContextType {
   const context = useContext(DropdownMenuContext);
 
   if (context === null) {

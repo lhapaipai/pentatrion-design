@@ -5,7 +5,7 @@ type ContextType = ReturnType<typeof useModal> | null;
 
 export const ModalContext = createContext<ContextType>(null);
 
-export function useModalContext() {
+export function useModalContext(): ContextType {
   const context = useContext(ModalContext);
 
   if (context === null) {
