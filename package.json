@@ -21,9 +21,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@atlaskit/pragmatic-drag-and-drop": "1.7.2",
-    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "2.1.1",
-    "@atlaskit/pragmatic-drag-and-drop-hitbox": "1.1.0",
     "@conform-to/react": "1.6.1",
     "@conform-to/zod": "1.6.1",
     "@eslint/js": "^9.37.0",
@@ -70,9 +67,6 @@
     "zod": "^4.1.12"
   },
   "peerDependencies": {
-    "@atlaskit/pragmatic-drag-and-drop": "*",
-    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": "*",
-    "@atlaskit/pragmatic-drag-and-drop-hitbox": "*",
     "@floating-ui/react": "*",
     "class-variance-authority": "*",
     "clsx": "*",
@@ -81,15 +75,6 @@
     "tailwindcss": "*"
   },
   "peerDependenciesMeta": {
-    "@atlaskit/pragmatic-drag-and-drop": {
-      "optional": true
-    },
-    "@atlaskit/pragmatic-drag-and-drop-hitbox": {
-      "optional": true
-    },
-    "@atlaskit/pragmatic-drag-and-drop-auto-scroll": {
-      "optional": true
-    },
     "@floating-ui/react": {
       "optional": true
     },
@@ -149,10 +134,6 @@
     "./dialog": {
       "types": "./dist/components/dialog/index.d.ts",
       "default": "./dist/components/dialog/index.js"
-    },
-    "./draggable": {
-      "types": "./dist/components/draggable/index.d.ts",
-      "default": "./dist/components/draggable/index.js"
     },
     "./dropdown-menu": {
       "types": "./dist/components/dropdown-menu/index.d.ts",
