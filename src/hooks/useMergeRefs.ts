@@ -1,12 +1,14 @@
 import { Ref, useMemo, RefObject } from "react";
 
+type RefCallback<T> = (instance: T | null) => void;
+
 /**
  * Merges an array of refs into a single memoized callback ref or `null`.
  * @see https://floating-ui.com/docs/react-utils#usemergerefs
  */
 export function useMergeRefs<Instance>(
   refs: Array<Ref<Instance> | undefined>,
-): Ref<Instance> | null {
+): RefCallback<Instance> | null {
   return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       return null;
@@ -27,7 +29,7 @@ export function useMergeRefs<Instance>(
 
 export function useStrictMergeRefs<Instance>(
   refs: Array<Ref<Instance> | undefined>,
-): Ref<Instance> {
+): RefCallback<Instance> {
   return useMemo(() => {
     if (refs.every((ref) => ref == null)) {
       throw new Error("define at least one ref with useMergeRefs");

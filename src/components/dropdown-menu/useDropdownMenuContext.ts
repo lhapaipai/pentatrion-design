@@ -1,11 +1,9 @@
 import { createContext, useContext } from "react";
-import { useDropdownMenu } from "./useDropdownMenu";
+import { UseDropdownMenuReturn } from "./useDropdownMenu";
 
-type ContextType = ReturnType<typeof useDropdownMenu> | null;
+export const DropdownMenuContext = createContext<UseDropdownMenuReturn | null>(null);
 
-export const DropdownMenuContext = createContext<ContextType>(null);
-
-export function useDropdownMenuContext(): ContextType {
+export function useDropdownMenuContext(): UseDropdownMenuReturn {
   const context = useContext(DropdownMenuContext);
 
   if (context === null) {
