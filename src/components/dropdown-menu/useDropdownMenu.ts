@@ -19,7 +19,7 @@ import { ThemeColor } from "../../types";
 
 const arrowWidth = 12;
 
-type UseDropdownMenuReturn = {
+export type UseDropdownMenuReturn = {
   open: boolean;
   setOpen: (open: boolean) => void;
   elementsRef: RefObject<(HTMLElement | null)[]>;
