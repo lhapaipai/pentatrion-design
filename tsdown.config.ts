@@ -32,7 +32,6 @@ export default defineConfig({
     "src/components/select/index.ts",
     "src/components/slot/index.ts",
     "src/components/snack/index.ts",
-    "src/components/sortable/index.ts",
     "src/components/steps/index.ts",
     "src/components/table/index.ts",
     "src/components/tabs/index.ts",
@@ -50,7 +49,7 @@ export default defineConfig({
     "class-variance-authority",
     "clsx",
     "tailwindcss",
-    "@floating/ui/react",
+    "@floating-ui/react",
   ],
   shims: true,
 });
