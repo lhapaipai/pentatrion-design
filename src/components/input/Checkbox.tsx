@@ -24,7 +24,6 @@ export function Checkbox({
       <input
         data-color={color}
         ref={ref}
-        disabled={disabled}
         type="checkbox"
         className={clsx(
           "p8n-input-checkbox",
@@ -32,6 +31,7 @@ export function Checkbox({
           indeterminate && "indeterminate",
           className,
         )}
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {children}
@@ -74,7 +74,6 @@ export function CheckboxButton({
     >
       <input
         ref={ref}
-        disabled={disabled}
         type="checkbox"
         className={clsx(
           showInput
@@ -83,6 +82,7 @@ export function CheckboxButton({
           //indeterminate && "indeterminate",
           className,
         )}
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {children}

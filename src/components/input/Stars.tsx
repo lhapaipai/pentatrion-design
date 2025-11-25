@@ -77,8 +77,6 @@ export function Stars({
     <div>
       <input
         onChange={handleInputChange}
-        {...rest}
-        disabled={rangeValue === null}
         value={rangeValue ?? /* any value, control is disabled */ 1}
         type="range"
         min={1}
@@ -86,6 +84,8 @@ export function Stars({
         step={step}
         ref={combinedRef}
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        {...(rangeValue === null ? { disabled: true } : {})}
+        {...rest}
       />
       <span
         className="rounded-2xl peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"

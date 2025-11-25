@@ -30,7 +30,7 @@ export function ContextMenuItem({
       ref={ref}
       role="menuitem"
       data-presentation="compact"
-      disabled={disabled}
+      {...(disabled ? { disabled } : {})}
     >
       {icon}
       <span className="content">{label}</span>

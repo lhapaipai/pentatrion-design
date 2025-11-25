@@ -34,7 +34,7 @@ export function Textarea({
             e.target.select();
           }
         }}
-        disabled={disabled}
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {action && <div className="absolute top-1 right-1">{action}</div>}

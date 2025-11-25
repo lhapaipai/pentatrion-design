@@ -93,19 +93,19 @@ export function MappedStars({
         readOnly
         {...rest}
         value={value ?? /* any value, control is disabled */ ""}
-        disabled={value === null}
         type="hidden"
         ref={combinedRef}
+        {...(value === null ? { disabled: true } : {})}
       />
       <input
         ref={inputRangeRef}
         onChange={handleInputChange}
-        disabled={rangeValue === -1}
         value={rangeValue}
         type="range"
         min={0}
         max={options.length - 1}
         className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        {...(rangeValue === -1 ? { disabled: true } : {})}
       />
       <span
         className="rounded-2xl peer-focus:outline-2 peer-focus:outline-(--color-custom-5)"

@@ -23,7 +23,7 @@ export function MenuItem({ label, disabled, ref, ...props }: Props) {
       className="option"
       data-presentation="compact"
       tabIndex={isActive ? 0 : -1}
-      disabled={disabled}
+      {...(disabled ? { disabled } : {})}
       {...menu.getItemProps({
         onClick(event: MouseEvent<HTMLButtonElement>) {
           props.onClick?.(event);

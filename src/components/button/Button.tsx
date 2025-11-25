@@ -151,9 +151,9 @@ export function Button({
       data-color={color}
       data-variant={variant}
       aria-checked={selected}
-      disabled={typeof disabled === "boolean" ? disabled : undefined}
       suppressHydrationWarning
       aria-busy={loading}
+      {...(disabled ? { disabled } : {})}
       {...props}
     >
       {asChild ? (

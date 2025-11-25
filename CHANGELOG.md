@@ -1,3 +1,7 @@
+## 1.1.1
+
+fix hydration mismatch with boolean attributes
+
 ## 0.1.3
 
 autocomplete add autofocus option

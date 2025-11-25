@@ -73,13 +73,13 @@ export function Input({
           flexibleWidth && "w-0",
           inputClassName,
         )}
-        disabled={disabled}
         readOnly={readOnly}
         onClick={(e) => {
           if (readOnly) {
             (e.target as HTMLInputElement)?.select();
           }
         }}
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {suffix && (

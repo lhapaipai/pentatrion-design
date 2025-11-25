@@ -24,12 +24,12 @@ export function Radio({
         data-color={color}
         ref={ref}
         type="radio"
-        disabled={disabled}
         className={clsx(
           "p8n-input-radio",
           "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-full bg-origin-border p-0 outline-offset-[-1px] select-none",
           className,
         )}
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {children}
@@ -63,12 +63,12 @@ export function RadioWithLegend({
           data-color={color}
           ref={ref}
           type="radio"
-          disabled={disabled}
           className={clsx(
             "p8n-input-radio",
             "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-full bg-origin-border p-0 outline-offset-[-1px] select-none",
             className,
           )}
+          {...(disabled ? { disabled } : {})}
           {...rest}
         />
         <span className={labelClassName}>{label}</span>
@@ -103,9 +103,9 @@ export function RadioButton({
     >
       <input
         ref={ref}
-        disabled={disabled}
         type="radio"
         className="h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        {...(disabled ? { disabled } : {})}
         {...rest}
       />
       {children}
