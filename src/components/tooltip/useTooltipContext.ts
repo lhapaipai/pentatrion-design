@@ -5,7 +5,7 @@ type ContextType = ReturnType<typeof useTooltip> | null;
 
 export const TooltipContext = createContext<ContextType>(null);
 
-export function useTooltipContext(): ContextType {
+export function useTooltipContext() {
   const context = useContext(TooltipContext);
 
   if (context === null) {

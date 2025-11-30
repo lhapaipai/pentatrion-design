@@ -5,7 +5,7 @@ type ContextType = ReturnType<typeof usePopover> | null;
 
 export const PopoverContext = createContext<ContextType>(null);
 
-export function usePopoverContext(): ContextType {
+export function usePopoverContext() {
   const context = useContext(PopoverContext);
 
   if (context === null) {

@@ -4,20 +4,19 @@ import clsx from "clsx";
 import { BasicMedia } from "./types";
 
 interface Props extends ComponentProps<"div"> {
-  media: BasicMedia | null;
+  media?: BasicMedia | null;
+  mimeType?: string;
 }
-export function FileIcon({ media, className, ...rest }: Props) {
-  const { color, icon } = getIconByMime(media?.mimeType);
+export function FileIcon({ mimeType, media, className, ...rest }: Props) {
+  const { color, icon } = getIconByMime(mimeType ?? media?.mimeType);
 
   return (
     <div
-      style={{ backgroundColor: color }}
-      className={clsx("flex aspect-4/3 items-center justify-center p-2", className)}
+      className={clsx("flex h-full w-full items-center justify-center bg-white", className)}
       {...rest}
     >
       {icon ? (
         <>
-          <div className="aspect-58/76 h-full w-auto rounded-2xl bg-white"></div>
           <span
             style={{ color }}
             className="absolute top-1/2 left-1/2 h-full max-h-[60%] w-full max-w-[60%] -translate-x-1/2 -translate-y-1/2"

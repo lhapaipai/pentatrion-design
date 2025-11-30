@@ -12,9 +12,9 @@ import {
   useInteractions,
   UseInteractionsReturn,
   useRole,
+  type UseFloatingReturn,
 } from "@floating-ui/react";
 import { ThemeColor } from "../../types";
-import { UseFloatingReturn } from "@floating-ui/react-dom";
 
 const arrowWidth = 12;
 

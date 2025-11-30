@@ -13,11 +13,12 @@
     "storybook": "storybook dev --no-open -p 6007",
     "storybook-build": "storybook build",
     "fontello": "fontello",
-    "lint:check": "eslint",
-    "tsc:check": "tsc --noEmit -p tsconfig.build.json",
+    "check": "pnpm check:lint && pnpm check:tsc",
+    "check:lint": "eslint",
+    "check:tsc": "tsc --noEmit -p tsconfig.build.json",
     "test": "vitest",
     "test-run": "vitest --run",
-    "ci": "pnpm lint:check && pnpm tsc:check && pnpm test-run"
+    "ci": "pnpm check && pnpm test-run"
   },
   "type": "module",
   "devDependencies": {

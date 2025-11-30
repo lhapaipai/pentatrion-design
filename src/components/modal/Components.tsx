@@ -24,7 +24,7 @@ export function ModalHeader({
           </Button>
         </div>
       )}
-      <header className={clsx("flex items-center px-2 pt-2", className)} {...props}>
+      <header className={clsx("flex items-center p-2", className)} {...props}>
         <h4 className="leading-6 font-semibold">{children}</h4>
       </header>
     </>
@@ -42,7 +42,7 @@ export function ModalDescription({
 }: ModalDescriptionProps) {
   if (!scrollable) {
     return (
-      <div className={clsx("p-2", className)} {...props}>
+      <div className={clsx("p-2 pt-0", className)} {...props}>
         {children}
       </div>
     );
@@ -56,7 +56,7 @@ export function ModalDescription({
 
 export function ModalFooter({ children, className, ...props }: ComponentProps<"footer">) {
   return (
-    <footer className={clsx("relative z-10 px-2 pb-2", className)} {...props}>
+    <footer className={clsx("relative z-10 p-2", className)} {...props}>
       {children}
     </footer>
   );

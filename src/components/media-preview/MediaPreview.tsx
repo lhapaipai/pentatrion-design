@@ -9,8 +9,8 @@ interface Props {
   src?: string;
   width?: number;
   height?: number;
-  squareContainer?: boolean;
-  containerClassName?: string;
+  fit?: "contain" | "cover" | "original";
+  className?: string;
   imageClassName?: string;
   srcSet?: string;
   sizes?: string;
@@ -23,8 +23,8 @@ export function MediaPreview({
   src,
   width,
   height,
-  squareContainer,
-  containerClassName,
+  fit = "original",
+  className,
   imageClassName,
 
   srcSet,
@@ -35,28 +35,25 @@ export function MediaPreview({
     <div
       className={clsx(
         "group bg-gray-1 relative overflow-hidden rounded-2xl shadow-xs",
-        squareContainer && "aspect-4/3",
-        containerClassName,
+        fit !== "original" && "aspect-16/9",
+        className,
       )}
       {...rest}
     >
       {isMediaImage(media) ? (
-        <div
-          className={clsx("flex items-center justify-center", squareContainer && "aspect-4/3 p-2")}
-        >
-          <img
-            src={src ?? (media.origin === "external" && media.src ? media.src : undefined)}
-            srcSet={srcSet}
-            sizes={sizes}
-            width={width ?? media.width}
-            height={height ?? media.height}
-            className={clsx(
-              "h-auto rounded-2xl",
-              squareContainer ? "max-h-full w-auto max-w-full" : "w-full",
-              imageClassName,
-            )}
-          />
-        </div>
+        <img
+          src={src ?? (media.origin === "external" && media.src ? media.src : undefined)}
+          srcSet={srcSet}
+          sizes={sizes}
+          width={width ?? media.width}
+          className={clsx(
+            "rounded-2xl",
+            fit === "original" && "h-auto w-full",
+            fit === "contain" && "h-full w-full object-contain p-2",
+            fit === "cover" && "h-full w-full object-cover",
+            imageClassName,
+          )}
+        />
       ) : (
         <FileIcon media={media} />
       )}
