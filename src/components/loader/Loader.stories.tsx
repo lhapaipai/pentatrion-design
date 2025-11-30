@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { Loader } from "./Loader";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { Button } from "../button";
 
 const meta = {
@@ -51,6 +51,24 @@ export const Context = () => {
         </Loader>
         <Button onClick={() => setIsLoading((s) => !s)}>Toggle loading</Button>
       </div>
+      <LoaderWithProgression />
     </div>
   );
 };
+
+function LoaderWithProgression() {
+  const [progression, setProgression] = useState(20);
+  return (
+    <Loader size="large" color="gray" progression={progression}>
+      <Button
+        icon
+        color="gray"
+        onClick={() => {
+          setProgression((p) => (p + 10) % 100);
+        }}
+      >
+        <i className="fe-star text-body-md" />
+      </Button>
+    </Loader>
+  );
+}

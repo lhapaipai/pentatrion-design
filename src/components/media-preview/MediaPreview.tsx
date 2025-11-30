@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode, useMemo } from "react";
 import clsx from "clsx";
 import { BasicMedia } from "./types";
 import { isMediaImage } from "./util";
@@ -31,16 +31,26 @@ export function MediaPreview({
   sizes,
   ...rest
 }: Props) {
+  const isImage = isMediaImage(media);
+  const cssProperties = useMemo(() => {
+    if (width && height) {
+      return { "--media-ratio": width / height } as CSSProperties;
+    } else {
+      return {};
+    }
+  }, [width, height]);
+
   return (
     <div
       className={clsx(
         "group bg-gray-1 relative overflow-hidden rounded-2xl shadow-xs",
-        fit !== "original" && "aspect-16/9",
+        fit === "original" && isImage ? "aspect-(--media-ratio)" : "aspect-16/9",
         className,
       )}
+      style={cssProperties}
       {...rest}
     >
-      {isMediaImage(media) ? (
+      {isImage ? (
         <img
           src={src ?? (media.origin === "external" && media.src ? media.src : undefined)}
           srcSet={srcSet}

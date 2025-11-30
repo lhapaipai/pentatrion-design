@@ -8,6 +8,7 @@ interface Props extends ComponentPropsWithoutRef<"div"> {
   children?: ReactNode;
   loading?: boolean;
   position?: CSSProperties["position"];
+  progression?: number;
 }
 
 const sizeConfig = {
@@ -38,12 +39,19 @@ export function Loader({
   size = "medium",
   color = "blue",
   loading = true,
+  progression = -1,
   className,
   position = "relative",
   children,
   ...rest
 }: Props) {
   const id = useId();
+
+  const destPoint = {
+    x: 7 * Math.sin((2 * Math.PI * progression) / 100),
+    y: 7 - 7 * Math.cos((2 * Math.PI * progression) / 100),
+  };
+
   return (
     <div
       data-color={color}
@@ -68,11 +76,20 @@ export function Loader({
             <circle id={id} cx="8" cy="8" r="7" />
           </defs>
           <use href={`#${id}`} className="fill-none stroke-current opacity-25" style={trackStyle} />
-          <use
-            href={`#${id}`}
-            className="animate-loader-stroke fill-none stroke-current"
-            style={circleStyle}
-          />
+          {progression === -1 ? (
+            <use
+              href={`#${id}`}
+              className="animate-loader-stroke fill-none stroke-current"
+              style={circleStyle}
+            />
+          ) : (
+            <path
+              d={`M 8,1 a 7,7 0 ${progression > 50 ? 1 : 0} 1 ${destPoint.x},${destPoint.y}`}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            />
+          )}
         </svg>
       )}
       {children && (

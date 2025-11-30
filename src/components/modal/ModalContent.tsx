@@ -28,14 +28,14 @@ export function ModalContent({ zClassName, style, className, children, ref, ...p
       <FloatingOverlay
         className={clsx(
           "flex-center bg-gray-7/40 motion-safe:animate-fade-in-opacity",
-          zClassName ?? "z-overlay",
+          zClassName ?? "z-modal-overlay",
         )}
         lockScroll
       >
         <FloatingFocusManager context={floatingContext}>
           <Dialog
             color={context.color}
-            className={clsx("motion-safe:animate-fade-in mx-4", className)}
+            className={clsx("motion-safe:animate-fade-in z-modal mx-4", className)}
             style={style}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}

@@ -77,7 +77,13 @@
   z-index: 200;
 }
 @utility z-dialog {
-  z-index: 100;
+  z-index: 150;
+}
+@utility z-modal-overlay {
+  z-index: 120;
+}
+@utility z-modal {
+  z-index: 121;
 }
 @utility z-overlay {
   z-index: 100;
