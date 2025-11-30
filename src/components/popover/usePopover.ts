@@ -18,7 +18,7 @@ import { ThemeColor } from "../../types";
 
 const arrowWidth = 12;
 
-type UsePopoverReturn = {
+export type UsePopoverReturn = {
   open: boolean;
   setOpen: (open: boolean) => void;
   arrowRef: RefObject<HTMLDivElement | null>;

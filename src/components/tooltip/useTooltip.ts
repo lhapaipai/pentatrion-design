@@ -20,7 +20,7 @@ import { ThemeColor } from "../../types";
 
 const arrowWidth = 16;
 
-type UseTooltipReturn = {
+export type UseTooltipReturn = {
   open: boolean;
   setOpen?: (open: boolean) => void;
   color?: ThemeColor;

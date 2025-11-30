@@ -11,7 +11,7 @@ import {
 } from "@floating-ui/react";
 import { ThemeColor } from "../../types";
 
-type UseModalReturn = {
+export type UseModalReturn = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   color?: ThemeColor;
