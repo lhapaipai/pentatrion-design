@@ -1,3 +1,8 @@
+## 1.1.2
+
+- update dependencies
+- migrate oxlint / oxfmt
+
 ## 1.1.1
 
 fix hydration mismatch with boolean attributes
