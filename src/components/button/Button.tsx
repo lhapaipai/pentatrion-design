@@ -124,11 +124,12 @@ export function Button({
     () => inputRef.current,
   );
 
-  const notClickable = loading || disabled;
+  const rippleEnabled = !loading && !disabled && withRipple;
 
-  const ripples = useRipple(
+  useRipple(
     inputRef,
     ["text", "outlined", "ghost"].includes(variant) ? true : false,
+    rippleEnabled,
   );
 
   const Comp = asChild ? Slot : "button";
@@ -160,7 +161,7 @@ export function Button({
         children
       ) : (
         <>
-          {!notClickable && withRipple && ripples}
+          {/* {!notClickable && withRipple && ripples} */}
           {children}
           {loading && (
             <Loader

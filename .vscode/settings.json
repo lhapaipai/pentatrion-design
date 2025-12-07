@@ -24,5 +24,6 @@
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "oxc.fmt.experimental": true
+  "oxc.fmt.experimental": true,
+  "oxc.enable": true
 }
