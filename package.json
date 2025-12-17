@@ -244,5 +244,5 @@
     "./tailwind": "./src/tailwind/index.css",
     "./tailwind/*": "./src/tailwind/*"
   },
-  "packageManager": "pnpm@10.6.5"
+  "packageManager": "pnpm@10.17.0"
 }
