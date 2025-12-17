@@ -3,6 +3,8 @@
 @source ".";
 @source "../../src";
 
+@import "../../.storybook/fontello/index.css";
+
 @import "../../src/tailwind/index.css";
 @import "../../src/tailwind/prose.css";
 
