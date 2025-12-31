@@ -10,6 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
     - uses: actions/checkout@v4
 
@@ -42,4 +46,6 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Publish package
-      run: npm i -g npm@^11.5.2 && npm publish
+      run: npm i -g npm@^11.5.2 && npm publish --provenance --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
