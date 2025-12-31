@@ -31,21 +31,21 @@ jobs:
     - name: Build library
       run: pnpm run build
 
-    # - name: Release
-    #   uses: softprops/action-gh-release@v2
-    #   if: github.ref_type == 'tag'
-    #   with:
-    #     token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: github.ref_type == 'tag'
+      with:
+        token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
 
-    - name: Creating .npmrc
-      run: |
-        cat << EOF > "./.npmrc"
-          //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        EOF
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - name: Creating .npmrc
+    #   run: |
+    #     cat << EOF > "./.npmrc"
+    #       //registry.npmjs.org/:_authToken=$NPM_TOKEN
+    #     EOF
+    #   env:
+    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    - name: Publish package
-      run: npm i -g npm@^11.5.2 && npm publish --provenance --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    # - name: Publish package
+    #   run: npm i -g npm@^11.5.2 && npm publish --provenance --access public
+    #   env:
+    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
