@@ -27,16 +27,19 @@ jobs:
     - name: Build library
       run: pnpm run build
 
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      if: github.ref_type == 'tag'
-      with:
-        token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
+    # - name: Release
+    #   uses: softprops/action-gh-release@v2
+    #   if: github.ref_type == 'tag'
+    #   with:
+    #     token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
 
-    - name: Publish 🚀
-      shell: bash
+    - name: Creating .npmrc
       run: |
-        echo -e "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN\nregistry=https://registry.npmjs.org/\nunsafe-perm=true" > .npmrc
-        pnpm publish --access public --no-git-checks
+        cat << EOF > "$HOME/.npmrc"
+          //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        EOF
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Publish package
+      run: npm i -g npm@^11.5.2 && npm publish
