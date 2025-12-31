@@ -17,30 +17,18 @@ export function PopoverHeader({
     <>
       {closeButton && (
         <div className="float-right p-1">
-          <Button
-            icon
-            variant="text"
-            color="gray"
-            onClick={() => setOpen(false)}
-          >
+          <Button icon variant="text" color="gray" onClick={() => setOpen(false)}>
             <i className="fe-cancel"></i>
           </Button>
         </div>
       )}
-      <header
-        className={clsx("flex items-center px-2 pt-2", className)}
-        {...props}
-      >
+      <header className={clsx("flex items-center px-2 pt-2", className)} {...props}>
         <h4 className="font-semibold leading-6">{children}</h4>
       </header>
     </>
   );
 }
-export function PopoverDescription({
-  children,
-  className,
-  ...props
-}: ComponentProps<"div">) {
+export function PopoverDescription({ children, className, ...props }: ComponentProps<"div">) {
   return (
     <div className={clsx("p-2", className)} {...props}>
       {children}
@@ -48,11 +36,7 @@ export function PopoverDescription({
   );
 }
 
-export function PopoverFooter({
-  children,
-  className,
-  ...props
-}: ComponentProps<"footer">) {
+export function PopoverFooter({ children, className, ...props }: ComponentProps<"footer">) {
   return (
     <footer className={clsx("relative z-10 px-2 pb-2", className)} {...props}>
       {children}

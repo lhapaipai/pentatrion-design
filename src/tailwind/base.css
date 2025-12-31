@@ -90,18 +90,24 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-yellow-4);
   --color-custom-5: var(--color-yellow-5);
   --color-custom-text: var(--color-yellow-text);
+  --color-custom-border: var(--color-gray-3);
 }
 [data-color="yellow-alpha"] {
   /**
    * for readability 1 and 2 are gray
    */
   --color-custom-0: color-mix(in oklab, var(--color-gray-8) 5%, transparent);
-  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
-  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
-  --color-custom-3: var(--color-yellow-3);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 10%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
+  --color-custom-3: color-mix(in oklab, var(--color-yellow-3) 65%, transparent);
+  --color-custom-4: color-mix(in oklab, var(--color-yellow-4) 75%, transparent);
+  --color-custom-5: color-mix(in oklab, var(--color-yellow-5) 85%, transparent);
+
+  /* --color-custom-3: var(--color-yellow-3);
   --color-custom-4: var(--color-yellow-4);
-  --color-custom-5: var(--color-yellow-5);
+  --color-custom-5: var(--color-yellow-5); */
   --color-custom-text: var(--color-yellow-text);
+  --color-custom-border: var(--color-gray-3);
 }
 [data-color="gray"] {
   --color-custom-0: var(--color-gray-0);
@@ -111,15 +117,17 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-gray-4);
   --color-custom-5: var(--color-gray-5);
   --color-custom-text: var(--color-gray-text);
+  --color-custom-border: var(--color-gray-3);
 }
 [data-color="gray-alpha"] {
   --color-custom-0: color-mix(in oklab, var(--color-gray-8) 5%, transparent);
-  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
-  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
-  --color-custom-3: var(--color-gray-3);
-  --color-custom-4: var(--color-gray-4);
-  --color-custom-5: var(--color-gray-5);
+  --color-custom-1: color-mix(in oklab, var(--color-gray-8) 10%, transparent);
+  --color-custom-2: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
+  --color-custom-3: color-mix(in oklab, var(--color-gray-8) 20%, transparent);
+  --color-custom-4: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
+  --color-custom-5: color-mix(in oklab, var(--color-gray-8) 30%, transparent);
   --color-custom-text: var(--color-gray-text);
+  --color-custom-border: var(--color-gray-3);
 }
 [data-color="red"] {
   --color-custom-0: var(--color-gray-0);
@@ -129,6 +137,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-red-4);
   --color-custom-5: var(--color-red-5);
   --color-custom-text: var(--color-red-text);
+  --color-custom-border: var(--color-red-3);
 }
 [data-color="orange"] {
   --color-custom-0: var(--color-gray-0);
@@ -138,6 +147,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-orange-4);
   --color-custom-5: var(--color-orange-5);
   --color-custom-text: var(--color-orange-text);
+  --color-custom-border: var(--color-orange-3);
 }
 [data-color="green"] {
   --color-custom-0: var(--color-gray-0);
@@ -147,6 +157,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-green-4);
   --color-custom-5: var(--color-green-5);
   --color-custom-text: var(--color-green-text);
+  --color-custom-border: var(--color-green-3);
 }
 [data-color="blue"] {
   --color-custom-0: var(--color-gray-0);
@@ -156,4 +167,7 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-blue-4);
   --color-custom-5: var(--color-blue-5);
   --color-custom-text: var(--color-blue-text);
+  --color-custom-border: var(
+    --color- --color-custom-3: var(--color-blue-3) ; -3
+  );
 }

@@ -15,8 +15,10 @@ export const formatTime = (time: number) => {
   return minutes + ":" + seconds;
 };
 
-export interface RangeProps
-  extends Omit<ComponentPropsWithRef<"input">, "value" | "defaultValue" | "min" | "max" | "step"> {
+export interface RangeProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "value" | "defaultValue" | "min" | "max" | "step"
+> {
   defaultValue?: number | string;
   value?: number | string;
 

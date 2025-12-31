@@ -5,6 +5,8 @@ import { ReactRenderer } from "@storybook/react-vite";
 import { Button, ButtonProps } from "../button";
 import { useDoubleCheck } from "../../hooks";
 import { PartialStoryFn } from "storybook/internal/types";
+import { TooltipTrigger } from "./TooltipTrigger";
+import { TooltipContent } from "./TooltipContent";
 
 export default {
   title: "Components/Tooltip",
@@ -74,6 +76,39 @@ export const Basic = () => {
       <SimpleTooltip color="yellow" placement="right-start" content="infos">
         <Button>hello</Button>
       </SimpleTooltip>
+
+      <div>
+        <Tooltip>
+          <TooltipTrigger>Triggerer</TooltipTrigger>
+          <TooltipContent pointerEvents="auto">
+            <div className="flex gap-2">
+              <img src="/profil.jpg" className="w-12 h-12 rounded-xl" />
+              <div>
+                <div>Thomas Amadei</div>
+                <div>Violoniste</div>
+              </div>
+            </div>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+      <div>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div className="group relative aspect-square w-full max-w-12 overflow-hidden rounded-full">
+              <img src="/profil.jpg" className="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent pointerEvents="auto">
+            <div className="flex gap-2">
+              <img src="/profil.jpg" className="w-12 h-12 rounded-xl" />
+              <div>
+                <div>Thomas Amadei</div>
+                <div>Violoniste</div>
+              </div>
+            </div>
+          </TooltipContent>
+        </Tooltip>
+      </div>
 
       <div className="grid-cols-repeat-fill-300 grid gap-8">
         <SimpleTooltip color="yellow" open={true} placement="right-start" content="infos">

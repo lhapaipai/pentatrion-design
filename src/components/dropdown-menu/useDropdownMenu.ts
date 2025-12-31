@@ -15,7 +15,7 @@ import {
   useRole,
   useTypeahead,
 } from "@floating-ui/react";
-import { ThemeColor } from "../../types";
+import { ThemeBaseColor } from "../../types";
 
 const arrowWidth = 12;
 
@@ -24,7 +24,7 @@ export type UseDropdownMenuReturn = {
   setOpen: (open: boolean) => void;
   elementsRef: RefObject<(HTMLElement | null)[]>;
   labelsRef: RefObject<(string | null)[]>;
-  color?: ThemeColor;
+  color?: ThemeBaseColor;
   modal: boolean;
   activeIndex: number | null;
   handleSelect: () => void;

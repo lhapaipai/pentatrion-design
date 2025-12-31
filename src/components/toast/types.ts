@@ -1,3 +1,5 @@
+import { ThemeBaseColor } from "../../types";
+
 export type Message = {
   content: string;
 } & Required<ToastOptions>;
@@ -7,7 +9,7 @@ export type MessageInput = {
 } & ToastOptions;
 
 export type ToastOptions = {
-  color?: "yellow" | "gray" | "red" | "orange" | "green" | "blue";
+  color?: ThemeBaseColor;
   id?: string;
   expiration?: number;
   canClose?: boolean;

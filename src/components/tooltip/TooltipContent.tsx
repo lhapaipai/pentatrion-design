@@ -7,9 +7,17 @@ import { Dialog } from "../dialog/Dialog";
 
 interface Props extends ComponentProps<"div"> {
   ref?: RefObject<HTMLDivElement>;
+  pointerEvents?: "none" | "auto";
 }
 
-export function TooltipContent({ style, children, className, ref, ...props }: Props) {
+export function TooltipContent({
+  style,
+  children,
+  className,
+  ref,
+  pointerEvents = "none",
+  ...props
+}: Props) {
   const context = useTooltipContext();
   const mergedRef = useMergeRefs([context.refs.setFloating, ref]);
   if (!context.open) {
@@ -20,7 +28,8 @@ export function TooltipContent({ style, children, className, ref, ...props }: Pr
       <div
         ref={mergedRef}
         className={clsx(
-          "z-tooltip pointer-events-none outline-hidden",
+          "z-tooltip outline-hidden",
+          pointerEvents === "none" && "pointer-events-none",
           context.middlewareData.hide?.referenceHidden && "invisible",
         )}
         style={{ ...context.floatingStyles, ...style }}

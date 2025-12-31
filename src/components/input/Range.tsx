@@ -3,8 +3,10 @@ import { useMemo, ComponentPropsWithRef, useState, ChangeEvent, RefObject } from
 import clsx from "clsx";
 import { ThemeColor } from "../../types";
 
-export interface RangeProps
-  extends Omit<ComponentPropsWithRef<"input">, "value" | "defaultValue" | "min" | "max" | "step"> {
+export interface RangeProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "value" | "defaultValue" | "min" | "max" | "step"
+> {
   defaultValue?: number | string;
   value?: number | string;
 

@@ -1,11 +1,11 @@
 import { Placement } from "@floating-ui/react";
 import clsx from "clsx";
 import { ComponentProps, ReactNode } from "react";
-import type { ThemeColor } from "../../types";
+import type { ThemeBaseColor } from "../../types";
 import { cva } from "class-variance-authority";
 
 interface Props extends ComponentProps<"div"> {
-  color?: ThemeColor;
+  color?: ThemeBaseColor;
   shadow?: boolean;
   rounded?: boolean;
   placement?: Placement;

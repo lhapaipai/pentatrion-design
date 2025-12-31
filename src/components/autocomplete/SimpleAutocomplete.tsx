@@ -5,11 +5,10 @@ import { useEffectEvent, useIsomorphicLayoutEffect } from "../../hooks";
 import { getOptionLabel } from "./util";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface Props<O extends OptionLike = Option>
-  extends Omit<
-    AutocompleteProps<O>,
-    "searchValue" | "onChangeSearchValue" | "loading" | "clearSearchButton" | "selectOnFocus"
-  > {}
+interface Props<O extends OptionLike = Option> extends Omit<
+  AutocompleteProps<O>,
+  "searchValue" | "onChangeSearchValue" | "loading" | "clearSearchButton" | "selectOnFocus"
+> {}
 
 export function SimpleAutocomplete<O extends OptionLike = Option>({
   options,

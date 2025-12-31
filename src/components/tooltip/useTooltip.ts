@@ -16,14 +16,14 @@ import {
   UseInteractionsReturn,
   useRole,
 } from "@floating-ui/react";
-import { ThemeColor } from "../../types";
+import { ThemeBaseColor } from "../../types";
 
 const arrowWidth = 16;
 
 export type UseTooltipReturn = {
   open: boolean;
   setOpen?: (open: boolean) => void;
-  color?: ThemeColor;
+  color?: ThemeBaseColor;
   arrowRef: RefObject<HTMLDivElement | null>;
 } & UseInteractionsReturn &
   UseFloatingReturn;

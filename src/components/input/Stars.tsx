@@ -3,11 +3,10 @@ import { ChangeEvent, ComponentPropsWithRef, RefObject, useRef, useState } from 
 import { Button } from "../button";
 import { useMergeRefs } from "../../hooks";
 
-export interface StarsProps
-  extends Omit<
-    ComponentPropsWithRef<"input">,
-    "onChange" | "defaultValue" | "value" | "max" | "step"
-  > {
+export interface StarsProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "onChange" | "defaultValue" | "value" | "max" | "step"
+> {
   onChange?: (value: number | null) => void;
   defaultValue?: number | null;
   value?: number | null;

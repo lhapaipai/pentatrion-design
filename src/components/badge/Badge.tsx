@@ -10,7 +10,7 @@ interface Props {
   className?: string;
   tooltip?: string;
   url?: string;
-  color?: ThemeColor | "yellow-alpha" | "gray-alpha";
+  color?: ThemeColor;
   onClick?: () => void;
   onRemove?: () => void;
 }

@@ -9,12 +9,12 @@ import {
   UseInteractionsReturn,
   useRole,
 } from "@floating-ui/react";
-import { ThemeColor } from "../../types";
+import { ThemeBaseColor } from "../../types";
 
 export type UseModalReturn = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  color?: ThemeColor;
+  color?: ThemeBaseColor;
   labelId?: string;
   descriptionId?: string;
   setLabelId: Dispatch<SetStateAction<string | undefined>>;

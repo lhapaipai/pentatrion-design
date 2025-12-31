@@ -8,8 +8,10 @@ export type MappedStarOption = {
   label: string;
 };
 
-export interface MappedStarsProps
-  extends Omit<ComponentPropsWithRef<"input">, "defaultValue" | "onChange" | "value"> {
+export interface MappedStarsProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "defaultValue" | "onChange" | "value"
+> {
   onChange?: (value: string | null) => void;
   value?: string | null;
   defaultValue?: string | null;

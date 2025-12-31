@@ -14,7 +14,7 @@ import {
   useRole,
   type UseFloatingReturn,
 } from "@floating-ui/react";
-import { ThemeColor } from "../../types";
+import { ThemeBaseColor } from "../../types";
 
 const arrowWidth = 12;
 
@@ -22,7 +22,7 @@ export type UsePopoverReturn = {
   open: boolean;
   setOpen: (open: boolean) => void;
   arrowRef: RefObject<HTMLDivElement | null>;
-  color?: ThemeColor;
+  color?: ThemeBaseColor;
   modal: boolean;
   labelId?: string;
   descriptionId?: string;

@@ -6,7 +6,7 @@ import { Slot } from "../slot";
 import { cva } from "class-variance-authority";
 import { ThemeColor } from "../../types";
 
-function loaderColor(color: ThemeColor | "yellow-alpha" | "gray-alpha"): ThemeColor {
+function loaderColor(color: ThemeColor): ThemeColor {
   switch (color) {
     case "yellow-alpha":
       return "yellow";
@@ -24,7 +24,7 @@ export interface ButtonProps extends Omit<ComponentProps<"button">, "color"> {
 
   size?: "small" | "medium" | "large" | "custom" | "input" | "scalable";
 
-  color?: ThemeColor | "yellow-alpha" | "gray-alpha";
+  color?: ThemeColor;
 
   width?: "fit" | "full" | "custom";
 
@@ -50,7 +50,7 @@ export const buttonVariants = cva(
   {
     variants: {
       clickable: {
-        true: "cursor-pointer active:translate-y-[1px] focus-visible-has:z-10",
+        true: "cursor-pointer active:translate-y-px focus-visible-has:z-10",
         false: "pointer-events-none",
       },
       size: {
@@ -85,7 +85,7 @@ export const buttonVariants = cva(
         light:
           "shadow-sm hover:shadow-md has-checked:shadow-md focus:shadow-md active:shadow-md-active outline-offset-0 bg-custom-1 text-gray-text hover:text-custom-text hover:bg-custom-3 current:bg-custom-3 focus-visible-has:outline-custom-4",
         outlined:
-          "bg-custom-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-1 hover:bg-custom-1 border-custom-3 focus-visible-has:outline-custom-5 current:bg-custom-3 focus-visible-has:border-transparent",
+          "bg-custom-0 hover:shadow-xs active:shadow-xs-active text-gray-7 outline-offset-0 border-1 hover:bg-custom-1 border-custom-border focus-visible-has:outline-custom-5 current:bg-custom-3 focus-visible-has:border-transparent",
         text: "bg-transparent hover:shadow-xs active:shadow-xs-active outline-offset-0 hover:bg-custom-1 dark:hover:bg-custom-1/50 text-gray-7 hover:text-gray-8 current:bg-custom-3 focus-visible-has:outline-custom-5",
         ghost: "outline-offset-0  current:bg-custom-1 focus-visible-has:outline-custom-5",
       },

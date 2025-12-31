@@ -72,37 +72,6 @@ const colors = [
 ] as const;
 
 export const Context = () => {
-  const tableDefaultState = (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderCell>
-            <></>
-          </TableHeaderCell>
-          {colors.map((color) => (
-            <TableHeaderCell key={color}>{color}</TableHeaderCell>
-          ))}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {variants.map((variant) => (
-          <TableRow key={variant}>
-            <TableCell>{variant}</TableCell>
-            {colors.map((color) => (
-              <TableCell key={color} label={color}>
-                <div className="flex gap-2">
-                  <Button variant={variant} color={color}>
-                    Lorem
-                  </Button>
-                </div>
-              </TableCell>
-            ))}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-
   return (
     <div>
       <h3 className="sb-h3">Sizes</h3>
@@ -264,43 +233,95 @@ export const Context = () => {
       <div className="mb-4 flex items-center gap-4">
         <HrefButton href="#">simple &lt;a&gt;</HrefButton>
       </div>
+    </div>
+  );
+};
 
-      <h3 className="sb-h3">Default state</h3>
-
-      {tableDefaultState}
-      <h3 className="sb-h3">Default state with bg</h3>
-
-      <div className="bg-[url(/bg-map.jpg)] p-2">{tableDefaultState}</div>
-
-      <h3 className="sb-h3">Only Selected state</h3>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderCell>
-              <></>
-            </TableHeaderCell>
+export const Tables = () => {
+  const tableDefaultState = (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>
+            <></>
+          </TableHeaderCell>
+          {colors.map((color) => (
+            <TableHeaderCell key={color}>{color}</TableHeaderCell>
+          ))}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {variants.map((variant) => (
+          <TableRow key={variant}>
+            <TableCell>{variant}</TableCell>
             {colors.map((color) => (
-              <TableHeaderCell key={color}>{color}</TableHeaderCell>
+              <TableCell key={color} label={color}>
+                <div className="flex gap-2">
+                  <Button variant={variant} color={color}>
+                    Lorem
+                  </Button>
+                </div>
+              </TableCell>
             ))}
           </TableRow>
-        </TableHeader>
-        <TableBody>
-          {variants.map((variant) => (
-            <TableRow key={variant}>
-              <TableCell>{variant}</TableCell>
-              {colors.map((color) => (
-                <TableCell key={color} label={color}>
-                  <div className="flex gap-2">
-                    <Button selected variant={variant} color={color}>
-                      Lorem
-                    </Button>
-                  </div>
-                </TableCell>
-              ))}
-            </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+
+  const tableSelectedState = (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>
+            <></>
+          </TableHeaderCell>
+          {colors.map((color) => (
+            <TableHeaderCell key={color}>{color}</TableHeaderCell>
           ))}
-        </TableBody>
-      </Table>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {variants.map((variant) => (
+          <TableRow key={variant}>
+            <TableCell>{variant}</TableCell>
+            {colors.map((color) => (
+              <TableCell key={color} label={color}>
+                <div className="flex gap-2">
+                  <Button selected variant={variant} color={color}>
+                    Lorem
+                  </Button>
+                </div>
+              </TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+
+  return (
+    <div>
+      <h3 className="sb-h3">Default state with Melodineo bg</h3>
+      <div className="bg-[url(/bg/yellow-squircle-smooth-80.webp)] bg-center p-2">
+        <div className="bg-[url(/bg/noise.png)] ">{tableDefaultState}</div>
+      </div>
+
+      <h3 className="sb-h3">Selected state with Melodineo bg</h3>
+      <div className="bg-[url(/bg/yellow-squircle-smooth-80.webp)] bg-center p-2">
+        <div className="bg-[url(/bg/noise.png)] ">{tableSelectedState}</div>
+      </div>
+
+      <h3 className="sb-h3">Default state</h3>
+      {tableDefaultState}
+      <h3 className="sb-h3">Only Selected state</h3>
+      {tableSelectedState}
+
+      <h3 className="sb-h3">Default state with Map</h3>
+      <div className="bg-[url(/bg-map.jpg)] p-2">{tableDefaultState}</div>
+
+      <h3 className="sb-h3">Selected state with Map</h3>
+      <div className="bg-[url(/bg-map.jpg)] p-2">{tableSelectedState}</div>
     </div>
   );
 };

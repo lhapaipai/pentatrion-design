@@ -13,9 +13,9 @@ export const buttonGroupVariants = cva(
     variants: {
       direction: {
         horizontal:
-          "[&_:not(:first-child)]:rounded-bl-none [&_:not(:last-child)]:rounded-tr-none **:data-[variant='outlined']:-mx-[1px]",
+          "[&_:not(:first-child)]:rounded-bl-none [&_:not(:last-child)]:rounded-tr-none *:data-[variant='outlined']:-mx-[.5px] *:shadow-none",
         vertical:
-          "flex flex-col [&_:not(:first-child)]:rounded-tr-none [&_:not(:last-child)]:rounded-bl-none **:data-[variant='outlined']:-my-[1px]",
+          "flex flex-col [&_:not(:first-child)]:rounded-tr-none [&_:not(:last-child)]:rounded-bl-none *:data-[variant='outlined']:-my-[.5px] *:shadow-none",
       },
     },
     defaultVariants: {
