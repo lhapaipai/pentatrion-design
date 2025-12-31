@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: pnpm/action-setup@v4
+      # pnpm version is specified in the package.json packageManager section
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+        registry-url: https://registry.npmjs.org
+
+    - name: "Install JS dependencies"
+      run: "pnpm i --frozen-lockfile"
+
+    - name: Build library
+      run: pnpm run build
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: github.ref_type == 'tag'
+
+    - name: Publish 🚀
+      shell: bash
+      run: pnpm publish --access public --no-git-checks
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

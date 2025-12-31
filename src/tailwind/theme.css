@@ -74,6 +74,52 @@
   --color-gray-8: #000000;
   --color-gray-text: var(--color-gray-7);
 
+  --color-gray-alpha-0: color-mix(
+    in oklab,
+    var(--color-gray-8) 5%,
+    transparent
+  );
+  --color-gray-alpha-1: color-mix(
+    in oklab,
+    var(--color-gray-8) 10%,
+    transparent
+  );
+  --color-gray-alpha-2: color-mix(
+    in oklab,
+    var(--color-gray-8) 15%,
+    transparent
+  );
+  --color-gray-alpha-3: color-mix(
+    in oklab,
+    var(--color-gray-8) 20%,
+    transparent
+  );
+  --color-gray-alpha-4: color-mix(
+    in oklab,
+    var(--color-gray-8) 25%,
+    transparent
+  );
+  --color-gray-alpha-5: color-mix(
+    in oklab,
+    var(--color-gray-8) 30%,
+    transparent
+  );
+  --color-gray-alpha-6: color-mix(
+    in oklab,
+    var(--color-gray-8) 35%,
+    transparent
+  );
+  --color-gray-alpha-7: color-mix(
+    in oklab,
+    var(--color-gray-8) 40%,
+    transparent
+  );
+  --color-gray-alpha-8: color-mix(
+    in oklab,
+    var(--color-gray-8) 45%,
+    transparent
+  );
+
   --shadow-*: initial;
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --shadow-xs-active: 0 0px 2px 0 rgb(0 0 0 / 0.1);
