@@ -245,5 +245,8 @@
     "./tailwind": "./src/tailwind/index.css",
     "./tailwind/*": "./src/tailwind/*"
   },
-  "packageManager": "pnpm@10.17.0"
+  "packageManager": "pnpm@10.17.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
