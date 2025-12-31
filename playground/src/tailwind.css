@@ -1,7 +1,0 @@
-@import "tailwindcss" source(none);
-
-@source ".";
-@source "../../src";
-
-@import "../../src/tailwind/index.css";
-@import "../../src/tailwind/base-prose.css" layer(base);
