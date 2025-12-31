@@ -31,11 +31,11 @@ jobs:
     - name: Build library
       run: pnpm run build
 
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      if: github.ref_type == 'tag'
-      with:
-        token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
+    # - name: Release
+    #   uses: softprops/action-gh-release@v2
+    #   if: github.ref_type == 'tag'
+    #   with:
+    #     token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
 
     # - name: Creating .npmrc
     #   run: |

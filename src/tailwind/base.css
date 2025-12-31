@@ -167,7 +167,5 @@ input[type="search"]::-webkit-search-results-decoration {
   --color-custom-4: var(--color-blue-4);
   --color-custom-5: var(--color-blue-5);
   --color-custom-text: var(--color-blue-text);
-  --color-custom-border: var(
-    --color- --color-custom-3: var(--color-blue-3) ; -3
-  );
+  --color-custom-border: var(--color-blue-3);
 }
