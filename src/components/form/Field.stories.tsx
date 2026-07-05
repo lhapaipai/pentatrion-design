@@ -1,43 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { ChangeEvent, useState } from "react";
-import { InputField } from "./InputField";
+import { Field } from "./Field";
 import { Toggle } from "../input/Toggle";
 import { Checkbox } from "../input/Checkbox";
 import { Radio } from "../input/Radio";
 import { Input } from "../input";
 
 const meta = {
-  title: "Components/Form/InputField",
-  component: InputField,
+  title: "Components/Form/Field",
+  component: Field,
   decorators: [(Story) => <Story />],
-} satisfies Meta<typeof InputField>;
+} satisfies Meta<typeof Field>;
 export default meta;
-
-type Story = StoryObj<typeof InputField>;
-
-export const Basic: Story = {
-  args: {
-    label: "Nom",
-    hint: "Votre nom complet",
-    description: "Nom + Prénom",
-    errors: false,
-    warning: false,
-    children: <Input />,
-  },
-};
-
-export const Simple = () => {
-  const [label, setLabel] = useState("Your label");
-  return (
-    <InputField label="Label" errors="il y a une erreur !">
-      <Input
-        placeholder="What is your name ?"
-        value={label}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setLabel(e.target.value)}
-      />
-    </InputField>
-  );
-};
 
 export const Playbook = () => {
   const [value, setValue] = useState("");
@@ -52,7 +26,7 @@ export const Playbook = () => {
   return (
     <>
       <div className="dark:shadow-dark mb-12 rounded-2xl p-12 shadow-md">
-        <InputField
+        <Field
           label={label}
           hint={hint}
           description={description}
@@ -65,42 +39,42 @@ export const Playbook = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
-        </InputField>
+        </Field>
       </div>
       <div className="grid grid-cols-2 gap-4">
-        <InputField label="Label">
+        <Field label="Label">
           <Input
             placeholder="What is your name ?"
             value={label}
             onChange={(e) => setLabel(e.target.value)}
           />
-        </InputField>
-        <InputField label="Hint">
+        </Field>
+        <Field label="Hint">
           <Input placeholder="One hint ?" value={hint} onChange={(e) => setHint(e.target.value)} />
-        </InputField>
-        <InputField label="Placeholder">
+        </Field>
+        <Field label="Placeholder">
           <Input value={placeholder} onChange={(e) => setPlaceholder(e.target.value)} />
-        </InputField>
-        <InputField label="Description">
+        </Field>
+        <Field label="Description">
           <Input value={description} onChange={(e) => setDescription(e.target.value)} />
-        </InputField>
-        <InputField label="Footer Description">
+        </Field>
+        <Field label="Footer Description">
           <Input value={footerDescription} onChange={(e) => setFooterDescription(e.target.value)} />
-        </InputField>
-        <InputField label="Warning">
+        </Field>
+        <Field label="Warning">
           <Input
             placeholder="warning message"
             value={warning}
             onChange={(e) => setWarning(e.target.value)}
           />
-        </InputField>
-        <InputField label="Errors">
+        </Field>
+        <Field label="Errors">
           <Input
             placeholder="Errors message"
             value={errors}
             onChange={(e) => setErrors(e.target.value)}
           />
-        </InputField>
+        </Field>
       </div>
     </>
   );
@@ -113,31 +87,31 @@ export const Context = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <InputField
+      <Field
         label="What is your name"
         hint="Any hint related to input field"
         description="Description message at the top of the field"
       >
         <Input placeholder="Ex: Fernando" value={name} onChange={(e) => setName(e.target.value)} />
-      </InputField>
-      <InputField
+      </Field>
+      <Field
         label="What is your name"
         hint="Any hint related to input field"
         description="Description message at the top of the field"
         errors="Input is required"
       >
         <Input placeholder="Ex: Fernando" value={name} onChange={(e) => setName(e.target.value)} />
-      </InputField>
-      <InputField
+      </Field>
+      <Field
         label="What is your name"
         hint="Any hint related to input field"
         description="Description message at the top of the field"
         warning="Only your firstname"
       >
         <Input value={name} placeholder="Ex: Fernando" onChange={(e) => setName(e.target.value)} />
-      </InputField>
+      </Field>
       <div className="mb-8 grid grid-cols-3 gap-4">
-        <InputField
+        <Field
           label="What is your gender"
           hint="You don't have to answer"
           description="You still have to check a box"
@@ -153,8 +127,8 @@ export const Context = () => {
               I don't want to answer
             </Radio>
           </div>
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="What is your gender"
           hint="You don't have to answer"
           errors="This field is required"
@@ -171,9 +145,9 @@ export const Context = () => {
               I don't want to answer
             </Radio>
           </div>
-        </InputField>
+        </Field>
 
-        <InputField
+        <Field
           label="What is your gender"
           hint="You don't have to answer"
           warning="Make your choice"
@@ -190,41 +164,41 @@ export const Context = () => {
               I don't want to answer
             </Radio>
           </div>
-        </InputField>
+        </Field>
       </div>
       <div className="mb-8 grid grid-cols-3 gap-4">
-        <InputField label="Gender" hint="One hint">
+        <Field label="Gender" hint="One hint">
           <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
             I agree
           </Checkbox>
-        </InputField>
-        <InputField label="Gender" hint="One hint" warning="Make your choice">
+        </Field>
+        <Field label="Gender" hint="One hint" warning="Make your choice">
           <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
             I agree
           </Checkbox>
-        </InputField>
-        <InputField label="Gender" hint="One hint" errors="This field is required">
+        </Field>
+        <Field label="Gender" hint="One hint" errors="This field is required">
           <Checkbox checked={isAgree} onChange={(e) => setIsAgree(e.target.checked)}>
             I agree
           </Checkbox>
-        </InputField>
+        </Field>
       </div>
       <div className="mb-8 grid grid-cols-3 gap-4">
-        <InputField label="Label" hint="">
+        <Field label="Label" hint="">
           <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
             Enabled
           </Toggle>
-        </InputField>
-        <InputField label="Label" hint="One hint" warning="Make your choice">
+        </Field>
+        <Field label="Label" hint="One hint" warning="Make your choice">
           <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
             Enabled
           </Toggle>
-        </InputField>
-        <InputField label="Label" hint="One hint" errors="This field is required">
+        </Field>
+        <Field label="Label" hint="One hint" errors="This field is required">
           <Toggle checked={isEnabled} onChange={(e) => setIsEnabled(e.target.checked)}>
             Enabled
           </Toggle>
-        </InputField>
+        </Field>
       </div>
       <pre>
         name: {name}

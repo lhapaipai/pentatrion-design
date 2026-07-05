@@ -8,14 +8,15 @@ import {
   useFormData,
   getFieldValue,
 } from "@conform-to/react/future";
-import { SelectField } from "./SelectField";
+import { RadiosField } from "./RadiosField";
 import { Button } from "../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/form/SelectField",
-  component: SelectField,
-} satisfies Meta<typeof SelectField>;
+  title: "Components/form/RadiosField",
+  component: RadiosField,
+  decorators: [(Story) => <Story />],
+} satisfies Meta<typeof RadiosField>;
 export default meta;
 
 const onChangeAction = action("onChange");
@@ -52,7 +53,11 @@ export const WithConform = () => {
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <SelectField name={fields.color.name} options={colorOptions} />
+          <RadiosField
+            label="Your favorite color"
+            name={fields.color.name}
+            options={colorOptions}
+          />
 
           <Button>Valider</Button>
         </form>

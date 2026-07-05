@@ -3,7 +3,7 @@ import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
 import { Toggle } from "../input/Toggle";
 import { Highlight } from "./Highlight";
-import { InputField } from "../form/InputField";
+import { Field } from "../form/Field";
 import { Input } from "../input";
 
 const meta = {
@@ -60,13 +60,13 @@ export const Playbook = () => {
     <>
       <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">{PreviewElement}</div>
       <div className="grid grid-cols-2 gap-4">
-        <InputField label="Search string">
+        <Field label="Search string">
           <Input
             value={search}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
           />
-        </InputField>
-        <InputField label="parseHighlightIndices minLength">
+        </Field>
+        <Field label="parseHighlightIndices minLength">
           <Input
             value={minLength}
             type="number"
@@ -74,8 +74,8 @@ export const Playbook = () => {
               e.target.validity.valid && setMinLength(e.target.valueAsNumber)
             }
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js isCaseSensitive"
           description="Indicates whether comparisons should be case sensitive."
         >
@@ -83,8 +83,8 @@ export const Playbook = () => {
             checked={isCaseSensitive}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setIsCaseSensitive(e.target.checked)}
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js minMatchCharLength"
           description="Only the matches whose length exceeds this value will be returned. (For instance, if you want to ignore single character matches in the result, set it to 2)."
         >
@@ -95,8 +95,8 @@ export const Playbook = () => {
               e.target.validity.valid && setMinMatchCharLength(e.target.valueAsNumber)
             }
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js location"
           description="Determines approximately where in the text is the pattern expected to be found."
         >
@@ -107,8 +107,8 @@ export const Playbook = () => {
               e.target.validity.valid && setLocation(e.target.valueAsNumber)
             }
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js threshold"
           description="At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything."
         >
@@ -120,8 +120,8 @@ export const Playbook = () => {
               e.target.validity.valid && setThreshold(e.target.valueAsNumber)
             }
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js distance"
           description="Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of 0 requires the match be at the exact location specified. A distance of 1000 would require a perfect match to be within 800 characters of the location to be found using a threshold of 0.8."
         >
@@ -132,8 +132,8 @@ export const Playbook = () => {
               e.target.validity.valid && setDistance(e.target.valueAsNumber)
             }
           />
-        </InputField>
-        <InputField
+        </Field>
+        <Field
           label="fuse.js ignoreLocation"
           description="When true, search will ignore location and distance, so it won't matter where in the string the pattern appears."
         >
@@ -141,7 +141,7 @@ export const Playbook = () => {
             checked={ignoreLocation}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setIgnoreLocation(e.target.checked)}
           />
-        </InputField>
+        </Field>
       </div>
     </>
   );

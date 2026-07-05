@@ -3,7 +3,7 @@ import { type ThemeColor } from "../../types";
 import { Slot } from "../slot";
 import { useErrorsFormatter } from "./ErrorsFormatterContext";
 
-export interface InputFieldProps {
+export interface FieldProps {
   label?: ReactNode;
   hint?: ReactNode;
   description?: ReactNode;
@@ -17,7 +17,7 @@ export interface InputFieldProps {
   className?: string;
 }
 
-export function InputField({
+export function Field({
   label,
   hint,
   description,
@@ -29,7 +29,7 @@ export function InputField({
   preventLayerShift = true,
   "data-testid": dataTestId,
   className,
-}: InputFieldProps) {
+}: FieldProps) {
   const formatErrors = useErrorsFormatter();
   const errors = formatErrors ? formatErrors(rawErrors) : rawErrors;
   const internalId = useId();

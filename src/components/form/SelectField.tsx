@@ -1,60 +1,46 @@
-import { ReactNode, useId } from "react";
-import { Option, SelectLegacy, SelectProps } from "../select-legacy";
-import { ThemeColor } from "../../types";
+import { FieldName } from "@conform-to/react/future";
+import { Field, FieldProps } from "../form";
+import { SelectHandle, SelectOption } from "../select/types";
+import { useField, useControl } from "@conform-to/react/future";
+import { Select } from "../select/Select";
+import { useRef } from "react";
 
-interface SelectFieldOwnProps<O extends Option = Option> extends SelectProps<O> {
-  label?: ReactNode;
-  hint?: ReactNode;
-  description?: ReactNode;
-  errors?: ReactNode | boolean;
-  warning?: ReactNode | boolean;
+interface Props extends Omit<FieldProps, "children"> {
+  name: FieldName<string>;
+  placeholder?: string;
+  options: SelectOption[];
 }
 
-export type Props<O extends Option = Option> = SelectFieldOwnProps & SelectProps<O>;
-
-export function SelectField<O extends Option = Option>({
-  label,
-  hint,
-  description,
-  errors,
-  warning,
-  id: providedId,
-  ref,
-  ...rest
-}: SelectFieldOwnProps<O>) {
-  const internalId = useId();
-  const id = providedId ?? internalId;
-
-  const labelElement = label && <span className="font-semibold">{label}</span>;
-  const hintElement = hint && <span className="text-body-sm text-gray-6 ml-auto">{hint}</span>;
-  const errorsElement = errors && typeof errors !== "boolean" && (
-    <span className="text-red-4 dark:text-red-2 font-medium">
-      <i className="fe-circle-exclamation"></i>
-      <span>{errors}</span>
-    </span>
-  );
-  const warningElement = warning && typeof warning !== "boolean" && (
-    <span className="text-orange-4 dark:text-orange-2 font-medium">
-      <i className="fe-circle-exclamation"></i>
-      <span>{warning}</span>
-    </span>
-  );
-
-  const color: ThemeColor = errors ? "red" : warning ? "orange" : "yellow";
+export function SelectField({ name, placeholder, options, ...rest }: Props) {
+  const controlInputRef = useRef<SelectHandle>(null);
+  const field = useField(name);
+  const control = useControl({
+    defaultValue: field.defaultValue,
+    onFocus() {
+      controlInputRef.current?.focus();
+    },
+  });
 
   return (
-    <div role="group">
-      {label || hint ? (
-        <label className="mb-1 flex items-end" htmlFor={id}>
-          {labelElement}
-          {hintElement}
-        </label>
-      ) : (
-        <label htmlFor={id} className="invisible"></label>
-      )}
-      {description && <div className="text-body-sm text-gray-6 mb-2">{description}</div>}
-      <SelectLegacy ref={ref} color={color} id={id} {...rest} />
-      <div className="text-body-sm text-gray-6 mt-1 min-h-5">{errorsElement || warningElement}</div>
-    </div>
+    <>
+      <input
+        type="text"
+        name={field.name}
+        defaultValue={field.defaultValue}
+        ref={control.register}
+      />
+      <Field errors={field.errors} data-testid={field.name} {...rest}>
+        <Select
+          name={field.name}
+          ref={controlInputRef}
+          placeholder={placeholder}
+          options={options}
+          onFocus={control.focus}
+          onBlur={control.blur}
+          value={control.value ?? null}
+          onChange={(event) => control.change(event.value)}
+        ></Select>
+      </Field>
+    </>
   );
 }
