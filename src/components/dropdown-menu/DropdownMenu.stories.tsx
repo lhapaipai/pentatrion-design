@@ -1,6 +1,6 @@
 import { Placement } from "@floating-ui/react-dom";
 import { Meta } from "@storybook/react-vite";
-import { Option, Select } from "../select";
+import { Option, SelectLegacy } from "../select-legacy";
 import { Button } from "../button";
 import { DropdownMenu } from "./DropdownMenu";
 import { DropdownMenuItem } from "./DropdownMenuItem";
@@ -58,7 +58,7 @@ export const Advanced = ({ placement }: { placement?: Placement }) => (
     </DropdownMenuItem>
     <span className="flex items-center justify-between p-2">
       <span>Thème</span>
-      <Select variant="ghost" defaultValue="light" options={themeOptions} />
+      <SelectLegacy variant="ghost" defaultValue="light" options={themeOptions} />
     </span>
     <div className="my-2 h-0.5 bg-gray-1"></div>
     <DropdownMenuItem className="flex justify-between">

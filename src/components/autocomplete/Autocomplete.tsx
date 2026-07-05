@@ -10,7 +10,7 @@ import {
   CSSProperties,
   RefObject,
 } from "react";
-import type { OptionLike, Option } from "../select";
+import type { OptionLike, Option } from "../select-legacy";
 import { AutocompleteOption, AutocompleteOptionProps } from "./AutocompleteOption";
 import {
   FloatingFocusManager,

@@ -1,5 +1,5 @@
 import { ReactNode, useId } from "react";
-import { Option, Select, SelectProps } from "../select";
+import { Option, SelectLegacy, SelectProps } from "../select-legacy";
 import { ThemeColor } from "../../types";
 
 interface SelectFieldOwnProps<O extends Option = Option> extends SelectProps<O> {
@@ -53,7 +53,7 @@ export function SelectField<O extends Option = Option>({
         <label htmlFor={id} className="invisible"></label>
       )}
       {description && <div className="text-body-sm text-gray-6 mb-2">{description}</div>}
-      <Select ref={ref} color={color} id={id} {...rest} />
+      <SelectLegacy ref={ref} color={color} id={id} {...rest} />
       <div className="text-body-sm text-gray-6 mt-1 min-h-5">{errorsElement || warningElement}</div>
     </div>
   );

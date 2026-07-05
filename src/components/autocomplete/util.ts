@@ -1,4 +1,4 @@
-import { OptionLike } from "../select";
+import { OptionLike } from "../select-legacy";
 
 export function getOptionLabel(option: OptionLike) {
   switch (option.type) {

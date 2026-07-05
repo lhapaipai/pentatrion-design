@@ -23,8 +23,8 @@
   },
   "type": "module",
   "devDependencies": {
-    "@conform-to/react": "1.6.1",
-    "@conform-to/zod": "1.6.1",
+    "@conform-to/react": "^1.19.4",
+    "@conform-to/zod": "^1.19.4",
     "@floating-ui/react": "^0.27.16",
     "@floating-ui/react-dom": "^2.1.6",
     "@rollup/plugin-babel": "^6.1.0",
@@ -203,6 +203,10 @@
     "./select": {
       "types": "./dist/components/select/index.d.mts",
       "default": "./dist/components/select/index.mjs"
+    },
+    "./select-legacy": {
+      "types": "./dist/components/select-legacy/index.d.mts",
+      "default": "./dist/components/select-legacy/index.mjs"
     },
     "./slot": {
       "types": "./dist/components/slot/index.d.mts",

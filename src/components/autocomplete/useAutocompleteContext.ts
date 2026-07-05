@@ -1,6 +1,6 @@
 import { useInteractions } from "@floating-ui/react";
 import { createContext, useContext } from "react";
-import { OptionLike } from "../select";
+import { OptionLike } from "../select-legacy";
 
 interface AutocompleteContext {
   activeIndex: number | null;

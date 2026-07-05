@@ -1,5 +1,5 @@
 import Fuse from "fuse.js";
-import { Option } from "../select";
+import { Option } from "../select-legacy";
 
 export const options: Option[] = [
   { value: "abbeville", label: "Abbeville" },

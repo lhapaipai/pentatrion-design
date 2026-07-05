@@ -1,4 +1,4 @@
-import { ComponentProps, useMemo, useRef, useState } from "react";
+import { ComponentProps, useRef, useState } from "react";
 import { SelectOption } from "./types";
 import {
   autoUpdate,
@@ -20,6 +20,7 @@ import { ThemeColor } from "../../types";
 import clsx from "clsx";
 import { sizeVariant } from "../input/Input";
 import { Dialog } from "../dialog";
+import { Button } from "../button";
 
 interface SelectProps extends Omit<
   ComponentProps<"select">,
@@ -93,15 +94,16 @@ export function Select({
 
   const isTypingRef = useRef(false);
 
-  const click = useClick(context, { event: "mousedown" });
+  const click = useClick(context, { event: "mousedown", enabled: !disabled });
   const dismiss = useDismiss(context);
-  const role = useRole(context, { role: "listbox" });
+  const role = useRole(context, { role: "select" });
   const listNav = useListNavigation(context, {
     listRef,
     activeIndex,
     selectedIndex,
     onNavigate: setActiveIndex,
     loop: true,
+    enabled: !disabled,
   });
 
   const typeahead = useTypeahead(context, {
@@ -112,6 +114,7 @@ export function Select({
     onTypingChange(isTyping) {
       isTypingRef.current = isTyping;
     },
+    enabled: !disabled,
   });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
@@ -141,18 +144,30 @@ export function Select({
         )}
         data-variant={variant}
         ref={refs.setReference}
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         {...getReferenceProps({ onFocus, onBlur })}
       >
         <span className="flex flex-1 items-center truncate px-2">
           {selectedOption ? (
-            <span>
-              {selectedOption.icon} {selectedOption.label}
-            </span>
+            <>
+              {selectedOption.icon && <i className={selectedOption.icon}></i>}
+              {selectedOption.label}
+            </>
           ) : (
-            <span>{placeholder}</span>
+            <>{placeholder}</>
           )}
         </span>
+        <Button
+          color="gray"
+          withRipple={false}
+          icon
+          variant="text"
+          focusable={false}
+          type="button"
+          size="input"
+        >
+          <i className={isOpen ? "fe-angle-up" : "fe-angle-down"}></i>
+        </Button>
       </div>
       {isOpen && (
         <FloatingPortal preserveTabOrder={true}>
@@ -178,7 +193,7 @@ export function Select({
                       className={clsx("option", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
                       data-presentation="compact"
                       role="option"
-                      aria-selected={isSelected && isActive}
+                      aria-selected={isSelected}
                       ref={(node) => {
                         listRef.current[i] = node;
                       }}
@@ -198,7 +213,8 @@ export function Select({
                         },
                       })}
                     >
-                      {option.icon} {option.label}
+                      {option.icon && <i className={option.icon}></i>}
+                      {option.label}
                     </button>
                   );
                 })}

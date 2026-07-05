@@ -6,6 +6,11 @@ import { action } from "storybook/actions";
 
 import { Select } from "./Select";
 import { options } from "./_fixtures";
+import { z } from "zod/v4-mini";
+import { SelectOption } from "./types";
+import { useForm, FormProvider } from "@conform-to/react/future";
+import { SelectField } from "./SelectField";
+import { Button } from "../button";
 
 const onChangeAction = action("onChange");
 
@@ -32,5 +37,42 @@ export const Basic = () => {
         ></Select>
       </div>
     </>
+  );
+};
+
+const formSchema = z.object({
+  color: z.enum(["red", "green", "blue"]),
+});
+
+const colorOptions: SelectOption[] = [
+  { label: "red", value: "red" },
+  { label: "Green", value: "green" },
+  { label: "blue", value: "blue" },
+  { label: "pink", value: "pink" },
+];
+
+export const WithConform = () => {
+  const { form, fields } = useForm(formSchema, {
+    defaultValue: {
+      color: "red",
+    },
+    onValidate(ctx) {
+      console.log(ctx);
+      return ctx.error;
+    },
+    onSubmit(event) {
+      event.preventDefault();
+      console.log("submit");
+    },
+  });
+
+  return (
+    <FormProvider context={form.context}>
+      <form {...form.props} method="post">
+        <SelectField name={fields.color.name} options={colorOptions} />
+
+        <Button>Valider</Button>
+      </form>
+    </FormProvider>
   );
 };

@@ -9,11 +9,11 @@ importers:
   .:
     devDependencies:
       '@conform-to/react':
-        specifier: 1.6.1
-        version: 1.6.1(react@19.2.1)
+        specifier: ^1.19.4
+        version: 1.19.4(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@conform-to/zod':
-        specifier: 1.6.1
-        version: 1.6.1(zod@4.1.13)
+        specifier: ^1.19.4
+        version: 1.19.4(zod@4.1.13)
       '@floating-ui/react':
         specifier: ^0.27.16
         version: 0.27.16(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -222,18 +222,19 @@ packages:
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
-  '@conform-to/dom@1.6.1':
-    resolution: {integrity: sha512-9JaMBM6hD8uBu6VIggXScQAxpKUFGNFydiZHUKbW5nXIvqptLjiPPf1DXHrO0tQpl9EH+BWQ8rXFuVX8L3cYcw==}
+  '@conform-to/dom@1.19.4':
+    resolution: {integrity: sha512-P/mBdVRl946iE74TXmF5YLY9+1IDrQzxKdj9A7qv7Cd4l/O02EvJskg3X7cHwhmFFIXXgNzSmf/y4B597SS4gg==}
 
-  '@conform-to/react@1.6.1':
-    resolution: {integrity: sha512-wjvHlA1ZnMzcqBHeMczwCcS0LM3dFvH9275k3vogRhV6Haaur59eNL4XOB4LSVKMFMtZRCBB3Vxaisug4Uq2Qg==}
+  '@conform-to/react@1.19.4':
+    resolution: {integrity: sha512-Xyw4hbD9467q8PTWW+Nvmf523y814w70eeABRJzVvfnpghGOAWAGt1lpOboAs6sqaKG/eouqifibz/r+PDFZLg==}
     peerDependencies:
       react: '>=18'
+      react-dom: '>=18'
 
-  '@conform-to/zod@1.6.1':
-    resolution: {integrity: sha512-uhViaaxJ4IJsCwBxHRNQKU1kT2t7W0/a4/YHv3Qy0J0CQu/HB+UHORlhTjoHpH4XlRS+N6vdO+5qZOC1Oi1QPg==}
+  '@conform-to/zod@1.19.4':
+    resolution: {integrity: sha512-g80QtotXLcXWCF86Xou/VpI6i+NBOQxYgLS9YCQYrgV27yilZFJYpgWWBsA8YwodmJVBIYm9RawJba7WnUoddA==}
     peerDependencies:
-      zod: ^3.21.0
+      zod: ^3.21.0 || ^4.0.0
 
   '@csstools/color-helpers@5.1.0':
     resolution: {integrity: sha512-S11EXWJyy0Mz5SYvRmY8nJYTFFd1LCNV+7cXyAgQtOOuzb4EsgfqDufL+9esx72/eLhsRdGZwaldu/h+E4t4BA==}
@@ -3079,16 +3080,17 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@conform-to/dom@1.6.1': {}
+  '@conform-to/dom@1.19.4': {}
 
-  '@conform-to/react@1.6.1(react@19.2.1)':
+  '@conform-to/react@1.19.4(react-dom@19.2.1(react@19.2.1))(react@19.2.1)':
     dependencies:
-      '@conform-to/dom': 1.6.1
+      '@conform-to/dom': 1.19.4
       react: 19.2.1
+      react-dom: 19.2.1(react@19.2.1)
 
-  '@conform-to/zod@1.6.1(zod@4.1.13)':
+  '@conform-to/zod@1.19.4(zod@4.1.13)':
     dependencies:
-      '@conform-to/dom': 1.6.1
+      '@conform-to/dom': 1.19.4
       zod: 4.1.13
 
   '@csstools/color-helpers@5.1.0': {}

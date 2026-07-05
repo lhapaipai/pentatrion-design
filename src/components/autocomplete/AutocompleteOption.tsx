@@ -1,5 +1,5 @@
 import { memo, useId } from "react";
-import { OptionLike } from "../select";
+import { OptionLike } from "../select-legacy";
 import { useListItem } from "@floating-ui/react";
 import { useAutocomplete } from "./useAutocompleteContext";
 import clsx from "clsx";

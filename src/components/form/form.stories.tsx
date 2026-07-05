@@ -5,7 +5,7 @@ import { parseWithZod, getZodConstraint } from "@conform-to/zod/v4";
 import { Button } from "../button";
 import { InputField } from "./InputField";
 import { SelectField } from "./SelectField";
-import { Option } from "../select";
+import { Option } from "../select-legacy";
 import { Input } from "../input";
 
 const meta = {

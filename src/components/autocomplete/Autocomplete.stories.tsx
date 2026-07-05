@@ -6,7 +6,7 @@ import { Button } from "../button";
 import { SimpleAutocomplete } from "./SimpleAutocomplete";
 import { Autocomplete } from "./Autocomplete";
 import { LazyAutocomplete } from "./LazyAutocomplete";
-import { Option } from "../select";
+import { Option } from "../select-legacy";
 import { PartialStoryFn } from "storybook/internal/types";
 import { handleChangeSearchValue, options } from "./_fixtures";
 

@@ -31,6 +31,7 @@ export default defineConfig({
     "src/components/separator/index.ts",
     "src/components/scroll/index.ts",
     "src/components/select/index.ts",
+    "src/components/select-legacy/index.ts",
     "src/components/slot/index.ts",
     "src/components/snack/index.ts",
     "src/components/steps/index.ts",

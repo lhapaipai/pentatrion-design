@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from "./Autocomplete";
-import { Option, OptionLike } from "../select";
+import { Option, OptionLike } from "../select-legacy";
 import { useEffectEvent, useIsomorphicLayoutEffect } from "../../hooks";
 import { getOptionLabel } from "./util";
 

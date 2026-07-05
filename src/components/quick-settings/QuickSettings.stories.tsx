@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "../button/Button";
 import { Input } from "../input/Input";
 import { Checkbox } from "../input/Checkbox";
-import { Select } from "../select";
+import { SelectLegacy } from "../select-legacy";
 import { separatorVariant } from "../separator";
 
 const meta = {
@@ -47,7 +47,7 @@ export const Basic = () => {
       <div className="p8n-setting">
         <div>Mode de transport</div>
         <div>
-          <Select
+          <SelectLegacy
             variant="ghost"
             options={profileOptions}
             value={profile}
@@ -55,12 +55,12 @@ export const Basic = () => {
               // @ts-ignore
               setProfile(o.target.value);
             }}
-          ></Select>
+          ></SelectLegacy>
         </div>
       </div>
       <div className="p8n-setting">
         <div>Sens de parcours</div>
-        <Select
+        <SelectLegacy
           variant="ghost"
           options={directionOptions}
           value={direction}
@@ -68,7 +68,7 @@ export const Basic = () => {
             // @ts-ignore
             setDirection(o.target.value);
           }}
-        ></Select>
+        ></SelectLegacy>
       </div>
       <div className="p8n-setting multiple">
         <div>Passages autorisés</div>
@@ -200,7 +200,7 @@ export const Full = () => {
       <div className="p8n-setting">
         <div>Mode de transport</div>
         <div>
-          <Select
+          <SelectLegacy
             variant="ghost"
             options={profileOptions}
             value={profile}
@@ -208,12 +208,12 @@ export const Full = () => {
               // @ts-ignore
               setProfile(o.target.value);
             }}
-          ></Select>
+          ></SelectLegacy>
         </div>
       </div>
       <div className="p8n-setting">
         <div>Sens de parcours</div>
-        <Select
+        <SelectLegacy
           variant="ghost"
           options={directionOptions}
           value={direction}
@@ -221,7 +221,7 @@ export const Full = () => {
             // @ts-ignore
             setDirection(o.target.value);
           }}
-        ></Select>
+        ></SelectLegacy>
       </div>
       <div className="p8n-setting multiple">
         <div>Passages autorisés</div>
