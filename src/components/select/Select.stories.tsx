@@ -27,12 +27,13 @@ export const Basic = () => {
     <>
       <div className="grid grid-cols-1 gap-2">
         <Select
+          name="town"
           placeholder="Select your town..."
           options={options}
           value={value}
-          onChange={(value) => {
-            onChangeAction(value);
-            setValue(value);
+          onChange={(event) => {
+            onChangeAction(event);
+            setValue(event.value);
           }}
         ></Select>
       </div>

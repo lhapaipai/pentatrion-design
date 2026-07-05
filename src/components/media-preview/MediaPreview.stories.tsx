@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react-vite";
 
 import { MediaPreview } from "./MediaPreview";
 import { Button } from "../button";
-import { Media } from "./types";
+import { BasicMedia } from "./types";
 
 const meta = {
   title: "Components/MediaPreview",
@@ -11,11 +11,12 @@ const meta = {
 
 export default meta;
 
-const gallery: (Media | null)[] = [
+const gallery: (BasicMedia | null)[] = [
   {
     id: "1",
     width: 400,
     height: 300,
+    category: "image",
     origin: "external",
     src: "/medias/400x300.jpg",
     mimeType: "image/jpeg",
@@ -24,6 +25,7 @@ const gallery: (Media | null)[] = [
     id: "2",
     width: 300,
     height: 400,
+    category: "image",
     origin: "external",
     src: "/medias/300x400.jpg",
     mimeType: "image/jpeg",
@@ -32,6 +34,7 @@ const gallery: (Media | null)[] = [
     id: "3",
     width: 400,
     height: 400,
+    category: "image",
     origin: "external",
     src: "/medias/400x400.jpg",
     mimeType: "image/jpeg",
@@ -40,24 +43,28 @@ const gallery: (Media | null)[] = [
     id: "4",
     origin: "external",
     src: "/medias/other.txt",
+    category: "text",
     mimeType: "text/plain",
   },
   {
     id: "5",
     origin: "external",
     src: "/medias/other.jpg",
+    category: "image",
     mimeType: "image/jpeg",
   },
   {
     id: "6",
     origin: "external",
     src: "/medias/other.mp3",
+    category: "audio",
     mimeType: "audio/mp3",
   },
   {
     id: "7",
     origin: "external",
     src: "/medias/other.mp4",
+    category: "video",
     mimeType: "video/mp4",
   },
   {
@@ -65,18 +72,21 @@ const gallery: (Media | null)[] = [
     origin: "external",
     src: "/medias/other.pdf",
     mimeType: "application/pdf",
+    category: "application",
   },
   {
     id: "9",
     origin: "external",
     src: "/medias/other.zip",
     mimeType: "application/zip",
+    category: "application",
   },
   {
     id: "10",
     origin: "external",
     src: "/medias/other",
     mimeType: "unknown",
+    category: "unknown",
   },
   null,
 ];

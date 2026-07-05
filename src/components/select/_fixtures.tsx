@@ -1,3 +1,5 @@
+import { SelectOption } from "./types";
+
 export const departments = [
   { value: "38", label: "Isère" },
   { value: "74", label: "Haute-Savoie" },
@@ -21,7 +23,7 @@ export const townsByDepartment = {
   ],
 };
 
-export const options = [
+export const options: SelectOption[] = [
   { value: "abbeville", label: "Abbeville" },
   { value: "agde", label: "Agde" },
   { value: "agen", label: "Agen" },

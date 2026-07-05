@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/react-vite";
 import { useState } from "react";
 import { SelectField } from "./SelectField";
-import { options } from "../select/_fixtures";
+import { options } from "../select-legacy/_fixtures";
 import { InputField } from "./InputField";
 import { Input } from "../input";
-import { SelectValue } from "../select/Select";
+import { SelectValue } from "../select-legacy/Select";
 
 const meta = {
   title: "Components/Form/SelectField",

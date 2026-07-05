@@ -1,10 +1,10 @@
-import { StoryFn } from "@storybook/react-vite";
+import { Meta } from "@storybook/react-vite";
 import { Code } from "../components/code/Code";
 
 export default {
   title: "Styles",
-  decorators: [(Story: StoryFn) => <Story />],
-};
+  decorators: [(Story) => <Story />],
+} satisfies Meta;
 
 export const Shadow = () => {
   const shadows = [

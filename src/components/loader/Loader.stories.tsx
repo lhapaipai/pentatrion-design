@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-vite";
 import { Loader } from "./Loader";
-import { memo, useState } from "react";
+import { useState } from "react";
 import { Button } from "../button";
 
 const meta = {

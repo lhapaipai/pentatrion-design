@@ -4,7 +4,7 @@ import { useRipple } from ".";
 import { cleanup, fireEvent, render } from "@testing-library/react";
 
 const TestEltWithRipple = () => {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLButtonElement>(null!);
   const ripples = useRipple(ref);
   return (
     <button role="button" ref={ref}>

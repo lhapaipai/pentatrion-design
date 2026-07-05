@@ -1,9 +1,9 @@
-import { StoryFn } from "@storybook/react-vite";
+import { Meta } from "@storybook/react-vite";
 
 export default {
   title: "Styles/Themes",
-  decorators: [(Story: StoryFn) => <Story />],
-};
+  decorators: [(Story) => <Story />],
+} satisfies Meta;
 
 export const TextColors = () => {
   const colors = ["gray", "yellow", "green", "blue", "orange", "red"];

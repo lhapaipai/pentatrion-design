@@ -1,5 +1,5 @@
-import { ComponentProps, useRef, useState } from "react";
-import { SelectOption } from "./types";
+import { Ref, useImperativeHandle, useRef, useState } from "react";
+import { SelectChangeEvent, SelectHandle, SelectOption } from "./types";
 import {
   autoUpdate,
   offset,
@@ -22,27 +22,30 @@ import { sizeVariant } from "../input/Input";
 import { Dialog } from "../dialog";
 import { Button } from "../button";
 
-interface SelectProps extends Omit<
-  ComponentProps<"select">,
-  "onChange" | "value" | "defaultValue" | "size"
-> {
+interface SelectProps<V extends string | number = string> {
+  name: string;
   variant?: "normal" | "ghost";
   color?: ThemeColor;
   size?: "small" | "medium" | "large" | "custom";
   placeholder?: string;
   disabled?: boolean;
-  options: SelectOption[];
-  value: string | null;
-  onChange: (value: string | null) => void;
+  options: SelectOption<V>[];
+  value: V | null;
+  onChange: (event: SelectChangeEvent<V>) => void;
   placement?: Placement;
   floatingMinWidth?: number;
   zIndex?: number;
 
   selectionClassName?: string;
   dialogClassName?: string;
+  ref?: Ref<SelectHandle>;
+
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
-export function Select({
+export function Select<V extends string | number = string>({
+  name,
   variant = "normal",
   zIndex,
   color = "yellow",
@@ -58,7 +61,8 @@ export function Select({
   onBlur,
   selectionClassName,
   dialogClassName,
-}: SelectProps) {
+  ref,
+}: SelectProps<V>) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -117,6 +121,16 @@ export function Select({
     enabled: !disabled,
   });
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      focus: () => {
+        (refs.domReference.current as HTMLElement | null)?.focus();
+      },
+    }),
+    [refs.domReference],
+  );
+
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
     dismiss,
     role,
@@ -127,7 +141,11 @@ export function Select({
 
   function handleSelect(index: number) {
     const option = options[index];
-    onChange(option ? option.value : null);
+    onChange({
+      type: "select-one",
+      name,
+      value: option ? option.value : null,
+    });
     setIsOpen(false);
   }
 
