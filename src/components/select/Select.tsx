@@ -23,6 +23,8 @@ import { Dialog } from "../dialog";
 import { Button } from "../button";
 
 interface SelectProps<V extends string | number = string> {
+  id?: string;
+  className?: string;
   name: string;
   variant?: "normal" | "ghost";
   color?: ThemeColor;
@@ -36,7 +38,6 @@ interface SelectProps<V extends string | number = string> {
   floatingMinWidth?: number;
   zIndex?: number;
 
-  selectionClassName?: string;
   dialogClassName?: string;
   ref?: Ref<SelectHandle>;
 
@@ -45,6 +46,8 @@ interface SelectProps<V extends string | number = string> {
 }
 
 export function Select<V extends string | number = string>({
+  id,
+  className,
   name,
   variant = "normal",
   zIndex,
@@ -59,7 +62,6 @@ export function Select<V extends string | number = string>({
   placement = "bottom",
   onFocus,
   onBlur,
-  selectionClassName,
   dialogClassName,
   ref,
 }: SelectProps<V>) {
@@ -150,13 +152,14 @@ export function Select<V extends string | number = string>({
   }
 
   return (
-    <div>
+    <>
       <div
+        id={id}
         data-color={color}
         aria-disabled={disabled}
         className={clsx(
           "p8n-input-text box-border flex cursor-pointer rounded-[calc(var(--h-input)/2)] -outline-offset-1",
-          selectionClassName,
+          className,
           sizeVariant[size],
           isOpen && "focus",
         )}
@@ -207,6 +210,7 @@ export function Select<V extends string | number = string>({
                   const isSelected = i === selectedIndex;
                   return (
                     <button
+                      type="button"
                       key={option.value}
                       className={clsx("option", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
                       data-presentation="compact"
@@ -241,6 +245,6 @@ export function Select<V extends string | number = string>({
           </FloatingFocusManager>
         </FloatingPortal>
       )}
-    </div>
+    </>
   );
 }

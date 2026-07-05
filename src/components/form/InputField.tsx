@@ -1,6 +1,7 @@
 import { isValidElement, ReactNode, useId } from "react";
 import { type ThemeColor } from "../../types";
 import { Slot } from "../slot";
+import { useErrorsFormatter } from "./ErrorsFormatterContext";
 
 export interface InputFieldProps {
   label?: ReactNode;
@@ -21,7 +22,7 @@ export function InputField({
   hint,
   description,
   footerDescription,
-  errors,
+  errors: rawErrors,
   warning,
   id: providedId,
   children,
@@ -29,6 +30,8 @@ export function InputField({
   "data-testid": dataTestId,
   className,
 }: InputFieldProps) {
+  const formatErrors = useErrorsFormatter();
+  const errors = formatErrors ? formatErrors(rawErrors) : rawErrors;
   const internalId = useId();
   const id = isValidElement<{ id?: string }>(children)
     ? children?.props.id
