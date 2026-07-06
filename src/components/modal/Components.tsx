@@ -42,7 +42,7 @@ export function ModalDescription({
 }: ModalDescriptionProps) {
   if (!scrollable) {
     return (
-      <div className={clsx("p-2 pt-0", className)} {...props}>
+      <div className={clsx("p-2 pt-0 overflow-hidden", className)} {...props}>
         {children}
       </div>
     );

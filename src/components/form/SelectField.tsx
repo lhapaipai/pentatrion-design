@@ -26,6 +26,7 @@ export function SelectField({ name, placeholder, options, ...rest }: Props) {
       <input
         type="text"
         name={field.name}
+        autoComplete="off"
         defaultValue={field.defaultValue}
         ref={control.register}
       />
