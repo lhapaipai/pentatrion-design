@@ -6,7 +6,7 @@ import {
   FormProvider,
   isDirty,
   useFormData,
-  getFieldValue,
+  parseSubmission,
 } from "@conform-to/react/future";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 import { TextField } from "./TextField";
@@ -47,9 +47,12 @@ export const WithConform = () => {
   });
 
   const dirty = useFormData(form.id, (formData) => isDirty(formData, { defaultValue }) ?? false);
-  const value = useFormData(form.id, (formData) =>
-    getFieldValue(formData, fields.username.name, { type: "string" }),
-  );
+
+  const value = useFormData(form.id, (formData) => {
+    const submission = parseSubmission(formData);
+    const result = formSchema.safeParse(submission.payload);
+    return result.success ? result.data.username : undefined;
+  });
 
   return (
     <>

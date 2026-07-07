@@ -7,9 +7,10 @@ import {
   isDirty,
   useFormData,
   getFieldValue,
+  FieldName,
 } from "@conform-to/react/future";
 import { configureCoercion } from "@conform-to/zod/v4/future";
-import { FileField, mediaSchema } from "./FileField";
+import { FileField, Media, mediaSchema } from "./FileField";
 import { Button } from "../button";
 import { Meta } from "@storybook/react-vite";
 
@@ -42,12 +43,12 @@ const { coerceFormValue } = configureCoercion({
 
 const formSchema = coerceFormValue(
   z.object({
-    avatar: z.optional(mediaSchema),
+    avatar: z._default(z.nullable(mediaSchema), null),
   }),
 );
 
 const defaultValue = {
-  avatar: undefined,
+  avatar: null,
 };
 
 export const WithConform = () => {
@@ -78,12 +79,13 @@ export const WithConform = () => {
   const value = useFormData(form.id, (formData) =>
     getFieldValue(formData, fields.avatar.name, { type: "string", optional: true }),
   );
+
   return (
     <>
       <div className="max-w-lg">
         <FormProvider context={form.context}>
           <form {...form.props} method="post">
-            <FileField name={fields.avatar.name} />
+            <FileField name={fields.avatar.name as FieldName<Media | null>} />
 
             <Button>Valider</Button>
           </form>
