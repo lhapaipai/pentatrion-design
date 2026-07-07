@@ -7,3 +7,4 @@ export {
 export { SelectField } from "./SelectField";
 export { RadiosField } from "./RadiosField";
 export { DateField } from "./DateField";
+export { TextField } from "./TextField";

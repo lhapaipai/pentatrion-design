@@ -50,9 +50,7 @@ export const mediaSchema = z.object({
 export type Media = z.infer<typeof mediaSchema>;
 
 type Props = Omit<FieldProps, "children"> & {
-  ref?: RefObject<HTMLInputElement>;
-
-  name: FieldName<Media | null | undefined>;
+  name: FieldName<Media | undefined>;
   mediaContainerClassName?: string;
   allowedTypes?: "image" | "audio" | "all-safe";
   // mediaPreset?: Exclude<PresetKey, "raw">;
@@ -65,13 +63,11 @@ export function FileField({
   allowedTypes = "all-safe",
   // mediaPreset = "uploadPreview",
   imageRatio,
-  ref: externalRef,
   ...rest
 }: Props) {
   const field = useField(name);
 
   const inputRef = useRef<HTMLInputElement>(null!);
-  const ref = useStrictMergeRefs<HTMLInputElement>([externalRef, inputRef]);
 
   const itemErrors = Object.values(field.fieldErrors).flat();
   const errors = field.errors ?? (itemErrors.length > 0 ? itemErrors : undefined);
@@ -82,16 +78,22 @@ export function FileField({
       if (typeof payload !== "string") {
         throw new Error("media input must return string");
       }
+      if (payload == null || payload === "") {
+        return undefined;
+      }
       return JSON.parse(payload);
     },
     serialize(value) {
-      return JSON.stringify(value);
+      return typeof value !== "string" && value != null ? JSON.stringify(value) : value;
     },
   });
 
-  const media = useFormData(field.formId, (formData) =>
-    getFieldValue(formData, field.name, { type: "object" }),
-  );
+  const media = control.payload;
+  console.log("media value parsée", media);
+
+  // const media = useFormData<Media | null>(field.formId, (formData) =>
+  //   getFieldValue(formData, field.name, { type: "object", optional: true }),
+  // );
 
   // const media = useMediaFromString(field.value);
 
@@ -109,12 +111,13 @@ export function FileField({
   return (
     <>
       <input
+        name={field.name}
+        type="text"
         autoComplete="off"
-        className={clsx("hidden-focusable")}
+        // className={clsx("hidden-focusable")}
         tabIndex={-1}
         ref={control.register}
-        readOnly
-        value={control.defaultValue ?? ""}
+        defaultValue={control.defaultValue ?? ""}
       />
       <Field errors={errors} data-testid={field.name} {...rest}>
         {media ? (
@@ -143,6 +146,7 @@ export function FileField({
           <UploaderMock
             className={mediaContainerClassName}
             onPick={(media: Media | null) => {
+              console.log("onPick", media);
               control.change(media);
             }}
             imageRatio={imageRatio}
