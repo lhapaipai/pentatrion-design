@@ -1,8 +1,8 @@
 import type { ElementFormatType, LexicalEditor } from "lexical";
 import { FORMAT_ELEMENT_COMMAND } from "lexical";
-import { DropdownMenu, DropdownMenuItem } from "pentatrion-design/dropdown-menu";
-import { Button } from "pentatrion-design/button";
-import { useTranslation } from "react-i18next";
+import { DropdownMenu, DropdownMenuItem } from "../../../dropdown-menu";
+import { Button } from "../../../button";
+import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
 import clsx from "clsx";
 
 interface Props {
@@ -22,7 +22,7 @@ const icons = {
 };
 
 export function ElementFormatDropdown({ editor, value, isFocusable = true }: Props) {
-  const { t } = useTranslation();
+  const { t } = useWysiwygTranslation();
   return (
     <DropdownMenu
       data-testid="menubar-user-dropdown"

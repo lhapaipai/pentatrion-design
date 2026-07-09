@@ -1,10 +1,10 @@
 import type { LexicalEditor } from "lexical";
 import type { BlockType } from "../ToolbarContext";
-import { DropdownMenu, DropdownMenuItem } from "pentatrion-design/dropdown-menu";
-import { Button } from "pentatrion-design/button";
+import { DropdownMenu, DropdownMenuItem } from "../../../dropdown-menu";
+import { Button } from "../../../button";
 import clsx from "clsx";
 import { formatBulletList, formatHeading, formatParagraph, formatQuote } from "../utils/formatters";
-import { useTranslation } from "react-i18next";
+import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
 
 interface Props {
   blockType: BlockType;
@@ -26,7 +26,7 @@ const icons: {
 };
 
 export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: Props) {
-  const { t } = useTranslation();
+  const { t } = useWysiwygTranslation();
 
   return (
     <DropdownMenu

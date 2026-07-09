@@ -15,8 +15,8 @@
     "fontello": "fontello",
     "check:format": "oxfmt ./src",
     "check:lint": "oxlint ./src",
-    "check:tsc": "tsc --noEmit -p tsconfig.build.json",
-    "check": "pnpm check:format && pnpm check:lint && pnpm check:tsc",
+    "check:types": "tsc --noEmit -p tsconfig.build.json",
+    "check": "pnpm check:format && pnpm check:lint && pnpm check:types",
     "test": "vitest",
     "test-run": "vitest --run",
     "ci": "pnpm check && pnpm test-run"
@@ -44,7 +44,9 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@tsdown/css": "^0.22.4",
     "@types/geojson": "^7946.0.16",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@use-gesture/react": "^10.3.1",
@@ -65,24 +67,57 @@
     "react-dom": "^19.2.1",
     "storybook": "^10.1.4",
     "tailwindcss": "^4.1.17",
-    "tsdown": "^0.17.0",
+    "tsdown": "^0.22.4",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vite": "^7.2.6",
     "vitest": "^4.0.15",
     "zod": "^4.1.13"
   },
   "peerDependencies": {
+    "@conform-to/react": "*",
+    "@conform-to/zod": "*",
     "@floating-ui/react": "*",
+    "@types/geojson": "*",
+    "@lexical/html": "*",
+    "@lexical/link": "*",
+    "@lexical/list": "*",
+    "@lexical/react": "*",
+    "@lexical/rich-text": "*",
+    "@lexical/selection": "*",
+    "@lexical/utils": "*",
     "altcha": ">=2",
     "class-variance-authority": "*",
     "clsx": "*",
+    "lexical": "*",
     "react": "*",
     "react-dom": "*",
-    "tailwindcss": "*"
+    "tailwindcss": "*",
+    "zod": "*"
   },
   "peerDependenciesMeta": {
     "@floating-ui/react": {
+      "optional": true
+    },
+    "@lexical/html": {
+      "optional": true
+    },
+    "@lexical/link": {
+      "optional": true
+    },
+    "@lexical/list": {
+      "optional": true
+    },
+    "@lexical/react": {
+      "optional": true
+    },
+    "@lexical/rich-text": {
+      "optional": true
+    },
+    "@lexical/selection": {
+      "optional": true
+    },
+    "@lexical/utils": {
       "optional": true
     },
     "altcha": {
@@ -92,6 +127,9 @@
       "optional": true
     },
     "clsx": {
+      "optional": true
+    },
+    "lexical": {
       "optional": true
     },
     "react": {
@@ -169,6 +207,10 @@
       "types": "./dist/components/fields/index.d.mts",
       "default": "./dist/components/fields/index.mjs"
     },
+    "./fields/altcha": {
+      "types": "./dist/components/fields/altcha/index.d.mts",
+      "default": "./dist/components/fields/altcha/index.mjs"
+    },
     "./fields/checkbox": {
       "types": "./dist/components/fields/checkbox/index.d.mts",
       "default": "./dist/components/fields/checkbox/index.mjs"
@@ -220,6 +262,10 @@
     "./fields/input-button": {
       "types": "./dist/components/fields/input-button/index.d.mts",
       "default": "./dist/components/fields/input-button/index.mjs"
+    },
+    "./fields/wysiwyg": {
+      "types": "./dist/components/fields/wysiwyg/index.d.mts",
+      "default": "./dist/components/fields/wysiwyg/index.mjs"
     },
     "./loader": {
       "types": "./dist/components/loader/index.d.mts",

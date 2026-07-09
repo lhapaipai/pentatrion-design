@@ -1,16 +1,12 @@
-import type { FieldName } from "@conform-to/react";
-import { useField, useInputControl } from "@conform-to/react";
-import type { InputFieldProps } from "pentatrion-design/form";
-import { InputField } from "pentatrion-design/form";
+import { useField, useControl, type FieldName } from "@conform-to/react/future";
+import { Field, type FieldProps } from "../Field";
 import type { RefObject } from "react";
-import { useTranslation } from "react-i18next";
-import type { LazyOnChangeArgs } from "~/components/wysiwyg/plugins/LazyOnChangePlugin";
-import type { ToolbarVariantProps } from "~/components/wysiwyg/style";
-import type { WysiwygRef } from "~/components/wysiwyg/Wysiwyg";
-import { Wysiwyg } from "~/components/wysiwyg/Wysiwyg";
-import { tArr } from "~/lib/i18n/util";
+import type { LazyOnChangeArgs } from "./plugins/LazyOnChangePlugin";
+import type { ToolbarVariantProps } from "./style";
+import type { WysiwygRef } from "./Wysiwyg";
+import { Wysiwyg } from "./Wysiwyg";
 
-interface Props extends Omit<InputFieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children"> {
   name: FieldName<string | null>;
   ref?: RefObject<WysiwygRef>;
   lazyOnChange?: number | false;
@@ -28,17 +24,18 @@ export function WysiwygField({
   containerClassName,
   ...rest
 }: Props) {
-  const [field] = useField(name);
-  const { t } = useTranslation();
+  const field = useField(name);
 
-  const control = useInputControl(field);
+  const control = useControl({
+    defaultValue: field.defaultValue,
+  });
 
   function handleChange({ html }: LazyOnChangeArgs) {
     control.change(html);
   }
 
   return (
-    <InputField errors={tArr(t, field.errors)} data-testid={field.name} {...rest}>
+    <Field errors={field.errors} data-testid={field.name} {...rest}>
       <Wysiwyg
         key={field.key}
         ref={ref}
@@ -49,6 +46,6 @@ export function WysiwygField({
         contentEditableClassName={contentEditableClassName}
         containerClassName={containerClassName}
       />
-    </InputField>
+    </Field>
   );
 }

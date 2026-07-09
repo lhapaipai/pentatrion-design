@@ -3,11 +3,12 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { WysiwygRef } from "./Wysiwyg";
 import { Wysiwyg } from "./Wysiwyg";
 import { useRef, useState } from "react";
-import { Button } from "pentatrion-design/button";
+import { Button } from "../../button";
 import type { LazyOnChangeArgs } from "./plugins/LazyOnChangePlugin";
 
 const meta = {
   component: Wysiwyg,
+  title: "Components/fields/Wysiwyg",
 } satisfies Meta<typeof Wysiwyg>;
 
 export default meta;

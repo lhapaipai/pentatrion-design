@@ -16,12 +16,12 @@ import {
 } from "lexical";
 import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/react/LexicalHorizontalRuleNode";
 
-import type { ButtonProps } from "pentatrion-design/button";
-import { Button } from "pentatrion-design/button";
+import type { ButtonProps } from "../../../button";
+import { Button } from "../../../button";
 import type { Dispatch } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { focusNextElement } from "~/lib/util/dom";
+import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
+import { focusNextElement } from "../utils/dom";
 import type { ToolbarVariantProps } from "../style";
 import { toolbarVariants } from "../style";
 import type { BlockType } from "../ToolbarContext";
@@ -68,7 +68,7 @@ export function ToolbarPlugin({
   const toolbarRef = useRef(null);
 
   const [isFocusable, setIsFocusable] = useState(false);
-  const { t } = useTranslation();
+  const { t } = useWysiwygTranslation();
 
   const { toolbarState, updateToolbarState } = useToolbarState();
 
@@ -191,7 +191,7 @@ export function ToolbarPlugin({
         }}
         type="button"
       >
-        {t(isFocusable ? "button.disableFocusable" : "button.enableFocusable")}
+        {t(isFocusable ? "wysiwyg.button.disableFocusable" : "wysiwyg.button.enableFocusable")}
       </button>
       <Button
         {...buttonBaseProps("Undo", false, isFocusable)}

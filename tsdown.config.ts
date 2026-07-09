@@ -19,6 +19,7 @@ export default defineConfig({
     "src/components/highlight/index.ts",
     "src/components/href/index.ts",
     "src/components/fields/index.ts",
+    "src/components/fields/altcha/index.ts",
     "src/components/fields/checkbox/index.ts",
     "src/components/fields/radio/index.ts",
     "src/components/fields/color/index.ts",
@@ -32,6 +33,7 @@ export default defineConfig({
     "src/components/fields/stars/index.ts",
     "src/components/fields/totp/index.ts",
     "src/components/fields/input-button/index.ts",
+    "src/components/fields/wysiwyg/index.ts",
     "src/components/loader/index.ts",
     "src/components/media-preview/index.ts",
     "src/components/modal/index.ts",
@@ -56,14 +58,9 @@ export default defineConfig({
   ],
   dts: true,
   format: ["esm"],
-  external: [
-    "react",
-    "react-dom",
-    "class-variance-authority",
-    "clsx",
-    "tailwindcss",
-    "@floating-ui/react",
-  ],
+  deps: {
+    onlyBundle: [],
+  },
   shims: true,
   plugins: [
     pluginBabel({
