@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react-vite";
 import { Step } from "./Step";
 import { Steps } from "./Steps";
 
-import { Input } from "../input";
+import { Input } from "../fields/text";
 
 const meta = {
   title: "Components/Steps",

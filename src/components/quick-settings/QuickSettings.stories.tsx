@@ -1,8 +1,8 @@
 import { Meta } from "@storybook/react-vite";
 import { useState } from "react";
 import { Button } from "../button/Button";
-import { Input } from "../input/Input";
-import { Checkbox } from "../input/Checkbox";
+import { Input } from "../fields/text/Input";
+import { Checkbox } from "../fields/checkbox/Checkbox";
 import { SelectLegacy } from "../select-legacy";
 import { separatorVariant } from "../separator";
 

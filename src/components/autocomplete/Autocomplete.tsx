@@ -35,7 +35,7 @@ import { getOptionLabel, getOptionValue } from "./util";
 import { Button } from "../button";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
-import { inputConfig, sizeVariant } from "../input/Input";
+import { inputConfig, sizeVariant } from "../fields/text/Input";
 import { ThemeColor } from "../../types";
 
 export interface AutocompleteProps<O extends OptionLike = Option> extends ComponentProps<"input"> {

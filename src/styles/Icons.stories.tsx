@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import jsonFile from "../../.storybook/fontello/config.json";
-import { Input } from "../components/input/Input";
+import { Input } from "../components/fields/text/Input";
 import { Meta } from "@storybook/react-vite";
 const fontelloConfig = jsonFile as FontelloConfig;
 

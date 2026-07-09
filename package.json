@@ -42,6 +42,7 @@
     "@types/react-dom": "^19.2.3",
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react-swc": "^4.2.2",
+    "altcha": "^3.2.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "chokidar": "^5.0.0",
     "class-variance-authority": "^0.7.1",
@@ -152,13 +153,61 @@
       "types": "./dist/components/href/index.d.mts",
       "default": "./dist/components/href/index.mjs"
     },
-    "./input": {
-      "types": "./dist/components/input/index.d.mts",
-      "default": "./dist/components/input/index.mjs"
+    "./fields": {
+      "types": "./dist/components/fields/index.d.mts",
+      "default": "./dist/components/fields/index.mjs"
     },
-    "./form": {
-      "types": "./dist/components/form/index.d.mts",
-      "default": "./dist/components/form/index.mjs"
+    "./fields/checkbox": {
+      "types": "./dist/components/fields/checkbox/index.d.mts",
+      "default": "./dist/components/fields/checkbox/index.mjs"
+    },
+    "./fields/radio": {
+      "types": "./dist/components/fields/radio/index.d.mts",
+      "default": "./dist/components/fields/radio/index.mjs"
+    },
+    "./fields/color": {
+      "types": "./dist/components/fields/color/index.d.mts",
+      "default": "./dist/components/fields/color/index.mjs"
+    },
+    "./fields/select": {
+      "types": "./dist/components/fields/select/index.d.mts",
+      "default": "./dist/components/fields/select/index.mjs"
+    },
+    "./fields/text": {
+      "types": "./dist/components/fields/text/index.d.mts",
+      "default": "./dist/components/fields/text/index.mjs"
+    },
+    "./fields/date": {
+      "types": "./dist/components/fields/date/index.d.mts",
+      "default": "./dist/components/fields/date/index.mjs"
+    },
+    "./fields/password": {
+      "types": "./dist/components/fields/password/index.d.mts",
+      "default": "./dist/components/fields/password/index.mjs"
+    },
+    "./fields/file": {
+      "types": "./dist/components/fields/file/index.d.mts",
+      "default": "./dist/components/fields/file/index.mjs"
+    },
+    "./fields/toggle": {
+      "types": "./dist/components/fields/toggle/index.d.mts",
+      "default": "./dist/components/fields/toggle/index.mjs"
+    },
+    "./fields/range": {
+      "types": "./dist/components/fields/range/index.d.mts",
+      "default": "./dist/components/fields/range/index.mjs"
+    },
+    "./fields/stars": {
+      "types": "./dist/components/fields/stars/index.d.mts",
+      "default": "./dist/components/fields/stars/index.mjs"
+    },
+    "./fields/totp": {
+      "types": "./dist/components/fields/totp/index.d.mts",
+      "default": "./dist/components/fields/totp/index.mjs"
+    },
+    "./fields/input-button": {
+      "types": "./dist/components/fields/input-button/index.d.mts",
+      "default": "./dist/components/fields/input-button/index.mjs"
     },
     "./loader": {
       "types": "./dist/components/loader/index.d.mts",
@@ -199,10 +248,6 @@
     "./scroll": {
       "types": "./dist/components/scroll/index.d.mts",
       "default": "./dist/components/scroll/index.mjs"
-    },
-    "./select": {
-      "types": "./dist/components/select/index.d.mts",
-      "default": "./dist/components/select/index.mjs"
     },
     "./select-legacy": {
       "types": "./dist/components/select-legacy/index.d.mts",

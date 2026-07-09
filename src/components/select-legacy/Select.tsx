@@ -32,7 +32,7 @@ import { SelectContext } from "./useSelectContext";
 
 import type { Option } from "./interface";
 import clsx from "clsx";
-import { Input, sizeVariant } from "../input/Input";
+import { Input, sizeVariant } from "../fields/text/Input";
 import { Button } from "../button/Button";
 import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";

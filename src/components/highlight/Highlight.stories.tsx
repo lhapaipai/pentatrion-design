@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/react-vite";
 import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
-import { Toggle } from "../input/Toggle";
+import { Toggle } from "../fields/toggle/Toggle";
 import { Highlight } from "./Highlight";
 import { Field } from "../form/Field";
-import { Input } from "../input";
+import { Input } from "../fields/text";
 
 const meta = {
   title: "Components/Highlight",
