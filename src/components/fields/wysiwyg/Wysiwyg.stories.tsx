@@ -5,6 +5,7 @@ import { Wysiwyg } from "./Wysiwyg";
 import { useRef, useState } from "react";
 import { Button } from "../../button";
 import type { LazyOnChangeArgs } from "./plugins/LazyOnChangePlugin";
+import { action } from "storybook/actions";
 
 const meta = {
   component: Wysiwyg,
@@ -14,6 +15,8 @@ const meta = {
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+
+const onChange = action("handleChange");
 
 export const Default: Story = {
   args: {},
@@ -35,6 +38,7 @@ export const Context: Story = {
     }
 
     function handleChange({ html }: LazyOnChangeArgs) {
+      onChange(html);
       setHtml(html);
     }
 
@@ -44,14 +48,6 @@ export const Context: Story = {
 
     return (
       <div className="storybook-bg yellow-squircle-smooth p-2 lg:p-4">
-        {Array.from({ length: 1 }).map((_, i) => (
-          <p key={i}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam dignissimos illum
-            consequuntur? Deleniti tempora accusantium, hic facilis necessitatibus ut nam rem dolore
-            suscipit provident aliquid sint, iure architecto doloremque esse?
-          </p>
-        ))}
-
         <div className="flex gap-2 p-2">
           <Button type="button" onClick={handleGetHtml}>
             getHtml
@@ -70,13 +66,6 @@ export const Context: Story = {
         <code className="mt-4 p-2">
           <pre className="text-body-xs break-all whitespace-pre-wrap">{html}</pre>
         </code>
-        {Array.from({ length: 10 }).map((_, i) => (
-          <p key={i}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam dignissimos illum
-            consequuntur? Deleniti tempora accusantium, hic facilis necessitatibus ut nam rem dolore
-            suscipit provident aliquid sint, iure architecto doloremque esse?
-          </p>
-        ))}
       </div>
     );
   },
