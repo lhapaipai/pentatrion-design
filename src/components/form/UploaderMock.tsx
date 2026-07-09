@@ -11,7 +11,7 @@ interface Props {
   className?: string;
 }
 
-const mockMedias: { label: string; media: Media }[] = [
+const mockMedias: { label: string; media: Media | null }[] = [
   {
     label: "Image paysage",
     media: {
@@ -64,6 +64,10 @@ const mockMedias: { label: string; media: Media }[] = [
       src: "/documents/mock-file.pdf",
     },
   },
+  {
+    label: "Null",
+    media: null,
+  },
 ];
 
 export function UploaderMock({ onPick, imageRatio, className }: Props) {
@@ -88,9 +92,9 @@ export function UploaderMock({ onPick, imageRatio, className }: Props) {
           <ModalHeader>Choisir un média (mock)</ModalHeader>
           <ModalDescription>
             <div className="flex flex-col gap-2 p-4">
-              {mockMedias.map(({ label, media }) => (
+              {mockMedias.map(({ label, media }, idx) => (
                 <Button
-                  key={media.id}
+                  key={media?.id ?? idx}
                   type="button"
                   onClick={() => {
                     onPick(media);

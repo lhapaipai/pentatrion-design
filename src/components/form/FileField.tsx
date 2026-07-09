@@ -54,6 +54,9 @@ export function FileField({
       }
       return JSON.parse(payload);
     },
+    // appelé uniquement par control.change(value) (ex: onPick, le bouton de suppression) :
+    // convertit le Media/null en string écrite dans l'input caché et déclenche l'event
+    // "input" natif. N'est pas utilisé pour le defaultValue initial (déjà une string).
     serialize(value) {
       return typeof value !== "string" && value != null ? JSON.stringify(value) : value;
     },

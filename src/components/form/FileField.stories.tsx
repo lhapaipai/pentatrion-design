@@ -62,6 +62,10 @@ export const WithConform = () => {
       event.preventDefault();
       onChangeAction(ctx.value);
     },
+    // appelé par conform chaque fois qu'une valeur typée doit être reconvertie en
+    // string DOM : au montage / changement de defaultValue, sur form.reset(),
+    // lors de la resync d'un lastResult serveur, et par isDirty() ci-dessous
+    // pour comparer le defaultValue sérialisé au FormData courant.
     serialize(value, context) {
       if (context.name === "avatar") {
         return typeof value === "string" || value == null ? value : JSON.stringify(value);
