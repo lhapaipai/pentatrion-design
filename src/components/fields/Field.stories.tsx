@@ -7,7 +7,7 @@ import { Radio } from "./radio/Radio";
 import { Input } from "./text/Input";
 
 const meta = {
-  title: "Components/Form/Field",
+  title: "Components/fields/Field",
   component: Field,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Field>;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Checkbox, CheckboxButton } from "./Checkbox";
 
 const meta = {
-  title: "Components/Input/Checkbox",
+  title: "Components/fields/Checkbox",
   component: Checkbox,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Checkbox>;

@@ -1,0 +1,7 @@
+{
+  "algorithm": "SHA-256",
+  "challenge": "aa81313c040a17f70b18c72d4b61b71d1780dbf68e3a092d8f808f828ee8f8a0",
+  "maxnumber": 500000,
+  "salt": "storybook-mock-salt",
+  "signature": "mock-signature-not-verified-in-storybook"
+}

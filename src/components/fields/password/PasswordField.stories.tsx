@@ -14,7 +14,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/form/PasswordField",
+  title: "Components/fields/PasswordField",
   component: PasswordField,
 } satisfies Meta<typeof PasswordField>;
 export default meta;

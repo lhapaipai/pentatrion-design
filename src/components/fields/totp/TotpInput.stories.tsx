@@ -4,7 +4,7 @@ import { TotpInput } from "./TotpInput";
 import { useState } from "react";
 
 const meta = {
-  title: "Components/Input/TotpInput",
+  title: "Components/fields/TotpInput",
   component: TotpInput,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof TotpInput>;

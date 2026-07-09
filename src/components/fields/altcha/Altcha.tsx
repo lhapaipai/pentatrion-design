@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import "altcha/i18n/en";
-import { altcha as i18nFr } from "~/locales/fr/altcha";
+import { altchaI18nFr } from "./locales.fr";
 
 interface AltchaProps {
   onStateChange?: (ev: Event | CustomEvent) => void;
+  challengeUrl: string;
+  name?: string;
 }
 
 const cssVariables: AltchaWidgetCSSProperties = {
@@ -11,12 +13,12 @@ const cssVariables: AltchaWidgetCSSProperties = {
   "--altcha-max-width": "100%",
 };
 
-export function Altcha({ onStateChange }: AltchaProps) {
+export function Altcha({ onStateChange, challengeUrl, name }: AltchaProps) {
   const widgetRef = useRef<HTMLElement>(null!);
 
   useEffect(() => {
     import("altcha");
-    globalThis.altchaI18n.set("fr-fr", i18nFr);
+    globalThis.altchaI18n.set("fr-fr", altchaI18nFr);
   }, []);
 
   useEffect(() => {
@@ -41,8 +43,9 @@ export function Altcha({ onStateChange }: AltchaProps) {
         debug
         hidelogo
         hidefooter
-        challengeurl="/auth/captcha-challenge"
+        challengeurl={challengeUrl}
         maxnumber={500000}
+        name={name}
       ></altcha-widget>
     </div>
   );

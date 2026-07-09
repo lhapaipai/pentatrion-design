@@ -4,7 +4,7 @@ import { Stars } from "./Stars";
 import { useState } from "react";
 
 const meta = {
-  title: "Components/Input/Stars",
+  title: "Components/fields/Stars",
 
   component: Stars,
   decorators: [(Story) => <Story />],

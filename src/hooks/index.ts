@@ -10,3 +10,4 @@ export { useOnClickOutside } from "./useOnClickOutside";
 export { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 export { useMergeRefs, useStrictMergeRefs } from "./useMergeRefs";
 export { useDoubleCheck } from "./useDoubleCheck";
+export { useIntersectionObserver } from "./useIntersectionObserver";

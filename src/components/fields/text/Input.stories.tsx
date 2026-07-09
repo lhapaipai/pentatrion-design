@@ -5,7 +5,7 @@ import { Input, inputConfig } from "./Input";
 import { Loader } from "../../loader/Loader";
 
 const meta = {
-  title: "Components/Input/Text",
+  title: "Components/fields/Text",
   component: Input,
   argTypes: {
     prefix: {

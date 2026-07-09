@@ -4,7 +4,7 @@ import { buttonGroupVariants } from "../../button/ButtonGroup";
 import clsx from "clsx";
 
 const meta = {
-  title: "Components/Input/Radio",
+  title: "Components/fields/Radio",
   component: Radio,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Radio>;

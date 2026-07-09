@@ -14,7 +14,7 @@ import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/form/CheckboxesField",
+  title: "Components/fields/CheckboxesField",
   component: CheckboxesField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof CheckboxesField>;

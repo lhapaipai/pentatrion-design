@@ -10,7 +10,7 @@ import { options } from "./_fixtures";
 const onChangeAction = action("onChange");
 
 const meta = {
-  title: "Components/Select",
+  title: "Components/fields/Select",
   component: Select,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof Select>;

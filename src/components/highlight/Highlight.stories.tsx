@@ -3,7 +3,7 @@ import Fuse from "fuse.js/basic";
 import { ChangeEvent, ReactNode, useState } from "react";
 import { Toggle } from "../fields/toggle/Toggle";
 import { Highlight } from "./Highlight";
-import { Field } from "../form/Field";
+import { Field } from "../fields/Field";
 import { Input } from "../fields/text";
 
 const meta = {

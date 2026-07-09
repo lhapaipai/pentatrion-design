@@ -4,7 +4,7 @@ import { useState } from "react";
 import { AudioRange } from "./AudioRange";
 
 const meta = {
-  title: "Components/Input/Range",
+  title: "Components/fields/Range",
   component: Range,
 
   // prevent Storybook bug: https://github.com/storybookjs/storybook/issues/29189

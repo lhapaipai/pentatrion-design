@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { InputButton } from "./InputButton";
 
 const meta = {
-  title: "Components/Input/InputButton",
+  title: "Components/fields/InputButton",
   component: InputButton,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof InputButton>;

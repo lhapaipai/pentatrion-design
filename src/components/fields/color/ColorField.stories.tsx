@@ -12,7 +12,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/form/ColorField",
+  title: "Components/fields/ColorField",
   component: ColorField,
 } satisfies Meta<typeof ColorField>;
 export default meta;

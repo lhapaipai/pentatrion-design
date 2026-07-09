@@ -2,7 +2,7 @@ import { Meta } from "@storybook/react-vite";
 import { Color } from "./Color";
 
 const meta = {
-  title: "Components/Input/Color",
+  title: "Components/fields/Color",
   component: Color,
 } satisfies Meta<typeof Color>;
 export default meta;

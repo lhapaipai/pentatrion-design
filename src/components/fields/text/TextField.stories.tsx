@@ -14,7 +14,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/form/TextField",
+  title: "Components/fields/TextField",
   component: TextField,
 } satisfies Meta<typeof TextField>;
 export default meta;

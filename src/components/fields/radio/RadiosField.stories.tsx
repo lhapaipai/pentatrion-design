@@ -13,7 +13,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/form/RadiosField",
+  title: "Components/fields/RadiosField",
   component: RadiosField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RadiosField>;

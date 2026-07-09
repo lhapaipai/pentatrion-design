@@ -4,7 +4,7 @@ import { MappedStarOption, MappedStars } from "./MappedStars";
 import { useState } from "react";
 
 const meta = {
-  title: "Components/Input/MappedStars",
+  title: "Components/fields/MappedStars",
 
   component: MappedStars,
   decorators: [(Story) => <Story />],
