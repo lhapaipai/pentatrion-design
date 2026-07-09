@@ -1,0 +1,100 @@
+import type { LexicalEditor } from "lexical";
+import type { BlockType } from "../ToolbarContext";
+import { DropdownMenu, DropdownMenuItem } from "pentatrion-design/dropdown-menu";
+import { Button } from "pentatrion-design/button";
+import clsx from "clsx";
+import { formatBulletList, formatHeading, formatParagraph, formatQuote } from "../utils/formatters";
+import { useTranslation } from "react-i18next";
+
+interface Props {
+  blockType: BlockType;
+  editor: LexicalEditor;
+  isFocusable?: boolean;
+}
+
+const icons: {
+  [K in BlockType]: string;
+} = {
+  bullet: "fe-list-bullet",
+  check: "fe-help",
+  h1: "fe-h1",
+  h2: "fe-h2",
+  h3: "fe-h3",
+  number: "fe-list-numbered",
+  paragraph: "fe-paragraph",
+  quote: "fe-quote",
+};
+
+export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: Props) {
+  const { t } = useTranslation();
+
+  return (
+    <DropdownMenu
+      data-testid="menubar-user-dropdown"
+      placement="bottom-start"
+      listClassName="flex flex-col gap-1"
+      trigger={
+        <Button type="button" variant="text" icon color="gray" tabIndex={isFocusable ? 0 : -1}>
+          <i className={icons[blockType]}></i>
+          <i className="fe-angle-down -ml-4"></i>
+        </Button>
+      }
+    >
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "paragraph" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatParagraph(editor)}
+      >
+        <i className={icons.paragraph}></i>
+        {t("wysiwyg.formats.paragraph")}
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "h1" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatHeading(editor, blockType, "h1")}
+      >
+        <i className={icons.h1}></i>
+        {t("wysiwyg.formats.h1")}
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "h2" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatHeading(editor, blockType, "h2")}
+      >
+        <i className={icons.h2}></i>
+        {t("wysiwyg.formats.h2")}
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "h3" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatHeading(editor, blockType, "h3")}
+      >
+        <i className={icons.h3}></i>
+        {t("wysiwyg.formats.h3")}
+      </DropdownMenuItem>
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "bullet" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatBulletList(editor, blockType)}
+      >
+        <i className={icons.bullet}></i>
+        {t("wysiwyg.formats.bullet")}
+      </DropdownMenuItem>
+      {/* <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "number" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatNumberedList(editor, blockType)}
+      >
+        {t("wysiwyg.formats.number")}
+      </DropdownMenuItem> */}
+      <DropdownMenuItem
+        type="button"
+        className={clsx(blockType === "quote" && "bg-gray-2!", "gap-2")}
+        onClick={() => formatQuote(editor, blockType)}
+      >
+        <i className={icons.quote}></i>
+        {t("wysiwyg.formats.quote")}
+      </DropdownMenuItem>
+    </DropdownMenu>
+  );
+}

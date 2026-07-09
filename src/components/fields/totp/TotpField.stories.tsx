@@ -7,28 +7,28 @@ import {
   useFormData,
   getFieldValue,
 } from "@conform-to/react/future";
-import { AltchaField } from "./AltchaField";
+import { TotpField } from "./TotpField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/fields/AltchaField",
-  component: AltchaField,
+  title: "Components/fields/TotpField",
+  component: TotpField,
   decorators: [(Story) => <Story />],
-} satisfies Meta<typeof AltchaField>;
+} satisfies Meta<typeof TotpField>;
 export default meta;
 
 const onChangeAction = action("onChange");
 
 const formSchema = coerceFormValue(
   z.object({
-    captcha: z._default(z.string(), ""),
+    otp: z._default(z.string(), ""),
   }),
 );
 
 const defaultValue = {
-  captcha: "",
+  otp: "",
 };
 
 export const WithConform = () => {
@@ -43,18 +43,14 @@ export const WithConform = () => {
 
   const dirty = useFormData(form.id, (formData) => isDirty(formData, { defaultValue }) ?? false);
   const value = useFormData(form.id, (formData) =>
-    getFieldValue(formData, fields.captcha.name, { type: "string", optional: true }),
+    getFieldValue(formData, fields.otp.name, { type: "string", optional: true }),
   );
 
   return (
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <AltchaField
-            label="Vérification"
-            name={fields.captcha.name}
-            challengeUrl="/altcha-challenge.json"
-          />
+          <TotpField label="Code de vérification" name={fields.otp.name} />
 
           <Button>Valider</Button>
         </form>
