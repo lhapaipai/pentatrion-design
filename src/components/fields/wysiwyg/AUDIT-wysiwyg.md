@@ -27,14 +27,15 @@ Périmètre : [Wysiwyg.tsx](./Wysiwyg.tsx) et les fichiers connexes touchés par
     Le nom induit en erreur sur ce que fait réellement le plugin désormais ; un nom du style
     `notifyChange`/`triggerChange` refléterait mieux le comportement actuel.
 
-13. **`WysiwygValue.html` est un champ mort dans tout le module.**
-    [types.ts:5](./types.ts#L5) et [types.ts:10](./types.ts#L10) déclarent toujours
-    `html?: string` sur `WysiwygValue` et sur `wysiwygSchema`, mais plus aucun code ne le
-    produit (`grep` confirme : seul `setHtml` existe, qui sert à *importer* du HTML dans
-    l'éditeur, pas à en exporter). Tout consommateur qui lirait `value.html` après un
-    `onChange`/`getValue()` recevra systématiquement `undefined`. Soit retirer le champ de
-    `WysiwygValue`/`wysiwygSchema` pour éviter la confusion, soit documenter que la génération
-    HTML a été volontairement déplacée ailleurs (ex. rendu côté serveur à partir de `state`).
+~~13. `WysiwygValue.html` est un champ mort dans tout le module.~~ **Faux positif, corrigé.**
+    [types.ts:5](./types.ts#L5) et [types.ts:10](./types.ts#L10) déclarent `html?: string` sur
+    `WysiwygValue`/`wysiwygSchema`, et ni `Wysiwyg`/`LazyOnChangePlugin` ni le storybook de ce
+    package ne le produisent — c'est attendu : ce repo est le design system, pas l'application
+    consommatrice. `.html` est renseigné côté application (rendu à partir de `state`, en
+    dehors de ce composant), donc le champ n'est pas mort dans l'usage réel, seulement inerte
+    dans ce périmètre (storybook/lib). Pas d'action nécessaire ici — seul point d'attention :
+    comme rien dans ce repo n'exerce ce champ, une régression côté application (ex. génération
+    HTML cassée) ne serait pas détectée par les stories/tests de ce package.
 
 14. **`Wysiwyg.stories.tsx` garde un `async`/`await` désormais inutile.**
     [Wysiwyg.stories.tsx:37-40](./Wysiwyg.stories.tsx#L37-L40) : `getValue()` est maintenant

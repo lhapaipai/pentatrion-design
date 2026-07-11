@@ -12,7 +12,7 @@ import { WysiwygField } from "./WysiwygField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 import { configureCoercion } from "@conform-to/zod/v4/future";
-import { wysiwygSchema, WysiwygValue } from "./types";
+import { parseWysiwygValue, serializeWysiwygValue, wysiwygSchema, WysiwygValue } from "./types";
 import { editorStateRichText } from "./_fixtures";
 
 const meta = {
@@ -27,16 +27,7 @@ const storybookOnChange = action("onChange");
 const { coerceFormValue } = configureCoercion({
   customize(type) {
     if (type === wysiwygSchema) {
-      return (value) => {
-        if (value == null || value === "") {
-          return undefined;
-        }
-        if (typeof value !== "string") {
-          throw new Error("Expected a string value for wysiwyg");
-        }
-
-        return JSON.parse(value);
-      };
+      return parseWysiwygValue;
     }
 
     return null;
@@ -69,10 +60,9 @@ export const WithConform = () => {
     },
     serialize(value, context) {
       if (context.name === "description") {
-        console.log(value);
         return typeof value === "string" || value == null
           ? value
-          : JSON.stringify({ state: (value as WysiwygValue).state });
+          : serializeWysiwygValue(value as WysiwygValue);
       }
 
       return context.defaultSerialize(value);
@@ -87,6 +77,7 @@ export const WithConform = () => {
         serialize: form.context.serialize,
       }) ?? false,
   );
+
   const value = useFormData(form.id, (formData) =>
     getFieldValue(formData, fields.description.name, { type: "string", optional: true }),
   );
