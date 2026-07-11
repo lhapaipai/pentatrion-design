@@ -34,8 +34,8 @@ export const Context: Story = {
       state: editorStateRichText,
     });
 
-    async function handleGetValue() {
-      const nextValue = await wysiwygRef.current.getValue();
+    function handleGetValue() {
+      const nextValue = wysiwygRef.current.getValue();
       setDescription(nextValue);
     }
 

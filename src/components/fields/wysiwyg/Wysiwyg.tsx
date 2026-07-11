@@ -12,8 +12,6 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin";
 
-import { $generateHtmlFromNodes } from "@lexical/html";
-
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 import { LazyOnChangePlugin } from "./plugins/LazyOnChangePlugin";
 import { CustomAutoLinkPlugin } from "./plugins/AutoLinkPlugin";

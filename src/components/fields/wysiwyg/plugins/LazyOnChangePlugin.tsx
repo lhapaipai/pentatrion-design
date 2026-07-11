@@ -1,12 +1,11 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { useEffect, useRef } from "react";
 import debounce from "lodash.debounce";
-import { $generateHtmlFromNodes } from "@lexical/html";
 import { WysiwygValue } from "../types";
 
 interface Props {
   wait: number;
-  onChange?: ({ html }: WysiwygValue) => void;
+  onChange?: (value: WysiwygValue) => void;
 }
 
 export function LazyOnChangePlugin({ wait, onChange }: Props) {
@@ -16,25 +15,21 @@ export function LazyOnChangePlugin({ wait, onChange }: Props) {
   onChangeRef.current = onChange;
 
   useEffect(() => {
-    function triggerHtmlRender() {
-      if (!onChangeRef.current) {
-        return;
-      }
-
+    function notifyChange() {
       onChangeRef.current?.({
         state: editor.getEditorState().toJSON(),
       });
     }
 
-    const debouncedTriggerHtmlRender = debounce(triggerHtmlRender, wait);
+    const debouncedNotifyChange = debounce(notifyChange, wait);
 
     const unregister = editor.registerUpdateListener(() => {
-      debouncedTriggerHtmlRender();
+      debouncedNotifyChange();
     });
 
     return () => {
       unregister();
-      debouncedTriggerHtmlRender.cancel();
+      debouncedNotifyChange.cancel();
     };
   }, [editor, wait]);
 
