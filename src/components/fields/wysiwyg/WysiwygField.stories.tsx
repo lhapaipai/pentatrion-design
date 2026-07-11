@@ -69,7 +69,10 @@ export const WithConform = () => {
     },
     serialize(value, context) {
       if (context.name === "description") {
-        return typeof value === "string" || value == null ? value : JSON.stringify(value);
+        console.log(value);
+        return typeof value === "string" || value == null
+          ? value
+          : JSON.stringify({ state: (value as WysiwygValue).state });
       }
 
       return context.defaultSerialize(value);
@@ -81,20 +84,7 @@ export const WithConform = () => {
     (formData) =>
       isDirty(formData, {
         defaultValue,
-        serialize: (value, context) => {
-          if (context.name === "description") {
-            return value == null
-              ? value
-              : typeof value === "string"
-                ? JSON.stringify({
-                    state: JSON.parse(value).state,
-                  })
-                : JSON.stringify({
-                    state: (value as any).state,
-                  });
-          }
-          return form.context.serialize(value, context);
-        },
+        serialize: form.context.serialize,
       }) ?? false,
   );
   const value = useFormData(form.id, (formData) =>

@@ -21,21 +21,21 @@ export function LazyOnChangePlugin({ wait, onChange }: Props) {
         return;
       }
 
-      editor.read(() => {
-        const htmlContent = $generateHtmlFromNodes(editor);
-
-        onChangeRef.current?.({
-          html: htmlContent,
-          state: editor.getEditorState().toJSON(),
-        });
+      onChangeRef.current?.({
+        state: editor.getEditorState().toJSON(),
       });
     }
 
     const debouncedTriggerHtmlRender = debounce(triggerHtmlRender, wait);
 
-    return editor.registerUpdateListener(() => {
+    const unregister = editor.registerUpdateListener(() => {
       debouncedTriggerHtmlRender();
     });
+
+    return () => {
+      unregister();
+      debouncedTriggerHtmlRender.cancel();
+    };
   }, [editor, wait]);
 
   return null;

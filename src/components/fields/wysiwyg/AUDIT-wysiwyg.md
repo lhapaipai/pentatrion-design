@@ -12,13 +12,6 @@ Périmètre : [Wysiwyg.tsx](./Wysiwyg.tsx) et les fichiers connexes touchés par
 
 ## Ailleurs dans l'arbre du composant (impacté par la même feature)
 
-5. **`LazyOnChangePlugin` ne `cancel()` jamais le debounce**
-   [plugins/LazyOnChangePlugin.tsx:34-38](./plugins/LazyOnChangePlugin.tsx#L34-L38). Le
-   cleanup ne fait que `unregister` l'update listener, pas
-   `debouncedTriggerHtmlRender.cancel()`. Si `wait` change ou que le composant démonte
-   pendant la fenêtre de debounce, l'ancien timer peut encore se déclencher et appeler
-   `onChangeRef.current` sur un éditeur qu'on ne veut plus notifier.
-
 6. **`toolbarVariants.sticky` a deux variantes identiques**
    [style.ts:6-8](./style.ts#L6-L8) : `mobileOnly` et `allDevice` ont exactement la même
    valeur de classes (`"max-lg:sticky max-lg:top-0 max-lg:backdrop-blur-xs lg:rounded-t-2xl"`).
@@ -28,10 +21,7 @@ Périmètre : [Wysiwyg.tsx](./Wysiwyg.tsx) et les fichiers connexes touchés par
 
 ## Accessibilité (absent, pas forcément un bug mais à noter)
 
-9. Aucun `aria-label` / `aria-labelledby` exposé pour la zone `ContentEditable`, et aucun
-   support de `placeholder` (Lexical le permet nativement via `RichTextPlugin`). Si
-   l'éditeur est utilisé sans label visuel externe (le composant `Field` en fournit peut-être
-   un — à vérifier), ça peut être un trou d'accessibilité.
+9. Aucun support de `placeholder` (Lexical le permet nativement via `RichTextPlugin`).
 
 ## Ce qui va bien
 

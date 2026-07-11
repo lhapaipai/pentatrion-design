@@ -28,6 +28,7 @@ import { ToolbarContext } from "./ToolbarContext";
 import { WysiwygValue } from "./types";
 
 interface Props {
+  id?: string;
   extendedToolbar?: boolean;
   floatingPosition?: "top" | "bottom";
   defaultValue?: WysiwygValue;
@@ -52,15 +53,14 @@ interface Props {
   onChange?: (value: WysiwygValue) => void;
   children?: ReactNode;
 }
-function $readValue(editor: LexicalEditor): WysiwygValue {
+function readValue(editor: LexicalEditor): WysiwygValue {
   return {
-    html: $generateHtmlFromNodes(editor),
     state: editor.getEditorState().toJSON(),
   };
 }
 
 export interface WysiwygRef {
-  getValue: () => Promise<WysiwygValue>;
+  getValue: () => WysiwygValue;
   setHtml: (html: string, fireEvent?: boolean) => void;
   getState: () => SerializedEditorState;
   setState: (state: SerializedEditorState, fireEvent?: boolean) => void;
@@ -68,6 +68,7 @@ export interface WysiwygRef {
 }
 
 export function Wysiwyg({
+  id,
   floatingPosition = "bottom",
   extendedToolbar = true,
   proseCompact = false,
@@ -107,20 +108,15 @@ export function Wysiwyg({
   }
 
   function notifyChange(editor: LexicalEditor) {
-    editor.read(() => {
-      onChange?.($readValue(editor));
-    });
+    onChange?.(readValue(editor));
   }
 
   useImperativeHandle(ref, () => {
     return {
-      getValue: async () =>
-        new Promise((resolve) => {
-          const editor = getEditor();
-          editor.read(() => {
-            resolve($readValue(editor));
-          });
-        }),
+      getValue: () => {
+        const editor = getEditor();
+        return readValue(editor);
+      },
       setHtml: (nextHtml: string, fireEvent = false) => {
         const editor = getEditor();
 
@@ -194,6 +190,7 @@ export function Wysiwyg({
             <RichTextPlugin
               contentEditable={
                 <ContentEditable
+                  id={id}
                   autoComplete="off"
                   {...(proseCompact ? { "data-compact": true } : {})}
                   className={clsx(
