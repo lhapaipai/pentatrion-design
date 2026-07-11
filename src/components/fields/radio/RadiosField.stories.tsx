@@ -13,7 +13,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/RadiosField",
+  title: "Components/fields/Radio",
   component: RadiosField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RadiosField>;
@@ -36,7 +36,7 @@ const defaultValue = {
   color: "red",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -75,3 +75,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as RadiosField };

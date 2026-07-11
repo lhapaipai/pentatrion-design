@@ -12,7 +12,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/RadioWithLegendField",
+  title: "Components/fields/Radio",
   component: RadiosWithLegendField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RadiosWithLegendField>;
@@ -59,7 +59,7 @@ const defaultValue = {
   profile: "musician",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -99,3 +99,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as RadiosWithLegendField };

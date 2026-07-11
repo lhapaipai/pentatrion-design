@@ -15,7 +15,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/FileField",
+  title: "Components/fields/File",
   component: FileField,
 } satisfies Meta<typeof FileField>;
 export default meta;
@@ -51,7 +51,7 @@ const defaultValue = {
   avatar: null,
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onValidate({ error, schemaValue }) {
@@ -108,3 +108,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as FileField };

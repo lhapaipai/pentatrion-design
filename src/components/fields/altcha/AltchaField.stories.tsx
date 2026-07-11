@@ -13,7 +13,7 @@ import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/fields/AltchaField",
+  title: "Components/fields/Altcha",
   component: AltchaField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof AltchaField>;
@@ -31,7 +31,7 @@ const defaultValue = {
   captcha: "",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -72,3 +72,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as AltchaField };

@@ -14,7 +14,9 @@ export function useIsClosing(initialValue = false, delay = 500) {
       } else {
         setState([true, true]);
         setTimeout(() => {
-          isMounted.current && setState([false, false]);
+          if (isMounted.current) {
+            setState([false, false]);
+          }
         }, delay);
       }
     },

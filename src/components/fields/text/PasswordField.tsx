@@ -1,6 +1,6 @@
 import { getFieldValue, useField, useFormData, type FieldName } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../Field";
-import { Input } from "../text/Input";
+import { Input } from "./Input";
 import { Button } from "../../button";
 import { useState } from "react";
 import { getPasswordStrength, gradientVariantFromScore } from "../../../lib/pass-checker";

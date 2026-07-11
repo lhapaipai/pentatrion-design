@@ -13,7 +13,7 @@ import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/fields/CheckboxField",
+  title: "Components/fields/Checkbox",
   component: CheckboxField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof CheckboxField>;
@@ -31,7 +31,7 @@ const defaultValue = {
   agree: false,
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -73,3 +73,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as CheckboxField };

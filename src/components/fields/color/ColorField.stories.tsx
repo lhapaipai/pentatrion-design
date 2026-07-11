@@ -12,7 +12,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/ColorField",
+  title: "Components/fields/Color",
   component: ColorField,
 } satisfies Meta<typeof ColorField>;
 export default meta;
@@ -27,7 +27,7 @@ const defaultValue = {
   color: "oklch(76.8% 0.233 130.85)",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -62,3 +62,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as ColorField };

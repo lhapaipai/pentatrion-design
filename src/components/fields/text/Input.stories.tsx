@@ -116,7 +116,9 @@ export const Context = () => {
         type="number"
         value={counter}
         onChange={(e) => {
-          e.target.validity.valid && setCounter(e.target.valueAsNumber);
+          if (e.target.validity.valid) {
+            setCounter(e.target.valueAsNumber);
+          }
         }}
       />
       <div className="flex gap-2">

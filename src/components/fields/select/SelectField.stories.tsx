@@ -13,7 +13,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/SelectField",
+  title: "Components/fields/Select",
   component: SelectField,
 } satisfies Meta<typeof SelectField>;
 export default meta;
@@ -35,7 +35,7 @@ const defaultValue = {
   color: "red",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -70,3 +70,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as SelectField };

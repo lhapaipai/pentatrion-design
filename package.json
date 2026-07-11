@@ -147,10 +147,6 @@
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     },
-    "./types": {
-      "types": "./dist/types.d.mts",
-      "default": "./dist/types.mjs"
-    },
     "./accordion": {
       "types": "./dist/components/accordion/index.d.mts",
       "default": "./dist/components/accordion/index.mjs"
@@ -191,18 +187,6 @@
       "types": "./dist/components/dropdown-menu-nested/index.d.mts",
       "default": "./dist/components/dropdown-menu-nested/index.mjs"
     },
-    "./flash": {
-      "types": "./dist/components/flash/index.d.mts",
-      "default": "./dist/components/flash/index.mjs"
-    },
-    "./highlight": {
-      "types": "./dist/components/highlight/index.d.mts",
-      "default": "./dist/components/highlight/index.mjs"
-    },
-    "./href": {
-      "types": "./dist/components/href/index.d.mts",
-      "default": "./dist/components/href/index.mjs"
-    },
     "./fields": {
       "types": "./dist/components/fields/index.d.mts",
       "default": "./dist/components/fields/index.mjs"
@@ -215,61 +199,77 @@
       "types": "./dist/components/fields/checkbox/index.d.mts",
       "default": "./dist/components/fields/checkbox/index.mjs"
     },
-    "./fields/radio": {
-      "types": "./dist/components/fields/radio/index.d.mts",
-      "default": "./dist/components/fields/radio/index.mjs"
-    },
     "./fields/color": {
       "types": "./dist/components/fields/color/index.d.mts",
       "default": "./dist/components/fields/color/index.mjs"
-    },
-    "./fields/select": {
-      "types": "./dist/components/fields/select/index.d.mts",
-      "default": "./dist/components/fields/select/index.mjs"
-    },
-    "./fields/text": {
-      "types": "./dist/components/fields/text/index.d.mts",
-      "default": "./dist/components/fields/text/index.mjs"
     },
     "./fields/date": {
       "types": "./dist/components/fields/date/index.d.mts",
       "default": "./dist/components/fields/date/index.mjs"
     },
-    "./fields/password": {
-      "types": "./dist/components/fields/password/index.d.mts",
-      "default": "./dist/components/fields/password/index.mjs"
-    },
     "./fields/file": {
       "types": "./dist/components/fields/file/index.d.mts",
       "default": "./dist/components/fields/file/index.mjs"
-    },
-    "./fields/toggle": {
-      "types": "./dist/components/fields/toggle/index.d.mts",
-      "default": "./dist/components/fields/toggle/index.mjs"
-    },
-    "./fields/range": {
-      "types": "./dist/components/fields/range/index.d.mts",
-      "default": "./dist/components/fields/range/index.mjs"
-    },
-    "./fields/stars": {
-      "types": "./dist/components/fields/stars/index.d.mts",
-      "default": "./dist/components/fields/stars/index.mjs"
-    },
-    "./textarea": {
-      "types": "./dist/components/fields/textarea/index.d.mts",
-      "default": "./dist/components/fields/textarea/index.mjs"
-    },
-    "./fields/totp": {
-      "types": "./dist/components/fields/totp/index.d.mts",
-      "default": "./dist/components/fields/totp/index.mjs"
     },
     "./fields/input-button": {
       "types": "./dist/components/fields/input-button/index.d.mts",
       "default": "./dist/components/fields/input-button/index.mjs"
     },
+    "./fields/radio": {
+      "types": "./dist/components/fields/radio/index.d.mts",
+      "default": "./dist/components/fields/radio/index.mjs"
+    },
+    "./fields/range": {
+      "types": "./dist/components/fields/range/index.d.mts",
+      "default": "./dist/components/fields/range/index.mjs"
+    },
+    "./fields/select": {
+      "types": "./dist/components/fields/select/index.d.mts",
+      "default": "./dist/components/fields/select/index.mjs"
+    },
+    "./fields/stars": {
+      "types": "./dist/components/fields/stars/index.d.mts",
+      "default": "./dist/components/fields/stars/index.mjs"
+    },
+    "./fields/text": {
+      "types": "./dist/components/fields/text/index.d.mts",
+      "default": "./dist/components/fields/text/index.mjs"
+    },
+    "./fields/textarea": {
+      "types": "./dist/components/fields/textarea/index.d.mts",
+      "default": "./dist/components/fields/textarea/index.mjs"
+    },
+    "./fields/toggle": {
+      "types": "./dist/components/fields/toggle/index.d.mts",
+      "default": "./dist/components/fields/toggle/index.mjs"
+    },
+    "./fields/totp": {
+      "types": "./dist/components/fields/totp/index.d.mts",
+      "default": "./dist/components/fields/totp/index.mjs"
+    },
     "./fields/wysiwyg": {
       "types": "./dist/components/fields/wysiwyg/index.d.mts",
       "default": "./dist/components/fields/wysiwyg/index.mjs"
+    },
+    "./flash": {
+      "types": "./dist/components/flash/index.d.mts",
+      "default": "./dist/components/flash/index.mjs"
+    },
+    "./highlight": {
+      "types": "./dist/components/highlight/index.d.mts",
+      "default": "./dist/components/highlight/index.mjs"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.mts",
+      "default": "./dist/hooks/index.mjs"
+    },
+    "./href": {
+      "types": "./dist/components/href/index.d.mts",
+      "default": "./dist/components/href/index.mjs"
+    },
+    "./lib": {
+      "types": "./dist/lib/index.d.mts",
+      "default": "./dist/lib/index.mjs"
     },
     "./loader": {
       "types": "./dist/components/loader/index.d.mts",
@@ -303,10 +303,6 @@
       "types": "./dist/components/resize-area/index.d.mts",
       "default": "./dist/components/resize-area/index.mjs"
     },
-    "./separator": {
-      "types": "./dist/components/separator/index.d.mts",
-      "default": "./dist/components/separator/index.mjs"
-    },
     "./scroll": {
       "types": "./dist/components/scroll/index.d.mts",
       "default": "./dist/components/scroll/index.mjs"
@@ -314,6 +310,10 @@
     "./select-legacy": {
       "types": "./dist/components/select-legacy/index.d.mts",
       "default": "./dist/components/select-legacy/index.mjs"
+    },
+    "./separator": {
+      "types": "./dist/components/separator/index.d.mts",
+      "default": "./dist/components/separator/index.mjs"
     },
     "./slot": {
       "types": "./dist/components/slot/index.d.mts",
@@ -335,6 +335,8 @@
       "types": "./dist/components/tabs/index.d.mts",
       "default": "./dist/components/tabs/index.mjs"
     },
+    "./tailwind": "./src/tailwind/index.css",
+    "./tailwind/*": "./src/tailwind/*",
     "./toast": {
       "types": "./dist/components/toast/index.d.mts",
       "default": "./dist/components/toast/index.mjs"
@@ -343,16 +345,10 @@
       "types": "./dist/components/tooltip/index.d.mts",
       "default": "./dist/components/tooltip/index.mjs"
     },
-    "./hooks": {
-      "types": "./dist/hooks/index.d.mts",
-      "default": "./dist/hooks/index.mjs"
-    },
-    "./lib": {
-      "types": "./dist/lib/index.d.mts",
-      "default": "./dist/lib/index.mjs"
-    },
-    "./tailwind": "./src/tailwind/index.css",
-    "./tailwind/*": "./src/tailwind/*"
+    "./types": {
+      "types": "./dist/types.d.mts",
+      "default": "./dist/types.mjs"
+    }
   },
   "packageManager": "pnpm@10.17.0",
   "publishConfig": {

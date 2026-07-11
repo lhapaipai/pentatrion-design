@@ -10,7 +10,10 @@ import {
 import { ThemeColor } from "../../../types";
 import { inputConfig, sizeVariant } from "../text/Input";
 
-export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "prefix" | "size"> {
+export interface InputButtonProps extends Omit<
+  ComponentPropsWithRef<"input">,
+  "prefix" | "size" | "onClick" | "onFocus" | "onBlur"
+> {
   label?: string;
   variant?: "normal" | "ghost";
   disabled?: boolean;
@@ -22,6 +25,9 @@ export interface InputButtonProps extends Omit<ComponentPropsWithRef<"input">, "
   readOnly?: boolean;
   placeholder?: string;
   ref?: RefObject<HTMLInputElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onFocus?: FocusEventHandler<HTMLButtonElement>;
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
 }
 export function InputButton({
   variant = "normal",
@@ -63,9 +69,9 @@ export function InputButton({
           className,
         )}
         type="button"
-        onClick={onClick as MouseEventHandler<HTMLButtonElement>}
-        onFocus={onFocus as FocusEventHandler<HTMLButtonElement>}
-        onBlur={onBlur as FocusEventHandler<HTMLButtonElement>}
+        onClick={onClick}
+        onFocus={onFocus}
+        onBlur={onBlur}
       >
         {prefix && (
           <div

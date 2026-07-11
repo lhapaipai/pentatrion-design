@@ -14,7 +14,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/TextField",
+  title: "Components/fields/Text",
   component: TextField,
 } satisfies Meta<typeof TextField>;
 export default meta;
@@ -32,7 +32,7 @@ const defaultValue = {
   username: "lhapaipai",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onValidate({ error, schemaValue }) {
@@ -76,3 +76,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as TextField };

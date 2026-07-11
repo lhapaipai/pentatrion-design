@@ -46,7 +46,7 @@ export function Stars({
       setUnControlledValue(nextValue);
     }
 
-    onChange && onChange(nextValue);
+    onChange?.(nextValue);
   }
 
   /**
@@ -59,7 +59,7 @@ export function Stars({
       setUnControlledValue(nextValue);
     }
 
-    onChange && onChange(nextValue);
+    onChange?.(nextValue);
   }
 
   function handleReset() {
@@ -67,7 +67,7 @@ export function Stars({
       setUnControlledValue(null);
     }
 
-    onChange && onChange(null);
+    onChange?.(null);
   }
 
   const currentValue = hoveredValue !== -1 ? hoveredValue : rangeValue;

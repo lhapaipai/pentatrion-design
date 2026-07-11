@@ -12,7 +12,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/TextareaField",
+  title: "Components/fields/Textarea",
   component: TextareaField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof TextareaField>;
@@ -28,7 +28,7 @@ const defaultValue = {
   description: "A short description",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -63,3 +63,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as TextareaField };

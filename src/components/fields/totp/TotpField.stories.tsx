@@ -13,7 +13,7 @@ import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/fields/TotpField",
+  title: "Components/fields/TotpInput",
   component: TotpField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof TotpField>;
@@ -31,7 +31,7 @@ const defaultValue = {
   otp: "",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -68,3 +68,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as TotpField };

@@ -14,7 +14,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/PasswordField",
+  title: "Components/fields/Text",
   component: PasswordField,
 } satisfies Meta<typeof PasswordField>;
 export default meta;
@@ -32,7 +32,7 @@ const defaultValue = {
   password: "",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onValidate({ error, schemaValue }) {
@@ -76,3 +76,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as PasswordField };

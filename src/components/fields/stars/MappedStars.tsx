@@ -84,7 +84,7 @@ export function MappedStars({
       setUnControlledValue(null);
     }
 
-    onChange && onChange(null);
+    onChange?.(null);
   }
 
   const currentValue = hoveredRangeValue !== -1 ? hoveredRangeValue : rangeValue;

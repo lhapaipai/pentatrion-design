@@ -16,7 +16,7 @@ import { parseWysiwygValue, serializeWysiwygValue, wysiwygSchema, WysiwygValue }
 import { editorStateRichText } from "./_fixtures";
 
 const meta = {
-  title: "Components/fields/WysiwygField",
+  title: "Components/fields/Wysiwyg",
   component: WysiwygField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof WysiwygField>;
@@ -46,7 +46,7 @@ const defaultValue = {
   },
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onValidate({ error }) {
@@ -108,3 +108,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as WysiwygField };

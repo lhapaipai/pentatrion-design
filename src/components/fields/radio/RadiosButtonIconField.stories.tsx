@@ -12,7 +12,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/RadiosButtonIconField",
+  title: "Components/fields/Radio",
   component: RadiosButtonIconField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RadiosButtonIconField>;
@@ -34,7 +34,7 @@ const defaultValue = {
   view: "grid",
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -70,3 +70,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as RadiosButtonIconField };

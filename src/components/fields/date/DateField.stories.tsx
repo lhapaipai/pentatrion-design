@@ -14,7 +14,7 @@ import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/DateField",
+  title: "Components/fields/Date",
   component: DateField,
 } satisfies Meta<typeof DateField>;
 export default meta;
@@ -31,7 +31,7 @@ const defaultValue = {
   birthday: new Date("2002-02-28T13:00:00Z"),
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -74,3 +74,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as DateField };

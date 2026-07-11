@@ -13,7 +13,7 @@ import { Meta } from "@storybook/react-vite";
 import { coerceFormValue } from "@conform-to/zod/v4/future";
 
 const meta = {
-  title: "Components/fields/RangeField",
+  title: "Components/fields/Range",
   component: RangeField,
   decorators: [(Story) => <Story />],
 } satisfies Meta<typeof RangeField>;
@@ -31,7 +31,7 @@ const defaultValue = {
   volume: 30,
 };
 
-export const WithConform = () => {
+const Playbook = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
     onSubmit(event, ctx) {
@@ -66,3 +66,5 @@ export const WithConform = () => {
     </>
   );
 };
+
+export { Playbook as RangeField };
