@@ -45,11 +45,11 @@ export const Context: Story = {
     }
 
     function handleSetHtml() {
-      wysiwygRef.current.setHtml("<p>Nouveau contenu...</p>");
+      wysiwygRef.current.setHtml("<p>Nouveau contenu...</p>", true);
     }
 
     function handleClear() {
-      wysiwygRef.current.clear();
+      wysiwygRef.current.clear(true);
     }
 
     return (

@@ -30,7 +30,6 @@ import { WysiwygValue } from "./types";
 interface Props {
   extendedToolbar?: boolean;
   floatingPosition?: "top" | "bottom";
-  proseClassName?: string;
   defaultValue?: WysiwygValue;
 
   proseCompact?: boolean;
@@ -62,10 +61,10 @@ function $readValue(editor: LexicalEditor): WysiwygValue {
 
 export interface WysiwygRef {
   getValue: () => Promise<WysiwygValue>;
-  setHtml: (html: string) => void;
+  setHtml: (html: string, fireEvent?: boolean) => void;
   getState: () => SerializedEditorState;
-  setState: (state: SerializedEditorState) => void;
-  clear: () => void;
+  setState: (state: SerializedEditorState, fireEvent?: boolean) => void;
+  clear: (fireEvent?: boolean) => void;
 }
 
 export function Wysiwyg({
@@ -88,7 +87,7 @@ export function Wysiwyg({
     ...(defaultValue ? { editorState: JSON.stringify(defaultValue.state) } : {}),
   }));
 
-  const editorRef = useRef<LexicalEditor>(null!);
+  const editorRef = useRef<LexicalEditor | null>(null);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isLinkEditMode, setIsLinkEditMode] = useState(false);
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
@@ -97,46 +96,64 @@ export function Wysiwyg({
     }
   };
 
+  function getEditor(): LexicalEditor {
+    const editor = editorRef.current;
+
+    if (!editor) {
+      throw new Error("Wysiwyg ref called before the editor was mounted");
+    }
+
+    return editor;
+  }
+
+  function notifyChange(editor: LexicalEditor) {
+    editor.read(() => {
+      onChange?.($readValue(editor));
+    });
+  }
+
   useImperativeHandle(ref, () => {
     return {
       getValue: async () =>
         new Promise((resolve) => {
-          const editor = editorRef.current;
+          const editor = getEditor();
           editor.read(() => {
             resolve($readValue(editor));
           });
         }),
-      setHtml: (nextHtml: string) => {
-        const editor = editorRef.current;
+      setHtml: (nextHtml: string, fireEvent = false) => {
+        const editor = getEditor();
 
-        if (editor) {
-          editor.update(() => {
-            $loadFromHtml(editor, nextHtml);
-          });
+        editor.update(() => {
+          $loadFromHtml(editor, nextHtml);
+        });
+        if (fireEvent) {
+          notifyChange(editor);
         }
       },
       getState: () => {
-        return editorRef.current.getEditorState().toJSON();
+        return getEditor().getEditorState().toJSON();
       },
-      setState: (editorState: SerializedEditorState) => {
-        const editor = editorRef.current;
+      setState: (editorState: SerializedEditorState, fireEvent = false) => {
+        const editor = getEditor();
         const parsedEditorState = editor.parseEditorState(editorState);
         editor.setEditorState(parsedEditorState);
+        if (fireEvent) {
+          notifyChange(editor);
+        }
       },
 
-      clear: () => {
-        const editor = editorRef.current;
+      clear: (fireEvent = false) => {
+        const editor = getEditor();
 
-        if (editor) {
-          editor.update(() => {
-            const root = $getRoot();
-            root.getChildren().forEach((node) => {
-              node.remove();
-            });
+        editor.update(() => {
+          const root = $getRoot();
+          root.getChildren().forEach((node) => {
+            node.remove();
           });
-          editor.read(() => {
-            onChange?.($readValue(editor));
-          });
+        });
+        if (fireEvent) {
+          notifyChange(editor);
         }
       },
     };
@@ -145,11 +162,11 @@ export function Wysiwyg({
   return (
     <div className="relative z-(--index-wysiwyg) w-full">
       <LexicalComposer initialConfig={fullInitialConfig}>
+        <EditorRefPlugin editorRef={editorRef} />
         <CustomAutoLinkPlugin />
         <CustomLinkPlugin />
         <HorizontalRulePlugin />
         <ListPlugin />
-        <EditorRefPlugin editorRef={editorRef} />
         {debounceChange && <LazyOnChangePlugin wait={debounceChange} onChange={onChange} />}
         <HistoryPlugin />
 
