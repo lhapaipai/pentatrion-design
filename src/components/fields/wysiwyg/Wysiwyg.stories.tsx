@@ -4,8 +4,10 @@ import type { WysiwygRef } from "./Wysiwyg";
 import { Wysiwyg } from "./Wysiwyg";
 import { useRef, useState } from "react";
 import { Button } from "../../button";
-import type { LazyOnChangeArgs } from "./plugins/LazyOnChangePlugin";
 import { action } from "storybook/actions";
+import { SerializedEditorState } from "lexical";
+import { WysiwygValue } from "./types";
+import { editorStateRichText } from "./_fixtures";
 
 const meta = {
   component: Wysiwyg,
@@ -16,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const onChange = action("handleChange");
+const storybookOnChange = action("handleChange");
 
 export const Default: Story = {
   args: {},
@@ -27,19 +29,20 @@ export const Context: Story = {
     layout: "fullscreen",
   },
   render() {
-    const initialHtml = "<p>Hello <b>World</b></p>";
     const wysiwygRef = useRef<WysiwygRef>(null!);
 
-    const [html, setHtml] = useState(initialHtml);
+    const [description, setDescription] = useState({
+      state: editorStateRichText,
+    });
 
-    async function handleGetHtml() {
-      const nextHtml = await wysiwygRef.current.getHtml();
-      setHtml(nextHtml);
+    async function handleGetValue() {
+      const nextValue = await wysiwygRef.current.getValue();
+      setDescription(nextValue);
     }
 
-    function handleChange({ html }: LazyOnChangeArgs) {
-      onChange(html);
-      setHtml(html);
+    function handleChange(value: WysiwygValue) {
+      storybookOnChange(value);
+      setDescription(value);
     }
 
     function handleSetHtml() {
@@ -49,8 +52,8 @@ export const Context: Story = {
     return (
       <div className="storybook-bg yellow-squircle-smooth p-2 lg:p-4">
         <div className="flex gap-2 p-2">
-          <Button type="button" onClick={handleGetHtml}>
-            getHtml
+          <Button type="button" onClick={handleGetValue}>
+            getValue
           </Button>
           <Button type="button" onClick={handleSetHtml}>
             setHtml
@@ -58,13 +61,15 @@ export const Context: Story = {
         </div>
         <Wysiwyg
           ref={wysiwygRef}
-          lazyOnChange={3000}
+          debounceChange={3000}
           onChange={handleChange}
-          initialHtml={initialHtml}
+          initialValue={description}
           contentEditableClassName="min-h-36"
         />
         <code className="mt-4 p-2">
-          <pre className="text-body-xs break-all whitespace-pre-wrap">{html}</pre>
+          <pre className="text-body-xs break-all whitespace-pre-wrap">
+            {JSON.stringify(description, undefined, 2)}
+          </pre>
         </code>
       </div>
     );

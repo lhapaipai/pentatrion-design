@@ -1,9 +1,9 @@
 import type { ReactNode, RefObject } from "react";
-import { useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import type { LexicalEditor } from "lexical";
+import type { LexicalEditor, SerializedEditorState } from "lexical";
 import { $getRoot } from "lexical";
-import { LexicalComposer } from "@lexical/react/LexicalComposer";
+import { InitialConfigType, LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
@@ -15,7 +15,6 @@ import { HorizontalRulePlugin } from "@lexical/react/LexicalHorizontalRulePlugin
 import { $generateHtmlFromNodes } from "@lexical/html";
 
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
-import type { LazyOnChangeArgs } from "./plugins/LazyOnChangePlugin";
 import { LazyOnChangePlugin } from "./plugins/LazyOnChangePlugin";
 import { CustomAutoLinkPlugin } from "./plugins/AutoLinkPlugin";
 import { FloatingLinkEditorPlugin } from "./plugins/FloatingLinkEditorPlugin";
@@ -26,12 +25,13 @@ import { $loadFromHtml } from "./config/html";
 import type { ToolbarVariantProps } from "./style";
 import { contentEditableStyles } from "./style";
 import { ToolbarContext } from "./ToolbarContext";
+import { WysiwygValue } from "./types";
 
 interface Props {
   extendedToolbar?: boolean;
   floatingPosition?: "top" | "bottom";
   proseClassName?: string;
-  initialHtml?: string;
+  initialValue?: WysiwygValue;
 
   proseCompact?: boolean;
 
@@ -49,34 +49,35 @@ interface Props {
   toolbarVisible?: ToolbarVariantProps["visible"];
 
   ref?: RefObject<WysiwygRef>;
-  lazyOnChange?: number | false;
-  onChange?: ({ html }: LazyOnChangeArgs) => void;
+  debounceChange?: number | false;
+  onChange?: (value: WysiwygValue) => void;
   children?: ReactNode;
 }
 export interface WysiwygRef {
-  getHtml: () => Promise<string>;
+  getValue: () => Promise<WysiwygValue>;
   setHtml: (html: string) => void;
+  getState: () => SerializedEditorState;
+  setState: (state: SerializedEditorState) => void;
   reset: () => void;
-  resetInitialValue: () => void;
+  // resetInitialValue: () => void;
 }
 
 export function Wysiwyg({
   floatingPosition = "bottom",
   extendedToolbar = true,
   proseCompact = false,
-  initialHtml,
+  initialValue,
   contentEditableBaseStyle = "normal",
   contentEditableClassName,
   containerClassName,
   ref,
   toolbarSticky,
   toolbarVisible,
-  lazyOnChange = false,
+  debounceChange = false,
   onChange,
   children,
 }: Props) {
   const editorRef = useRef<LexicalEditor>(null!);
-  const [initialValue, setInitialValue] = useState<string | null>(null);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isLinkEditMode, setIsLinkEditMode] = useState(false);
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
@@ -87,11 +88,15 @@ export function Wysiwyg({
 
   useImperativeHandle(ref, () => {
     return {
-      getHtml: async () =>
+      getValue: async () =>
         new Promise((resolve) => {
-          editorRef.current.read(() => {
-            const htmlString = $generateHtmlFromNodes(editorRef.current);
-            resolve(htmlString);
+          const editor = editorRef.current;
+          editor.read(() => {
+            const htmlString = $generateHtmlFromNodes(editor);
+            resolve({
+              html: htmlString,
+              state: editor.getEditorState().toJSON(),
+            });
           });
         }),
       setHtml: (nextHtml: string) => {
@@ -103,6 +108,15 @@ export function Wysiwyg({
           });
         }
       },
+      getState: () => {
+        return editorRef.current.getEditorState().toJSON();
+      },
+      setState: (editorState: SerializedEditorState) => {
+        const editor = editorRef.current;
+        const parsedEditorState = editor.parseEditorState(editorState);
+        editor.setEditorState(parsedEditorState);
+      },
+
       reset: () => {
         const editor = editorRef.current;
 
@@ -113,47 +127,32 @@ export function Wysiwyg({
               node.remove();
             });
           });
-          setInitialValue(null);
         }
-      },
-      resetInitialValue: () => {
-        setInitialValue(null);
       },
     };
   });
 
-  /**
-   * it could be possible to import html with initialisation but they can
-   * be issues with DOMParser in SSR environment.
-   */
-  useEffect(() => {
-    const editor = editorRef.current;
+  const fullEditorConfig = useMemo<InitialConfigType>(
+    () => ({
+      ...editorConfig,
+      ...(initialValue ? { editorState: JSON.stringify(initialValue.state) } : {}),
+    }),
+    // we don't want initialValue to be reevaluated
+    // oxlint-disable-next-line exhaustive-deps
+    [],
+  );
 
-    if (editor && initialHtml) {
-      editor.update(() => {
-        $loadFromHtml(editor, initialHtml);
-      });
-    }
-    // initialHtml must not be a dep dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  console.log("fullEditorConfig", fullEditorConfig);
 
   return (
     <div className="relative z-(--index-wysiwyg) w-full">
-      <LexicalComposer initialConfig={editorConfig}>
+      <LexicalComposer initialConfig={fullEditorConfig}>
         <CustomAutoLinkPlugin />
         <CustomLinkPlugin />
         <HorizontalRulePlugin />
         <ListPlugin />
         <EditorRefPlugin editorRef={editorRef} />
-        {lazyOnChange && (
-          <LazyOnChangePlugin
-            initialValue={initialValue}
-            setInitialValue={setInitialValue}
-            wait={lazyOnChange}
-            onChange={onChange}
-          />
-        )}
+        {debounceChange && <LazyOnChangePlugin wait={debounceChange} onChange={onChange} />}
         <HistoryPlugin />
 
         <ToolbarContext>

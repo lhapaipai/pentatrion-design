@@ -6,11 +6,14 @@ import {
   isDirty,
   useFormData,
   getFieldValue,
+  FieldName,
 } from "@conform-to/react/future";
 import { WysiwygField } from "./WysiwygField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
-import { coerceFormValue } from "@conform-to/zod/v4/future";
+import { configureCoercion } from "@conform-to/zod/v4/future";
+import { wysiwygSchema, WysiwygValue } from "./types";
+import { editorStateRichText } from "./_fixtures";
 
 const meta = {
   title: "Components/fields/WysiwygField",
@@ -19,50 +22,86 @@ const meta = {
 } satisfies Meta<typeof WysiwygField>;
 export default meta;
 
-const onChangeAction = action("onChange");
+const storybookOnChange = action("onChange");
+
+const { coerceFormValue } = configureCoercion({
+  customize(type) {
+    if (type === wysiwygSchema) {
+      return (value) => {
+        if (value == null || value === "") {
+          return undefined;
+        }
+        if (typeof value !== "string") {
+          throw new Error("Expected a string value for wysiwyg");
+        }
+
+        return JSON.parse(value);
+      };
+    }
+
+    return null;
+  },
+});
 
 const formSchema = coerceFormValue(
   z.object({
-    content: z._default(z.string(), ""),
+    description: wysiwygSchema,
   }),
 );
 
 const defaultValue = {
-  content: "<p>Hello <strong>world</strong>!</p>",
+  description: {
+    state: editorStateRichText,
+  },
 };
 
 export const WithConform = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
+    onValidate({ error, schemaValue }) {
+      console.log("onValidate", error, schemaValue);
+      return error;
+    },
     onSubmit(event, ctx) {
       event.preventDefault();
       console.log(ctx);
-      onChangeAction(ctx.value);
+      storybookOnChange(ctx.value);
+    },
+    serialize(value, context) {
+      if (context.name === "description") {
+        return typeof value === "string" || value == null ? value : JSON.stringify(value);
+      }
+
+      return context.defaultSerialize(value);
     },
   });
 
   const dirty = useFormData(form.id, (formData) => isDirty(formData, { defaultValue }) ?? false);
   const value = useFormData(form.id, (formData) =>
-    getFieldValue(formData, fields.content.name, { type: "string", optional: true }),
+    getFieldValue(formData, fields.description.name, { type: "string", optional: true }),
   );
 
   return (
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <WysiwygField label="Contenu" name={fields.content.name} lazyOnChange={300} />
+          <WysiwygField
+            label="Contenu"
+            name={fields.description.name as FieldName<WysiwygValue | undefined | null>}
+            debounceChange={300}
+          />
 
           <Button>Valider</Button>
         </form>
       </FormProvider>
-      <div className="shadow-xs w-72 rounded-xl mt-4 p-2">
+      <div className="shadow-xs rounded-xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>dirty</dt>
           <dd>{dirty ? "true" : "false"}</dd>
         </dl>
         <dl className="p8n-setting">
           <dt>value</dt>
-          <dd className="break-all">{JSON.stringify(value)}</dd>
+          <dd className="break-all">{value}</dd>
         </dl>
       </div>
     </>
