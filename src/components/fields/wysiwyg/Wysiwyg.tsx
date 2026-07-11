@@ -142,7 +142,7 @@ export function Wysiwyg({
     [],
   );
 
-  console.log("fullEditorConfig", fullEditorConfig);
+  // console.log("fullEditorConfig", fullEditorConfig);
 
   return (
     <div className="relative z-(--index-wysiwyg) w-full">

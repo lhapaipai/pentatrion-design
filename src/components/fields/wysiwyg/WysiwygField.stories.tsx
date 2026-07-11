@@ -76,7 +76,27 @@ export const WithConform = () => {
     },
   });
 
-  const dirty = useFormData(form.id, (formData) => isDirty(formData, { defaultValue }) ?? false);
+  const dirty = useFormData(
+    form.id,
+    (formData) =>
+      isDirty(formData, {
+        defaultValue,
+        serialize: (value, context) => {
+          if (context.name === "description") {
+            return value == null
+              ? value
+              : typeof value === "string"
+                ? JSON.stringify({
+                    state: JSON.parse(value).state,
+                  })
+                : JSON.stringify({
+                    state: (value as any).state,
+                  });
+          }
+          return form.context.serialize(value, context);
+        },
+      }) ?? false,
+  );
   const value = useFormData(form.id, (formData) =>
     getFieldValue(formData, fields.description.name, { type: "string", optional: true }),
   );

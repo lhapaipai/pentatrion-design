@@ -8,5 +8,5 @@ export type WysiwygValue = {
 
 export const wysiwygSchema = z.object({
   html: z.optional(z.string()),
-  state: z.looseObject({}),
+  state: z.custom<SerializedEditorState>(),
 });
