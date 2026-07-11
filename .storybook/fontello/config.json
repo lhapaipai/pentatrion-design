@@ -1081,6 +1081,18 @@
       ]
     },
     {
+      "uid": "9ea0a737ccc45d6c510dcbae56058849",
+      "css": "music",
+      "code": 59483,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "52177c3387cdac48d6ed18bebe84c34a",
+      "css": "headphones",
+      "code": 59484,
+      "src": "iconic"
+    },
+    {
       "uid": "24b7643d8401ffb5bd0872b14261d9ee",
       "css": "climbing-outdoor",
       "code": 59402,

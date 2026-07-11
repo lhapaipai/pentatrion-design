@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ComponentProps, ReactNode, RefObject } from "react";
-import type { ThemeColor } from "../../types";
+import type { ThemeColor } from "../../../types";
 
 export interface TextareaProps extends ComponentProps<"textarea"> {
   variant?: "normal" | "ghost";

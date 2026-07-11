@@ -255,6 +255,10 @@
       "types": "./dist/components/fields/stars/index.d.mts",
       "default": "./dist/components/fields/stars/index.mjs"
     },
+    "./textarea": {
+      "types": "./dist/components/fields/textarea/index.d.mts",
+      "default": "./dist/components/fields/textarea/index.mjs"
+    },
     "./fields/totp": {
       "types": "./dist/components/fields/totp/index.d.mts",
       "default": "./dist/components/fields/totp/index.mjs"
@@ -330,10 +334,6 @@
     "./tabs": {
       "types": "./dist/components/tabs/index.d.mts",
       "default": "./dist/components/tabs/index.mjs"
-    },
-    "./textarea": {
-      "types": "./dist/components/textarea/index.d.mts",
-      "default": "./dist/components/textarea/index.mjs"
     },
     "./toast": {
       "types": "./dist/components/toast/index.d.mts",

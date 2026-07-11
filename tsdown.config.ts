@@ -25,6 +25,7 @@ export default defineConfig({
     "src/components/fields/color/index.ts",
     "src/components/fields/select/index.ts",
     "src/components/fields/text/index.ts",
+    "src/components/fields/textarea/index.ts",
     "src/components/fields/date/index.ts",
     "src/components/fields/password/index.ts",
     "src/components/fields/file/index.ts",

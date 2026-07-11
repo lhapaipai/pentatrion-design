@@ -6,7 +6,7 @@ import { buttonGroupVariants } from "../../button";
 import { Radio } from "./Radio";
 
 interface Props extends Omit<FieldProps, "children"> {
-  name: FieldName<string>;
+  name: FieldName<string | undefined | null>;
   options: readonly SelectOption[];
   asButton?: boolean;
   direction?: "horizontal" | "vertical";
