@@ -1,5 +1,5 @@
 import type { ReactNode, RefObject } from "react";
-import { useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { useImperativeHandle, useRef, useState } from "react";
 import clsx from "clsx";
 import type { LexicalEditor, SerializedEditorState } from "lexical";
 import { $getRoot } from "lexical";
@@ -77,6 +77,11 @@ export function Wysiwyg({
   onChange,
   children,
 }: Props) {
+  const [fullInitialConfig] = useState<InitialConfigType>(() => ({
+    ...editorConfig,
+    ...(initialValue ? { editorState: JSON.stringify(initialValue.state) } : {}),
+  }));
+
   const editorRef = useRef<LexicalEditor>(null!);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isLinkEditMode, setIsLinkEditMode] = useState(false);
@@ -132,21 +137,9 @@ export function Wysiwyg({
     };
   });
 
-  const fullEditorConfig = useMemo<InitialConfigType>(
-    () => ({
-      ...editorConfig,
-      ...(initialValue ? { editorState: JSON.stringify(initialValue.state) } : {}),
-    }),
-    // we don't want initialValue to be reevaluated
-    // oxlint-disable-next-line exhaustive-deps
-    [],
-  );
-
-  // console.log("fullEditorConfig", fullEditorConfig);
-
   return (
     <div className="relative z-(--index-wysiwyg) w-full">
-      <LexicalComposer initialConfig={fullEditorConfig}>
+      <LexicalComposer initialConfig={fullInitialConfig}>
         <CustomAutoLinkPlugin />
         <CustomLinkPlugin />
         <HorizontalRulePlugin />
