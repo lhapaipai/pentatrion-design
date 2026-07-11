@@ -49,13 +49,13 @@ const defaultValue = {
 export const WithConform = () => {
   const { form, fields } = useForm(formSchema, {
     defaultValue,
-    onValidate({ error, schemaValue }) {
-      console.log("onValidate", error, schemaValue);
+    onValidate({ error }) {
+      // console.log("onValidate", error, schemaValue);
       return error;
     },
     onSubmit(event, ctx) {
       event.preventDefault();
-      console.log(ctx);
+      // console.log(ctx);
       storybookOnChange(ctx.value);
     },
     serialize(value, context) {

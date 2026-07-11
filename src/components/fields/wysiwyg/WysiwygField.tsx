@@ -13,6 +13,8 @@ interface Props extends Omit<FieldProps, "errors" | "children"> {
   toolbarSticky?: ToolbarVariantProps["sticky"];
   contentEditableClassName?: string;
   containerClassName?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
 }
 
 export function WysiwygField({
@@ -22,6 +24,8 @@ export function WysiwygField({
   toolbarSticky,
   contentEditableClassName,
   containerClassName,
+  disabled = false,
+  readOnly = false,
   ...rest
 }: Props) {
   const field = useField(name);
@@ -39,8 +43,6 @@ export function WysiwygField({
     control.change(value);
   }
 
-  console.log(control.payload);
-
   return (
     <>
       <input
@@ -50,6 +52,8 @@ export function WysiwygField({
         tabIndex={-1}
         ref={control.register}
         defaultValue={control.defaultValue ?? ""}
+        disabled={disabled}
+        readOnly={readOnly}
       />
       <Field errors={field.errors} data-testid={field.name} {...rest}>
         <Wysiwyg
@@ -61,6 +65,8 @@ export function WysiwygField({
           toolbarSticky={toolbarSticky}
           contentEditableClassName={contentEditableClassName}
           containerClassName={containerClassName}
+          disabled={disabled}
+          readOnly={readOnly}
         />
       </Field>
     </>

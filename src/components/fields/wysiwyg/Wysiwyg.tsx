@@ -1,5 +1,5 @@
 import type { ReactNode, RefObject } from "react";
-import { useImperativeHandle, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useRef, useState } from "react";
 import clsx from "clsx";
 import type { LexicalEditor, SerializedEditorState } from "lexical";
 import { $getRoot } from "lexical";
@@ -30,6 +30,8 @@ interface Props {
   extendedToolbar?: boolean;
   floatingPosition?: "top" | "bottom";
   defaultValue?: WysiwygValue;
+  disabled?: boolean;
+  readOnly?: boolean;
 
   proseCompact?: boolean;
 
@@ -71,6 +73,8 @@ export function Wysiwyg({
   extendedToolbar = true,
   proseCompact = false,
   defaultValue,
+  disabled = false,
+  readOnly = false,
   contentEditableBaseStyle = "normal",
   contentEditableClassName,
   containerClassName,
@@ -83,10 +87,15 @@ export function Wysiwyg({
 }: Props) {
   const [fullInitialConfig] = useState<InitialConfigType>(() => ({
     ...editorConfig,
+    editable: !disabled && !readOnly,
     ...(defaultValue ? { editorState: JSON.stringify(defaultValue.state) } : {}),
   }));
 
   const editorRef = useRef<LexicalEditor | null>(null);
+
+  useEffect(() => {
+    editorRef.current?.setEditable(!disabled && !readOnly);
+  }, [disabled, readOnly]);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isLinkEditMode, setIsLinkEditMode] = useState(false);
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
@@ -190,6 +199,8 @@ export function Wysiwyg({
                 <ContentEditable
                   id={id}
                   autoComplete="off"
+                  aria-disabled={disabled}
+                  aria-readonly={readOnly}
                   {...(proseCompact ? { "data-compact": true } : {})}
                   className={clsx(
                     "prose",
