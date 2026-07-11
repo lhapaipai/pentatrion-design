@@ -64,7 +64,7 @@ export function WysiwygField({
         <Wysiwyg
           key={field.key}
           ref={ref}
-          initialValue={control.payload ?? undefined}
+          defaultValue={control.payload ?? undefined}
           onChange={handleChange}
           debounceChange={debounceChange}
           toolbarSticky={toolbarSticky}

@@ -31,7 +31,7 @@ interface Props {
   extendedToolbar?: boolean;
   floatingPosition?: "top" | "bottom";
   proseClassName?: string;
-  initialValue?: WysiwygValue;
+  defaultValue?: WysiwygValue;
 
   proseCompact?: boolean;
 
@@ -53,20 +53,26 @@ interface Props {
   onChange?: (value: WysiwygValue) => void;
   children?: ReactNode;
 }
+function $readValue(editor: LexicalEditor): WysiwygValue {
+  return {
+    html: $generateHtmlFromNodes(editor),
+    state: editor.getEditorState().toJSON(),
+  };
+}
+
 export interface WysiwygRef {
   getValue: () => Promise<WysiwygValue>;
   setHtml: (html: string) => void;
   getState: () => SerializedEditorState;
   setState: (state: SerializedEditorState) => void;
-  reset: () => void;
-  // resetInitialValue: () => void;
+  clear: () => void;
 }
 
 export function Wysiwyg({
   floatingPosition = "bottom",
   extendedToolbar = true,
   proseCompact = false,
-  initialValue,
+  defaultValue,
   contentEditableBaseStyle = "normal",
   contentEditableClassName,
   containerClassName,
@@ -79,7 +85,7 @@ export function Wysiwyg({
 }: Props) {
   const [fullInitialConfig] = useState<InitialConfigType>(() => ({
     ...editorConfig,
-    ...(initialValue ? { editorState: JSON.stringify(initialValue.state) } : {}),
+    ...(defaultValue ? { editorState: JSON.stringify(defaultValue.state) } : {}),
   }));
 
   const editorRef = useRef<LexicalEditor>(null!);
@@ -97,11 +103,7 @@ export function Wysiwyg({
         new Promise((resolve) => {
           const editor = editorRef.current;
           editor.read(() => {
-            const htmlString = $generateHtmlFromNodes(editor);
-            resolve({
-              html: htmlString,
-              state: editor.getEditorState().toJSON(),
-            });
+            resolve($readValue(editor));
           });
         }),
       setHtml: (nextHtml: string) => {
@@ -122,7 +124,7 @@ export function Wysiwyg({
         editor.setEditorState(parsedEditorState);
       },
 
-      reset: () => {
+      clear: () => {
         const editor = editorRef.current;
 
         if (editor) {
@@ -131,6 +133,9 @@ export function Wysiwyg({
             root.getChildren().forEach((node) => {
               node.remove();
             });
+          });
+          editor.read(() => {
+            onChange?.($readValue(editor));
           });
         }
       },

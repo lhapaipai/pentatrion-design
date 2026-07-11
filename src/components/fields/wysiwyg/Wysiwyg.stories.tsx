@@ -5,7 +5,6 @@ import { Wysiwyg } from "./Wysiwyg";
 import { useRef, useState } from "react";
 import { Button } from "../../button";
 import { action } from "storybook/actions";
-import { SerializedEditorState } from "lexical";
 import { WysiwygValue } from "./types";
 import { editorStateRichText } from "./_fixtures";
 
@@ -49,6 +48,10 @@ export const Context: Story = {
       wysiwygRef.current.setHtml("<p>Nouveau contenu...</p>");
     }
 
+    function handleClear() {
+      wysiwygRef.current.clear();
+    }
+
     return (
       <div className="storybook-bg yellow-squircle-smooth p-2 lg:p-4">
         <div className="flex gap-2 p-2">
@@ -58,12 +61,15 @@ export const Context: Story = {
           <Button type="button" onClick={handleSetHtml}>
             setHtml
           </Button>
+          <Button type="button" onClick={handleClear}>
+            clear
+          </Button>
         </div>
         <Wysiwyg
           ref={wysiwygRef}
           debounceChange={3000}
           onChange={handleChange}
-          initialValue={description}
+          defaultValue={description}
           contentEditableClassName="min-h-36"
         />
         <code className="mt-4 p-2">
