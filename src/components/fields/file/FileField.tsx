@@ -7,20 +7,7 @@ import { Button } from "../../button/Button";
 // import { getMediaImageSrc } from "~/lib/util/url";
 
 import { UploaderMock } from "./UploaderMock";
-import { z } from "zod/v4-mini";
-
-export const mediaSchema = z.object({
-  id: z.string(),
-  origin: z.enum(["s3Upload", "localUpload", "external", "asset"]),
-  category: z.string(),
-  mimeType: z.string(),
-  width: z._default(z.nullable(z.coerce.number().check(z.int())), null),
-  height: z._default(z.nullable(z.coerce.number().check(z.int())), null),
-  size: z._default(z.nullable(z.coerce.number().check(z.int())), null),
-  src: z.string(),
-});
-
-export type Media = z.infer<typeof mediaSchema>;
+import { Media } from "./types";
 
 type Props = Omit<FieldProps, "children"> & {
   name: FieldName<Media | null | undefined>;

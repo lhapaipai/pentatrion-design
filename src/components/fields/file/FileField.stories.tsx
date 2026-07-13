@@ -10,9 +10,10 @@ import {
   FieldName,
 } from "@conform-to/react/future";
 import { configureCoercion } from "@conform-to/zod/v4/future";
-import { FileField, Media, mediaSchema } from "./FileField";
+import { FileField } from "./FileField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
+import { Media, mediaSchema, parseMediaValue, serializeMediaValue } from "./types";
 
 const meta = {
   title: "Components/fields/File",
@@ -25,16 +26,7 @@ const onChangeAction = action("onChange");
 const { coerceFormValue } = configureCoercion({
   customize(type) {
     if (type === mediaSchema) {
-      return (value) => {
-        if (value == null || value === "") {
-          return undefined;
-        }
-        if (typeof value !== "string") {
-          throw new Error("Expected a string value for media");
-        }
-
-        return JSON.parse(value);
-      };
+      return parseMediaValue;
     }
 
     return null;
@@ -68,7 +60,9 @@ const Playbook = () => {
     // pour comparer le defaultValue sérialisé au FormData courant.
     serialize(value, context) {
       if (context.name === "avatar") {
-        return typeof value === "string" || value == null ? value : JSON.stringify(value);
+        return typeof value === "string" || value == null
+          ? value
+          : serializeMediaValue(value as Media);
       }
 
       return context.defaultSerialize(value);

@@ -7,3 +7,4 @@ export {
   wysiwygTranslationsEn,
   wysiwygTranslationsFr,
 } from "./i18n";
+export { wysiwygSchema, type WysiwygValue } from "./types";

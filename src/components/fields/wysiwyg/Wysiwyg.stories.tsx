@@ -7,6 +7,7 @@ import { Button } from "../../button";
 import { action } from "storybook/actions";
 import { WysiwygValue } from "./types";
 import { editorStateRichText } from "./_fixtures";
+import { Textarea } from "../textarea";
 
 const meta = {
   component: Wysiwyg,
@@ -30,6 +31,8 @@ export const Context: Story = {
   render() {
     const wysiwygRef = useRef<WysiwygRef>(null!);
 
+    const [htmlToInject, setHtmlToInject] = useState("<p>Nouveau contenu...</p>");
+
     const [description, setDescription] = useState({
       state: editorStateRichText,
     });
@@ -45,7 +48,7 @@ export const Context: Story = {
     }
 
     function handleSetHtml() {
-      wysiwygRef.current.setHtml("<p>Nouveau contenu...</p>", true);
+      wysiwygRef.current.setHtml(htmlToInject, true);
     }
 
     function handleClear() {
@@ -54,6 +57,7 @@ export const Context: Story = {
 
     return (
       <div className="storybook-bg yellow-squircle-smooth p-2 lg:p-4">
+        <Textarea value={htmlToInject} onChange={(e) => setHtmlToInject(e.target.value)} />
         <div className="flex gap-2 p-2">
           <Button type="button" onClick={handleGetValue}>
             getValue

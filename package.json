@@ -207,10 +207,6 @@
       "types": "./dist/components/fields/date/index.d.mts",
       "default": "./dist/components/fields/date/index.mjs"
     },
-    "./fields/file": {
-      "types": "./dist/components/fields/file/index.d.mts",
-      "default": "./dist/components/fields/file/index.mjs"
-    },
     "./fields/input-button": {
       "types": "./dist/components/fields/input-button/index.d.mts",
       "default": "./dist/components/fields/input-button/index.mjs"
@@ -357,7 +353,7 @@
     "lodash.debounce": "^4.0.8"
   },
   "volta": {
-    "node": "24.18.0"
+    "node": "26.5.0"
   },
   "allowScripts": {
     "@swc/core@1.15.43": true,
