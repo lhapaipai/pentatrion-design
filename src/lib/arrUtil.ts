@@ -10,3 +10,7 @@ export function arrayEquals(a: any, b: any) {
 export function getIndexLetter(index: number) {
   return String.fromCharCode(65 + (index % 26));
 }
+
+export function isArrayOfString(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((v) => typeof v === "string");
+}

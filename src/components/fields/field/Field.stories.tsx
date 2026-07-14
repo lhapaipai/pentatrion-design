@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/react-vite";
 import { useState } from "react";
 import { Field } from "./Field";
-import { Toggle } from "./toggle/Toggle";
-import { Checkbox } from "./checkbox/Checkbox";
-import { Radio } from "./radio/Radio";
-import { Input } from "./text/Input";
+import { Toggle } from "../toggle/Toggle";
+import { Checkbox } from "../checkbox/Checkbox";
+import { Radio } from "../radio/Radio";
+import { Input } from "../text/Input";
 
 const meta = {
   title: "Components/fields/Field",

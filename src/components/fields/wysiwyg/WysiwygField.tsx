@@ -1,5 +1,5 @@
 import { useField, useControl, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import type { RefObject } from "react";
 import type { ToolbarVariantProps } from "./style";
 import type { WysiwygRef } from "./Wysiwyg";

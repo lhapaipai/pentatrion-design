@@ -1,5 +1,5 @@
 import { useField, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { Range } from "./Range";
 
 interface Props extends Omit<FieldProps, "errors" | "children"> {

@@ -1,5 +1,5 @@
 import { useField, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { RadioWithLegend } from "./Radio";
 import clsx from "clsx";
 import type { ReactNode } from "react";

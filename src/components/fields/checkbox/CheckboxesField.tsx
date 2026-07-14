@@ -1,5 +1,5 @@
 import { FieldName, useField } from "@conform-to/react/future";
-import { Field, FieldProps } from "../Field";
+import { Field, FieldProps } from "../field/Field";
 import { SelectOption } from "../select/types";
 import { Checkbox } from "./Checkbox";
 

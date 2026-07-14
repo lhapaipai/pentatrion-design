@@ -1,5 +1,5 @@
 import { getFieldValue, useField, useFormData, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { Input } from "./Input";
 import { Button } from "../../button";
 import { useState } from "react";

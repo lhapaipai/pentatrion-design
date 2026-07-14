@@ -1,7 +1,8 @@
 import { isValidElement, ReactNode, useId } from "react";
-import { type ThemeColor } from "../../types";
-import { Slot } from "../slot";
-import { useErrorsFormatter } from "./ErrorsFormatterContext";
+import { type ThemeColor } from "../../../types";
+import { isArrayOfString } from "../../../lib/arrUtil";
+import { Slot } from "../../slot";
+import { useTranslate } from "../../i18n";
 
 export interface FieldProps {
   label?: ReactNode;
@@ -30,8 +31,11 @@ export function Field({
   "data-testid": dataTestId,
   className,
 }: FieldProps) {
-  const formatErrors = useErrorsFormatter();
-  const errors = formatErrors ? formatErrors(rawErrors) : rawErrors;
+  const translate = useTranslate();
+  const errors =
+    isArrayOfString(rawErrors) && translate
+      ? rawErrors.map((k) => translate(k)).join(", ")
+      : rawErrors;
   const internalId = useId();
   const id = isValidElement<{ id?: string }>(children)
     ? children?.props.id

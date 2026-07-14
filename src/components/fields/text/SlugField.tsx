@@ -1,5 +1,5 @@
 import { useField, useControl, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { Input } from "./Input";
 import { slugify } from "../../../lib/strUtil";
 import type { ChangeEvent } from "react";

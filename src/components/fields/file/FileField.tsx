@@ -1,5 +1,5 @@
 import { useControl, useField, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { isMediaImage, MediaPreview } from "../../media-preview";
 import { Button } from "../../button/Button";
 // import { presets, type PresetKey } from "~shared/media/presets";

@@ -1,5 +1,5 @@
 import { FieldName, useField } from "@conform-to/react/future";
-import { Field, FieldProps } from "../Field";
+import { Field, FieldProps } from "../field/Field";
 import { Checkbox } from "./Checkbox";
 
 interface Props extends Omit<FieldProps, "children"> {

@@ -1,5 +1,5 @@
 import { FieldName } from "@conform-to/react/future";
-import { Field, FieldProps } from "../Field";
+import { Field, FieldProps } from "../field/Field";
 import { SelectHandle, SelectOption } from "./types";
 import { useField, useControl } from "@conform-to/react/future";
 import { Select } from "./Select";
@@ -29,6 +29,7 @@ export function SelectField({ name, placeholder, options, ...rest }: Props) {
         autoComplete="off"
         defaultValue={field.defaultValue}
         ref={control.register}
+        hidden
       />
       <Field errors={field.errors} data-testid={field.name} {...rest}>
         <Select

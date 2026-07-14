@@ -1,6 +1,6 @@
 import { useField, type FieldName } from "@conform-to/react/future";
 import { Altcha } from "./Altcha";
-import { Field, FieldProps } from "../Field";
+import { Field, FieldProps } from "../field/Field";
 import { useIntersectionObserver } from "../../../hooks";
 
 interface Props extends Omit<FieldProps, "errors" | "children"> {

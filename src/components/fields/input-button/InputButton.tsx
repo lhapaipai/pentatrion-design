@@ -2,16 +2,16 @@ import clsx from "clsx";
 import {
   ComponentPropsWithRef,
   FocusEventHandler,
+  KeyboardEventHandler,
   MouseEventHandler,
   ReactNode,
-  RefObject,
-  useRef,
 } from "react";
 import { ThemeColor } from "../../../types";
 import { inputConfig, sizeVariant } from "../text/Input";
+import { Button } from "../../button";
 
 export interface InputButtonProps extends Omit<
-  ComponentPropsWithRef<"input">,
+  ComponentPropsWithRef<"div">,
   "prefix" | "size" | "onClick" | "onFocus" | "onBlur"
 > {
   label?: string;
@@ -24,10 +24,9 @@ export interface InputButtonProps extends Omit<
 
   readOnly?: boolean;
   placeholder?: string;
-  ref?: RefObject<HTMLInputElement>;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  onFocus?: FocusEventHandler<HTMLButtonElement>;
-  onBlur?: FocusEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
+  onFocus?: FocusEventHandler<HTMLDivElement>;
+  onBlur?: FocusEventHandler<HTMLDivElement>;
 }
 export function InputButton({
   variant = "normal",
@@ -43,21 +42,21 @@ export function InputButton({
   onClick,
   onFocus,
   onBlur,
-  ref,
   ...rest
 }: InputButtonProps) {
-  const buttonRef = useRef<HTMLButtonElement>(null!);
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (disabled) return;
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      event.currentTarget.click();
+    }
+  };
+
   return (
     <div className="w-full">
-      <input
-        ref={ref}
-        className="hidden-focusable"
-        tabIndex={-1}
-        onFocus={() => void buttonRef.current.focus()}
-        {...rest}
-      />
-      <button
-        ref={buttonRef}
+      <div
+        role="button"
+        tabIndex={disabled ? -1 : 0}
         aria-disabled={disabled}
         aria-readonly={readOnly}
         data-color={color}
@@ -68,10 +67,11 @@ export function InputButton({
           sizeVariant[size],
           className,
         )}
-        type="button"
         onClick={onClick}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyDown={handleKeyDown}
+        {...rest}
       >
         {prefix && (
           <div
@@ -84,19 +84,26 @@ export function InputButton({
           </div>
         )}
         <div
-          data-color="yellow"
-          aria-disabled={disabled}
-          aria-readonly={readOnly}
-          className={clsx("flex flex-1 items-center", flexibleWidth && "w-0")}
+          className={clsx(
+            "flex flex-1 items-center truncate px-2",
+            flexibleWidth && "w-0",
+            !label && "text-gray-5",
+          )}
         >
-          <span className={clsx("flex flex-1 items-center truncate px-2", !label && "text-gray-5")}>
-            {label || placeholder}
-          </span>
-          <span className="text-gray-7 box-border inline-flex h-8 min-w-8 items-center justify-center rounded-full">
-            <i className="fe-angle-down"></i>
-          </span>
+          {label || placeholder}
         </div>
-      </button>
+        <Button
+          color="gray"
+          withRipple={false}
+          icon
+          variant="text"
+          focusable={false}
+          type="button"
+          size="input"
+        >
+          <i className="fe-angle-down"></i>
+        </Button>
+      </div>
     </div>
   );
 }

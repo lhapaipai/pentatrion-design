@@ -1,6 +1,6 @@
 import type { FieldName } from "@conform-to/react";
 import { useField, useControl } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { TotpInput } from "./TotpInput";
 
 interface Props extends Omit<FieldProps, "errors" | "children"> {

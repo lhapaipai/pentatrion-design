@@ -29,6 +29,6 @@ export function parseMediaValue(payload: unknown): Media | undefined {
   }
 }
 
-export function serializeMediaValue(value: Media | null | undefined): string | null {
-  return value == null ? null : JSON.stringify(value);
+export function serializeMediaValue(value: unknown): string | null {
+  return value == null ? null : typeof value === "string" ? value : JSON.stringify(value);
 }

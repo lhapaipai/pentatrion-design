@@ -1,5 +1,5 @@
 import { useField, useControl, type FieldName } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { Color } from "./Color";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
 import { useState } from "react";

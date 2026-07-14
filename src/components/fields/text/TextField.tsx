@@ -1,6 +1,7 @@
 import { FieldName, useField } from "@conform-to/react/future";
-import { Field, type FieldProps } from "../Field";
+import { Field, type FieldProps } from "../field/Field";
 import { Input, type InputProps } from "./Input";
+import { memo } from "react";
 
 interface Props extends Omit<FieldProps, "children"> {
   name: FieldName<string | null | undefined>;
@@ -16,7 +17,7 @@ interface Props extends Omit<FieldProps, "children"> {
   inputClassName?: InputProps["inputClassName"];
 }
 
-export function TextField({
+function TextFieldComponent({
   name,
   type,
   placeholder,
@@ -51,3 +52,5 @@ export function TextField({
     </Field>
   );
 }
+
+export const TextField = memo(TextFieldComponent);
