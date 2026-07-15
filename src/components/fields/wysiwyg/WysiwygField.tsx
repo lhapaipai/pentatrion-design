@@ -54,6 +54,7 @@ export function WysiwygField({
         defaultValue={control.defaultValue ?? ""}
         disabled={disabled}
         readOnly={readOnly}
+        hidden
       />
       <Field errors={field.errors} data-testid={field.name} {...rest}>
         <Wysiwyg

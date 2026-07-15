@@ -29,6 +29,29 @@ export function parseWysiwygValue(payload: unknown): WysiwygValue | undefined {
   }
 }
 
-export function serializeWysiwygValue(value: WysiwygValue | null | undefined): string | null {
-  return value == null ? null : JSON.stringify(value);
+// trie récursivement les clés des objets rencontrés afin que deux states lexical
+// sémantiquement identiques mais générés avec un ordre de clés différent produisent
+// la même chaîne (nécessaire pour une comparaison isDirty fiable)
+function sortKeysReplacer(_key: string, value: unknown): unknown {
+  if (value !== null && typeof value === "object" && !Array.isArray(value)) {
+    return Object.keys(value as Record<string, unknown>)
+      .sort()
+      .reduce<Record<string, unknown>>((sorted, key) => {
+        sorted[key] = (value as Record<string, unknown>)[key];
+        return sorted;
+      }, {});
+  }
+  return value;
+}
+
+export function serializeWysiwygValue(value: unknown): string | null {
+  try {
+    return value == null
+      ? null
+      : typeof value === "string"
+        ? value
+        : JSON.stringify({ state: (value as WysiwygValue).state }, sortKeysReplacer);
+  } catch {
+    return null;
+  }
 }

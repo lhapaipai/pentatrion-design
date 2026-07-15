@@ -41,6 +41,7 @@ export function ColorField({ name, ...rest }: Props) {
     <Field errors={field.errors} data-testid={field.name} {...rest}>
       <div>
         <input
+          hidden
           type="text"
           name={field.name}
           autoComplete="off"

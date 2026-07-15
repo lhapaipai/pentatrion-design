@@ -1,5 +1,7 @@
 export { Wysiwyg, type WysiwygRef } from "./Wysiwyg";
 export { WysiwygField } from "./WysiwygField";
+export { WysiwygReader } from "./WysiwygReader";
+export { stateToHtml } from "./config/html";
 export {
   WysiwygTranslationProvider,
   useWysiwygTranslation,
@@ -7,4 +9,4 @@ export {
   wysiwygTranslationsEn,
   wysiwygTranslationsFr,
 } from "./i18n";
-export { wysiwygSchema, type WysiwygValue } from "./types";
+export { wysiwygSchema, type WysiwygValue, parseWysiwygValue, serializeWysiwygValue } from "./types";
