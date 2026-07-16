@@ -4,7 +4,7 @@ import { Input, type InputProps } from "./Input";
 import { memo } from "react";
 
 interface Props extends Omit<FieldProps, "children"> {
-  name: FieldName<string | null | undefined>;
+  name: FieldName<string | number | null | undefined>;
   type?: InputProps["type"];
   placeholder?: InputProps["placeholder"];
   prefix?: InputProps["prefix"];
