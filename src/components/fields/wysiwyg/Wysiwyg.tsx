@@ -98,9 +98,9 @@ export function Wysiwyg({
   }, [disabled, readOnly]);
   const [floatingAnchorElem, setFloatingAnchorElem] = useState<HTMLDivElement | null>(null);
   const [isLinkEditMode, setIsLinkEditMode] = useState(false);
-  const onRef = (_floatingAnchorElem: HTMLDivElement) => {
-    if (_floatingAnchorElem !== null) {
-      setFloatingAnchorElem(_floatingAnchorElem);
+  const onRef = (floatingAnchorElem: HTMLDivElement) => {
+    if (floatingAnchorElem !== null) {
+      setFloatingAnchorElem(floatingAnchorElem);
     }
   };
 
