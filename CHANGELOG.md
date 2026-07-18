@@ -1,55 +1,86 @@
+## 1.2.1
+
+### Patch Changes
+
+- 82aed74: reconfigure github workflow
+
 ## 1.1.2
 
-- update dependencies
+### Patch Changes
+
+- 650d02f: update dependencies
 - migrate oxlint / oxfmt
 
 ## 1.1.1
 
-fix hydration mismatch with boolean attributes
+### Patch Changes
+
+- 9cc5fbe: fix hydration mismatch with boolean attributes
 
 ## 0.1.3
 
-autocomplete add autofocus option
+### Patch Changes
+
+- 275ae50: autocomplete add autofocus option
 
 ## 0.1.2
 
-fix file extension for imports and add tsc-alias
+### Patch Changes
+
+- bde366d: fix file extension for imports and add tsc-alias
 
 ## 0.0.14
 
-fix export .d.ts files
+### Patch Changes
+
+- e9075d5: fix export .d.ts files
 
 ## 0.0.13
 
-Pentatrion-design has its own repository !!
+### Patch Changes
+
+- fef7f38: Pentatrion-design has its own repository !!
 
 ## 0.0.12
-fix notificationsConsumer pointer event none
+
+### Patch Changes
+
+- fix notificationsConsumer pointer event none
 
 ## 0.0.11
 
-add input/button color
-fix notificationsProvider pointer event none
+### Patch Changes
+
+- add input/button color
+- fix notificationsProvider pointer event none
 
 ## 0.0.10
 
-add textarea
-modal without size className for more flexibility
-tabs without border-radius for more flexibility
+### Patch Changes
+
+- add textarea
+- modal without size className for more flexibility
+- tabs without border-radius for more flexibility
 
 ## 0.0.9
 
-modal add ComponentProps to parent
-modal fix forwardRef to functional component
+### Patch Changes
+
+- modal add ComponentProps to parent
+- modal fix forwardRef to functional component
 
 ## 0.0.8
 
-Range fix ComponentPropsWithRef import
-tsconfig remove extends from base
+### Patch Changes
+
+- Range fix ComponentPropsWithRef import
+- tsconfig remove extends from base
 
 ## 0.0.3
 
-Range add component
-LinkButton add component
-fix Toggle cursor pointer
-ResizeArea add more Props
+### Patch Changes
+
+- Range add component
+- LinkButton add component
+- fix Toggle cursor pointer
+- ResizeArea add more Props
