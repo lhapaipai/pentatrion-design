@@ -15,11 +15,11 @@
     "fontello": "fontello",
     "check:format": "oxfmt ./src",
     "check:lint": "oxlint ./src",
-    "check:types": "tsc --noEmit -p tsconfig.build.json",
-    "check": "pnpm check:format && pnpm check:lint && pnpm check:types",
+    "check:type": "tsc --noEmit -p tsconfig.build.json",
+    "check": "npm run check:format && npm run check:lint && npm run check:types",
     "test": "vitest",
     "test-run": "vitest --run",
-    "ci": "pnpm check && pnpm test-run"
+    "ci": "npm run check && npm run test-run"
   },
   "type": "module",
   "devDependencies": {
@@ -354,6 +354,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
+    "@changesets/cli": "^2.31.1",
     "lodash.debounce": "^4.0.8"
   },
   "volta": {

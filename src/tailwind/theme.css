@@ -74,64 +74,24 @@
   --color-gray-8: #000000;
   --color-gray-text: var(--color-gray-7);
 
-  --color-gray-alpha-0: color-mix(
-    in oklab,
-    var(--color-gray-8) 5%,
-    transparent
-  );
-  --color-gray-alpha-1: color-mix(
-    in oklab,
-    var(--color-gray-8) 10%,
-    transparent
-  );
-  --color-gray-alpha-2: color-mix(
-    in oklab,
-    var(--color-gray-8) 15%,
-    transparent
-  );
-  --color-gray-alpha-3: color-mix(
-    in oklab,
-    var(--color-gray-8) 20%,
-    transparent
-  );
-  --color-gray-alpha-4: color-mix(
-    in oklab,
-    var(--color-gray-8) 25%,
-    transparent
-  );
-  --color-gray-alpha-5: color-mix(
-    in oklab,
-    var(--color-gray-8) 30%,
-    transparent
-  );
-  --color-gray-alpha-6: color-mix(
-    in oklab,
-    var(--color-gray-8) 35%,
-    transparent
-  );
-  --color-gray-alpha-7: color-mix(
-    in oklab,
-    var(--color-gray-8) 40%,
-    transparent
-  );
-  --color-gray-alpha-8: color-mix(
-    in oklab,
-    var(--color-gray-8) 45%,
-    transparent
-  );
+  --color-gray-alpha-0: color-mix(in oklab, var(--color-gray-8) 5%, transparent);
+  --color-gray-alpha-1: color-mix(in oklab, var(--color-gray-8) 10%, transparent);
+  --color-gray-alpha-2: color-mix(in oklab, var(--color-gray-8) 15%, transparent);
+  --color-gray-alpha-3: color-mix(in oklab, var(--color-gray-8) 20%, transparent);
+  --color-gray-alpha-4: color-mix(in oklab, var(--color-gray-8) 25%, transparent);
+  --color-gray-alpha-5: color-mix(in oklab, var(--color-gray-8) 30%, transparent);
+  --color-gray-alpha-6: color-mix(in oklab, var(--color-gray-8) 35%, transparent);
+  --color-gray-alpha-7: color-mix(in oklab, var(--color-gray-8) 40%, transparent);
+  --color-gray-alpha-8: color-mix(in oklab, var(--color-gray-8) 45%, transparent);
 
   --shadow-*: initial;
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --shadow-xs-active: 0 0px 2px 0 rgb(0 0 0 / 0.1);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.15), 0 1px 2px -1px rgb(0 0 0 / 0.15);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.15),
-    0 2px 4px -2px rgb(0 0 0 / 0.15);
-  --shadow-md-active: 0 3px 6px -1px rgb(0 0 0 / 0.15),
-    0 1px 4px -2px rgb(0 0 0 / 0.15);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.15),
-    0 4px 6px -2px rgb(0 0 0 / 0.15);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.15),
-    0 8px 10px -6px rgb(0 0 0 / 0.15);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-md-active: 0 3px 6px -1px rgb(0 0 0 / 0.15), 0 1px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -2px rgb(0 0 0 / 0.15);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.15), 0 8px 10px -6px rgb(0 0 0 / 0.15);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.35);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
   --shadow-dark: 0 0 0 1px var(--color-gray-2);
@@ -141,8 +101,9 @@
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-fontello: fontello;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
 
   --text-*: initial;
   /** 80px size / 84px high / bold */

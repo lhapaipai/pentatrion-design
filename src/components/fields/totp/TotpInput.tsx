@@ -1,12 +1,4 @@
-import {
-  ChangeEvent,
-  Fragment,
-  InputEvent,
-  KeyboardEvent,
-  useEffect,
-  useMemo,
-  useRef,
-} from "react";
+import { Fragment, InputEvent, KeyboardEvent, useEffect, useMemo, useRef } from "react";
 import { Input } from "../text/Input";
 import clsx from "clsx";
 

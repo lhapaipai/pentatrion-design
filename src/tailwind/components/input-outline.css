@@ -17,8 +17,7 @@
 :is(
   .p8n-input-checkbox:not(:checked, .checked),
   .p8n-input-toggle:not(:checked, .checked),
-  .p8n-input-radio:not(:checked, .checked),
-
+  .p8n-input-radio:not(:checked, .checked)
 ) {
   @apply hover:bg-custom-1/50;
 }

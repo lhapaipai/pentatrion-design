@@ -1,9 +1,8 @@
-
 .p8n-input-audio-range::-moz-range-thumb {
   @apply opacity-0 h-8 w-8 scale-45 bg-custom-4;
 }
 .p8n-input-audio-range:hover::-moz-range-thumb {
-  @apply opacity-100 ;
+  @apply opacity-100;
 }
 .p8n-input-audio-range::-moz-range-thumb:active {
   @apply scale-55;
@@ -23,7 +22,7 @@
   @apply opacity-0 h-8 w-8 scale-45 bg-custom-4 transition-opacity duration-300;
 }
 .p8n-input-audio-range:hover::-webkit-slider-thumb {
-  @apply opacity-100 ;
+  @apply opacity-100;
 }
 .p8n-input-audio-range::-webkit-slider-thumb:active {
   @apply scale-60;
@@ -38,8 +37,6 @@
 .p8n-input-audio-range::-webkit-slider-runnable-track {
   @apply h-8;
 }
-
-
 
 .p8n-input-range::-moz-range-thumb {
   @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];

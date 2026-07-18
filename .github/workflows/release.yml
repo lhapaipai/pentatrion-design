@@ -4,48 +4,71 @@ on:
   workflow_dispatch:
 
   push:
-    tags:
-      - "v*.*.*"
+    branches: [main]
 
 jobs:
-  build:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+      version: ${{ steps.check.outputs.local }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check version change
+        id: check
+        run: |
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          PUBLISHED_VERSION=$(npm view pentatrion-design version 2>/dev/null || echo "0.0.0")
+          echo "local=$LOCAL_VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$LOCAL_VERSION" != "$PUBLISHED_VERSION" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  release:
+    needs: check
+    if: needs.check.outputs.changed == 'true'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - uses: pnpm/action-setup@v4
-      # pnpm version is specified in the package.json packageManager section
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: pnpm
-        registry-url: https://registry.npmjs.org
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 26.5.0
+          registry-url: https://registry.npmjs.org
 
-    - name: "Install JS dependencies"
-      run: "pnpm i --frozen-lockfile"
+      - name: "Install JS dependencies"
+        run: "npm ci"
 
-    - name: Build library
-      run: pnpm run build
+      - name: Typecheck / Eslint
+        run: npm run check:type
 
-    # - name: Release
-    #   uses: softprops/action-gh-release@v2
-    #   if: github.ref_type == 'tag'
-    #   with:
-    #     token: ${{ secrets.DESIGN_RELEASE_GITHUB_TOKEN }}
+      - name: Build library
+        run: npm run build
 
-    # - name: Creating .npmrc
-    #   run: |
-    #     cat << EOF > "./.npmrc"
-    #       //registry.npmjs.org/:_authToken=$NPM_TOKEN
-    #     EOF
-    #   env:
-    #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Update pkg mode
+        run: node update-pkg-mode.mjs dist
 
-    # - name: Publish package
-    #   run: npm i -g npm@^11.5.2 && npm publish --provenance --access public
-    #   env:
-    #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish package
+        run: npm i -g npm@^11.5.2 && npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Tag release
+        run: |
+          git tag "v${{ needs.check.outputs.version }}"
+          git push origin "v${{ needs.check.outputs.version }}"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ needs.check.outputs.version }}"
+          token: ${{ secrets.GITHUB_TOKEN }}

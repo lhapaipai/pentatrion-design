@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import clsx from "clsx";
 import { Button } from "../../button/Button";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
-import type { Media } from "./FileField";
+import type { Media } from "./types";
 
 interface Props {
   onPick: (media: Media | null) => void;
