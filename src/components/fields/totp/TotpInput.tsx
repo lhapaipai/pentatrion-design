@@ -1,4 +1,12 @@
-import { ChangeEvent, Fragment, KeyboardEvent, useEffect, useMemo, useRef } from "react";
+import {
+  ChangeEvent,
+  Fragment,
+  InputEvent,
+  KeyboardEvent,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Input } from "../text/Input";
 import clsx from "clsx";
 
@@ -131,9 +139,9 @@ export function TotpInput({
                   }
                 }
               }}
-              onInput={(event: ChangeEvent<HTMLInputElement>) => {
+              onInput={(event: InputEvent<HTMLInputElement>) => {
                 // onChange won't trigger if the values are the same
-                if (event.target.value === value) {
+                if ((event.target as HTMLInputElement).value === value) {
                   focus(i + 1);
                 }
               }}
