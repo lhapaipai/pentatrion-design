@@ -6,6 +6,7 @@ import {
   cloneElement,
   isValidElement,
   useEffect,
+  useEffectEvent,
   useRef,
   useState,
 } from "react";
@@ -27,7 +28,7 @@ import {
 
 import { ContextMenuItemProps } from "./ContextMenuItem";
 import { Dialog } from "../dialog/Dialog";
-import { useEffectEvent, useRefDebounce } from "../../hooks";
+import { useRefDebounce } from "../../hooks";
 
 type CustomContextEvent = CustomEvent<{ emulated: boolean; originalEvent: Event }>;
 
@@ -145,7 +146,7 @@ export function ContextMenu({ targetRef, children, style, eventName = "contextme
       // console.log("remove contextmenu", targetRef);
       stableTarget.removeEventListener(eventName as "contextmenu", onContextMenuStable);
     };
-  }, [eventName, onContextMenuStable, targetRef]);
+  }, [eventName, targetRef]);
 
   return (
     <FloatingPortal>

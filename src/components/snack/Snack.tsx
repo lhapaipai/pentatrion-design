@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { useEffect } from "react";
 
 import { Button } from "../button";
-import { useEffectEvent } from "../../hooks";
 import { Dialog } from "../dialog";
 import { Loader } from "../loader";
 import { Message } from "../../types";
@@ -19,16 +18,14 @@ export function Snack({
   canClose = false,
   onRemove = () => {},
 }: SnackProps) {
-  const onRemoveStable = useEffectEvent(onRemove);
-
   useEffect(() => {
     if (expiration === -1) {
       return;
     }
 
-    const timeoutId = setTimeout(() => onRemoveStable(), expiration);
+    const timeoutId = setTimeout(() => onRemove(), expiration);
     return () => void clearTimeout(timeoutId);
-  }, [onRemoveStable, expiration]);
+  }, [onRemove, expiration]);
 
   return (
     <Dialog

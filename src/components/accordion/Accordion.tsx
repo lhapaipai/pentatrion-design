@@ -1,6 +1,5 @@
 import { ReactNode, useMemo, useState } from "react";
 import { AccordionContext } from "./useAccordion";
-import { useEffectEvent } from "../../hooks";
 
 interface Props {
   value?: string | null;
@@ -22,8 +21,6 @@ export function Accordion({
 
   const value = (isControlled ? controlledValue : unControlledValue) ?? null;
 
-  const stableOnChange = useEffectEvent(onChange);
-
   const context = useMemo(
     () => ({
       value,
@@ -31,10 +28,10 @@ export function Accordion({
         if (!isControlled) {
           setUnControlledValue(value);
         }
-        stableOnChange(value);
+        onChange(value);
       },
     }),
-    [value, stableOnChange, isControlled],
+    [value, onChange, isControlled],
   );
 
   return <AccordionContext.Provider value={context}>{children}</AccordionContext.Provider>;

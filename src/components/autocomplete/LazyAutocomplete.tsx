@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Autocomplete, AutocompleteProps } from "./Autocomplete";
 import { OptionLike, Option } from "../select-legacy";
 import { getOptionLabel } from "./util";
-import { useStateDebounce, useEffectEvent, useIsomorphicLayoutEffect } from "../../hooks";
+import { useStateDebounce, useIsomorphicLayoutEffect } from "../../hooks";
 
 interface Props<O extends OptionLike = Option>
   // Omit "searchValue" | "onChangeSearchValue" | "options"
@@ -21,9 +21,6 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
   onChangeSelection,
   ...rest
 }: Props<O>) {
-  const onChangeSelectionStable = useEffectEvent(onChangeSelection);
-  const onChangeSearchValueCallbackStable = useEffectEvent(onChangeSearchValueCallback);
-
   const [searchValue, searchValueDebounced, setSearchValue] = useStateDebounce(
     selection ? getOptionLabel(selection) : "",
     debounce,
@@ -40,12 +37,12 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
 
   const handleChangeSelection = useCallback(
     (selection: O | null) => {
-      onChangeSelectionStable(selection);
+      onChangeSelection(selection);
       if (selection) {
         setOptions([]);
       }
     },
-    [onChangeSelectionStable],
+    [onChangeSelection],
   );
 
   // side effect, update the searchValue <input /> value when
@@ -85,7 +82,7 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
 
     setLoading(true);
 
-    onChangeSearchValueCallbackStable(searchValueDebounced)
+    onChangeSearchValueCallback(searchValueDebounced)
       ?.then((newOptions) => {
         setLoading(false);
 
@@ -101,7 +98,7 @@ export function LazyAutocomplete<O extends OptionLike = Option>({
       setLoading(false);
       abort = true;
     };
-  }, [selection, searchValueDebounced, onChangeSearchValueCallbackStable]);
+  }, [selection, searchValueDebounced, onChangeSearchValueCallback]);
 
   return (
     <Autocomplete

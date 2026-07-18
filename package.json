@@ -55,7 +55,6 @@
     "@types/react-dom": "^19.2.3",
     "@use-gesture/react": "^10.3.1",
     "@vitejs/plugin-react": "^6.0.3",
-    "altcha": "^2.3.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "chokidar": "^5.0.0",
     "class-variance-authority": "^0.7.1",
@@ -90,7 +89,6 @@
     "@lexical/selection": "*",
     "@lexical/utils": "*",
     "@types/geojson": "*",
-    "altcha": ">=2",
     "class-variance-authority": "*",
     "clsx": "*",
     "lexical": "*",
@@ -122,9 +120,6 @@
       "optional": true
     },
     "@lexical/utils": {
-      "optional": true
-    },
-    "altcha": {
       "optional": true
     },
     "class-variance-authority": {
@@ -194,10 +189,6 @@
     "./fields/field": {
       "types": "./src/components/fields/field/index.ts",
       "default": "./src/components/fields/field/index.ts"
-    },
-    "./fields/altcha": {
-      "types": "./src/components/fields/altcha/index.ts",
-      "default": "./src/components/fields/altcha/index.ts"
     },
     "./fields/checkbox": {
       "types": "./src/components/fields/checkbox/index.ts",

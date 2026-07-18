@@ -34,7 +34,6 @@ import type { Option } from "./interface";
 import clsx from "clsx";
 import { Input, sizeVariant } from "../fields/text/Input";
 import { Button } from "../button/Button";
-import { useEffectEvent } from "../../hooks/useEffectEvent";
 import { Dialog } from "../dialog/Dialog";
 import { ThemeColor } from "../../types";
 
@@ -107,8 +106,6 @@ export function SelectLegacy<O extends Option>({
 }: SelectProps<O>) {
   const isControlled = typeof controlledValue !== "undefined";
   const divSelectionRef = useRef<HTMLDivElement>(null!);
-
-  const onChangeStable = useEffectEvent(onChange);
 
   const [uncontrolledSelectedIndex, setUncontrolledSelectedIndex] = useState<number | null>(() => {
     if (typeof defaultValue === "undefined") {
@@ -236,13 +233,13 @@ export function SelectLegacy<O extends Option>({
           value: index === null ? null : filteredOptions[index].value,
         },
       };
-      onChangeStable?.(event);
+      onChange?.(event);
 
       if (!isControlled) {
         setUncontrolledSelectedIndex(index);
       }
     },
-    [isControlled, onChangeStable, filteredOptions, name],
+    [isControlled, onChange, filteredOptions, name],
   );
 
   const selectContext = useMemo(

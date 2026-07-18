@@ -29,7 +29,6 @@ import {
 } from "@floating-ui/react";
 import { AutocompleteContext } from "./useAutocompleteContext";
 import clsx from "clsx";
-import { useEffectEvent } from "../../hooks";
 
 import { getOptionLabel, getOptionValue } from "./util";
 import { Button } from "../button";
@@ -106,9 +105,6 @@ export function Autocomplete<O extends OptionLike = Option>({
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const onChangeSearchValueStable = useEffectEvent(onChangeSearchValue);
-  const onChangeSelectionStable = useEffectEvent(onChangeSelection);
-
   const OptionComponent = autocompleteOptionComponent ?? AutocompleteOption;
 
   const listRef = useRef<Array<HTMLElement | null>>([]);
@@ -156,10 +152,10 @@ export function Autocomplete<O extends OptionLike = Option>({
   function handleChangeSearchValue(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
 
-    onChangeSearchValueStable(value, false);
+    onChangeSearchValue(value, false);
 
     if (value !== searchValue && selection !== null) {
-      onChangeSelectionStable(null);
+      onChangeSelection(null);
       setActiveIndex(null);
       return;
     }
@@ -180,18 +176,18 @@ export function Autocomplete<O extends OptionLike = Option>({
   const handleSelect = useCallback(
     (index: number | null) => {
       if (index === null) {
-        onChangeSelectionStable(null);
+        onChangeSelection(null);
       } else if (options[index]) {
         const newSelection = options[index];
-        onChangeSelectionStable(newSelection);
+        onChangeSelection(newSelection);
 
-        onChangeSearchValueStable(getOptionLabel(newSelection), true);
+        onChangeSearchValue(getOptionLabel(newSelection), true);
       }
       setActiveIndex(null);
       setIsOpen(false);
     },
 
-    [options, onChangeSelectionStable, onChangeSearchValueStable],
+    [options, onChangeSelection, onChangeSearchValue],
   );
 
   const autocompleteContext = useMemo(
@@ -275,9 +271,9 @@ export function Autocomplete<O extends OptionLike = Option>({
               variant="text"
               onClick={() => {
                 setIsOpen(false);
-                onChangeSelectionStable(null);
+                onChangeSelection(null);
                 setActiveIndex(null);
-                onChangeSearchValueStable("", true);
+                onChangeSearchValue("", true);
               }}
             >
               <i className="fe-cancel"></i>

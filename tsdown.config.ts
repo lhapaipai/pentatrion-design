@@ -19,7 +19,6 @@ export default defineConfig({
     "src/components/highlight/index.ts",
     "src/components/href/index.ts",
     "src/components/fields/field/index.ts",
-    "src/components/fields/altcha/index.ts",
     "src/components/fields/checkbox/index.ts",
     "src/components/fields/radio/index.ts",
     "src/components/fields/color/index.ts",

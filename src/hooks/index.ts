@@ -2,7 +2,6 @@ export { useRipple } from "./useRipple";
 export { useIsMounted } from "./useIsMounted";
 export { useIsClosing } from "./useIsClosing";
 export { usePrevious } from "./usePrevious";
-export { useEffectEvent } from "./useEffectEvent";
 export { useDebounce, useStateDebounce, useRefDebounce } from "./useDebounce";
 export { useCopyToClipboard } from "./useCopyToClipboard";
 export { useEventListener } from "./useEventListener";
