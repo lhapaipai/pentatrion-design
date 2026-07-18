@@ -1,3 +1,9 @@
+## 1.2.2
+
+### Patch Changes
+
+- 7f9d59b: update dependencies, fix oxlint errors
+
 ## 1.2.1
 
 ### Patch Changes
