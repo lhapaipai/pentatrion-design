@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 26.5.0
+
+      - name: "Install JS dependencies"
+        run: "npm ci"
+
+      - name: Format
+        run: npm run check:format
+
+      - name: Typecheck
+        run: npm run check:type
+
+      - name: Lint
+        run: npm run check:lint
+
+      - name: Test
+        run: npm run test-run

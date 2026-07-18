@@ -20,10 +20,9 @@
     "check:format": "oxfmt ./src",
     "check:lint": "oxlint ./src",
     "check:type": "tsc --noEmit -p tsconfig.build.json",
-    "check": "npm run check:format && npm run check:lint && npm run check:types",
+    "check": "npm run check:format && npm run check:lint && npm run check:type",
     "test": "vitest",
-    "test-run": "vitest --run",
-    "ci": "npm run check && npm run test-run"
+    "test-run": "vitest --run"
   },
   "type": "module",
   "devDependencies": {

@@ -13,6 +13,7 @@ export function useMeasure(elementRef: RefObject<HTMLElement | null>) {
   // compute the correct size as soon as possible. However, once the element is
   // stable, we also want to watch for changes to the element. The `identity`
   // state can be used to recompute the size.
+  // oxlint-disable-next-line react-hooks/exhaustive-deps
   const size = useMemo(() => computeSize(elementRef.current), [elementRef, identity]);
 
   useEffect(() => {
