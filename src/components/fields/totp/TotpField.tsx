@@ -8,20 +8,22 @@ interface Props extends Omit<FieldProps, "errors" | "children"> {
 }
 export function TotpField({ name, ...rest }: Props) {
   const field = useField(name);
-  const ctrl = useControl({
+  const control = useControl({
     defaultValue: field.defaultValue,
   });
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
-      <TotpInput
-        name={name}
-        type="number"
-        length={6}
-        key={field.key}
-        value={ctrl.value ?? ""}
-        onValue={ctrl.change}
-      />
-    </Field>
+    <>
+      <input type="text" name={field.name} ref={control.register} hidden />
+      <Field errors={field.errors} data-testid={field.name} {...rest}>
+        <TotpInput
+          type="number"
+          length={6}
+          key={field.key}
+          value={control.value ?? ""}
+          onValue={control.change}
+        />
+      </Field>
+    </>
   );
 }
