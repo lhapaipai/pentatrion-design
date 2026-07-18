@@ -5,6 +5,10 @@
   "keywords": [],
   "author": "Hugues Tavernier",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhapaipai/pentatrion-design.git"
+  },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
