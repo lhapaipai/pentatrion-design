@@ -16,3 +16,12 @@ export {
   parseWysiwygValue,
   serializeWysiwygValue,
 } from "./types";
+
+export { SubmitOnEnterPlugin } from "./plugins/SubmitOnEnterPlugin";
+
+export {
+  chatContentEditableStyle,
+  contentEditableStyles,
+  defaultContentEditableStyle,
+  toolbarVariants,
+} from "./style";
