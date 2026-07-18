@@ -25,7 +25,6 @@ import { setFloatingElemPositionForLinkEditor } from "../utils/setFloatingElemPo
 import { Button } from "../../../button";
 import { proseLinkVariant } from "../../../href";
 import { Dialog } from "../../../dialog";
-import "./index.css";
 import clsx from "clsx";
 import { FloatingOverlay } from "@floating-ui/react";
 

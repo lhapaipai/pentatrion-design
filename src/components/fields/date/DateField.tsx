@@ -35,8 +35,6 @@ export function DateField({ name, type = "datetime-local", ...rest }: Props) {
   const field = useField(name);
   const dateInputRef = useRef<HTMLInputElement>(null!);
 
-  console.log("fieldDefaultValue", field.defaultValue);
-
   const control = useControl<Date, string>({
     defaultValue: field.defaultValue,
     // only for control.payload
