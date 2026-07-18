@@ -9,7 +9,7 @@
 Créez un nouveau projet Vite + React v19 + TailwindCSS v4. [Official doc](https://tailwindcss.com/docs/installation/using-vite)
 
 ```bash
-pnpm create vite my-app
+npm create vite@latest my-app
 
 # 1. React
 # 2. TypeScript + SWC
@@ -17,9 +17,9 @@ pnpm create vite my-app
 cd my-app
 
 # dépendances
-pnpm add -D tailwindcss @tailwindcss/vite prettier-plugin-tailwindcss
+npm i -D tailwindcss @tailwindcss/vite prettier-plugin-tailwindcss
 
-pnpm add pentatrion-design clsx class-variance-authority
+npm i pentatrion-design clsx class-variance-authority
 ```
 Supprimer les fichiers inutiles
 
@@ -52,8 +52,8 @@ Configuration recommandée
 /* src/index.css */
 @import "tailwindcss";
 
-@source "../node_modules/pentatrion-design/dist/components";
-@source "../node_modules/pentatrion-design/dist/hooks";
+@source "./node_modules/pentatrion-design/dist/components";
+@source "./node_modules/pentatrion-design/dist/hooks";
 
 @import "pentatrion-design/tailwind";
 
@@ -77,6 +77,7 @@ si on désire plus de contrôle sur nos imports
 @import "tailwindcss";
 
 @source "./node_modules/pentatrion-design/dist/components";
+@source "./node_modules/pentatrion-design/dist/hooks";
 
 @import "pentatrion-design/tailwind/theme.css";
 @import "pentatrion-design/tailwind/variants.css";
@@ -143,3 +144,47 @@ fichier `tsconfig.json`.
   }
 }
 ```
+
+## Développement et release
+
+### Développement
+
+Pas d'étape de build nécessaire : en mode développement, `package.json` pointe directement vers `src/*.ts` (`update-pkg-mode.mjs` ne bascule vers `dist/*` qu'en CI, juste avant publication).
+
+```bash
+npm run storybook    # storybook dev, pour visualiser/tester les composants isolément
+npm run ci           # lint + types + tests, à lancer avant de proposer une PR
+```
+
+### Changesets
+
+Chaque changement notable (nouveau composant, fix, breaking change) doit s'accompagner d'un changeset :
+
+```bash
+npx changeset add
+```
+
+Répondre au questionnaire (package concerné, type de bump `patch`/`minor`/`major`, résumé du changement). Ça crée un fichier dans `.changeset/` qui sera consommé au moment de la release. Un changeset par changement, autant que nécessaire avant de releaser.
+
+### Release
+
+Quand on est prêt à publier une nouvelle version :
+
+```bash
+npx changeset version   # bump package.json + génère/complète CHANGELOG.md, supprime les changesets consommés
+git add -A
+git commit -m "chore: release"
+git push
+```
+
+Le push sur `main` déclenche `.github/workflows/release.yml`, qui :
+
+1. Compare la version de `package.json` à celle publiée sur npm.
+2. Si elle a changé : typecheck, build, publie sur npm (`--provenance --access public`), pousse un tag `vX.Y.Z`, crée la release GitHub correspondante.
+
+Aucune autre action manuelle n'est nécessaire — pas de tag ni de release GitHub à créer soi-même.
+
+### Storybook
+
+Une fois `release.yml` terminé avec succès, `.github/workflows/deploy-storybook.yml` se déclenche automatiquement (`workflow_run`) et republie [design.pentatrion.com](https://design.pentatrion.com) avec la version tout juste publiée.
+
