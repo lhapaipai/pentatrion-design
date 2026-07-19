@@ -1,3 +1,9 @@
+## 1.2.4
+
+### Patch Changes
+
+- fix a11y InputButton
+
 ## 1.2.3
 
 ### Patch Changes
