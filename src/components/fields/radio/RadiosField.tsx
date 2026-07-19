@@ -5,18 +5,27 @@ import clsx from "clsx";
 import { buttonGroupVariants } from "../../button";
 import { Radio } from "./Radio";
 
-interface Props extends Omit<FieldProps, "children"> {
+interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<string | number | undefined | null>;
   options: readonly SelectOption[];
   asButton?: boolean;
   direction?: "horizontal" | "vertical";
 }
 
-export function RadiosField({ name, options, className, asButton, direction, ...rest }: Props) {
+export function RadiosField({
+  name,
+  options,
+  className,
+  asButton,
+  direction,
+  id: forcedId,
+  ...rest
+}: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} group errors={field.errors} data-testid={field.name} {...rest}>
       <div
         className={clsx(
           className,

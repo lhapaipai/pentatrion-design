@@ -1,4 +1,4 @@
-import { isValidElement, ReactNode, useId } from "react";
+import { ReactNode, useId } from "react";
 import { type ThemeColor } from "../../../types";
 import { isArrayOfString } from "../../../lib/arrUtil";
 import { Slot } from "../../slot";
@@ -13,6 +13,13 @@ export interface FieldProps {
   warning?: ReactNode | boolean;
   children: ReactNode;
   id?: string;
+  /**
+   * Set when children renders multiple controls (checkboxes, radios, digit inputs)
+   * instead of a single labelable element: the label gets its own id and the
+   * group is associated via aria-labelledby instead of label[for], since a single
+   * htmlFor/id pair can't target one control among several.
+   */
+  group?: boolean;
   preventLayerShift?: boolean;
   "data-testid"?: string;
   className?: string;
@@ -27,6 +34,7 @@ export function Field({
   warning,
   id: providedId,
   children,
+  group = false,
   preventLayerShift = true,
   "data-testid": dataTestId,
   className,
@@ -37,9 +45,7 @@ export function Field({
       ? rawErrors.map((k) => translate(k)).join(", ")
       : rawErrors;
   const internalId = useId();
-  const id = isValidElement<{ id?: string }>(children)
-    ? children?.props.id
-    : (providedId ?? internalId);
+  const id = providedId ?? internalId;
 
   const labelElement = label && <span>{label}</span>;
   const hintElement = hint && <span className="text-body-sm text-gray-6">{hint}</span>;
@@ -69,20 +75,29 @@ export function Field({
   const showFooter = preventLayerShift || errorsElement || warningElement;
 
   const testIdProp = dataTestId ? { "data-testid": `input-field-${dataTestId}` } : {};
+  const groupLabelProps = group && showLabel ? { "aria-labelledby": id } : {};
 
   return (
-    <div role="group" className={className} {...testIdProp}>
+    <div role="group" className={className} {...testIdProp} {...groupLabelProps}>
       {showLabel &&
         (label || hint ? (
-          <label className="mb-1 flex flex-wrap items-center justify-between" htmlFor={id}>
+          <label
+            id={group ? id : undefined}
+            htmlFor={group ? undefined : id}
+            className="mb-1 flex flex-wrap items-center justify-between"
+          >
             {labelElement}
             {hintElement}
           </label>
         ) : (
-          <label htmlFor={id} className="invisible"></label>
+          <label
+            id={group ? id : undefined}
+            htmlFor={group ? undefined : id}
+            className="invisible"
+          ></label>
         ))}
       {description && <div className="text-body-sm text-gray-6 mb-2">{description}</div>}
-      <Slot id={id} color={color}>
+      <Slot id={group ? undefined : id} color={color}>
         {children}
       </Slot>
       {showFooter && (

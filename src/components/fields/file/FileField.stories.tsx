@@ -81,7 +81,7 @@ const Playbook = () => {
       <div className="max-w-lg">
         <FormProvider context={form.context}>
           <form {...form.props} method="post">
-            <FileField name={fields.avatar.name as FieldName<Media | null>} />
+            <FileField label="Avatar" name={fields.avatar.name as FieldName<Media | null>} />
 
             <Button>Valider</Button>
           </form>

@@ -6,13 +6,14 @@ import { useState } from "react";
 import { getPasswordStrength, gradientVariantFromScore } from "../../../lib/pass-checker";
 import clsx from "clsx";
 
-interface Props extends Omit<FieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | undefined | null>;
   showScore?: boolean;
 }
 
-export function PasswordField({ name, showScore = false, ...rest }: Props) {
+export function PasswordField({ name, showScore = false, id: forcedId, ...rest }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
   const [showPassword, setShowPassword] = useState(false);
 
   const value = useFormData(field.formId, (formData) =>
@@ -22,7 +23,7 @@ export function PasswordField({ name, showScore = false, ...rest }: Props) {
   const passwordScore = getPasswordStrength(value);
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
       <Input
         className="relative overflow-hidden"
         suffix={

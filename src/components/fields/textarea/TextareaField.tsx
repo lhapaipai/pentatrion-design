@@ -2,16 +2,17 @@ import { useField, type FieldName } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
 import { Textarea } from "./Textarea";
 
-interface Props extends Omit<FieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null>;
   textareaClassName?: string;
 }
 
-export function TextareaField({ name, textareaClassName, ...rest }: Props) {
+export function TextareaField({ name, textareaClassName, id: forcedId, ...rest }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
       <Textarea name={field.name} defaultValue={field.defaultValue} className={textareaClassName} />
     </Field>
   );

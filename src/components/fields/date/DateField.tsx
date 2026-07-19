@@ -3,7 +3,7 @@ import { Field, FieldProps } from "../field/Field";
 import { Input } from "../text/Input";
 import { useRef } from "react";
 
-interface Props extends Omit<FieldProps, "children"> {
+interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<Date | null | undefined>;
   type?: "datetime-local" | "date";
 }
@@ -31,8 +31,9 @@ function fromDatetimeLocalValue(value: string): Date {
   return new Date(year, month - 1, day, hours, minutes);
 }
 
-export function DateField({ name, type = "datetime-local", ...rest }: Props) {
+export function DateField({ name, type = "datetime-local", id: forcedId, ...rest }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
   const dateInputRef = useRef<HTMLInputElement>(null!);
 
   const control = useControl<Date, string>({
@@ -52,7 +53,7 @@ export function DateField({ name, type = "datetime-local", ...rest }: Props) {
   return (
     <>
       <input type="text" name={field.name} ref={control.register} hidden />
-      <Field errors={field.errors} data-testid={field.name} {...rest}>
+      <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
         <Input
           type={type}
           ref={dateInputRef}

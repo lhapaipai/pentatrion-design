@@ -44,7 +44,7 @@ const Playbook = () => {
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <ColorField name={fields.color.name} />
+          <ColorField label="Color" name={fields.color.name} />
 
           <Button>Valider</Button>
         </form>

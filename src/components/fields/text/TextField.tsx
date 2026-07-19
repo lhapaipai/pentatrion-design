@@ -2,7 +2,7 @@ import { FieldName, useField } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
 import { Input, type InputProps } from "./Input";
 
-interface Props extends Omit<FieldProps, "children"> {
+interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<string | number | null | undefined>;
   type?: InputProps["type"];
   placeholder?: InputProps["placeholder"];
@@ -28,12 +28,14 @@ export function TextField({
   disabled,
   readOnly,
   inputClassName,
+  id: forcedId,
   ...rest
 }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
       <Input
         name={field.name}
         defaultValue={field.defaultValue}

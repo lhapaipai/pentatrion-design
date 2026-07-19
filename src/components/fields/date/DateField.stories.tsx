@@ -56,7 +56,7 @@ const Playbook = () => {
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <DateField name={fields.birthday.name} />
+          <DateField label="Birthday" name={fields.birthday.name} />
 
           <Button>Valider</Button>
         </form>

@@ -6,17 +6,18 @@ import { buttonGroupVariants } from "../../button";
 
 export type RadioButtonIconOption = { value: string; icon: string; label: string };
 
-interface Props extends Omit<FieldProps, "children"> {
+interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<string>;
   options: RadioButtonIconOption[];
   iconClassName?: string;
 }
 
-export function RadiosButtonIconField({ name, options, iconClassName, ...rest }: Props) {
+export function RadiosButtonIconField({ name, options, iconClassName, id: forcedId, ...rest }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} group errors={field.errors} data-testid={field.name} {...rest}>
       <div className={clsx(buttonGroupVariants())}>
         {options.map((option) => (
           <RadioButton

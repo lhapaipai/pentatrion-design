@@ -4,12 +4,13 @@ import { Input } from "./Input";
 import { slugify } from "../../../lib/strUtil";
 import type { ChangeEvent } from "react";
 
-interface Props extends Omit<FieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null>;
 }
 
-export function SlugField({ name, ...rest }: Props) {
+export function SlugField({ name, id: forcedId, ...rest }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
   const control = useControl({
     defaultValue: field.defaultValue,
   });
@@ -34,7 +35,7 @@ export function SlugField({ name, ...rest }: Props) {
         ref={control.register}
         defaultValue={field.defaultValue}
       />
-      <Field errors={field.errors} data-testid={field.name} {...rest}>
+      <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
         <Input value={control.value ?? ""} onBlur={handleBlur} onChange={handleChange} />
       </Field>
     </>

@@ -6,7 +6,7 @@ import type { WysiwygRef } from "./Wysiwyg";
 import { Wysiwyg } from "./Wysiwyg";
 import { parseWysiwygValue, serializeWysiwygValue, WysiwygValue } from "./types";
 
-interface Props extends Omit<FieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<WysiwygValue | undefined | null>;
   ref?: RefObject<WysiwygRef>;
   debounceChange?: number | false;
@@ -26,9 +26,11 @@ export function WysiwygField({
   containerClassName,
   disabled = false,
   readOnly = false,
+  id: forcedId,
   ...rest
 }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   const control = useControl<WysiwygValue, string>({
     // on utiliserait defaultPayload si on construisait un composant fieldset.
@@ -56,7 +58,7 @@ export function WysiwygField({
         readOnly={readOnly}
         hidden
       />
-      <Field errors={field.errors} data-testid={field.name} {...rest}>
+      <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
         <Wysiwyg
           key={field.key}
           ref={ref}

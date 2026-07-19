@@ -9,6 +9,7 @@ interface Props {
   allowedTypes?: "image" | "audio" | "all-safe";
   imageRatio?: number;
   className?: string;
+  id?: string;
 }
 
 const mockMedias: { label: string; media: Media | null }[] = [
@@ -70,7 +71,7 @@ const mockMedias: { label: string; media: Media | null }[] = [
   },
 ];
 
-export function UploaderMock({ onPick, imageRatio, className }: Props) {
+export function UploaderMock({ onPick, imageRatio, className, id }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const cssProperties = useMemo(() => ({ "--media-ratio": imageRatio ?? 16 / 9 }), [imageRatio]);
@@ -83,7 +84,7 @@ export function UploaderMock({ onPick, imageRatio, className }: Props) {
       )}
       style={cssProperties}
     >
-      <Button type="button" onClick={() => setIsOpen(true)}>
+      <Button id={id} type="button" onClick={() => setIsOpen(true)}>
         Choisir un média (mock)
       </Button>
 

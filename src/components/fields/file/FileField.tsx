@@ -9,7 +9,7 @@ import { Button } from "../../button/Button";
 import { UploaderMock } from "./UploaderMock";
 import { Media } from "./types";
 
-type Props = Omit<FieldProps, "children"> & {
+type Props = Omit<FieldProps, "children" | "group"> & {
   name: FieldName<Media | null | undefined>;
   mediaContainerClassName?: string;
   allowedTypes?: "image" | "audio" | "all-safe";
@@ -23,9 +23,11 @@ export function FileField({
   allowedTypes = "all-safe",
   // mediaPreset = "uploadPreview",
   imageRatio,
+  id: forcedId,
   ...rest
 }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   const itemErrors = Object.values(field.fieldErrors).flat();
   const errors = field.errors ?? (itemErrors.length > 0 ? itemErrors : undefined);
@@ -71,7 +73,7 @@ export function FileField({
         ref={control.register}
         defaultValue={control.defaultValue ?? ""}
       />
-      <Field errors={errors} data-testid={field.name} {...rest}>
+      <Field id={id} errors={errors} data-testid={field.name} {...rest}>
         {media ? (
           <MediaPreview
             media={media}
@@ -96,6 +98,7 @@ export function FileField({
           </MediaPreview>
         ) : (
           <UploaderMock
+            id={id}
             className={mediaContainerClassName}
             onPick={(media: Media | null) => {
               console.log("onPick", media);

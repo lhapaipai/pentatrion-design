@@ -10,7 +10,7 @@ export type RadioWithLegendOption<T extends string | null = string> = {
   children: ReactNode;
 };
 
-interface Props extends Omit<FieldProps, "errors" | "children"> {
+interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null>;
   options: readonly RadioWithLegendOption[];
   labelClassName?: string;
@@ -21,12 +21,14 @@ export function RadiosWithLegendField({
   options,
   className,
   labelClassName,
+  id: forcedId,
   ...rest
 }: Props) {
   const field = useField(name);
+  const id = forcedId ?? field.id;
 
   return (
-    <Field errors={field.errors} data-testid={field.name} {...rest}>
+    <Field id={id} group errors={field.errors} data-testid={field.name} {...rest}>
       <div className={clsx(className)}>
         {options.map((option) => (
           <RadioWithLegend
