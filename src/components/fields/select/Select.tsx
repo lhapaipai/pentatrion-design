@@ -154,7 +154,6 @@ export function Select<V extends string | number = string>({
   return (
     <>
       <div
-        id={id}
         data-color={color}
         aria-disabled={disabled}
         className={clsx(
@@ -179,6 +178,7 @@ export function Select<V extends string | number = string>({
           )}
         </span>
         <Button
+          id={id}
           color="gray"
           withRipple={false}
           icon
