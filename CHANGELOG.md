@@ -1,3 +1,9 @@
+## 1.2.3
+
+### Patch Changes
+
+- fix a11y for fields with label htmlFor
+
 ## 1.2.2
 
 ### Patch Changes
