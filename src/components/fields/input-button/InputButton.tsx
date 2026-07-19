@@ -29,6 +29,7 @@ export interface InputButtonProps extends Omit<
   onBlur?: FocusEventHandler<HTMLDivElement>;
 }
 export function InputButton({
+  id,
   variant = "normal",
   color = "yellow",
   disabled = false,
@@ -51,7 +52,6 @@ export function InputButton({
       event.currentTarget.click();
     }
   };
-
   return (
     <div className="w-full">
       <div
@@ -93,6 +93,7 @@ export function InputButton({
           {label || placeholder}
         </div>
         <Button
+          id={id}
           color="gray"
           withRipple={false}
           icon
