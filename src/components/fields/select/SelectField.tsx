@@ -6,7 +6,7 @@ import { Select } from "./Select";
 import { useRef } from "react";
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
-  name: FieldName<string>;
+  name: FieldName<string |number>;
   placeholder?: string;
   options: SelectOption[];
 }
