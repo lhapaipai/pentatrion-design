@@ -3,7 +3,7 @@ import { Field, FieldProps } from "../field/Field";
 import { Checkbox } from "./Checkbox";
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
-  name: FieldName<boolean>;
+  name: FieldName<boolean | undefined>;
   checkboxLabel: string;
 }
 

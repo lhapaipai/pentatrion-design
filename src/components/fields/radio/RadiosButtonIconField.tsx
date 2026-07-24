@@ -7,7 +7,7 @@ import { buttonGroupVariants } from "../../button";
 export type RadioButtonIconOption = { value: string; icon: string; label: string };
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
-  name: FieldName<string>;
+  name: FieldName<string | number | null | undefined>;
   options: RadioButtonIconOption[];
   iconClassName?: string;
 }

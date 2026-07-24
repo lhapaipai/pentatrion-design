@@ -5,7 +5,7 @@ import { slugify } from "../../../lib/strUtil";
 import type { ChangeEvent } from "react";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  name: FieldName<string | null>;
+  name: FieldName<string | null | undefined>;
 }
 
 export function SlugField({ name, id: forcedId, ...rest }: Props) {

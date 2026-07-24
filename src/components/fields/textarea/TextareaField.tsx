@@ -3,7 +3,7 @@ import { Field, type FieldProps } from "../field/Field";
 import { Textarea } from "./Textarea";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  name: FieldName<string | null>;
+  name: FieldName<string | null | undefined>;
   textareaClassName?: string;
 }
 

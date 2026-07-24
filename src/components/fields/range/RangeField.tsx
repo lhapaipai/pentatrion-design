@@ -3,7 +3,7 @@ import { Field, type FieldProps } from "../field/Field";
 import { Range } from "./Range";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  name: FieldName<number>;
+  name: FieldName<number | null | undefined>;
 
   min?: number;
   max?: number;

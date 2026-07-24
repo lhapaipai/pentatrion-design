@@ -4,7 +4,7 @@ import { SelectOption } from "../select/types";
 import { Checkbox } from "./Checkbox";
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
-  name: FieldName<string[]>;
+  name: FieldName<(string | number)[] | null | undefined>;
   options: SelectOption[];
 }
 

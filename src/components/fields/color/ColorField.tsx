@@ -8,7 +8,7 @@ import { Button } from "../../button/Button";
 import { colorByGroups } from "../../../lib/color";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  name: FieldName<string>;
+  name: FieldName<string | null | undefined>;
 }
 
 export function ColorField({ name, id: forcedId, ...rest }: Props) {

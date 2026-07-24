@@ -11,7 +11,7 @@ export type RadioWithLegendOption<T extends string | null = string> = {
 };
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  name: FieldName<string | null>;
+  name: FieldName<string | number | null | undefined>;
   options: readonly RadioWithLegendOption[];
   labelClassName?: string;
 }
