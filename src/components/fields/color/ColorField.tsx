@@ -6,12 +6,16 @@ import { useState } from "react";
 import clsx from "clsx";
 import { Button } from "../../button/Button";
 import { colorByGroups } from "../../../lib/color";
+import { useTranslate } from "../../i18n";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null | undefined>;
+  allowInherit?: boolean;
 }
 
-export function ColorField({ name, id: forcedId, ...rest }: Props) {
+export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }: Props) {
+  const translate = useTranslate();
+
   const field = useField(name);
   const id = forcedId ?? field.id;
 
@@ -53,7 +57,7 @@ export function ColorField({ name, id: forcedId, ...rest }: Props) {
           type="button"
           value={control.value}
           onClick={() => setTempValue(control.value ?? "")}
-          label={control.value === "inherit" ? "inherit" : undefined}
+          label={control.value === "inherit" ? translate?.("form.values.color.inherit") : undefined}
         />
       </Field>
       <Modal
@@ -63,7 +67,7 @@ export function ColorField({ name, id: forcedId, ...rest }: Props) {
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
         <ModalContent
-          className="my-4 max-h-[90vh] w-full max-w-[650px] overflow-auto"
+          className="my-4 max-h-[90vh] w-full max-w-[760px] overflow-auto"
           zClassName="z-[120]"
         >
           <ModalHeader>Choose your color</ModalHeader>
@@ -96,20 +100,22 @@ export function ColorField({ name, id: forcedId, ...rest }: Props) {
           <ModalFooter className="mt-2">
             <div className="flex justify-between">
               <Button type="button" variant="text" color="gray" onClick={() => setTempValue(null)}>
-                Cancel
+                {translate?.("button.cancel")}
               </Button>
-              <Button
-                icon
-                type="button"
-                variant="outlined"
-                color="gray"
-                onClick={handleSubmitInherit}
-              >
-                <i className="fe-settings"></i>
-                <span>Inherit</span>
-              </Button>
+              {allowInherit && (
+                <Button
+                  icon
+                  type="button"
+                  variant="outlined"
+                  color="gray"
+                  onClick={handleSubmitInherit}
+                >
+                  <i className="fe-settings"></i>
+                  <span>{translate?.("form.values.color.inherit")}</span>
+                </Button>
+              )}
               <Button type="button" color="yellow" onClick={handleSubmit}>
-                Validate
+                {translate?.("button.validate")}
               </Button>
             </div>
           </ModalFooter>
