@@ -25,7 +25,7 @@ export const Playbook = () => {
 
   return (
     <>
-      <div className="dark:shadow-dark mb-12 rounded-2xl p-12 shadow-md">
+      <div className="dark:shadow-dark mb-12 rounded-2xl p-12 shadow-xl">
         <Field
           label={label}
           hint={hint}

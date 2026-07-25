@@ -16,7 +16,7 @@
 
   &[data-marker="circle"] {
     .marker {
-      @apply bg-gray-1 shadow-xs;
+      @apply bg-gray-1 shadow-sm;
       width: calc(var(--step-circle-radius) * 2);
       height: calc(var(--step-circle-radius) * 2);
 

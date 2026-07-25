@@ -80,7 +80,7 @@ export const Basic = () => {
             <div
               className={clsx(
                 "inline-flex w-fit gap-2",
-                ["text", "ghost"].includes(variant) && "rounded-full shadow-sm",
+                ["text", "ghost"].includes(variant) && "rounded-full shadow-lg",
               )}
             >
               <RadioButton name={`sport-${variant}-btn`} value="climbing" variant={variant}>
@@ -97,7 +97,7 @@ export const Basic = () => {
               className={clsx(
                 "inline-flex w-fit",
                 buttonGroupVariants(),
-                ["text", "ghost"].includes(variant) && "rounded-full shadow-sm",
+                ["text", "ghost"].includes(variant) && "rounded-full shadow-lg",
               )}
             >
               <RadioButton name={`sport-${variant}-btngrp`} value="climbing" variant={variant}>

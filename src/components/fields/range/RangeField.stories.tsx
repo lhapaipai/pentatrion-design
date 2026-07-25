@@ -53,7 +53,7 @@ const Playbook = () => {
           <Button>Valider</Button>
         </form>
       </FormProvider>
-      <div className="shadow-xs w-32 rounded-xl mt-4 p-2">
+      <div className="shadow-sm w-32 rounded-xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>dirty</dt>
           <dd>{dirty ? "true" : "false"}</dd>

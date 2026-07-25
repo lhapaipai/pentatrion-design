@@ -13,7 +13,7 @@ export function Flash({ color = "yellow", children, className }: Props) {
     <div
       data-color={color}
       className={clsx(
-        "bg-gray-0 dark:shadow-dark border-custom-3 border-l-4 p-2 shadow-sm [&_p]:m-0",
+        "bg-gray-0 dark:shadow-dark border-custom-3 border-l-4 p-2 shadow-lg [&_p]:m-0",
         className,
       )}
       aria-live={color !== "red" ? "polite" : "assertive"}

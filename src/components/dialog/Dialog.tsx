@@ -24,7 +24,7 @@ export const dialogVariants = cva("relative", {
       default: "bg-gray-0",
     },
     shadow: {
-      true: "shadow-sm dark:shadow-dark",
+      true: "shadow-lg dark:shadow-dark",
       false: "border border-gray-2",
     },
     rounded: {

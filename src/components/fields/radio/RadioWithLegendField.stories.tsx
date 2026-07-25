@@ -33,7 +33,7 @@ const userProfileOptions = [
         data-radio="legend"
         className="border-gray-1 bg-gray-0/40 flex-center inline-flex h-28 flex-col gap-2 rounded-sm border p-2"
       >
-        <span className="border-gray-0 flex-center bg-gray-1 aspect-square w-16 border shadow-sm">
+        <span className="border-gray-0 flex-center bg-gray-1 aspect-square w-16 border shadow-lg">
           <i className="fe-music text-body-2xl"></i>
         </span>
       </span>
@@ -47,7 +47,7 @@ const userProfileOptions = [
         data-radio="legend"
         className="border-gray-1 bg-gray-0/40 flex-center inline-flex h-28 flex-col gap-2 rounded-sm border p-2"
       >
-        <span className="border-gray-0 flex-center bg-gray-1 aspect-square w-16 border shadow-sm">
+        <span className="border-gray-0 flex-center bg-gray-1 aspect-square w-16 border shadow-lg">
           <i className="fe-headphones text-body-2xl"></i>
         </span>
       </span>
@@ -86,7 +86,7 @@ const Playbook = () => {
           <Button>Valider</Button>
         </form>
       </FormProvider>
-      <div className="shadow-xs w-32 rounded-xl mt-4 p-2">
+      <div className="shadow-sm w-32 rounded-xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>dirty</dt>
           <dd>{dirty ? "true" : "false"}</dd>

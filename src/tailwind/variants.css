@@ -10,8 +10,8 @@
 }
 
 @custom-variant current {
-  &[aria-checked="true"],
-  &[aria-current="page"],
+  &[aria-checked='true'],
+  &[aria-current='page'],
   &:has(:checked) {
     @slot;
   }

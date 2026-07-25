@@ -24,7 +24,7 @@ function Box({ ref, ...props }: BoxProps) {
   return (
     <div
       ref={ref}
-      className="flex-center bg-gray-2 h-[100px] w-[100px] shadow-lg"
+      className="flex-center bg-gray-2 h-[100px] w-[100px] shadow-2xl"
       style={{
         margin: "100px",
       }}
@@ -194,7 +194,7 @@ export const Context = () => {
 //       <SimpleTooltip content="infos" placement="top" open={true} color="yellow">
 //         <animated.div
 //           {...bind()}
-//           className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-lg"
+//           className="flex-center h-[100px] w-[100px] bg-gray-2 shadow-2xl"
 //           style={{
 //             x,
 //             y,

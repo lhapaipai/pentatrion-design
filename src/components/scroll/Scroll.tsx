@@ -83,7 +83,7 @@ export function Scroll({ horizontal = false, className, children, ...rest }: Pro
     <div className={clsx("ll-scroll-zone", "relative", className)} {...rest}>
       <div
         className={clsx(
-          "scroll-shadow-sm absolute z-1 opacity-0 transition-all",
+          "scroll-shadow-lg absolute z-1 opacity-0 transition-all",
           scrollVariants[position].shadow,
           scrollVariants[position].shadowStart,
           showStartShadow && "opacity-100",
@@ -91,7 +91,7 @@ export function Scroll({ horizontal = false, className, children, ...rest }: Pro
       ></div>
       <div
         className={clsx(
-          "scroll-shadow-sm absolute z-1 opacity-0 transition-all",
+          "scroll-shadow-lg absolute z-1 opacity-0 transition-all",
           scrollVariants[position].shadow,
           scrollVariants[position].shadowEnd,
           showEndShadow && "opacity-100",

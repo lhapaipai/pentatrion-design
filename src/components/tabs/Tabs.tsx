@@ -42,7 +42,7 @@ export function Tabs({
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
   return (
-    <div className={clsx("ll-tabs bg-gray-2 overflow-hidden shadow-sm", className)}>
+    <div className={clsx("ll-tabs bg-gray-2 overflow-hidden shadow-lg", className)}>
       <div
         role="tablist"
         className={clsx("tabs-list flex", stickyTabs && "sticky top-0 z-1", listClassName)}
@@ -75,7 +75,7 @@ export function Tabs({
         })}
         {children && <div className="extra mr-2 ml-auto flex items-center">{children}</div>}
       </div>
-      <div className={clsx("bg-gray-0 p-2 shadow-sm", contentClassName)} role="tabpanel">
+      <div className={clsx("bg-gray-0 p-2 shadow-lg", contentClassName)} role="tabpanel">
         {content}
       </div>
     </div>

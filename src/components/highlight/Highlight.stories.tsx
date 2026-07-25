@@ -58,7 +58,7 @@ export const Playbook = () => {
 
   return (
     <>
-      <div className="mb-12 rounded-2xl p-12 shadow-md dark:shadow-dark">{PreviewElement}</div>
+      <div className="mb-12 rounded-2xl p-12 shadow-xl dark:shadow-dark">{PreviewElement}</div>
       <div className="grid grid-cols-2 gap-4">
         <Field label="Search string">
           <Input
