@@ -4,7 +4,7 @@ import { DropdownMenu, DropdownMenuItem } from "../../../dropdown-menu";
 import { Button } from "../../../button";
 import clsx from "clsx";
 import { formatBulletList, formatHeading, formatParagraph, formatQuote } from "../utils/formatters";
-import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
+import { useTranslate } from "../../../i18n";
 
 interface Props {
   blockType: BlockType;
@@ -26,7 +26,7 @@ const icons: {
 };
 
 export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: Props) {
-  const { t } = useWysiwygTranslation();
+  const translate = useTranslate();
 
   return (
     <DropdownMenu
@@ -46,7 +46,7 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatParagraph(editor)}
       >
         <i className={icons.paragraph}></i>
-        {t("wysiwyg.formats.paragraph")}
+        {translate?.("wysiwyg.formats.paragraph")}
       </DropdownMenuItem>
       <DropdownMenuItem
         type="button"
@@ -54,7 +54,7 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatHeading(editor, blockType, "h1")}
       >
         <i className={icons.h1}></i>
-        {t("wysiwyg.formats.h1")}
+        {translate?.("wysiwyg.formats.h1")}
       </DropdownMenuItem>
       <DropdownMenuItem
         type="button"
@@ -62,7 +62,7 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatHeading(editor, blockType, "h2")}
       >
         <i className={icons.h2}></i>
-        {t("wysiwyg.formats.h2")}
+        {translate?.("wysiwyg.formats.h2")}
       </DropdownMenuItem>
       <DropdownMenuItem
         type="button"
@@ -70,7 +70,7 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatHeading(editor, blockType, "h3")}
       >
         <i className={icons.h3}></i>
-        {t("wysiwyg.formats.h3")}
+        {translate?.("wysiwyg.formats.h3")}
       </DropdownMenuItem>
       <DropdownMenuItem
         type="button"
@@ -78,14 +78,14 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatBulletList(editor, blockType)}
       >
         <i className={icons.bullet}></i>
-        {t("wysiwyg.formats.bullet")}
+        {translate?.("wysiwyg.formats.bullet")}
       </DropdownMenuItem>
       {/* <DropdownMenuItem
         type="button"
         className={clsx(blockType === "number" && "bg-gray-2!", "gap-2")}
         onClick={() => formatNumberedList(editor, blockType)}
       >
-        {t("wysiwyg.formats.number")}
+        {translate?.("wysiwyg.formats.number")}
       </DropdownMenuItem> */}
       <DropdownMenuItem
         type="button"
@@ -93,7 +93,7 @@ export function BlockFormatDropdown({ blockType, editor, isFocusable = true }: P
         onClick={() => formatQuote(editor, blockType)}
       >
         <i className={icons.quote}></i>
-        {t("wysiwyg.formats.quote")}
+        {translate?.("wysiwyg.formats.quote")}
       </DropdownMenuItem>
     </DropdownMenu>
   );

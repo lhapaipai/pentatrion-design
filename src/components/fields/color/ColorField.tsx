@@ -70,7 +70,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
           className="my-4 max-h-[90vh] w-full max-w-190 overflow-auto"
           zClassName="z-modal-overlay"
         >
-          <ModalHeader>Choose your color</ModalHeader>
+          <ModalHeader>{translate?.("form.label.pickYourColor")}</ModalHeader>
           <ModalDescription>
             <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm">
               {colorByGroups.map(({ name, colors }) => (

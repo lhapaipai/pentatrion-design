@@ -2,7 +2,7 @@ import type { ElementFormatType, LexicalEditor } from "lexical";
 import { FORMAT_ELEMENT_COMMAND } from "lexical";
 import { DropdownMenu, DropdownMenuItem } from "../../../dropdown-menu";
 import { Button } from "../../../button";
-import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
+import { useTranslate } from "../../../i18n";
 import clsx from "clsx";
 
 interface Props {
@@ -22,7 +22,7 @@ const icons = {
 };
 
 export function ElementFormatDropdown({ editor, value, isFocusable = true }: Props) {
-  const { t } = useWysiwygTranslation();
+  const translate = useTranslate();
   return (
     <DropdownMenu
       data-testid="menubar-user-dropdown"
@@ -44,7 +44,7 @@ export function ElementFormatDropdown({ editor, value, isFocusable = true }: Pro
         }}
       >
         <i className={icons.left}></i>
-        {t("wysiwyg.elementFormats.left")}
+        {translate?.("wysiwyg.elementFormats.left")}
       </DropdownMenuItem>{" "}
       <DropdownMenuItem
         type="button"
@@ -54,7 +54,7 @@ export function ElementFormatDropdown({ editor, value, isFocusable = true }: Pro
         }}
       >
         <i className={icons.center}></i>
-        {t("wysiwyg.elementFormats.center")}
+        {translate?.("wysiwyg.elementFormats.center")}
       </DropdownMenuItem>{" "}
       <DropdownMenuItem
         type="button"
@@ -64,7 +64,7 @@ export function ElementFormatDropdown({ editor, value, isFocusable = true }: Pro
         }}
       >
         <i className={icons.right}></i>
-        {t("wysiwyg.elementFormats.right")}
+        {translate?.("wysiwyg.elementFormats.right")}
       </DropdownMenuItem>{" "}
       <DropdownMenuItem
         type="button"
@@ -74,7 +74,7 @@ export function ElementFormatDropdown({ editor, value, isFocusable = true }: Pro
         }}
       >
         <i className={icons.justify}></i>
-        {t("wysiwyg.elementFormats.justify")}
+        {translate?.("wysiwyg.elementFormats.justify")}
       </DropdownMenuItem>
     </DropdownMenu>
   );

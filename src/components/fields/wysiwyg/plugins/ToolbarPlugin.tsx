@@ -20,7 +20,7 @@ import type { ButtonProps } from "../../../button";
 import { Button } from "../../../button";
 import type { Dispatch } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useWysiwygTranslation } from "../i18n/WysiwygTranslationContext";
+import { useTranslate } from "../../../i18n";
 import { focusNextElement } from "../utils/dom";
 import type { ToolbarVariantProps } from "../style";
 import { toolbarVariants } from "../style";
@@ -37,7 +37,11 @@ function Divider() {
   return <div className="border-r-gray-2 my-1 border-r" />;
 }
 
-const buttonBaseProps: (label: string, selected: boolean, isFocusable: boolean) => ButtonProps = (
+const buttonBaseProps: (
+  label: string | undefined,
+  selected: boolean,
+  isFocusable: boolean,
+) => ButtonProps = (
   label,
   selected,
   isFocusable,
@@ -68,7 +72,7 @@ export function ToolbarPlugin({
   const toolbarRef = useRef(null);
 
   const [isFocusable, setIsFocusable] = useState(false);
-  const { t } = useWysiwygTranslation();
+  const translate = useTranslate();
 
   const { toolbarState, updateToolbarState } = useToolbarState();
 
@@ -191,17 +195,17 @@ export function ToolbarPlugin({
         }}
         type="button"
       >
-        {t(isFocusable ? "wysiwyg.button.disableFocusable" : "wysiwyg.button.enableFocusable")}
+        {translate?.(isFocusable ? "wysiwyg.button.disableFocusable" : "wysiwyg.button.enableFocusable")}
       </button>
       <Button
-        {...buttonBaseProps("Undo", false, isFocusable)}
+        {...buttonBaseProps(translate?.("wysiwyg.button.undo"), false, isFocusable)}
         disabled={!toolbarState.canUndo}
         onClick={() => void editor.dispatchCommand(UNDO_COMMAND, undefined)}
       >
         <i className="fe-ccw"></i>
       </Button>
       <Button
-        {...buttonBaseProps("Redo", false, isFocusable)}
+        {...buttonBaseProps(translate?.("wysiwyg.button.redo"), false, isFocusable)}
         disabled={!toolbarState.canRedo}
         onClick={() => void editor.dispatchCommand(REDO_COMMAND, undefined)}
       >
@@ -227,32 +231,40 @@ export function ToolbarPlugin({
       )}
 
       <Button
-        {...buttonBaseProps("Format Bold", toolbarState.isBold, isFocusable)}
+        {...buttonBaseProps(translate?.("wysiwyg.button.formatBold"), toolbarState.isBold, isFocusable)}
         onClick={() => void editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")}
       >
         <i className="fe-bold"></i>
       </Button>
       <Button
-        {...buttonBaseProps("Format Italics", toolbarState.isItalic, isFocusable)}
+        {...buttonBaseProps(translate?.("wysiwyg.button.formatItalics"), toolbarState.isItalic, isFocusable)}
         onClick={() => void editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic")}
       >
         <i className="fe-italic"></i>
       </Button>
       <Button
-        {...buttonBaseProps("Format Underline", toolbarState.isUnderline, isFocusable)}
+        {...buttonBaseProps(
+          translate?.("wysiwyg.button.formatUnderline"),
+          toolbarState.isUnderline,
+          isFocusable,
+        )}
         onClick={() => void editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline")}
       >
         <i className="fe-underline"></i>
       </Button>
       <Button
-        {...buttonBaseProps("Format Link", toolbarState.isLink, isFocusable)}
+        {...buttonBaseProps(translate?.("wysiwyg.button.formatLink"), toolbarState.isLink, isFocusable)}
         onClick={insertLink}
       >
         <i className="fe-link"></i>
       </Button>
       {extendedToolbar && (
         <Button
-          {...buttonBaseProps("Horizontal Rule", toolbarState.isLink, isFocusable)}
+          {...buttonBaseProps(
+            translate?.("wysiwyg.button.horizontalRule"),
+            toolbarState.isLink,
+            isFocusable,
+          )}
           onClick={() => void editor.dispatchCommand(INSERT_HORIZONTAL_RULE_COMMAND, undefined)}
         >
           <i className="fe-horizontal-rule"></i>
