@@ -82,7 +82,7 @@ export function Stars({
         max={max}
         step={step}
         ref={combinedRef}
-        className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        className="peer h-0 w-0 translate-x-[-9999px] overflow-hidden"
         {...(rangeValue === null ? { disabled: true } : {})}
         {...rest}
       />

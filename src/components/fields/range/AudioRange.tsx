@@ -105,7 +105,7 @@ export function AudioRange({
                 "from-gray-8/70 to-gray-8/50 before:bg-gray-8/70 bg-linear-to-r from-5%",
                 "group-hover:from-custom-4 group-hover:to-custom-3 group-hover:before:bg-custom-4 group-hover:bg-linear-to-r",
 
-                "w-[var(--p8n-range-progress-percent)] rounded-r-[4px]",
+                "w-(--p8n-range-progress-percent) rounded-r-[4px]",
                 "before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:mask-r-from-50% before:mask-r-to-transparent before:mask-r-to-50%",
               )}
             ></div>

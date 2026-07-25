@@ -119,12 +119,12 @@ export function Range({
             <div
               className={clsx(
                 trackBase,
-                "w-[var(--p8n-range-additional-percent)] rounded-[3px] bg-(--p8n-range-c-bg-2) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-bg-2)",
+                "w-(--p8n-range-additional-percent) rounded-[3px] bg-(--p8n-range-c-bg-2) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-bg-2)",
               )}
             ></div>
           )}
           {showValue && (
-            <div className="text-body-sm pointer-events-none absolute bottom-4 left-[var(--p8n-range-progress-percent)] -translate-x-2/4">
+            <div className="text-body-sm pointer-events-none absolute bottom-4 left-(--p8n-range-progress-percent) -translate-x-2/4">
               {formatter(valueAsNumber)}
             </div>
           )}
@@ -132,7 +132,7 @@ export function Range({
           <div
             className={clsx(
               trackBase,
-              "w-[var(--p8n-range-progress-percent)] rounded-[3px] bg-(--p8n-range-c-fg) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-fg)",
+              "w-(--p8n-range-progress-percent) rounded-[3px] bg-(--p8n-range-c-fg) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-fg)",
             )}
           ></div>
           {/* ticks */}

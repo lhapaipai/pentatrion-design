@@ -44,7 +44,7 @@ export function MediaPreview({
     <div
       className={clsx(
         "group bg-gray-1 relative overflow-hidden rounded-2xl shadow-sm",
-        fit === "original" && isImage ? "aspect-(--media-ratio)" : "aspect-16/9",
+        fit === "original" && isImage ? "aspect-(--media-ratio)" : "aspect-video",
         className,
       )}
       style={cssProperties}

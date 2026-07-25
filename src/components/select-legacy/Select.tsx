@@ -269,7 +269,7 @@ export function SelectLegacy<O extends Option>({
         data-color={color}
         aria-disabled={disabled}
         className={clsx(
-          "p8n-input-text box-border flex cursor-pointer rounded-[calc(var(--h-input)/2)] outline-offset-[-1px]",
+          "p8n-input-text box-border flex cursor-pointer rounded-[calc(var(--h-input)/2)] -outline-offset-1",
           selectionClassName,
           sizeVariant[size],
           isOpen && "focus",

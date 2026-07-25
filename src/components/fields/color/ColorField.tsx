@@ -67,8 +67,8 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
         <ModalContent
-          className="my-4 max-h-[90vh] w-full max-w-[760px] overflow-auto"
-          zClassName="z-[120]"
+          className="my-4 max-h-[90vh] w-full max-w-190 overflow-auto"
+          zClassName="z-modal-overlay"
         >
           <ModalHeader>Choose your color</ModalHeader>
           <ModalDescription>

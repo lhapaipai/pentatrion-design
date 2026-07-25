@@ -30,7 +30,7 @@ export function Badge({
       data-color={color}
       className={clsx(
         "bg-custom-2/50 text-gray-text relative box-border inline-flex h-(--h-button) items-center truncate leading-5 no-underline [--h-button:1.5rem]",
-        clickable && "cursor-pointer active:translate-y-[1px]",
+        clickable && "cursor-pointer active:translate-y-px",
         "text-body-xs w-fit rounded-full",
         className,
       )}
@@ -44,7 +44,7 @@ export function Badge({
       )}
       {onRemove && (
         <button
-          className="remove cursor-pointer rounded-r-full pr-1 pl-0.5 active:translate-y-[1px]"
+          className="remove cursor-pointer rounded-r-full pr-1 pl-0.5 active:translate-y-px"
           onClick={onRemove}
         >
           <i className="fe-cancel"></i>

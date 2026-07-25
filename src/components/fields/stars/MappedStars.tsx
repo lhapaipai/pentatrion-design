@@ -106,7 +106,7 @@ export function MappedStars({
         type="range"
         min={0}
         max={options.length - 1}
-        className="peer h-0 w-0 -translate-x-[9999px] overflow-hidden"
+        className="peer h-0 w-0 translate-x-[-9999px] overflow-hidden"
         {...(rangeValue === -1 ? { disabled: true } : {})}
       />
       <span

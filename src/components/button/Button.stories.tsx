@@ -95,7 +95,7 @@ export const Context = () => {
         <Button loading={true}>isLoading true</Button>
       </div>
       <h3 className="sb-h3">Width</h3>
-      <div className="grid w-128 grid-cols-2 gap-2">
+      <div className="grid w-lg grid-cols-2 gap-2">
         <Button width="fit">fit</Button>
         <Button width="full">full</Button>
       </div>

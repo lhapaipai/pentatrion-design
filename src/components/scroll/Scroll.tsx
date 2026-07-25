@@ -11,15 +11,15 @@ export const scrollVariants = {
   vertical: {
     inner: "overflow-y-auto h-full",
     shadow: "h-1 left-0 right-0",
-    shadowStart: "top-0 bg-linear-to-b from-gray-8/10",
-    shadowEnd: "bottom-0 bg-linear-to-t from-gray-8/10",
+    shadowStart: "top-0 bg-linear-to-b from-gray-alpha-1",
+    shadowEnd: "bottom-0 bg-linear-to-t from-gray-alpha-1",
     child: "",
   },
   horizontal: {
     inner: "overflow-x-auto",
     shadow: "w-1 top-0 bottom-0",
-    shadowStart: "left-0 bg-linear-to-r from-gray-8/10",
-    shadowEnd: "right-0 bg-linear-to-l from-gray-8/10",
+    shadowStart: "left-0 bg-linear-to-r from-gray-alpha-1",
+    shadowEnd: "right-0 bg-linear-to-l from-gray-alpha-1",
     child: "inline-block",
   },
 };

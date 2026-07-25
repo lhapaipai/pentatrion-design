@@ -78,7 +78,7 @@ export function CheckboxButton({
         className={clsx(
           showInput
             ? "p8n-input-checkbox my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-2xl bg-origin-border p-0 outline-offset-0 select-none"
-            : "h-0 w-0 -translate-x-[9999px] overflow-hidden",
+            : "h-0 w-0 translate-x-[-9999px] overflow-hidden",
           //indeterminate && "indeterminate",
           className,
         )}

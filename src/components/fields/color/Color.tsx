@@ -39,7 +39,7 @@ export function Color({
     <button
       ref={buttonRef}
       data-color={color}
-      className="p8n-input-text group relative flex h-8 cursor-pointer overflow-clip rounded-2xl p-1 outline-offset-[-1px] active:translate-y-[1px]"
+      className="p8n-input-text group relative flex h-8 cursor-pointer overflow-clip rounded-2xl p-1 -outline-offset-1 active:translate-y-px"
       {...rest}
     >
       {withRipple && ripples}
