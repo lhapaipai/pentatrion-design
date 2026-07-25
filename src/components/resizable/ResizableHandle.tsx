@@ -57,6 +57,7 @@ export function ResizableHandle({
         widthCustomClassName,
       )}
       onPointerDown={handlePointerDown}
+      onClick={(e) => e.stopPropagation()}
     >
       <div
         className={clsx(
