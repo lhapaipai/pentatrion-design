@@ -71,10 +71,11 @@ export function MediaPreview({
         <>
           <div
             className={clsx(
-              "pointer-fine:from-gray-7/25 absolute bottom-0 left-0 w-full overflow-hidden rounded-md pointer-fine:h-10",
+              "pointer-fine:from-gray-7/25 absolute bottom-0 left-0 w-full overflow-hidden pointer-fine:h-10",
               // gradient animation
               "from-gray-7/50 to-gray-7/0 group-hover:from-gray-7/50 bg-linear-to-t transition-[height] duration-150 ease-out",
               "h-full group-hover:h-full",
+              "will-change-transform",
             )}
           ></div>
           <div

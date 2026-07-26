@@ -2,19 +2,24 @@ import { FieldName, useField } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
 import { Input, type InputProps } from "./Input";
 
-interface Props extends Omit<FieldProps, "children" | "group"> {
-  name: FieldName<string | number | null | undefined>;
-  type?: InputProps["type"];
-  placeholder?: InputProps["placeholder"];
-  prefix?: InputProps["prefix"];
-  suffix?: InputProps["suffix"];
-  variant?: InputProps["variant"];
-  color?: InputProps["color"];
-  size?: InputProps["size"];
-  disabled?: InputProps["disabled"];
-  readOnly?: InputProps["readOnly"];
-  inputClassName?: InputProps["inputClassName"];
-}
+type Props = Omit<FieldProps, "children" | "group"> &
+  Pick<
+    InputProps,
+    | "type"
+    | "placeholder"
+    | "prefix"
+    | "suffix"
+    | "variant"
+    | "color"
+    | "size"
+    | "disabled"
+    | "readOnly"
+    | "inputClassName"
+    | "prefixClassName"
+    | "suffixClassName"
+  > & {
+    name: FieldName<string | number | null | undefined>;
+  };
 
 export function TextField({
   name,
@@ -28,6 +33,8 @@ export function TextField({
   disabled,
   readOnly,
   inputClassName,
+  prefixClassName,
+  suffixClassName,
   id: forcedId,
   ...rest
 }: Props) {
@@ -49,6 +56,8 @@ export function TextField({
         disabled={disabled}
         readOnly={readOnly}
         inputClassName={inputClassName}
+        prefixClassName={prefixClassName}
+        suffixClassName={suffixClassName}
       />
     </Field>
   );

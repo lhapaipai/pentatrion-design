@@ -36,6 +36,17 @@ export const Context = () => {
         />
         <Textarea className="h-24" color="gray" readOnly value="readonly gray " />
         <Textarea className="h-24" color="green" readOnly value="readonly green" />
+        <Textarea className="h-24" color="yellow" prefix="fr" value="Bonjour" />
+        <Textarea
+          className="h-24"
+          color="gray"
+          suffix={
+            <Button withRipple={false} icon variant="text" color="gray">
+              <i className="fe-clipboard-copy"></i>
+            </Button>
+          }
+          value="with suffix icon"
+        />
       </div>
       <div className="mt-4">
         <h2>Without h-XXX specification</h2>

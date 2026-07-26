@@ -12,6 +12,8 @@ export interface InputProps extends Omit<ComponentPropsWithRef<"input">, "prefix
   flexibleWidth?: boolean;
   children?: ReactNode;
   inputClassName?: string;
+  prefixClassName?: string;
+  suffixClassName?: string;
 }
 
 export const sizeVariant = {
@@ -41,6 +43,8 @@ export function Input({
   type,
   children,
   ref,
+  prefixClassName,
+  suffixClassName,
   ...rest
 }: InputProps) {
   return (
@@ -55,7 +59,9 @@ export function Input({
         <div
           className={clsx([
             "flex-center relative",
-            typeof prefix === "string" && "text-gray-6 mx-2 select-none",
+            typeof prefix === "string" &&
+              "text-gray-6 mr-2 px-2 select-none border-r border-r-custom-2",
+            prefixClassName,
           ])}
         >
           {prefix}
@@ -86,7 +92,9 @@ export function Input({
         <div
           className={clsx([
             "flex-center relative",
-            typeof suffix === "string" && "text-gray-6 mx-2 select-none",
+            typeof suffix === "string" &&
+              "text-gray-6 ml-2 px-2 select-none border-l border-l-custom-2",
+            suffixClassName,
           ])}
         >
           {suffix}
