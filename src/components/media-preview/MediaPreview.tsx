@@ -12,39 +12,37 @@ interface Props {
   fit?: "contain" | "cover" | "original";
   className?: string;
   imageClassName?: string;
-  srcSet?: string;
-  sizes?: string;
   children?: ReactNode;
+
+  /* for non image Media */
+  mediaRatio?: number;
 }
 
 export function MediaPreview({
   children,
   media,
-  src,
-  width,
-  height,
   fit = "original",
   className,
   imageClassName,
-
-  srcSet,
-  sizes,
+  mediaRatio,
   ...rest
 }: Props) {
   const isImage = isMediaImage(media);
   const cssProperties = useMemo(() => {
-    if (width && height) {
-      return { "--media-ratio": width / height } as CSSProperties;
+    if (media?.width && media?.height) {
+      return { "--media-ratio": media.width / media.height } as CSSProperties;
+    } else if (mediaRatio) {
+      return { "--media-ratio": mediaRatio } as CSSProperties;
     } else {
       return {};
     }
-  }, [width, height]);
+  }, [media, mediaRatio]);
 
   return (
     <div
       className={clsx(
         "group bg-gray-1 relative overflow-hidden rounded-2xl shadow-sm",
-        fit === "original" && isImage ? "aspect-(--media-ratio)" : "aspect-video",
+        fit === "original" && (isImage || mediaRatio) ? "aspect-(--media-ratio)" : "aspect-video",
         className,
       )}
       style={cssProperties}
@@ -52,10 +50,11 @@ export function MediaPreview({
     >
       {isImage ? (
         <img
-          src={src ?? (media.origin === "external" && media.src ? media.src : undefined)}
-          srcSet={srcSet}
-          sizes={sizes}
-          width={width ?? media.width}
+          src={media.src}
+          srcSet={media.srcSet}
+          sizes={media.sizes}
+          width={media.width}
+          height={media.height}
           className={clsx(
             "rounded-2xl",
             fit === "original" && "h-auto w-full",

@@ -73,7 +73,7 @@ export function Tabs({
             </div>
           );
         })}
-        {children && <div className="extra mr-2 ml-auto flex items-center">{children}</div>}
+        {children && <div className="extra mr-0.5 ml-auto flex items-center">{children}</div>}
       </div>
       <div className={clsx("bg-gray-0 p-2 shadow-lg", contentClassName)} role="tabpanel">
         {content}

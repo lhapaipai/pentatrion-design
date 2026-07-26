@@ -1,10 +1,9 @@
 import { ComponentProps } from "react";
 import { getIconByMime } from "./getIconByMime";
 import clsx from "clsx";
-import { BasicMedia } from "./types";
 
 interface Props extends ComponentProps<"div"> {
-  media?: BasicMedia | null;
+  media?: { mimeType: string } | null;
   mimeType?: string;
 }
 export function FileIcon({ mimeType, media, className, ...rest }: Props) {
