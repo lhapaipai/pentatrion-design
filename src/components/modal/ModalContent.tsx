@@ -31,6 +31,7 @@ export function ModalContent({ zClassName, style, className, children, ref, ...p
           zClassName ?? "z-modal-overlay",
         )}
         lockScroll
+        onSubmit={(event) => event.stopPropagation()}
       >
         <FloatingFocusManager context={floatingContext}>
           <Dialog
