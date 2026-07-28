@@ -12,7 +12,13 @@ interface Props extends Omit<FieldProps, "children" | "group"> {
   iconClassName?: string;
 }
 
-export function RadiosButtonIconField({ name, options, iconClassName, id: forcedId, ...rest }: Props) {
+export function RadiosButtonIconField({
+  name,
+  options,
+  iconClassName,
+  id: forcedId,
+  ...rest
+}: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
 

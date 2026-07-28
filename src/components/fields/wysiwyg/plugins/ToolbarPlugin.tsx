@@ -41,11 +41,7 @@ const buttonBaseProps: (
   label: string | undefined,
   selected: boolean,
   isFocusable: boolean,
-) => ButtonProps = (
-  label,
-  selected,
-  isFocusable,
-) => ({
+) => ButtonProps = (label, selected, isFocusable) => ({
   "aria-label": label,
   selected,
   tabIndex: isFocusable ? 0 : -1,
@@ -195,7 +191,9 @@ export function ToolbarPlugin({
         }}
         type="button"
       >
-        {translate?.(isFocusable ? "wysiwyg.button.disableFocusable" : "wysiwyg.button.enableFocusable")}
+        {translate?.(
+          isFocusable ? "wysiwyg.button.disableFocusable" : "wysiwyg.button.enableFocusable",
+        )}
       </button>
       <Button
         {...buttonBaseProps(translate?.("wysiwyg.button.undo"), false, isFocusable)}
@@ -231,13 +229,21 @@ export function ToolbarPlugin({
       )}
 
       <Button
-        {...buttonBaseProps(translate?.("wysiwyg.button.formatBold"), toolbarState.isBold, isFocusable)}
+        {...buttonBaseProps(
+          translate?.("wysiwyg.button.formatBold"),
+          toolbarState.isBold,
+          isFocusable,
+        )}
         onClick={() => void editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold")}
       >
         <i className="fe-bold"></i>
       </Button>
       <Button
-        {...buttonBaseProps(translate?.("wysiwyg.button.formatItalics"), toolbarState.isItalic, isFocusable)}
+        {...buttonBaseProps(
+          translate?.("wysiwyg.button.formatItalics"),
+          toolbarState.isItalic,
+          isFocusable,
+        )}
         onClick={() => void editor.dispatchCommand(FORMAT_TEXT_COMMAND, "italic")}
       >
         <i className="fe-italic"></i>
@@ -253,7 +259,11 @@ export function ToolbarPlugin({
         <i className="fe-underline"></i>
       </Button>
       <Button
-        {...buttonBaseProps(translate?.("wysiwyg.button.formatLink"), toolbarState.isLink, isFocusable)}
+        {...buttonBaseProps(
+          translate?.("wysiwyg.button.formatLink"),
+          toolbarState.isLink,
+          isFocusable,
+        )}
         onClick={insertLink}
       >
         <i className="fe-link"></i>

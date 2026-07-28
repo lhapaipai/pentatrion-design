@@ -2,9 +2,6 @@ import { useControl, useField, type FieldName } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
 import { isMediaImage, MediaPreview } from "../../media-preview";
 import { Button } from "../../button/Button";
-// import { presets, type PresetKey } from "~shared/media/presets";
-// import { calculateDimensions } from "~shared/media/util";
-// import { getMediaImageSrc } from "~/lib/util/url";
 
 import { UploaderMock } from "./UploaderMock";
 import { Media } from "./types";
@@ -13,7 +10,6 @@ type Props = Omit<FieldProps, "children" | "group"> & {
   name: FieldName<Media | null | undefined>;
   mediaContainerClassName?: string;
   allowedTypes?: "image" | "audio" | "all-safe";
-  // mediaPreset?: Exclude<PresetKey, "raw">;
   imageRatio?: number;
 };
 
@@ -21,7 +17,6 @@ export function FileField({
   name,
   mediaContainerClassName,
   allowedTypes = "all-safe",
-  // mediaPreset = "uploadPreview",
   imageRatio,
   id: forcedId,
   ...rest
@@ -52,16 +47,6 @@ export function FileField({
   });
 
   const media = control.payload;
-  console.log("media value parsée", media);
-
-  // const thumbnailDimensions =
-  //   media && isMediaImage(media) ? calculateDimensions(media, presets[mediaPreset]) : null;
-
-  // const src = getMediaImageSrc(media, mediaPreset);
-  // const hdMediaPreset = `${mediaPreset}HD` as PresetKey;
-  // const srcSet = presets[hdMediaPreset]
-  //   ? `${src} 1x, ${getMediaImageSrc(media, hdMediaPreset)} 2x`
-  //   : undefined;
 
   return (
     <>
@@ -77,10 +62,6 @@ export function FileField({
         {media ? (
           <MediaPreview
             media={media}
-            // src={src}
-            // srcSet={srcSet}
-            // width={thumbnailDimensions?.width}
-            // height={thumbnailDimensions?.height}
             fit={isMediaImage(media) ? "original" : "cover"}
             className={mediaContainerClassName}
           >

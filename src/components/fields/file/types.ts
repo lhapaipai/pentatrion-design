@@ -2,16 +2,22 @@ import { z } from "zod/v4-mini";
 
 export const mediaSchema = z.object({
   id: z.string(),
-  origin: z.enum(["s3Upload", "localUpload", "external", "asset"]),
   category: z.string(),
   mimeType: z.string(),
   width: z._default(z.nullable(z.coerce.number().check(z.int())), null),
   height: z._default(z.nullable(z.coerce.number().check(z.int())), null),
-  size: z._default(z.nullable(z.coerce.number().check(z.int())), null),
+  origin: z.enum(["s3Upload", "localUpload", "external", "asset"]),
   src: z.string(),
+  // in bytes
+  size: z._default(z.nullable(z.coerce.number().check(z.int())), null),
 });
 
 export type Media = z.infer<typeof mediaSchema>;
+
+export type MediaImage = Omit<Media, "width" | "height"> & {
+  width: number;
+  height: number;
+};
 
 export function parseMediaValue(payload: unknown): Media | undefined {
   if (payload == null || payload === "") {
