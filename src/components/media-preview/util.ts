@@ -1,6 +1,6 @@
-import { BasicMedia, BasicMediaImage } from "./types";
+import type { Media, MediaImage } from "../fields/file";
 
-export function isMediaImage(media: BasicMedia | null | undefined): media is BasicMediaImage {
+export function isMediaImage(media: Media | null | undefined): media is MediaImage {
   return (
     media !== undefined &&
     media !== null &&

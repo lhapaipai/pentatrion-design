@@ -1,3 +1,16 @@
+## 1.2.6
+
+### Patch Changes
+
+- a397eac: Fix ColorField translation
+- a397eac: Merge useTranslate and useWysiwygTranslate into a single hook
+- a397eac: Migrate Tailwind CSS class rules across components
+- a397eac: Fix ModalContent form conflict caused by createPortal
+- a397eac: Fix ResizableHandle event stopPropagation
+- a397eac: Simplify MediaPreview implementation
+- a397eac: Add prefix/suffix support to Textarea
+- a397eac: Upgrade shadow styles used by Button and related components
+
 ## 1.2.5
 
 ### Patch Changes

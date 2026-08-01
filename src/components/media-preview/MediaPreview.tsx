@@ -1,11 +1,11 @@
 import { CSSProperties, ReactNode, useMemo } from "react";
 import clsx from "clsx";
-import { BasicMedia } from "./types";
 import { isMediaImage } from "./util";
 import { FileIcon } from "./FileIcon";
+import { Media } from "../fields/file";
 
 interface Props {
-  media: BasicMedia | null;
+  media: Media | null;
   src?: string;
   width?: number;
   height?: number;
@@ -51,8 +51,6 @@ export function MediaPreview({
       {isImage ? (
         <img
           src={media.src}
-          srcSet={media.srcSet}
-          sizes={media.sizes}
           width={media.width}
           height={media.height}
           className={clsx(

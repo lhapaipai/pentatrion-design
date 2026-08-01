@@ -61,7 +61,7 @@ export function Tabs({
               )}
             >
               <button
-                className="w-full px-2 py-1 focus-visible:outline-offset-0"
+                className="w-full px-2 py-1 focus-visible:outline-offset-0 cursor-pointer"
                 onClick={(event) => {
                   event.stopPropagation();
                   event.preventDefault();

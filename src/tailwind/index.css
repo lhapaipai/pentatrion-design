@@ -1,6 +1,6 @@
-@import './theme.css';
-@import './variants.css';
-@import './utilities.css';
+@import "./theme.css";
+@import "./variants.css";
+@import "./utilities.css";
 
-@import './base.css' layer(base);
-@import './components/index.css' layer(components);
+@import "./base.css" layer(base);
+@import "./components/index.css" layer(components);
