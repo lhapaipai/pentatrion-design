@@ -1,14 +1,19 @@
 import { SerializedEditorState } from "lexical";
 import { z } from "zod/v4-mini";
+import { isPlausibleLexicalState } from "./config/validation";
 
 export type WysiwygValue = {
   html?: string;
   state: SerializedEditorState;
 };
 
+const maxContentBytes = 100_000; // à trancher ensemble
+
 export const wysiwygSchema = z.object({
   html: z.optional(z.string()),
-  state: z.custom<SerializedEditorState>(),
+  state: z
+    .custom<SerializedEditorState>(isPlausibleLexicalState)
+    .check(z.refine((state) => JSON.stringify(state).length <= maxContentBytes)),
 });
 
 // renvoie `undefined` (convention Zod pour "absent", cf. z.optional()) plutôt que `null`

@@ -3,7 +3,7 @@ import { $getRoot, $insertNodes, $setSelection, createEditor } from "lexical";
 
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
 
-import { editorConfig } from "./index";
+import { editorConfig } from "./editor";
 
 export function importHtmlIntoEditor(initialHtml?: string) {
   if (!initialHtml) {

@@ -18,7 +18,7 @@ import { CustomAutoLinkPlugin } from "./plugins/AutoLinkPlugin";
 import { FloatingLinkEditorPlugin } from "./plugins/FloatingLinkEditorPlugin";
 import { CustomLinkPlugin } from "./plugins/LinkPlugin";
 
-import { editorConfig } from "./config";
+import { editorConfig } from "./config/editor";
 import { $loadFromHtml } from "./config/html";
 import type { ToolbarVariantProps } from "./style";
 import { contentEditableStyles } from "./style";

@@ -3,6 +3,7 @@ export { WysiwygField } from "./WysiwygField";
 export { WysiwygReader } from "./WysiwygReader";
 export { stateToHtml } from "./config/html";
 export { isStateEmpty } from "./config/state";
+export { isPlausibleLexicalState, isValidLexicalState } from "./config/validation";
 export {
   wysiwygSchema,
   type WysiwygValue,
