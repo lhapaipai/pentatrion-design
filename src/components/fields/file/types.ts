@@ -4,8 +4,8 @@ export const mediaSchema = z.object({
   id: z.string(),
   category: z.string(),
   mimeType: z.string(),
-  width: z._default(z.nullable(z.coerce.number().check(z.int())), null),
-  height: z._default(z.nullable(z.coerce.number().check(z.int())), null),
+  width: z.optional(z.coerce.number().check(z.int())),
+  height: z.optional(z.coerce.number().check(z.int())),
   origin: z.enum(["s3Upload", "localUpload", "external", "asset"]),
   src: z.string(),
   // in bytes
