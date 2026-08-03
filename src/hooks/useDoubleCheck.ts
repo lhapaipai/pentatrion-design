@@ -11,7 +11,9 @@ function callAll<Args extends Array<unknown>>(
   return (...args: Args) => fns.forEach((fn) => fn?.(...args));
 }
 
-export function useDoubleCheck<P extends HTMLProps<Element> = HTMLProps<Element>>() {
+export function useDoubleCheck<
+  P extends Omit<HTMLProps<Element>, "size"> = Omit<HTMLProps<Element>, "size">,
+>() {
   const [doubleCheck, setDoubleCheck] = useState(false);
 
   function getButtonProps(userProps?: P) {
