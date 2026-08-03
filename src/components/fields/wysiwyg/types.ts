@@ -55,3 +55,7 @@ export function serializeWysiwygValue(value: unknown): string | null {
     return null;
   }
 }
+
+export function isWysiwygStateEmpty(value: WysiwygValue) {
+  return value.state.root.children.length === 0;
+}

@@ -9,7 +9,17 @@ import {
 import type { KeyboardEvent } from "react";
 import { useEffect } from "react";
 
-export function SubmitOnEnterPlugin() {
+interface SubmitOnEnterPluginProps {
+  /**
+   * When true, Shift+Enter or Ctrl+Enter submits the form and Enter inserts
+   * a newline (inverse of the default Enter-to-submit behavior).
+   */
+  submitOnShiftOrCtrlEnter?: boolean;
+}
+
+export function SubmitOnEnterPlugin({
+  submitOnShiftOrCtrlEnter = false,
+}: SubmitOnEnterPluginProps) {
   const [editor] = useLexicalComposerContext();
   useEffect(() => {
     return editor.registerCommand<KeyboardEvent | null>(
@@ -19,6 +29,7 @@ export function SubmitOnEnterPlugin() {
         if (!$isRangeSelection(selection)) {
           return false;
         }
+        console.log("submit", event);
         if (event !== null) {
           // If we have beforeinput, then we can avoid blocking
           // the default behavior. This ensures that the iOS can
@@ -35,7 +46,11 @@ export function SubmitOnEnterPlugin() {
             return false;
           }
           event.preventDefault();
-          if (event.shiftKey) {
+          if (
+            submitOnShiftOrCtrlEnter
+              ? !(event.shiftKey || event.ctrlKey)
+              : event.shiftKey
+          ) {
             return false;
           }
         }
@@ -46,6 +61,6 @@ export function SubmitOnEnterPlugin() {
       },
       COMMAND_PRIORITY_CRITICAL,
     );
-  }, [editor]);
+  }, [editor, submitOnShiftOrCtrlEnter]);
   return null;
 }

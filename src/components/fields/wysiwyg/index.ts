@@ -8,6 +8,7 @@ export {
   type WysiwygValue,
   parseWysiwygValue,
   serializeWysiwygValue,
+  isWysiwygStateEmpty,
 } from "./types";
 
 export { SubmitOnEnterPlugin } from "./plugins/SubmitOnEnterPlugin";
