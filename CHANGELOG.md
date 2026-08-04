@@ -1,3 +1,12 @@
+## 1.2.7
+
+### Patch Changes
+
+- b21f8c8: better wysiwygSchema validation
+- 6dc10d7: enhance wysiwyg submitOnEnterPlugin
+- 6dc10d7: fix useDoubleCheck typing
+- 6dc10d7: fix fileField
+
 ## 1.2.6
 
 ### Patch Changes
