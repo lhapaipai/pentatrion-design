@@ -2,13 +2,22 @@ import { FieldName, useField } from "@conform-to/react/future";
 import { Field, FieldProps } from "../field/Field";
 import { SelectOption } from "../select/types";
 import { Checkbox } from "./Checkbox";
+import clsx from "clsx";
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<(string | number)[] | null | undefined>;
   options: SelectOption[];
+  direction?: "horizontal" | "vertical";
 }
 
-export function CheckboxesField({ name, options, id: forcedId, ...rest }: Props) {
+export function CheckboxesField({
+  name,
+  options,
+  id: forcedId,
+  direction,
+  className,
+  ...rest
+}: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
   const itemErrors = Object.values(field.fieldErrors).flat();
@@ -16,7 +25,14 @@ export function CheckboxesField({ name, options, id: forcedId, ...rest }: Props)
 
   return (
     <Field id={id} group errors={errors} data-testid={name} {...rest}>
-      <div className="sm:grid-cols-repeat-fill-160 grid grid-cols-2 gap-x-2 lg:gap-x-4">
+      <div
+        className={clsx(
+          className,
+          !className &&
+            direction === "horizontal" &&
+            "sm:grid-cols-repeat-fill-160 grid grid-cols-2 gap-x-2 lg:gap-x-4",
+        )}
+      >
         {options.map((option) => (
           <Checkbox
             key={option.value}
