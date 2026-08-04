@@ -29,7 +29,7 @@ export function SubmitOnEnterPlugin({
         if (!$isRangeSelection(selection)) {
           return false;
         }
-        console.log("submit", event);
+
         if (event !== null) {
           // If we have beforeinput, then we can avoid blocking
           // the default behavior. This ensures that the iOS can
@@ -46,11 +46,7 @@ export function SubmitOnEnterPlugin({
             return false;
           }
           event.preventDefault();
-          if (
-            submitOnShiftOrCtrlEnter
-              ? !(event.shiftKey || event.ctrlKey)
-              : event.shiftKey
-          ) {
+          if (submitOnShiftOrCtrlEnter ? !(event.shiftKey || event.ctrlKey) : event.shiftKey) {
             return false;
           }
         }
