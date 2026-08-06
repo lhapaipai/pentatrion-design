@@ -1,3 +1,9 @@
+## 1.2.8
+
+### Patch Changes
+
+- a42eb6b: enhance checkboxesField radiosField direction prop
+
 ## 1.2.7
 
 ### Patch Changes
