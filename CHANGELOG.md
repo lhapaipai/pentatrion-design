@@ -1,3 +1,9 @@
+## 1.2.9
+
+### Patch Changes
+
+- dabacb0: add shape for checkbox
+
 ## 1.2.8
 
 ### Patch Changes
