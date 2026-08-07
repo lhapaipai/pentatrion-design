@@ -7,11 +7,13 @@ export interface CheckboxProps extends ComponentProps<"input"> {
   indeterminate?: boolean;
   disabled?: boolean;
   color?: ThemeColor;
+  shape?: "square" | "circle";
   ref?: RefObject<HTMLInputElement>;
 }
 
 export function Checkbox({
   color = "yellow",
+  shape = "square",
   indeterminate,
   disabled = false,
   className,
@@ -27,7 +29,8 @@ export function Checkbox({
         type="checkbox"
         className={clsx(
           "p8n-input-checkbox",
-          "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none rounded-sm bg-origin-border p-0 outline-offset-0 select-none",
+          "my-1 mr-2 inline-block h-6 w-6 shrink-0 cursor-pointer appearance-none bg-origin-border p-0 outline-offset-0 select-none",
+          shape === "square" ? "rounded-sm" : "rounded-full",
           indeterminate && "indeterminate",
           className,
         )}
