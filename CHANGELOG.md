@@ -1,3 +1,9 @@
+## 1.2.10
+
+### Patch Changes
+
+- 4b3bd91: enhance button loader
+
 ## 1.2.9
 
 ### Patch Changes
