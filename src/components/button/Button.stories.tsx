@@ -92,7 +92,15 @@ export const Context = () => {
       <div className="flex items-center gap-2">
         <Button disabled={true}>disabled</Button>
         <Button loading={false}>isLoading false</Button>
-        <Button loading={true}>isLoading true</Button>
+        <Button loading={true} size="small">
+          isLoading true
+        </Button>
+        <Button loading={true} size="medium" color="gray">
+          isLoading true
+        </Button>
+        <Button loading={true} size="large" color="gray-alpha">
+          isLoading true
+        </Button>
       </div>
       <h3 className="sb-h3">Width</h3>
       <div className="grid w-lg grid-cols-2 gap-2">

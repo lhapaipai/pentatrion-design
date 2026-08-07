@@ -1,6 +1,6 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
-import { Loader } from "../loader";
+import { Loader, RoundedRectLoader } from "../loader";
 import { useRipple } from "../../hooks";
 import { Slot } from "../slot";
 import { cva } from "class-variance-authority";
@@ -147,14 +147,13 @@ export function Button({
           icon: width === "custom" && !icon ? "custom" : icon,
         }),
         className,
-        loading && !icon && "text-transparent",
       )}
       data-color={color}
       data-variant={variant}
       aria-checked={selected}
       suppressHydrationWarning
       aria-busy={loading}
-      {...(disabled ? { disabled } : {})}
+      {...(disabled || loading ? { disabled } : {})}
       {...props}
     >
       {asChild ? (
@@ -163,13 +162,16 @@ export function Button({
         <>
           {/* {!notClickable && withRipple && ripples} */}
           {children}
-          {loading && (
-            <Loader
-              color={loaderColor(color)}
-              className={clsx("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")}
-              position="absolute"
-            />
-          )}
+          {loading &&
+            (icon ? (
+              <Loader
+                color={loaderColor(color)}
+                className={clsx("top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")}
+                position="absolute"
+              />
+            ) : (
+              <RoundedRectLoader color={loaderColor(color)} className="absolute inset-0" />
+            ))}
         </>
       )}
     </Comp>
