@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { Activity, ReactNode } from "react";
 import clsx from "clsx";
 
 /* TODO: fix stickyTabs with overflow: hidden */
@@ -27,6 +27,7 @@ interface Props {
   className?: string;
   contentClassName?: string;
   listClassName?: string;
+  preload?: boolean;
 }
 
 export function Tabs({
@@ -38,6 +39,7 @@ export function Tabs({
   onChange,
   fullWidth = false,
   stickyTabs = false,
+  preload = false,
   children,
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
@@ -76,7 +78,13 @@ export function Tabs({
         {children && <div className="extra mr-0.5 ml-auto flex items-center">{children}</div>}
       </div>
       <div className={clsx("bg-gray-0 p-2 shadow-lg", contentClassName)} role="tabpanel">
-        {content}
+        {preload
+          ? tabs.map(({ id, content }) => (
+              <Activity key={id} mode={value === id ? "visible" : "hidden"}>
+                {content}
+              </Activity>
+            ))
+          : content}
       </div>
     </div>
   );
