@@ -1,4 +1,12 @@
-import { useMemo, ComponentPropsWithRef, useState, ChangeEvent, RefObject } from "react";
+import {
+  useMemo,
+  useState,
+  ChangeEvent,
+  RefObject,
+  useRef,
+  KeyboardEvent,
+  ComponentProps,
+} from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
@@ -16,8 +24,16 @@ export const formatTime = (time: number) => {
 };
 
 export interface RangeProps extends Omit<
-  ComponentPropsWithRef<"input">,
-  "value" | "defaultValue" | "min" | "max" | "step"
+  ComponentProps<"input">,
+  | "value"
+  | "defaultValue"
+  | "min"
+  | "max"
+  | "step"
+  | "onPointerDown"
+  | "onPointerUp"
+  | "onTouchEnd"
+  | "onKeyDown"
 > {
   defaultValue?: number | string;
   value?: number | string;
@@ -33,6 +49,8 @@ export interface RangeProps extends Omit<
   ref?: RefObject<HTMLInputElement>;
 
   valueClassName?: string;
+
+  onChangeCommitted?: (valueAsNumber: number) => void;
 }
 
 const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
@@ -48,14 +66,18 @@ export function AudioRange({
   step = 1,
   formatter = formatTime,
   onChange,
-  ref,
+  onChangeCommitted,
   ...rest
 }: RangeProps) {
+  const rangeRef = useRef<HTMLInputElement>(null!);
   const isControlled = typeof controlledValue !== "undefined";
 
   const [unControlledValue, setUnControlledValue] = useState(defaultValue);
+  const [tempValue, setTempValue] = useState<number | undefined>(undefined);
 
-  const value = (isControlled ? controlledValue : unControlledValue)!;
+  const isTemp = typeof tempValue !== "undefined";
+
+  const value = (isControlled ? (isTemp ? tempValue : controlledValue) : unControlledValue)!;
   const valueAsNumber = typeof value === "string" ? parseInt(value) : value;
 
   const range = max - min;
@@ -74,10 +96,33 @@ export function AudioRange({
     if (!isControlled) {
       setUnControlledValue(e.target.valueAsNumber);
     }
-    if (onChange) {
-      onChange(e);
+    if (isTemp) {
+      setTempValue(e.target.valueAsNumber);
     }
+    onChange?.(e);
   };
+
+  function handleSeekStart() {
+    setTempValue(rangeRef.current.valueAsNumber);
+  }
+  function handleSeekEnd() {
+    setTempValue(undefined);
+    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+  }
+
+  function handleKeyDown(e: KeyboardEvent) {
+    const currentVal = rangeRef.current.valueAsNumber;
+    switch (e.code) {
+      case "ArrowLeft": {
+        onChangeCommitted?.(Math.max(min, currentVal - 5));
+        break;
+      }
+      case "ArrowRight": {
+        onChangeCommitted?.(Math.min(max, currentVal + 5));
+        break;
+      }
+    }
+  }
 
   return (
     <div className="flex items-center">
@@ -105,7 +150,7 @@ export function AudioRange({
                 "from-gray-8/70 to-gray-8/50 before:bg-gray-8/70 bg-linear-to-r from-5%",
                 "group-hover:from-custom-4 group-hover:to-custom-3 group-hover:before:bg-custom-4 group-hover:bg-linear-to-r",
 
-                "w-(--p8n-range-progress-percent) rounded-r-[4px]",
+                "w-(--p8n-range-progress-percent) rounded-r-sm",
                 "before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:mask-r-from-50% before:mask-r-to-transparent before:mask-r-to-50%",
               )}
             ></div>
@@ -117,13 +162,17 @@ export function AudioRange({
           className={clsx(
             "p8n-input-audio-range h-8 w-full min-w-0 cursor-pointer bg-transparent outline-offset-[0.75rem]",
           )}
-          ref={ref}
+          ref={rangeRef}
           min={min}
           max={max}
           step={step}
           defaultValue={defaultValue}
-          value={controlledValue}
+          value={value}
           onChange={handleChange}
+          onPointerDown={handleSeekStart}
+          onPointerUp={handleSeekEnd}
+          onTouchEnd={handleSeekEnd}
+          onKeyDown={handleKeyDown}
           {...rest}
         />
       </div>
