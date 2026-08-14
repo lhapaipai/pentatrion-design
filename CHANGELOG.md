@@ -1,3 +1,10 @@
+## 1.2.12
+
+### Patch Changes
+
+- 4cce0c9: update deps
+- 4cce0c9: enhance Range AudioRange RangeField
+
 ## 1.2.11
 
 ### Patch Changes
