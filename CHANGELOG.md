@@ -1,3 +1,9 @@
+## 1.2.13
+
+### Patch Changes
+
+- cd5ab7d: enhance modal
+
 ## 1.2.12
 
 ### Patch Changes
