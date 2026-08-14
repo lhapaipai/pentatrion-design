@@ -15,12 +15,16 @@ const width = 4;
 const trackStyle: CSSProperties = {
   strokeLinecap: "round",
   strokeWidth: width,
+  width: `calc(100% - ${width}px)`,
+  height: `calc(100% - ${width}px)`,
 };
 const rectStyle: CSSProperties = {
   strokeLinecap: "round",
   strokeWidth: width,
   // pathLength=100 normalizes the perimeter, so these percentages hold for any button size.
   strokeDasharray: "40, 60",
+  width: `calc(100% - ${width}px)`,
+  height: `calc(100% - ${width}px)`,
 };
 
 export function RoundedRectLoader({ color = "blue", radius = 16, className, ...rest }: Props) {
@@ -39,8 +43,6 @@ export function RoundedRectLoader({ color = "blue", radius = 16, className, ...r
       <rect
         x={width / 2}
         y={width / 2}
-        width={`calc(100% - ${width}px)`}
-        height={`calc(100% - ${width}px)`}
         rx={rx}
         pathLength={100}
         className="fill-none stroke-current opacity-25"
@@ -49,8 +51,6 @@ export function RoundedRectLoader({ color = "blue", radius = 16, className, ...r
       <rect
         x={width / 2}
         y={width / 2}
-        width={`calc(100% - ${width}px)`}
-        height={`calc(100% - ${width}px)`}
         rx={rx}
         pathLength={100}
         className="animate-loader-rect-stroke fill-none stroke-current"

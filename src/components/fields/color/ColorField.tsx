@@ -66,13 +66,10 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
          * FloatingOverlay to close the modal */
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
-        <ModalContent
-          className="my-4 max-h-[90vh] w-full max-w-190 overflow-auto"
-          zClassName="z-modal-overlay"
-        >
+        <ModalContent className="max-w-190 overflow-auto" zClassName="z-modal-overlay">
           <ModalHeader>{translate?.("form.label.pickYourColor")}</ModalHeader>
-          <ModalDescription>
-            <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm">
+          <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
+            <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm p-2">
               {colorByGroups.map(({ name, colors }) => (
                 <div key={name}>
                   <div className="text-body-xs truncate">{name}</div>

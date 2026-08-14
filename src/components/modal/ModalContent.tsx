@@ -36,7 +36,10 @@ export function ModalContent({ zClassName, style, className, children, ref, ...p
         <FloatingFocusManager context={floatingContext}>
           <Dialog
             color={context.color}
-            className={clsx("motion-safe:animate-fade-in z-modal mx-4", className)}
+            className={clsx(
+              "motion-safe:animate-fade-in z-modal w-[calc(100vw-1rem)] mx-2",
+              className,
+            )}
             style={style}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}

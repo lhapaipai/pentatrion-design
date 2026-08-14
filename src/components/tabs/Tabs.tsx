@@ -47,34 +47,38 @@ export function Tabs({
     <div className={clsx("ll-tabs bg-gray-2 overflow-hidden shadow-lg", className)}>
       <div
         role="tablist"
-        className={clsx("tabs-list flex", stickyTabs && "sticky top-0 z-1", listClassName)}
+        className={clsx("tabs-list flex w-full", stickyTabs && "sticky top-0 z-1", listClassName)}
       >
-        {tabs.map(({ title, id }) => {
-          return (
-            <div
-              key={id}
-              role="tab"
-              className={clsx(
-                "tabs-list-item hover:text-gray-7 border-t-4",
-                fullWidth && "flex-1 text-center",
-                value === id
-                  ? "border-t-yellow-3 bg-gray-0 text-gray-7"
-                  : "text-gray-6 border-t-transparent",
-              )}
-            >
-              <button
-                className="w-full px-2 py-1 focus-visible:outline-offset-0 cursor-pointer"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  event.preventDefault();
-                  onChange(id);
-                }}
-              >
-                {title}
-              </button>
-            </div>
-          );
-        })}
+        <div className="overflow-x-scroll flex-1 min-w-0">
+          <div className="flex h-full flex-1">
+            {tabs.map(({ title, id }) => {
+              return (
+                <div
+                  key={id}
+                  role="tab"
+                  className={clsx(
+                    "hover:text-gray-7 border-t-4 shrink-0 whitespace-nowrap",
+                    fullWidth && "flex-1 text-center",
+                    value === id
+                      ? "border-t-yellow-3 bg-gray-0 text-gray-7"
+                      : "text-gray-6 border-t-transparent",
+                  )}
+                >
+                  <button
+                    className="w-full px-2 py-1 focus-visible:outline-offset-0 cursor-pointer"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      event.preventDefault();
+                      onChange(id);
+                    }}
+                  >
+                    {title}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         {children && <div className="extra mr-0.5 ml-auto flex items-center">{children}</div>}
       </div>
       <div className={clsx("bg-gray-0 p-2 shadow-lg", contentClassName)} role="tabpanel">
