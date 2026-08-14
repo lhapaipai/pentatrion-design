@@ -1,3 +1,9 @@
+## 1.2.11
+
+### Patch Changes
+
+- 53018ea: tabs added preload prop
+
 ## 1.2.10
 
 ### Patch Changes
