@@ -1,12 +1,4 @@
-import {
-  useMemo,
-  useState,
-  ChangeEvent,
-  RefObject,
-  useRef,
-  KeyboardEvent,
-  ComponentProps,
-} from "react";
+import { useMemo, useState, ChangeEvent, useRef, KeyboardEvent, ComponentProps } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
@@ -34,9 +26,9 @@ export interface RangeProps extends Omit<
   | "onPointerUp"
   | "onTouchEnd"
   | "onKeyDown"
+  | "ref"
 > {
-  defaultValue?: number | string;
-  value?: number | string;
+  value: number;
 
   min?: number;
   max?: number;
@@ -45,8 +37,6 @@ export interface RangeProps extends Omit<
   color?: ThemeColor;
 
   formatter?: (str: number) => string;
-
-  ref?: RefObject<HTMLInputElement>;
 
   valueClassName?: string;
 
@@ -58,7 +48,6 @@ const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 export function AudioRange({
   className,
   valueClassName,
-  defaultValue,
   value: controlledValue,
   min = 0,
   max = 100,
@@ -70,32 +59,24 @@ export function AudioRange({
   ...rest
 }: RangeProps) {
   const rangeRef = useRef<HTMLInputElement>(null!);
-  const isControlled = typeof controlledValue !== "undefined";
 
-  const [unControlledValue, setUnControlledValue] = useState(defaultValue);
   const [tempValue, setTempValue] = useState<number | undefined>(undefined);
 
   const isTemp = typeof tempValue !== "undefined";
 
-  const value = (isControlled ? (isTemp ? tempValue : controlledValue) : unControlledValue)!;
-  const valueAsNumber = typeof value === "string" ? parseInt(value) : value;
+  const value = isTemp ? tempValue : controlledValue;
 
   const range = max - min;
-  const percent = (valueAsNumber - min) / range;
+  const percent = (value - min) / range;
 
   const cssVars = useMemo(
     () => ({
-      "--p8n-range-c-bg": `var(--color-custom-1)`,
-      "--p8n-range-c-fg": `var(--color-custom-4)`,
       "--p8n-range-progress-percent": `${percent * 100}%`,
     }),
     [percent],
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!isControlled) {
-      setUnControlledValue(e.target.valueAsNumber);
-    }
     if (isTemp) {
       setTempValue(e.target.valueAsNumber);
     }
@@ -114,10 +95,12 @@ export function AudioRange({
     const currentVal = rangeRef.current.valueAsNumber;
     switch (e.code) {
       case "ArrowLeft": {
+        e.preventDefault();
         onChangeCommitted?.(Math.max(min, currentVal - 5));
         break;
       }
       case "ArrowRight": {
+        e.preventDefault();
         onChangeCommitted?.(Math.min(max, currentVal + 5));
         break;
       }
@@ -126,7 +109,7 @@ export function AudioRange({
 
   return (
     <div className="flex items-center">
-      <div className={clsx("text-right", valueClassName)}>{formatter(valueAsNumber)}</div>
+      <div className={clsx("text-right", valueClassName)}>{formatter(value)}</div>
 
       <div
         className={clsx("group relative flex flex-1", className)}
@@ -166,7 +149,6 @@ export function AudioRange({
           min={min}
           max={max}
           step={step}
-          defaultValue={defaultValue}
           value={value}
           onChange={handleChange}
           onPointerDown={handleSeekStart}

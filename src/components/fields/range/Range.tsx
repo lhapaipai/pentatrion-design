@@ -1,14 +1,21 @@
-import { useMemo, ComponentPropsWithRef, useState, ChangeEvent, RefObject } from "react";
+import { useMemo, ComponentProps, useState, ChangeEvent, useRef } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
 
 export interface RangeProps extends Omit<
-  ComponentPropsWithRef<"input">,
-  "value" | "defaultValue" | "min" | "max" | "step"
+  ComponentProps<"input">,
+  | "value"
+  | "defaultValue"
+  | "min"
+  | "max"
+  | "step"
+  | "onPointerDown"
+  | "onPointerUp"
+  | "onTouchEnd"
+  | "ref"
 > {
-  defaultValue?: number | string;
-  value?: number | string;
+  value: number;
 
   additionalBarValue?: number;
 
@@ -28,14 +35,13 @@ export interface RangeProps extends Omit<
 
   formatter?: (str: number) => string;
 
-  ref?: RefObject<HTMLInputElement>;
+  onChangeCommitted?: (valueAsNumber: number) => void;
 }
 
 const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
 
 export function Range({
   className,
-  defaultValue,
   additionalBarValue,
   value: controlledValue,
   min = 0,
@@ -48,26 +54,23 @@ export function Range({
   ticks = false,
   formatter = (str) => str?.toString(),
   onChange,
-  ref,
+  onChangeCommitted,
   ...rest
 }: RangeProps) {
-  const isControlled = typeof controlledValue !== "undefined";
+  const rangeRef = useRef<HTMLInputElement>(null!);
 
-  const [unControlledValue, setUnControlledValue] = useState(defaultValue);
+  const [tempValue, setTempValue] = useState<number | undefined>(undefined);
+  const isTemp = typeof tempValue !== "undefined";
 
-  const value = (isControlled ? controlledValue : unControlledValue)!;
-  const valueAsNumber = typeof value === "string" ? parseInt(value) : value;
+  const value = isTemp ? tempValue : controlledValue;
 
   const range = max - min;
-  const percent = (valueAsNumber - min) / range;
+  const percent = (value - min) / range;
   const additionalPercent = additionalBarValue ? (additionalBarValue - min) / range : 0;
   const nbOfTicks = 1 + Math.floor(range / (valuesByTick ?? step ?? 5));
 
   const cssVars = useMemo(
     () => ({
-      "--p8n-range-c-bg": `var(--color-custom-1)`,
-      "--p8n-range-c-bg-2": `var(--color-custom-2)`,
-      "--p8n-range-c-fg": `var(--color-custom-4)`,
       "--p8n-range-progress-percent": `${percent * 100}%`,
       "--p8n-range-additional-percent": `${additionalPercent * 100}%`,
     }),
@@ -75,13 +78,23 @@ export function Range({
   );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!isControlled) {
-      setUnControlledValue(e.target.valueAsNumber);
+    if (isTemp) {
+      setTempValue(e.target.valueAsNumber);
     }
-    if (onChange) {
-      onChange(e);
-    }
+    onChange?.(e);
   };
+
+  function handleSeekStart() {
+    setTempValue(rangeRef.current.valueAsNumber);
+  }
+  function handleSeekEnd() {
+    setTempValue(undefined);
+    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+  }
+
+  function handleKeyUp() {
+    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+  }
 
   return (
     <div className={clsx("group relative flex", className)} style={cssVars} data-color={color}>
@@ -112,27 +125,27 @@ export function Range({
           <div
             className={clsx(
               trackBase,
-              "track w-full bg-(--p8n-range-c-bg) after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:bg-(--p8n-range-c-bg)",
+              "track w-full bg-custom-1 after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:bg-custom-1",
             )}
           ></div>
           {typeof additionalBarValue !== "undefined" && (
             <div
               className={clsx(
                 trackBase,
-                "w-(--p8n-range-additional-percent) rounded-[3px] bg-(--p8n-range-c-bg-2) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-bg-2)",
+                "w-(--p8n-range-additional-percent) rounded-[3px] bg-custom-2 before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-custom-2",
               )}
             ></div>
           )}
           {showValue && (
             <div className="text-body-sm pointer-events-none absolute bottom-4 left-(--p8n-range-progress-percent) -translate-x-2/4">
-              {formatter(valueAsNumber)}
+              {formatter(value)}
             </div>
           )}
           {/* active zone */}
           <div
             className={clsx(
               trackBase,
-              "w-(--p8n-range-progress-percent) rounded-[3px] bg-(--p8n-range-c-fg) before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-(--p8n-range-c-fg)",
+              "w-(--p8n-range-progress-percent) rounded-[3px] bg-custom-4 before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:bg-custom-4",
             )}
           ></div>
           {/* ticks */}
@@ -155,13 +168,16 @@ export function Range({
         className={clsx(
           "p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]",
         )}
-        ref={ref}
+        ref={rangeRef}
         min={min}
         max={max}
         step={step}
-        defaultValue={defaultValue}
-        value={controlledValue}
+        value={value}
         onChange={handleChange}
+        onPointerDown={handleSeekStart}
+        onPointerUp={handleSeekEnd}
+        onTouchEnd={handleSeekEnd}
+        onKeyUp={handleKeyUp}
         {...rest}
       />
     </div>

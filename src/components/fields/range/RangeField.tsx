@@ -1,4 +1,4 @@
-import { useField, type FieldName } from "@conform-to/react/future";
+import { useControl, useField, type FieldName } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
 import { Range } from "./Range";
 
@@ -24,21 +24,37 @@ export function RangeField({
 }: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
-  const numberValue: number | undefined = field.defaultValue
-    ? parseInt(field.defaultValue)
-    : undefined;
+
+  const control = useControl<number, string>({
+    defaultValue: field.defaultValue,
+    parse(payload) {
+      if (typeof payload !== "string") {
+        throw new Error("range input must return string");
+      }
+      return parseInt(payload);
+    },
+    serialize(value) {
+      return value.toString();
+    },
+  });
 
   return (
-    <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
-      <Range
-        name={field.name}
-        defaultValue={numberValue}
-        min={min}
-        max={max}
-        step={step}
-        showMinMax={showMinMax}
-        showValue={showValue}
-      />
-    </Field>
+    <>
+      <input type="text" name={field.name} ref={control.register} hidden />
+      <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
+        <Range
+          value={control.payload ?? 0}
+          min={min}
+          max={max}
+          step={step}
+          showMinMax={showMinMax}
+          showValue={showValue}
+          onChangeCommitted={(value: number) => {
+            control.change(value);
+          }}
+          onBlur={() => control.blur()}
+        />
+      </Field>
+    </>
   );
 }

@@ -23,88 +23,46 @@ export const Basic = () => {
 
   return (
     <div className="grid gap-8">
-      <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+      <AudioRange value={value} onChangeCommitted={setValue} />
       <div className="bg-[url(/bg-map.jpg)] p-2">
-        <AudioRange value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+        <AudioRange value={value} onChangeCommitted={setValue} />
       </div>
 
-      <Range valuesByTick={1} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
-      <Range valuesByTick={5} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
-      <Range valuesByTick={50} value={value} onChange={(e) => setValue(e.target.valueAsNumber)} />
+      <Range valuesByTick={1} value={value} onChangeCommitted={setValue} />
+      <Range valuesByTick={5} value={value} onChangeCommitted={setValue} />
+      <Range valuesByTick={50} value={value} onChangeCommitted={setValue} />
       <Range
         color="gray"
         valuesByTick={5}
         ticks={true}
         value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
+        onChangeCommitted={setValue}
       />
-      <Range
-        color="red"
-        valuesByTick={5}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
-      <Range
-        color="blue"
-        valuesByTick={5}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
-      <Range
-        color="orange"
-        valuesByTick={5}
-        value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
-      />
+      <Range color="red" valuesByTick={5} value={value} onChangeCommitted={setValue} />
+      <Range color="blue" valuesByTick={5} value={value} onChangeCommitted={setValue} />
+      <Range color="orange" valuesByTick={5} value={value} onChangeCommitted={setValue} />
       <Range
         color="green"
         valuesByTick={5}
         value={value}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
+        onChangeCommitted={setValue}
         formatter={pxFormatter}
       />
-      <Range
-        value={value2}
-        onChange={(e) => setValue2(e.target.valueAsNumber)}
-        step={0.1}
-        min={0}
-        max={2}
-      />
-      <Range
-        value={value2}
-        onChange={(e) => setValue2(e.target.valueAsNumber)}
-        step={0.01}
-        min={0}
-        max={2}
-      />
+      <Range value={value2} onChangeCommitted={setValue2} step={0.1} min={0} max={2} />
+      <Range value={value2} onChangeCommitted={setValue2} step={0.01} min={0} max={2} />
       <div className="w-24">
-        <Range
-          value={value2}
-          onChange={(e) => setValue2(e.target.valueAsNumber)}
-          step={0.5}
-          min={0}
-          max={2}
-        />
+        <Range value={value2} onChangeCommitted={setValue2} step={0.5} min={0} max={2} />
       </div>
       <div className="w-12">
-        <Range
-          value={value2}
-          onChange={(e) => setValue2(e.target.valueAsNumber)}
-          step={0.5}
-          min={0}
-          max={2}
-        />
+        <Range value={value2} onChangeCommitted={setValue2} step={0.5} min={0} max={2} />
       </div>
-      <h3 className="mt-8 mb-4">Uncontrolled</h3>
-      <Range defaultValue={value2} step={0.01} min={0} max={2} />
-
       <div>
         <Range
           showMinMax="never"
           showValue={false}
           value={value}
           className="w-32 -rotate-90"
-          onChange={(e) => setValue(e.target.valueAsNumber)}
+          onChangeCommitted={setValue}
         />
       </div>
     </div>
