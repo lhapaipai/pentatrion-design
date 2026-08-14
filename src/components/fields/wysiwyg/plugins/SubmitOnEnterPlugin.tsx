@@ -6,7 +6,6 @@ import {
   COMMAND_PRIORITY_CRITICAL,
   KEY_ENTER_COMMAND,
 } from "lexical";
-import type { KeyboardEvent } from "react";
 import { useEffect } from "react";
 
 interface SubmitOnEnterPluginProps {

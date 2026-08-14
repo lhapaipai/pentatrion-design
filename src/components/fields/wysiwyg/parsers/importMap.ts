@@ -48,7 +48,7 @@ export const constructImportMap = (): DOMConversionMap => {
 
   // Wrap all TextNode importers with a function that also imports
   // the custom styles implemented by the playground
-  for (const [tag, fn] of Object.entries(TextNode.importDOM() || {})) {
+  for (const [tag, fn] of Object.entries(TextNode.importDOM?.() || {})) {
     importMap[tag] = (importNode) => {
       const importer = fn(importNode);
       if (!importer) {
