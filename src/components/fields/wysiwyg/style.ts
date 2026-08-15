@@ -1,24 +1,27 @@
 import type { VariantProps } from "class-variance-authority";
 import { cva } from "class-variance-authority";
 
-export const toolbarVariants = cva("p-1 border-custom-2 border gap-1 bg-gray-0/40", {
-  variants: {
-    sticky: {
-      mobileOnly: "max-lg:sticky max-lg:top-0 max-lg:backdrop-blur-xs lg:rounded-t-2xl",
-      allDevice: "max-lg:sticky max-lg:top-0 max-lg:backdrop-blur-xs lg:rounded-t-2xl",
-      false: "",
+export const toolbarVariants = cva(
+  "p-1 border-custom-2 border gap-1 bg-gray-0/40 overflow-x-scroll",
+  {
+    variants: {
+      sticky: {
+        mobileOnly: "max-lg:sticky max-lg:top-0 max-lg:backdrop-blur-xs lg:rounded-t-2xl",
+        allDevice: "max-lg:sticky max-lg:top-0 max-lg:backdrop-blur-xs lg:rounded-t-2xl",
+        false: "",
+      },
+      visible: {
+        always: "flex",
+        custom: "",
+        desktopOnly: "hidden lg:flex rounded-t-2xl",
+      },
     },
-    visible: {
-      always: "flex",
-      custom: "",
-      desktopOnly: "hidden lg:flex rounded-t-2xl",
+    defaultVariants: {
+      sticky: "mobileOnly",
+      visible: "always",
     },
   },
-  defaultVariants: {
-    sticky: "mobileOnly",
-    visible: "always",
-  },
-});
+);
 export type ToolbarVariantProps = VariantProps<typeof toolbarVariants>;
 
 export const defaultContentEditableStyle =
