@@ -1,4 +1,6 @@
 .prose {
+  @apply text-prose;
+
   p {
     @apply mb-5 mt-0;
   }

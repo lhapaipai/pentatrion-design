@@ -38,7 +38,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
   }
 
   function handleSubmitInherit() {
-    control.change("inherit");
+    control.change(null);
     setTempValue(null);
   }
 
@@ -57,7 +57,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
           type="button"
           value={control.value}
           onClick={() => setTempValue(control.value ?? "")}
-          label={control.value === "inherit" ? translate?.("form.values.color.inherit") : undefined}
+          label={control.value ? undefined : translate?.("form.values.color.inherit")}
         />
       </Field>
       <Modal
