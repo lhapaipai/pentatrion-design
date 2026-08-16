@@ -3,9 +3,8 @@ import { Field, type FieldProps } from "../field/Field";
 import { Color } from "./Color";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
 import { useState } from "react";
-import clsx from "clsx";
 import { Button } from "../../button/Button";
-import { colorByGroups } from "../../../lib/color";
+import { ColorSwatchGrid } from "./ColorSwatchGrid";
 import { useTranslate } from "../../i18n";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
@@ -69,30 +68,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
         <ModalContent className="max-w-190 overflow-auto" zClassName="z-modal-overlay">
           <ModalHeader>{translate?.("form.label.pickYourColor")}</ModalHeader>
           <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
-            <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm p-2">
-              {colorByGroups.map(({ name, colors }) => (
-                <div key={name}>
-                  <div className="text-body-xs truncate">{name}</div>
-                  <div className="grid shadow">
-                    {colors.map(([colorNumber, colorCode]) => (
-                      <button
-                        key={colorNumber}
-                        className={clsx(
-                          "cursor-pointer",
-                          parseInt(colorNumber) > 600 ? "text-white" : "text-black",
-                          "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
-                          tempValue === colorCode && "outline-yellow-5 z-10 rounded outline-2",
-                        )}
-                        style={{ backgroundColor: colorCode }}
-                        onClick={() => handleSelectAndSubmit(colorCode)}
-                      >
-                        {colorNumber}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ColorSwatchGrid value={tempValue} onChange={handleSelectAndSubmit} />
           </ModalDescription>
           <ModalFooter className="mt-2">
             <div className="flex justify-between">
