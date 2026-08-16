@@ -1,3 +1,10 @@
+## 1.2.14
+
+### Patch Changes
+
+- 701f1c0: add ColorSwatchGrid
+- 701f1c0: responsive wysiwyg
+
 ## 1.2.13
 
 ### Patch Changes
