@@ -1,0 +1,11 @@
+.react-colorful-container .react-colorful {
+  width: 100%;
+}
+
+.react-colorful-container .react-colorful__saturation {
+border-radius: 13px 13px 0 0;
+}
+
+.react-colorful-container .react-colorful__last-control {
+  border-radius: 0 0 13px 13px;
+}

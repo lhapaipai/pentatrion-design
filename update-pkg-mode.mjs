@@ -59,7 +59,7 @@ function setEntry(distValue, kind) {
 pkg.main = setEntry(pkg.main, "default");
 pkg.types = setEntry(pkg.types, "types");
 
-for (const [key, value] of Object.entries(pkg.exports)) {
+for (const [_key, value] of Object.entries(pkg.exports)) {
   if (typeof value === "string") continue; // e.g. "./tailwind": "./src/tailwind/index.css" — not dist-managed
   if (value.types) value.types = setEntry(value.types, "types");
   if (value.default) value.default = setEntry(value.default, "default");
@@ -83,4 +83,6 @@ for (const value of Object.values(pkg.exports)) {
 }
 
 writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
-console.log(`Set package.json to ${mode === "src" ? "source mode (src/*.ts)" : "publish mode (dist/*)"} — ${changed} export entries updated`);
+console.log(
+  `Set package.json to ${mode === "src" ? "source mode (src/*.ts)" : "publish mode (dist/*)"} — ${changed} export entries updated`,
+);

@@ -11,6 +11,7 @@ export default defineConfig({
     "src/components/button/index.ts",
     "src/components/card/index.ts",
     "src/components/code/index.ts",
+    "src/components/color/index.ts",
     "src/components/context-menu/index.ts",
     "src/components/dialog/index.ts",
     "src/components/dropdown-menu/index.ts",
