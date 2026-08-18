@@ -10,6 +10,7 @@ import { HexColorInput, HexColorPicker } from "react-colorful";
 import { inputConfig } from "pentatrion-design/fields/text";
 import clsx from "clsx";
 import { useTranslate } from "../i18n";
+import { ColorSwatchGrid } from "./ColorSwatchGrid";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   palette?: Palette;
@@ -44,6 +45,19 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
           onChange={(nextValue) => {
             setTempValue(null);
             onChange(nextValue);
+          }}
+        />
+      ),
+    },
+    {
+      id: "predefined",
+      title: t?.("common.colorPredefined") ?? "Nuanciers",
+      content: (
+        <ColorSwatchGrid
+          value={tempValue?.type === "custom" ? tempValue.value : null}
+          onChange={(nextValue) => {
+            setTempValue(null);
+            onChange({ type: "custom", value: nextValue });
           }}
         />
       ),
@@ -92,13 +106,20 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
          * FloatingOverlay to close the modal */
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
-        <ModalContent className="max-w-100 overflow-auto" zClassName="z-modal-overlay">
-          <div className="max-h-96">
-            <Tabs tabs={tabs} value={tabId} onChange={setTabId} contentClassName="min-h-[260px]">
-              <Button icon variant="text" color="gray" onClick={() => setTempValue(null)}>
-                <i className="fe-cancel"></i>
-              </Button>
-            </Tabs>
+        <ModalContent className="max-w-140" zClassName="z-modal-overlay">
+          <div>
+            <Tabs
+              tabs={tabs}
+              value={tabId}
+              onChange={setTabId}
+              contentClassName="h-[320px] overflow-auto"
+              className="rounded-t-2xl"
+              action={
+                <Button icon variant="text" color="gray" onClick={() => setTempValue(null)}>
+                  <i className="fe-cancel"></i>
+                </Button>
+              }
+            />
           </div>
 
           <ModalFooter className="mt-2">
