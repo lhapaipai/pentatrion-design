@@ -5,18 +5,29 @@ export function getColorValue(color: Color, palette = defaultPalette): string {
     return color.value;
   }
 
-  const base =
-    color.name === "black"
-      ? "#000000"
-      : color.name === "white"
-        ? "#ffffff"
-        : (palette[color.name] ?? "#000000");
+  const base = color.name === "gray" ? "#808080" : (palette[color.name] ?? "#808080");
 
-  return applyColorVariant(base, color.variant);
+  return applyColorVariant(base ?? "#808080", color.variant);
+}
+
+/**
+ * Détermine si une couleur hexadécimale (#rgb, #rgba, #rrggbb, #rrggbbaa)
+ * est un niveau de gris, c'est-à-dire que ses composantes R, G et B sont égales.
+ */
+export function isGrayScale(hex: string): boolean {
+  const normalized = hex.replace("#", "");
+  const isShort = normalized.length === 3 || normalized.length === 4;
+  const step = isShort ? 1 : 2;
+
+  const r = parseInt(normalized.slice(0, step).repeat(isShort ? 2 : 1), 16);
+  const g = parseInt(normalized.slice(step, step * 2).repeat(isShort ? 2 : 1), 16);
+  const b = parseInt(normalized.slice(step * 2, step * 3).repeat(isShort ? 2 : 1), 16);
+
+  return r === g && g === b;
 }
 
 export function isColorAvailable(colorName: ColorName, palette = defaultPalette): boolean {
-  if (colorName === "black" || colorName === "white") {
+  if (colorName === "gray") {
     return true;
   }
   return !!palette[colorName];
@@ -33,10 +44,8 @@ export function applyColorVariant(base: string, variant: number): string {
   if (variant === 0) {
     return base;
   }
-  if (base === "#000000" || base === "#ffffff") {
-    return `color-mix(in oklab, white ${100 - Math.abs(variant)}%, black)`;
-  }
+
   return variant > 0
     ? `color-mix(in oklab, ${base} ${100 - variant}%, white)`
-    : `color-mix(in oklab, ${base} ${100 - Math.abs(variant)}%, var(--color-gray-7))`;
+    : `color-mix(in oklab, ${base} ${100 - Math.abs(variant)}%, ${isGrayScale(base) ? "black" : "var(--color-gray-7)"})`;
 }

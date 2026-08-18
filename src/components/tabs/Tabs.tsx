@@ -44,10 +44,10 @@ export function Tabs({
 }: Props) {
   const content = tabs.find((t) => t.id === value)?.content;
   return (
-    <div className={clsx("ll-tabs bg-gray-2 overflow-hidden shadow-lg", className)}>
+    <div className={clsx("bg-gray-2 overflow-hidden", className)}>
       <div
         role="tablist"
-        className={clsx("tabs-list flex w-full", stickyTabs && "sticky top-0 z-1", listClassName)}
+        className={clsx("flex w-full", stickyTabs && "sticky top-0 z-1", listClassName)}
       >
         <div className="overflow-x-scroll flex-1 min-w-0">
           <div className="flex h-full flex-1">
@@ -81,7 +81,7 @@ export function Tabs({
         </div>
         {children && <div className="extra mr-0.5 ml-auto flex items-center">{children}</div>}
       </div>
-      <div className={clsx("bg-gray-0 p-2 shadow-lg", contentClassName)} role="tabpanel">
+      <div className={clsx("bg-gray-0 p-2", contentClassName)} role="tabpanel">
         {preload
           ? tabs.map(({ id, content }) => (
               <Activity key={id} mode={value === id ? "visible" : "hidden"}>

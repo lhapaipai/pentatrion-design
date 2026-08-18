@@ -1,12 +1,5 @@
 import clsx from "clsx";
-import {
-  Color,
-  defaultPalette,
-  Palette,
-  PaletteColor,
-  principalColorNames,
-  type ColorName,
-} from "./config";
+import { Color, defaultPalette, Palette, PaletteColor, principalColorNames } from "./config";
 import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
 import { useTranslate } from "../i18n";
 
@@ -21,19 +14,12 @@ interface Props {
 // avec les entrées white/black déjà présentes dans la grille.
 const variantMagnitude = 80;
 
-function getVariantSteps(colorName: ColorName, variants: number | number[]): number[] {
-  const isGrayScale = colorName === "white" || colorName === "black";
-
+function getVariantSteps(variants: number | number[]): number[] {
   if (Array.isArray(variants)) {
-    if (isGrayScale) {
-      console.log(variants.map((val) => Math.round(100 - (val + 100) / 2)));
-      return variants.map((val) => Math.round(100 - (val + 100) / 2));
-    } else {
-      return variants;
-    }
+    return variants;
   }
   const min = -variantMagnitude;
-  const max = isGrayScale ? 0 : variantMagnitude;
+  const max = variantMagnitude;
   if (variants <= 1) {
     return [0];
   }
@@ -41,6 +27,11 @@ function getVariantSteps(colorName: ColorName, variants: number | number[]): num
     Math.round(min + (i * (max - min)) / (variants - 1)),
   );
 }
+
+export const colorButtonStyle = {
+  base: "cursor-pointer hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
+  selected: "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
+};
 
 export function PaletteSwatchGrid({
   palette = defaultPalette,
@@ -57,14 +48,14 @@ export function PaletteSwatchGrid({
         .map((name) => {
           // une seule vignette pour black : color-mix(black, black) est un no-op,
           // toute une rampe serait visuellement identique
-          const steps = getVariantSteps(name, variants);
+          const steps = getVariantSteps(variants);
 
           return (
             <div key={name}>
               <div className="text-body-xs truncate">
                 {t?.(`form.values.colorNames.${name}`) ?? name}
               </div>
-              <div className="flex gap-1">
+              <div className="flex">
                 {steps.map((variant) => {
                   const c: Color = { type: "palette", name, variant };
                   const v = getColorValue(c, palette);
@@ -74,11 +65,11 @@ export function PaletteSwatchGrid({
                       type="button"
                       title={`${c.name} (${variant}%)`}
                       className={clsx(
-                        "h-8 w-8 cursor-pointer",
-                        "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
+                        "h-8 flex-1",
+                        colorButtonStyle.base,
                         value?.name === name &&
                           value?.variant === variant &&
-                          "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
+                          colorButtonStyle.selected,
                       )}
                       style={{ backgroundColor: v }}
                       onClick={() => onChange(c)}
@@ -93,23 +84,46 @@ export function PaletteSwatchGrid({
         <div className="text-body-xs truncate">
           {t?.("form.values.colorNames.grayScale") ?? "Niveau de gris"}
         </div>
-        <div className="flex gap-1">
-          {getVariantSteps("gray", variants).map((variant) => {
+        <div className="flex">
+          {getVariantSteps(variants).map((variant) => {
             const color = applyColorVariant("#808080", variant);
             return (
               <button
                 key={variant}
                 type="button"
-                title={`black (${variant}%)`}
+                title={`gray (${variant}%)`}
                 className={clsx(
-                  "h-8 w-8 cursor-pointer",
-                  "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
-                  value?.name === "white" &&
-                    value?.variant === variant &&
-                    "outline-yellow-5 z-10 rounded outline-2",
+                  "h-8 flex-1",
+                  colorButtonStyle.base,
+                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
                 )}
                 style={{ backgroundColor: color }}
-                onClick={() => onChange({ type: "palette", name: "white", variant })}
+                onClick={() => onChange({ type: "palette", name: "gray", variant })}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <div>
+        <div className="text-body-xs truncate">
+          {t?.("form.values.colorNames.blackAndWhite") ?? "Noir & Blanc"}
+        </div>
+        <div className="flex">
+          {[-100, 100].map((variant) => {
+            const color = applyColorVariant("#808080", variant);
+            return (
+              <button
+                key={variant}
+                type="button"
+                title={`gray (${variant}%)`}
+                className={clsx(
+                  "h-8 flex-1 hover:scale-x-105!",
+                  colorButtonStyle.base,
+                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
+                  variant === 100 && "border border-gray-2",
+                )}
+                style={{ backgroundColor: color }}
+                onClick={() => onChange({ type: "palette", name: "gray", variant })}
               />
             );
           })}

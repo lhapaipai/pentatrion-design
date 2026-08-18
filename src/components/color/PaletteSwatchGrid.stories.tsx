@@ -24,7 +24,7 @@ const Playbook = () => {
   const [value2, setValue2] = useState(defaultPaletteColor);
 
   return (
-    <>
+    <div className="max-w-64">
       <PaletteSwatchGrid
         palette={samplePalette}
         value={value1}
@@ -57,7 +57,7 @@ const Playbook = () => {
         onChange={(v) => v && setValue2(v)}
         variants={variantsRamp}
       />
-    </>
+    </div>
   );
 };
 

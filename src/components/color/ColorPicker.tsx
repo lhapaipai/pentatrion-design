@@ -15,19 +15,10 @@ interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   palette?: Palette;
   value: Color;
   onChange: (value: Color) => void;
-  variants?: number | number[];
   allowInherit?: boolean;
 }
 
-export function ColorPicker({
-  palette,
-  value,
-  onChange,
-  variants,
-  id: forcedId,
-  allowInherit = false,
-  ...rest
-}: Props) {
+export function ColorPicker({ palette, value, onChange, allowInherit = false, ...rest }: Props) {
   const t = useTranslate();
 
   const [tempValue, setTempValue] = useState<null | Color>(null);
@@ -101,8 +92,8 @@ export function ColorPicker({
          * FloatingOverlay to close the modal */
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
-        <ModalContent className="max-w-84 overflow-auto" zClassName="z-modal-overlay">
-          <div className="max-h-72">
+        <ModalContent className="max-w-100 overflow-auto" zClassName="z-modal-overlay">
+          <div className="max-h-96">
             <Tabs tabs={tabs} value={tabId} onChange={setTabId} contentClassName="min-h-[260px]">
               <Button icon variant="text" color="gray" onClick={() => setTempValue(null)}>
                 <i className="fe-cancel"></i>
