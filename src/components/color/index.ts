@@ -3,3 +3,4 @@ export { ColorPreview } from "./ColorPreview";
 export * from "./config";
 export { PaletteSwatchGrid } from "./PaletteSwatchGrid";
 export * from "./util";
+export { ColorSwatchGrid } from "./ColorSwatchGrid";

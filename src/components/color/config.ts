@@ -11,7 +11,7 @@ export const paletteColorSchema = z.object({
 });
 export type PaletteColor = z.infer<typeof paletteColorSchema>;
 
-export const defaultPaletteColor: Color = { name: "white", variant: 0, type: "palette" };
+export const defaultPaletteColor: PaletteColor = { name: "white", variant: 0, type: "palette" };
 
 export const customColorSchema = z.object({
   type: z.literal("custom"),

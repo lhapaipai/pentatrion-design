@@ -365,7 +365,7 @@
   },
   "allowScripts": {
     "@swc/core@1.15.43": true,
-    "esbuild@0.28.1": true
+    "esbuild@0.28.2": true
   },
   "overrides": {
     "@babel/plugin-transform-runtime": "^7.29.0"

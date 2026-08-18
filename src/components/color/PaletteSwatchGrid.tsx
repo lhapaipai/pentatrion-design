@@ -78,7 +78,7 @@ export function PaletteSwatchGrid({
                         "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
                         value?.name === name &&
                           value?.variant === variant &&
-                          "outline-yellow-5 z-10 rounded outline-2",
+                          "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
                       )}
                       style={{ backgroundColor: v }}
                       onClick={() => onChange(c)}
@@ -94,8 +94,8 @@ export function PaletteSwatchGrid({
           {t?.("form.values.colorNames.grayScale") ?? "Niveau de gris"}
         </div>
         <div className="flex gap-1">
-          {getVariantSteps("white", variants).map((variant) => {
-            const color = applyColorVariant("#ffffff", variant);
+          {getVariantSteps("gray", variants).map((variant) => {
+            const color = applyColorVariant("#808080", variant);
             return (
               <button
                 key={variant}

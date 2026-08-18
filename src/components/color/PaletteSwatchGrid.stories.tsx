@@ -17,20 +17,27 @@ const samplePalette: Palette = {
   text: "#323232",
 };
 
+const variantsRamp = [-75, -25, 0, 25, 85, 90, 95];
+
 const Playbook = () => {
-  const [value, setValue] = useState(defaultPaletteColor);
+  const [value1, setValue1] = useState(defaultPaletteColor);
+  const [value2, setValue2] = useState(defaultPaletteColor);
 
   return (
     <>
-      <PaletteSwatchGrid palette={samplePalette} value={value} onChange={(v) => v && setValue(v)} />
+      <PaletteSwatchGrid
+        palette={samplePalette}
+        value={value1}
+        onChange={(v) => v && setValue1(v)}
+      />
       <div className="shadow-sm w-72 rounded-2xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>name</dt>
-          <dd>{value.name}</dd>
+          <dd>{value1.name}</dd>
         </dl>
         <dl className="p8n-setting">
           <dt>variant</dt>
-          <dd>{value.variant}</dd>
+          <dd>{value1.variant}</dd>
         </dl>
         <dl className="p8n-setting">
           <dt>preview</dt>
@@ -38,29 +45,20 @@ const Playbook = () => {
             <span
               className="inline-block h-6 w-6 rounded shadow"
               style={{
-                backgroundColor: getColorValue(value, samplePalette),
+                backgroundColor: getColorValue(value1, samplePalette),
               }}
             ></span>
           </dd>
         </dl>
       </div>
+      <PaletteSwatchGrid
+        palette={samplePalette}
+        value={value2}
+        onChange={(v) => v && setValue2(v)}
+        variants={variantsRamp}
+      />
     </>
   );
 };
 
 export { Playbook as PaletteSwatchGrid };
-
-const variantsRamp = [-75, -25, 0, 25, 85, 90, 95];
-
-export const CustomVariants = () => {
-  const [value, setValue] = useState(defaultPaletteColor);
-
-  return (
-    <PaletteSwatchGrid
-      palette={samplePalette}
-      value={value}
-      onChange={(v) => v && setValue(v)}
-      variants={variantsRamp}
-    />
-  );
-};

@@ -4,7 +4,7 @@ import { Color } from "./Color";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
 import { useState } from "react";
 import { Button } from "../../button/Button";
-import { ColorSwatchGrid } from "./ColorSwatchGrid";
+import { ColorSwatchGrid } from "../../color/ColorSwatchGrid";
 import { useTranslate } from "../../i18n";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
@@ -13,7 +13,7 @@ interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
 }
 
 export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }: Props) {
-  const translate = useTranslate();
+  const t = useTranslate();
 
   const field = useField(name);
   const id = forcedId ?? field.id;
@@ -56,7 +56,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
           type="button"
           value={control.value}
           onClick={() => setTempValue(control.value ?? "")}
-          label={control.value ? undefined : translate?.("form.values.color.inherit")}
+          label={control.value ? undefined : (t?.("form.values.color.inherit") ?? "Par défaut")}
         />
       </Field>
       <Modal
@@ -66,14 +66,14 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
         onOpen={(modalKeepOpen) => !modalKeepOpen && setTempValue(null)}
       >
         <ModalContent className="max-w-190 overflow-auto" zClassName="z-modal-overlay">
-          <ModalHeader>{translate?.("form.label.pickYourColor")}</ModalHeader>
+          <ModalHeader>{t?.("form.label.pickYourColor") ?? "Choisissez votre couleur"}</ModalHeader>
           <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
             <ColorSwatchGrid value={tempValue} onChange={handleSelectAndSubmit} />
           </ModalDescription>
           <ModalFooter className="mt-2">
             <div className="flex justify-between">
               <Button type="button" variant="text" color="gray" onClick={() => setTempValue(null)}>
-                {translate?.("button.cancel")}
+                {t?.("button.cancel") ?? "Annuler"}
               </Button>
               {allowInherit && (
                 <Button
@@ -84,11 +84,11 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
                   onClick={handleSubmitInherit}
                 >
                   <i className="fe-settings"></i>
-                  <span>{translate?.("form.values.color.inherit")}</span>
+                  <span>{t?.("form.values.color.inherit") ?? "Par défaut"}</span>
                 </Button>
               )}
               <Button type="button" color="yellow" onClick={handleSubmit}>
-                {translate?.("button.validate")}
+                {t?.("button.validate") ?? "Valider"}
               </Button>
             </div>
           </ModalFooter>
