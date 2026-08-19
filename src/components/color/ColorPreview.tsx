@@ -7,7 +7,7 @@ import { getColorValue } from "./util";
 export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color"> {
   withRipple?: boolean;
 
-  color?: Color;
+  color?: Color | null;
   palette?: ColorTheme;
   showValue?: boolean;
   className?: string;
@@ -15,7 +15,7 @@ export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color
 }
 
 export function ColorPreview({
-  color = defaultNamedColor,
+  color,
   palette = defaultColorTheme,
   withRipple = true,
   showValue = false,
@@ -23,6 +23,8 @@ export function ColorPreview({
   ref,
   ...rest
 }: ColorPreviewProps) {
+  color ??= defaultNamedColor;
+
   const valueToShow = showValue ? (color.type === "raw" ? color.value : color.name) : null;
 
   const buttonRef = useRef<HTMLButtonElement>(null!);

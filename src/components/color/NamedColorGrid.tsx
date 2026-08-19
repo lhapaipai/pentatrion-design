@@ -5,10 +5,16 @@ import { useTranslate } from "../i18n";
 
 interface Props {
   palette?: ColorTheme;
-  value: NamedColor | null;
-  onChange: (value: NamedColor) => void;
+  color: NamedColor | null;
+  onChange: (color: NamedColor) => void;
   variants?: number | number[];
 }
+
+const principalColorLabels: Record<(typeof principalColorNames)[number], string> = {
+  primary: "Principale",
+  secondary: "Secondaire",
+  tertiary: "Tertiaire",
+};
 // bornes à -80/80 plutôt que -100/100 : à 100% la base disparaît complètement
 // du color-mix, le swatch ne reproduit plus que du blanc/gris pur, redondant
 // avec les entrées white/black déjà présentes dans la grille.
@@ -35,7 +41,7 @@ export const colorButtonStyle = {
 
 export function NamedColorGrid({
   palette = defaultColorTheme,
-  value,
+  color,
   onChange,
   variants = 9,
 }: Props) {
@@ -53,7 +59,7 @@ export function NamedColorGrid({
           return (
             <div key={name}>
               <div className="text-body-xs truncate">
-                {t?.(`form.values.colorNames.${name}`) ?? name}
+                {t?.(`form.values.colorNames.${name}`) ?? principalColorLabels[name]}
               </div>
               <div className="flex">
                 {steps.map((variant) => {
@@ -67,8 +73,8 @@ export function NamedColorGrid({
                       className={clsx(
                         "h-8 flex-1",
                         colorButtonStyle.base,
-                        value?.name === name &&
-                          value?.variant === variant &&
+                        color?.name === name &&
+                          color?.variant === variant &&
                           colorButtonStyle.selected,
                       )}
                       style={{ backgroundColor: v }}
@@ -86,7 +92,7 @@ export function NamedColorGrid({
         </div>
         <div className="flex">
           {getVariantSteps(variants).map((variant) => {
-            const color = applyColorVariant("#808080", variant);
+            const c = applyColorVariant("#808080", variant);
             return (
               <button
                 key={variant}
@@ -95,9 +101,9 @@ export function NamedColorGrid({
                 className={clsx(
                   "h-8 flex-1",
                   colorButtonStyle.base,
-                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
+                  color?.name === "gray" && color?.variant === variant && colorButtonStyle.selected,
                 )}
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: c }}
                 onClick={() => onChange({ type: "named", name: "gray", variant })}
               />
             );
@@ -110,7 +116,7 @@ export function NamedColorGrid({
         </div>
         <div className="flex">
           {[-100, 100].map((variant) => {
-            const color = applyColorVariant("#808080", variant);
+            const c = applyColorVariant("#808080", variant);
             return (
               <button
                 key={variant}
@@ -119,10 +125,10 @@ export function NamedColorGrid({
                 className={clsx(
                   "h-8 flex-1 hover:scale-x-105!",
                   colorButtonStyle.base,
-                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
+                  color?.name === "gray" && color?.variant === variant && colorButtonStyle.selected,
                   variant === 100 && "border border-gray-2",
                 )}
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: c }}
                 onClick={() => onChange({ type: "named", name: "gray", variant })}
               />
             );

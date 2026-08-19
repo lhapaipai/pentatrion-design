@@ -68,7 +68,10 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
         <ModalContent className="max-w-190 overflow-auto" zClassName="z-modal-overlay">
           <ModalHeader>{t?.("form.label.pickYourColor") ?? "Choisissez votre couleur"}</ModalHeader>
           <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
-            <RawColorGrid value={tempValue} onChange={handleSelectAndSubmit} />
+            <RawColorGrid
+              color={tempValue ? { type: "raw", value: tempValue } : null}
+              onChange={(color) => handleSelectAndSubmit(color.value)}
+            />
           </ModalDescription>
           <ModalFooter className="mt-2">
             <div className="flex justify-between">

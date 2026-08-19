@@ -4,3 +4,4 @@ export * from "./config";
 export { NamedColorGrid } from "./NamedColorGrid";
 export * from "./util";
 export { RawColorGrid } from "./RawColorGrid";
+export { HarmonyColorGrid } from "./HarmonyColorGrid";

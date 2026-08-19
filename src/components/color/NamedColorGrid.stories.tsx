@@ -25,11 +25,7 @@ const Playbook = () => {
 
   return (
     <div className="max-w-64">
-      <NamedColorGrid
-        palette={samplePalette}
-        value={value1}
-        onChange={(v) => v && setValue1(v)}
-      />
+      <NamedColorGrid palette={samplePalette} color={value1} onChange={(v) => v && setValue1(v)} />
       <div className="shadow-sm w-72 rounded-2xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>name</dt>
@@ -53,7 +49,7 @@ const Playbook = () => {
       </div>
       <NamedColorGrid
         palette={samplePalette}
-        value={value2}
+        color={value2}
         onChange={(v) => v && setValue2(v)}
         variants={variantsRamp}
       />

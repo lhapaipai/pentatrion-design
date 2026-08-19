@@ -61,6 +61,7 @@
     "chokidar": "^5.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "colord": "^2.9.4",
     "culori": "^4.0.2",
     "fuse.js": "^7.4.2",
     "jsdom": "^30.0.1",
@@ -95,6 +96,7 @@
     "@types/geojson": "*",
     "class-variance-authority": "*",
     "clsx": "*",
+    "colord": "*",
     "lexical": "*",
     "react": "*",
     "react-colorful": "*",
@@ -128,6 +130,9 @@
       "optional": true
     },
     "class-variance-authority": {
+      "optional": true
+    },
+    "colord": {
       "optional": true
     },
     "clsx": {
