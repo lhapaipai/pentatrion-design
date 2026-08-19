@@ -1,19 +1,19 @@
 import { Modal, ModalContent, ModalFooter } from "pentatrion-design/modal";
 import { useState } from "react";
 import { Field, FieldProps } from "pentatrion-design/fields/field";
-import { PaletteSwatchGrid } from "./PaletteSwatchGrid";
+import { NamedColorGrid } from "./NamedColorGrid";
 import { Button } from "pentatrion-design/button";
 import { ColorPreview } from "./ColorPreview";
-import { Color, Palette } from "./config";
+import { Color, ColorTheme } from "./config";
 import { Tabs } from "pentatrion-design/tabs";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import { inputConfig } from "pentatrion-design/fields/text";
 import clsx from "clsx";
 import { useTranslate } from "../i18n";
-import { ColorSwatchGrid } from "./ColorSwatchGrid";
+import { RawColorGrid } from "./RawColorGrid";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  palette?: Palette;
+  palette?: ColorTheme;
   value: Color;
   onChange: (value: Color) => void;
   allowInherit?: boolean;
@@ -24,7 +24,7 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
 
   const [tempValue, setTempValue] = useState<null | Color>(null);
   const [tabId, setTabId] = useState<string | number>(
-    value?.type === "custom" ? "custom" : "palette",
+    value?.type === "raw" ? "custom" : "palette",
   );
 
   function handleSubmit() {
@@ -39,9 +39,9 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
       id: "palette",
       title: t?.("common.colorPalette") ?? "Couleurs prédéfinies",
       content: (
-        <PaletteSwatchGrid
+        <NamedColorGrid
           palette={palette}
-          value={tempValue?.type === "palette" ? tempValue : null}
+          value={tempValue?.type === "named" ? tempValue : null}
           onChange={(nextValue) => {
             setTempValue(null);
             onChange(nextValue);
@@ -53,11 +53,11 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
       id: "predefined",
       title: t?.("common.colorPredefined") ?? "Nuanciers",
       content: (
-        <ColorSwatchGrid
-          value={tempValue?.type === "custom" ? tempValue.value : null}
+        <RawColorGrid
+          value={tempValue?.type === "raw" ? tempValue.value : null}
           onChange={(nextValue) => {
             setTempValue(null);
-            onChange({ type: "custom", value: nextValue });
+            onChange({ type: "raw", value: nextValue });
           }}
         />
       ),
@@ -68,9 +68,9 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
       content: (
         <div className="p-2 flex flex-col gap-2 react-colorful-container">
           <HexColorPicker
-            color={tempValue?.type === "custom" ? tempValue.value : undefined}
+            color={tempValue?.type === "raw" ? tempValue.value : undefined}
             onChange={(value) => {
-              setTempValue({ type: "custom", value });
+              setTempValue({ type: "raw", value });
             }}
           />
           <div
@@ -81,8 +81,8 @@ export function ColorPicker({ palette, value, onChange, allowInherit = false, ..
             <HexColorInput
               className={inputConfig.input}
               prefixed={true}
-              color={tempValue?.type === "custom" ? tempValue.value : undefined}
-              onChange={(value) => setTempValue({ type: "custom", value })}
+              color={tempValue?.type === "raw" ? tempValue.value : undefined}
+              onChange={(value) => setTempValue({ type: "raw", value })}
             />
           </div>
         </div>

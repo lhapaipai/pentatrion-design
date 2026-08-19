@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
-import { ColorSwatchGrid } from "./ColorSwatchGrid";
+import { RawColorGrid } from "./RawColorGrid";
 
 const meta = {
-  title: "Components/Color/ColorSwatchGrid",
-  component: ColorSwatchGrid,
-} satisfies Meta<typeof ColorSwatchGrid>;
+  title: "Components/Color/RawColorGrid",
+  component: RawColorGrid,
+} satisfies Meta<typeof RawColorGrid>;
 export default meta;
 
 const Playbook = () => {
@@ -13,7 +13,7 @@ const Playbook = () => {
 
   return (
     <>
-      <ColorSwatchGrid value={value} onChange={setValue} />
+      <RawColorGrid value={value} onChange={setValue} />
       <div className="shadow-sm w-72 rounded-2xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>value</dt>
@@ -30,4 +30,4 @@ const Playbook = () => {
   );
 };
 
-export { Playbook as ColorSwatchGrid };
+export { Playbook as RawColorGrid };

@@ -4,7 +4,7 @@ import { Color } from "./Color";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
 import { useState } from "react";
 import { Button } from "../../button/Button";
-import { ColorSwatchGrid } from "../../color/ColorSwatchGrid";
+import { RawColorGrid } from "../../color/RawColorGrid";
 import { useTranslate } from "../../i18n";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
@@ -68,7 +68,7 @@ export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }
         <ModalContent className="max-w-190 overflow-auto" zClassName="z-modal-overlay">
           <ModalHeader>{t?.("form.label.pickYourColor") ?? "Choisissez votre couleur"}</ModalHeader>
           <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
-            <ColorSwatchGrid value={tempValue} onChange={handleSelectAndSubmit} />
+            <RawColorGrid value={tempValue} onChange={handleSelectAndSubmit} />
           </ModalDescription>
           <ModalFooter className="mt-2">
             <div className="flex justify-between">

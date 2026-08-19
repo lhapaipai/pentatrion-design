@@ -1,7 +1,7 @@
-import { Color, ColorName, defaultPalette } from "./config";
+import { Color, ColorName, defaultColorTheme } from "./config";
 
-export function getColorValue(color: Color, palette = defaultPalette): string {
-  if (color.type === "custom") {
+export function getColorValue(color: Color, palette = defaultColorTheme): string {
+  if (color.type === "raw") {
     return color.value;
   }
 
@@ -26,7 +26,7 @@ export function isGrayScale(hex: string): boolean {
   return r === g && g === b;
 }
 
-export function isColorAvailable(colorName: ColorName, palette = defaultPalette): boolean {
+export function isColorAvailable(colorName: ColorName, palette = defaultColorTheme): boolean {
   if (colorName === "gray") {
     return true;
   }

@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { Color, defaultPalette, Palette, PaletteColor, principalColorNames } from "./config";
+import { Color, defaultColorTheme, ColorTheme, NamedColor, principalColorNames } from "./config";
 import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
 import { useTranslate } from "../i18n";
 
 interface Props {
-  palette?: Palette;
-  value: PaletteColor | null;
-  onChange: (value: PaletteColor) => void;
+  palette?: ColorTheme;
+  value: NamedColor | null;
+  onChange: (value: NamedColor) => void;
   variants?: number | number[];
 }
 // bornes à -80/80 plutôt que -100/100 : à 100% la base disparaît complètement
@@ -29,12 +29,12 @@ function getVariantSteps(variants: number | number[]): number[] {
 }
 
 export const colorButtonStyle = {
-  base: "cursor-pointer hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
+  base: "cursor-pointer hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125 first-of-type:rounded-l-md last-of-type:rounded-r-md",
   selected: "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
 };
 
-export function PaletteSwatchGrid({
-  palette = defaultPalette,
+export function NamedColorGrid({
+  palette = defaultColorTheme,
   value,
   onChange,
   variants = 9,
@@ -57,7 +57,7 @@ export function PaletteSwatchGrid({
               </div>
               <div className="flex">
                 {steps.map((variant) => {
-                  const c: Color = { type: "palette", name, variant };
+                  const c: Color = { type: "named", name, variant };
                   const v = getColorValue(c, palette);
                   return (
                     <button
@@ -98,7 +98,7 @@ export function PaletteSwatchGrid({
                   value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
                 )}
                 style={{ backgroundColor: color }}
-                onClick={() => onChange({ type: "palette", name: "gray", variant })}
+                onClick={() => onChange({ type: "named", name: "gray", variant })}
               />
             );
           })}
@@ -123,7 +123,7 @@ export function PaletteSwatchGrid({
                   variant === 100 && "border border-gray-2",
                 )}
                 style={{ backgroundColor: color }}
-                onClick={() => onChange({ type: "palette", name: "gray", variant })}
+                onClick={() => onChange({ type: "named", name: "gray", variant })}
               />
             );
           })}

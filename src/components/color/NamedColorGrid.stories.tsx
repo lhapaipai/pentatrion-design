@@ -1,16 +1,16 @@
 import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
-import { PaletteSwatchGrid } from "./PaletteSwatchGrid";
-import { defaultPaletteColor, Palette } from "./config";
+import { NamedColorGrid } from "./NamedColorGrid";
+import { defaultNamedColor, ColorTheme } from "./config";
 import { getColorValue } from "./util";
 
 const meta = {
-  title: "Components/Color/PaletteSwatchGrid",
-  component: PaletteSwatchGrid,
-} satisfies Meta<typeof PaletteSwatchGrid>;
+  title: "Components/Color/NamedColorGrid",
+  component: NamedColorGrid,
+} satisfies Meta<typeof NamedColorGrid>;
 export default meta;
 
-const samplePalette: Palette = {
+const samplePalette: ColorTheme = {
   primary: "#ffca0a",
   secondary: "#3b82f6",
   tertiary: "#ec4899",
@@ -20,12 +20,12 @@ const samplePalette: Palette = {
 const variantsRamp = [-75, -25, 0, 25, 85, 90, 95];
 
 const Playbook = () => {
-  const [value1, setValue1] = useState(defaultPaletteColor);
-  const [value2, setValue2] = useState(defaultPaletteColor);
+  const [value1, setValue1] = useState(defaultNamedColor);
+  const [value2, setValue2] = useState(defaultNamedColor);
 
   return (
     <div className="max-w-64">
-      <PaletteSwatchGrid
+      <NamedColorGrid
         palette={samplePalette}
         value={value1}
         onChange={(v) => v && setValue1(v)}
@@ -51,7 +51,7 @@ const Playbook = () => {
           </dd>
         </dl>
       </div>
-      <PaletteSwatchGrid
+      <NamedColorGrid
         palette={samplePalette}
         value={value2}
         onChange={(v) => v && setValue2(v)}
@@ -61,4 +61,4 @@ const Playbook = () => {
   );
 };
 
-export { Playbook as PaletteSwatchGrid };
+export { Playbook as NamedColorGrid };

@@ -4,33 +4,33 @@ export const colorNames = ["primary", "secondary", "tertiary", "text", "gray"] a
 export const principalColorNames = ["primary", "secondary", "tertiary"] as const;
 export type ColorName = (typeof colorNames)[number];
 
-export const paletteColorSchema = z.object({
-  type: z.literal("palette"),
+export const namedColorSchema = z.object({
+  type: z.literal("named"),
   name: z.enum(colorNames),
   variant: z.number(), // -100, 100
 });
-export type PaletteColor = z.infer<typeof paletteColorSchema>;
+export type NamedColor = z.infer<typeof namedColorSchema>;
 
-export const defaultPaletteColor: PaletteColor = { name: "gray", variant: -100, type: "palette" };
+export const defaultNamedColor: NamedColor = { name: "gray", variant: -100, type: "named" };
 
-export const customColorSchema = z.object({
-  type: z.literal("custom"),
+export const rawColorSchema = z.object({
+  type: z.literal("raw"),
   value: z.string(),
 });
-export type CustomColor = z.infer<typeof customColorSchema>;
+export type RawColor = z.infer<typeof rawColorSchema>;
 
-export const colorSchema = z.union([paletteColorSchema, customColorSchema]);
+export const colorSchema = z.union([namedColorSchema, rawColorSchema]);
 export type Color = z.infer<typeof colorSchema>;
 
-export const paletteSchema = z.object({
+export const colorThemeSchema = z.object({
   primary: z.string(),
   secondary: z._default(z.nullable(z.string()), null),
   tertiary: z._default(z.nullable(z.string()), null),
   text: z.string(),
 });
-export type Palette = z.infer<typeof paletteSchema>;
+export type ColorTheme = z.infer<typeof colorThemeSchema>;
 
-export const defaultPalette: Palette = {
+export const defaultColorTheme: ColorTheme = {
   primary: "#ffca0a",
   secondary: null,
   tertiary: null,

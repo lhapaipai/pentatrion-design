@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
 import { ColorPicker } from "./ColorPicker";
-import { Color, type Palette, defaultPaletteColor } from "./config";
+import { Color, type ColorTheme, defaultNamedColor } from "./config";
 import { getColorValue } from "./util";
 
 const meta = {
@@ -10,7 +10,7 @@ const meta = {
 } satisfies Meta<typeof ColorPicker>;
 export default meta;
 
-const samplePalette: Palette = {
+const samplePalette: ColorTheme = {
   primary: "#ffca0a",
   secondary: "#3b82f6",
   tertiary: "#ec4899",
@@ -18,7 +18,7 @@ const samplePalette: Palette = {
 };
 
 const Playbook = () => {
-  const [value, setValue] = useState<Color>(defaultPaletteColor);
+  const [value, setValue] = useState<Color>(defaultNamedColor);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Playbook = () => {
 export { Playbook as ColorPicker };
 
 export const WithInherit = () => {
-  const [value, setValue] = useState<Color>(defaultPaletteColor);
+  const [value, setValue] = useState<Color>(defaultNamedColor);
 
   return (
     <>
@@ -54,7 +54,7 @@ function Info({ color }: { color: Color }) {
         <dt>type</dt>
         <dd>{color.type}</dd>
       </dl>
-      {color.type === "custom" ? (
+      {color.type === "raw" ? (
         <>
           <dl className="p8n-setting">
             <dt>value</dt>

@@ -6,7 +6,7 @@ interface Props {
   onChange: (color: string) => void;
 }
 
-export function ColorSwatchGrid({ value, onChange }: Props) {
+export function RawColorGrid({ value, onChange }: Props) {
   return (
     <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm p-2">
       {colorByGroups.map(({ name, colors }) => (
@@ -17,7 +17,7 @@ export function ColorSwatchGrid({ value, onChange }: Props) {
               <button
                 key={colorNumber}
                 className={clsx(
-                  "cursor-pointer",
+                  "cursor-pointer first-of-type:rounded-t-md last-of-type:rounded-b-md",
                   parseInt(colorNumber) > 600 ? "text-white" : "text-black",
                   "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
                   value === colorCode &&

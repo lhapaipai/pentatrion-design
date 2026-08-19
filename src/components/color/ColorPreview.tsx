@@ -1,29 +1,29 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { useRipple } from "pentatrion-design/hooks";
-import { Color, defaultPalette, defaultPaletteColor, Palette } from "./config";
+import { Color, defaultColorTheme, defaultNamedColor, ColorTheme } from "./config";
 import { getColorValue } from "./util";
 
 export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color"> {
   withRipple?: boolean;
 
   color?: Color;
-  palette?: Palette;
+  palette?: ColorTheme;
   showValue?: boolean;
   className?: string;
   ref?: RefObject<HTMLButtonElement>;
 }
 
 export function ColorPreview({
-  color = defaultPaletteColor,
-  palette = defaultPalette,
+  color = defaultNamedColor,
+  palette = defaultColorTheme,
   withRipple = true,
   showValue = false,
   className,
   ref,
   ...rest
 }: ColorPreviewProps) {
-  const valueToShow = showValue ? (color.type === "custom" ? color.value : color.name) : null;
+  const valueToShow = showValue ? (color.type === "raw" ? color.value : color.name) : null;
 
   const buttonRef = useRef<HTMLButtonElement>(null!);
 

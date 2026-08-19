@@ -1,6 +1,6 @@
 export { ColorPicker } from "./ColorPicker";
 export { ColorPreview } from "./ColorPreview";
 export * from "./config";
-export { PaletteSwatchGrid } from "./PaletteSwatchGrid";
+export { NamedColorGrid } from "./NamedColorGrid";
 export * from "./util";
-export { ColorSwatchGrid } from "./ColorSwatchGrid";
+export { RawColorGrid } from "./RawColorGrid";
