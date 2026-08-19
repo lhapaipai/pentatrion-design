@@ -1,6 +1,6 @@
-import rawColors from "tailwindcss/colors";
+import { rawColorsHex } from "./colors.generated";
 
-export const colorByGroups = Object.entries(rawColors)
+export const colorByGroups = Object.entries(rawColorsHex)
   .filter(
     ([name, colorGroup]) =>
       // blueGray === slate
