@@ -7,14 +7,14 @@ import {
   useFormData,
   getFieldValue,
 } from "@conform-to/react/future";
-import { ColorField } from "./ColorField";
+import { HexColorField } from "./HexColorField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 
 const meta = {
-  title: "Components/fields/Color",
-  component: ColorField,
-} satisfies Meta<typeof ColorField>;
+  title: "Components/fields/HexColorField",
+  component: HexColorField,
+} satisfies Meta<typeof HexColorField>;
 export default meta;
 
 const onChangeAction = action("onChange");
@@ -44,7 +44,7 @@ const Playbook = () => {
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <ColorField label="Color" name={fields.color.name} />
+          <HexColorField label="Color" name={fields.color.name} />
 
           <Button>Valider</Button>
         </form>

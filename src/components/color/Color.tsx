@@ -1,7 +1,7 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
-import type { ThemeColor } from "../../../types";
+import type { ThemeColor } from "../../types";
 import clsx from "clsx";
-import { useRipple } from "../../../hooks";
+import { useRipple } from "../../hooks";
 
 export interface ColorProps extends ComponentProps<"button"> {
   withRipple?: boolean;

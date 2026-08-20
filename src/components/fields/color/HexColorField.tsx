@@ -1,18 +1,18 @@
 import { useField, useControl, type FieldName } from "@conform-to/react/future";
 import { Field, type FieldProps } from "../field/Field";
-import { Color } from "./Color";
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader } from "../../modal";
 import { useState } from "react";
 import { Button } from "../../button/Button";
 import { RawColorGrid } from "../../color/RawColorGrid";
 import { useTranslate } from "../../i18n";
+import { Color } from "../../color";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null | undefined>;
   allowInherit?: boolean;
 }
 
-export function ColorField({ name, id: forcedId, allowInherit = false, ...rest }: Props) {
+export function HexColorField({ name, id: forcedId, allowInherit = false, ...rest }: Props) {
   const t = useTranslate();
 
   const field = useField(name);

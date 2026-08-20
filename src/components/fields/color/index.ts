@@ -1,2 +1,1 @@
-export { Color } from "./Color";
-export { ColorField } from "./ColorField";
+export { HexColorField } from "./HexColorField";
