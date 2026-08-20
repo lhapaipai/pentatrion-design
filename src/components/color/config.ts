@@ -22,6 +22,8 @@ export type RawColor = z.infer<typeof rawColorSchema>;
 export const colorSchema = z.union([namedColorSchema, rawColorSchema]);
 export type Color = z.infer<typeof colorSchema>;
 
+export type ColorInput = z.input<typeof colorSchema>;
+
 export const brandPaletteSchema = z.object({
   primary: z.string(),
   secondary: z._default(z.nullable(z.string()), null),

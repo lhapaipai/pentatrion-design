@@ -13,7 +13,7 @@ import { useTranslate } from "../i18n";
 import { RawColorGrid } from "./RawColorGrid";
 import { HarmonyColorGrid } from "./HarmonyColorGrid";
 
-interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
+interface Props extends Omit<FieldProps, "children" | "group"> {
   palette?: BrandPalette;
   value: Color | null;
   refColor?: RawColor;

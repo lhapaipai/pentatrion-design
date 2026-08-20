@@ -10,9 +10,10 @@ import {
 import { HexColorField } from "./HexColorField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
+import { Color } from "../../color";
 
 const meta = {
-  title: "Components/fields/HexColorField",
+  title: "Components/fields/Color",
   component: HexColorField,
 } satisfies Meta<typeof HexColorField>;
 export default meta;
@@ -24,7 +25,12 @@ const formSchema = z.object({
 });
 
 const defaultValue = {
-  color: "oklch(76.8% 0.233 130.85)",
+  color: "#ffca0a",
+};
+
+const refColor: Color = {
+  type: "raw",
+  hex: "#ffca0a",
 };
 
 const Playbook = () => {
@@ -44,7 +50,7 @@ const Playbook = () => {
     <>
       <FormProvider context={form.context}>
         <form {...form.props} method="post">
-          <HexColorField label="Color" name={fields.color.name} />
+          <HexColorField refColor={refColor} label="Color" name={fields.color.name} />
 
           <Button>Valider</Button>
         </form>
@@ -63,4 +69,4 @@ const Playbook = () => {
   );
 };
 
-export { Playbook as ColorField };
+export { Playbook as HexColorField };
