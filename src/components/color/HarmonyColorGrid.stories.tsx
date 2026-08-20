@@ -9,7 +9,7 @@ const meta = {
 } satisfies Meta<typeof HarmonyColorGrid>;
 export default meta;
 
-const refColor: RawColor = { type: "raw", value: "#ff0000" };
+const refColor: RawColor = { type: "raw", hex: "#ff0000" };
 
 const Playbook = () => {
   const [value, setValue] = useState<RawColor | null>(null);
@@ -23,9 +23,9 @@ const Playbook = () => {
           <dd className="flex items-center gap-2">
             <span
               className="inline-block h-6 w-6 rounded shadow"
-              style={{ backgroundColor: value?.value ?? "transparent" }}
+              style={{ backgroundColor: value?.hex ?? "transparent" }}
             ></span>
-            {value?.value ?? "—"}
+            {value?.hex ?? "—"}
           </dd>
         </dl>
       </div>

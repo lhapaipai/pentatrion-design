@@ -1,8 +1,8 @@
-import { Color, ColorName, defaultColorTheme } from "./config";
+import { Color, ColorName, defaultBrandPalette } from "./config";
 
-export function getColorValue(color: Color, palette = defaultColorTheme): string {
+export function getColorValue(color: Color, palette = defaultBrandPalette): string {
   if (color.type === "raw") {
-    return color.value;
+    return color.hex;
   }
 
   const base = color.name === "gray" ? "#808080" : (palette[color.name] ?? "#808080");
@@ -26,7 +26,7 @@ export function isGrayScale(hex: string): boolean {
   return r === g && g === b;
 }
 
-export function isColorAvailable(colorName: ColorName, palette = defaultColorTheme): boolean {
+export function isColorAvailable(colorName: ColorName, palette = defaultBrandPalette): boolean {
   if (colorName === "gray") {
     return true;
   }

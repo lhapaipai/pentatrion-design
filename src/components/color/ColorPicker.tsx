@@ -4,7 +4,7 @@ import { Field, FieldProps } from "pentatrion-design/fields/field";
 import { NamedColorGrid } from "./NamedColorGrid";
 import { Button } from "pentatrion-design/button";
 import { ColorPreview } from "./ColorPreview";
-import { Color, ColorTheme, RawColor } from "./config";
+import { Color, BrandPalette, RawColor } from "./config";
 import { Tabs } from "pentatrion-design/tabs";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import { inputConfig } from "pentatrion-design/fields/text";
@@ -14,7 +14,7 @@ import { RawColorGrid } from "./RawColorGrid";
 import { HarmonyColorGrid } from "./HarmonyColorGrid";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
-  palette?: ColorTheme;
+  palette?: BrandPalette;
   value: Color | null;
   refColor?: RawColor;
   onChange: (value: Color | null) => void;
@@ -92,9 +92,9 @@ export function ColorPicker({
       content: (
         <div className="p-2 flex flex-col gap-2 react-colorful-container">
           <HexColorPicker
-            color={tempValue?.type === "raw" ? tempValue.value : undefined}
-            onChange={(value) => {
-              setTempValue({ type: "raw", value });
+            color={tempValue?.type === "raw" ? tempValue.hex : undefined}
+            onChange={(hex) => {
+              setTempValue({ type: "raw", hex });
             }}
           />
           <div
@@ -105,8 +105,8 @@ export function ColorPicker({
             <HexColorInput
               className={inputConfig.input}
               prefixed={true}
-              color={tempValue?.type === "raw" ? tempValue.value : undefined}
-              onChange={(value) => setTempValue({ type: "raw", value })}
+              color={tempValue?.type === "raw" ? tempValue.hex : undefined}
+              onChange={(hex) => setTempValue({ type: "raw", hex })}
             />
           </div>
         </div>

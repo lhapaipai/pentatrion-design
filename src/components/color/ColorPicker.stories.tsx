@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
 import { ColorPicker } from "./ColorPicker";
-import { Color, type ColorTheme, defaultNamedColor, RawColor } from "./config";
+import { Color, type BrandPalette, defaultNamedColor, RawColor } from "./config";
 import { getColorValue } from "./util";
 
 const meta = {
@@ -10,7 +10,7 @@ const meta = {
 } satisfies Meta<typeof ColorPicker>;
 export default meta;
 
-const samplePalette: ColorTheme = {
+const samplePalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: "#3b82f6",
   tertiary: "#ec4899",
@@ -19,7 +19,7 @@ const samplePalette: ColorTheme = {
 
 const refColor: RawColor = {
   type: "raw",
-  value: "#ffca0a",
+  hex: "#ffca0a",
 };
 
 const Playbook = () => {
@@ -70,8 +70,8 @@ function Info({ color }: { color: Color | null }) {
           {color.type === "raw" ? (
             <>
               <dl className="p8n-setting">
-                <dt>value</dt>
-                <dd>{color.value}</dd>
+                <dt>hex</dt>
+                <dd>{color.hex}</dd>
               </dl>
             </>
           ) : color.type === "named" ? (

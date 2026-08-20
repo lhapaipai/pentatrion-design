@@ -21,9 +21,9 @@ const Playbook = () => {
           <dd className="flex items-center gap-2">
             <span
               className="inline-block h-6 w-6 rounded shadow"
-              style={{ backgroundColor: color?.value ?? "transparent" }}
+              style={{ backgroundColor: color?.hex ?? "transparent" }}
             ></span>
-            {color?.value ?? "—"}
+            {color?.hex ?? "—"}
           </dd>
         </dl>
       </div>

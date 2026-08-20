@@ -21,11 +21,11 @@ export function RawColorGrid({ color, onChange }: Props) {
                   "cursor-pointer first-of-type:rounded-t-md last-of-type:rounded-b-md",
                   parseInt(colorNumber) > 600 ? "text-white" : "text-black",
                   "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
-                  color?.value === colorCode &&
+                  color?.hex === colorCode &&
                     "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
                 )}
                 style={{ backgroundColor: colorCode }}
-                onClick={() => onChange({ type: "raw", value: colorCode })}
+                onClick={() => onChange({ type: "raw", hex: colorCode })}
               >
                 {colorNumber}
               </button>

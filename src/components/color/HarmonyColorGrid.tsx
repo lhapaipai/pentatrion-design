@@ -27,7 +27,7 @@ interface Props {
 
 export function HarmonyColorGrid({ refColor, color, onChange }: Props) {
   const t = useTranslate();
-  const baseColor = colord(refColor.value);
+  const baseColor = colord(refColor.hex);
 
   return (
     <div className="flex flex-col gap-3 p-2">
@@ -47,10 +47,10 @@ export function HarmonyColorGrid({ refColor, color, onChange }: Props) {
                   className={clsx(
                     "h-8 flex-1 hover:scale-x-105!",
                     colorButtonStyle.base,
-                    color?.value === hex && colorButtonStyle.selected,
+                    color?.hex === hex && colorButtonStyle.selected,
                   )}
                   style={{ backgroundColor: hex }}
-                  onClick={() => onChange({ type: "raw", value: hex })}
+                  onClick={() => onChange({ type: "raw", hex })}
                 />
               );
             })}

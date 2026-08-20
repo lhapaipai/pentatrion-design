@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "../../button/Button";
 import { RawColorGrid } from "../../color/RawColorGrid";
 import { useTranslate } from "../../i18n";
-import { Color } from "../../color";
+import { ColorPreview } from "../../color";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null | undefined>;
@@ -52,7 +52,7 @@ export function HexColorField({ name, id: forcedId, allowInherit = false, ...res
         defaultValue={field.defaultValue}
       />
       <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
-        <Color
+        <ColorPreview
           type="button"
           value={control.value}
           onClick={() => setTempValue(control.value ?? "")}
@@ -69,8 +69,8 @@ export function HexColorField({ name, id: forcedId, allowInherit = false, ...res
           <ModalHeader>{t?.("form.label.pickYourColor") ?? "Choisissez votre couleur"}</ModalHeader>
           <ModalDescription className="max-h-[calc(100lvh-6.5rem)]" scrollable={true}>
             <RawColorGrid
-              color={tempValue ? { type: "raw", value: tempValue } : null}
-              onChange={(color) => handleSelectAndSubmit(color.value)}
+              color={tempValue ? { type: "raw", hex: tempValue } : null}
+              onChange={(color) => handleSelectAndSubmit(color.hex)}
             />
           </ModalDescription>
           <ModalFooter className="mt-2">

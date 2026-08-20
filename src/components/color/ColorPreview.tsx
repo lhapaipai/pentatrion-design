@@ -1,31 +1,39 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { useRipple } from "pentatrion-design/hooks";
-import { Color, defaultColorTheme, defaultNamedColor, ColorTheme } from "./config";
+import { Color, defaultBrandPalette, defaultNamedColor, BrandPalette } from "./config";
 import { getColorValue } from "./util";
+import { ThemeColor } from "../../types";
 
-export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color"> {
+export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color" | "value"> {
   withRipple?: boolean;
 
-  color?: Color | null;
-  palette?: ColorTheme;
+  value?: Color | null | string;
+  color?: ThemeColor;
+  label?: string;
+  palette?: BrandPalette;
   showValue?: boolean;
   className?: string;
   ref?: RefObject<HTMLButtonElement>;
 }
 
 export function ColorPreview({
-  color,
-  palette = defaultColorTheme,
+  value: unknownColor,
   withRipple = true,
+  color = "yellow",
+  label,
   showValue = false,
+  palette = defaultBrandPalette,
   className,
   ref,
   ...rest
 }: ColorPreviewProps) {
-  color ??= defaultNamedColor;
+  const value: Color =
+    typeof unknownColor === "string"
+      ? { type: "raw", hex: unknownColor }
+      : (unknownColor ?? defaultNamedColor);
 
-  const valueToShow = showValue ? (color.type === "raw" ? color.value : color.name) : null;
+  const valueToShow = label ?? (showValue ? (value.type === "raw" ? value.hex : value.name) : null);
 
   const buttonRef = useRef<HTMLButtonElement>(null!);
 
@@ -39,7 +47,7 @@ export function ColorPreview({
   return (
     <button
       ref={buttonRef}
-      data-color="yellow"
+      data-color={color}
       className="p8n-input-text group relative flex h-8 cursor-pointer overflow-clip rounded-2xl p-1 -outline-offset-1 active:translate-y-px"
       {...rest}
     >
@@ -50,7 +58,7 @@ export function ColorPreview({
           valueToShow === null && "min-w-12",
           className,
         )}
-        style={{ backgroundColor: getColorValue(color, palette) }}
+        style={{ backgroundColor: getColorValue(value, palette) }}
       ></span>
       <span
         className={clsx(

@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import { Color, defaultColorTheme, ColorTheme, NamedColor, principalColorNames } from "./config";
+import { Color, defaultBrandPalette, BrandPalette, NamedColor, principalColorNames } from "./config";
 import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
 import { useTranslate } from "../i18n";
 
 interface Props {
-  palette?: ColorTheme;
+  palette?: BrandPalette;
   color: NamedColor | null;
   onChange: (color: NamedColor) => void;
   variants?: number | number[];
@@ -40,7 +40,7 @@ export const colorButtonStyle = {
 };
 
 export function NamedColorGrid({
-  palette = defaultColorTheme,
+  palette = defaultBrandPalette,
   color,
   onChange,
   variants = 9,

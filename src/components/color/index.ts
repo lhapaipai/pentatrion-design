@@ -1,4 +1,3 @@
-export { Color } from "./Color";
 export { ColorPicker } from "./ColorPicker";
 export { ColorPreview } from "./ColorPreview";
 export * from "./config";

@@ -15,22 +15,22 @@ export const defaultNamedColor: NamedColor = { name: "gray", variant: -100, type
 
 export const rawColorSchema = z.object({
   type: z.literal("raw"),
-  value: z.string(),
+  hex: z.string(),
 });
 export type RawColor = z.infer<typeof rawColorSchema>;
 
 export const colorSchema = z.union([namedColorSchema, rawColorSchema]);
 export type Color = z.infer<typeof colorSchema>;
 
-export const colorThemeSchema = z.object({
+export const brandPaletteSchema = z.object({
   primary: z.string(),
   secondary: z._default(z.nullable(z.string()), null),
   tertiary: z._default(z.nullable(z.string()), null),
   text: z.string(),
 });
-export type ColorTheme = z.infer<typeof colorThemeSchema>;
+export type BrandPalette = z.infer<typeof brandPaletteSchema>;
 
-export const defaultColorTheme: ColorTheme = {
+export const defaultBrandPalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: null,
   tertiary: null,

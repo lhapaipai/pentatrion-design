@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
 import { NamedColorGrid } from "./NamedColorGrid";
-import { defaultNamedColor, ColorTheme } from "./config";
+import { defaultNamedColor, BrandPalette } from "./config";
 import { getColorValue } from "./util";
 
 const meta = {
@@ -10,7 +10,7 @@ const meta = {
 } satisfies Meta<typeof NamedColorGrid>;
 export default meta;
 
-const samplePalette: ColorTheme = {
+const samplePalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: "#3b82f6",
   tertiary: "#ec4899",
