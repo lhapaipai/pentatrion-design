@@ -3,11 +3,11 @@ import { colorByGroups } from "../../lib/color";
 import { RawColor } from "./config";
 
 interface Props {
-  color: RawColor | null;
-  onChange: (color: RawColor) => void;
+  value: RawColor | null;
+  onChange: (value: RawColor) => void;
 }
 
-export function RawColorGrid({ color, onChange }: Props) {
+export function RawColorGrid({ value, onChange }: Props) {
   return (
     <div className="grid-cols-repeat-fill-50 grid gap-1 text-center text-sm p-2">
       {colorByGroups.map(({ name, colors }) => (
@@ -21,7 +21,7 @@ export function RawColorGrid({ color, onChange }: Props) {
                   "cursor-pointer first-of-type:rounded-t-md last-of-type:rounded-b-md",
                   parseInt(colorNumber) > 600 ? "text-white" : "text-black",
                   "hover:z-20 hover:scale-125 hover:rounded hover:shadow active:scale-125",
-                  color?.hex === colorCode &&
+                  value?.hex === colorCode &&
                     "outline-yellow-5 z-10 rounded outline-2 -outline-offset-1",
                 )}
                 style={{ backgroundColor: colorCode }}

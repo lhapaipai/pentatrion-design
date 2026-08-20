@@ -54,7 +54,7 @@ export function ColorPicker({
             content: (
               <NamedColorGrid
                 palette={palette}
-                color={tempValue?.type === "named" ? tempValue : null}
+                value={tempValue?.type === "named" ? tempValue : null}
                 onChange={setTempValue}
               />
             ),
@@ -69,7 +69,7 @@ export function ColorPicker({
             content: (
               <HarmonyColorGrid
                 refColor={refColor}
-                color={tempValue?.type === "raw" ? tempValue : null}
+                value={tempValue?.type === "raw" ? tempValue : null}
                 onChange={setTempValue}
               />
             ),
@@ -81,7 +81,7 @@ export function ColorPicker({
       title: t?.("common.colorPredefined") ?? "Nuancier",
       content: (
         <RawColorGrid
-          color={tempValue?.type === "raw" ? tempValue : null}
+          value={tempValue?.type === "raw" ? tempValue : null}
           onChange={setTempValue}
         />
       ),
@@ -120,7 +120,7 @@ export function ColorPicker({
         <ColorPreview
           type="button"
           palette={palette}
-          color={value}
+          value={value}
           onClick={() => {
             setIsOpen(true);
             setTempValue(value);

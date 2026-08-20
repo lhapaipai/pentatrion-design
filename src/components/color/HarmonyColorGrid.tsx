@@ -21,11 +21,11 @@ const harmonyTypes = Object.keys(harmonyLabels) as HarmonyType[];
 
 interface Props {
   refColor: RawColor;
-  color: RawColor | null;
-  onChange: (color: RawColor) => void;
+  value: RawColor | null;
+  onChange: (value: RawColor) => void;
 }
 
-export function HarmonyColorGrid({ refColor, color, onChange }: Props) {
+export function HarmonyColorGrid({ refColor, value, onChange }: Props) {
   const t = useTranslate();
   const baseColor = colord(refColor.hex);
 
@@ -47,7 +47,7 @@ export function HarmonyColorGrid({ refColor, color, onChange }: Props) {
                   className={clsx(
                     "h-8 flex-1 hover:scale-x-105!",
                     colorButtonStyle.base,
-                    color?.hex === hex && colorButtonStyle.selected,
+                    value?.hex === hex && colorButtonStyle.selected,
                   )}
                   style={{ backgroundColor: hex }}
                   onClick={() => onChange({ type: "raw", hex })}

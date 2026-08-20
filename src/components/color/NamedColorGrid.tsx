@@ -1,12 +1,18 @@
 import clsx from "clsx";
-import { Color, defaultBrandPalette, BrandPalette, NamedColor, principalColorNames } from "./config";
+import {
+  Color,
+  defaultBrandPalette,
+  BrandPalette,
+  NamedColor,
+  principalColorNames,
+} from "./config";
 import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
 import { useTranslate } from "../i18n";
 
 interface Props {
   palette?: BrandPalette;
-  color: NamedColor | null;
-  onChange: (color: NamedColor) => void;
+  value: NamedColor | null;
+  onChange: (value: NamedColor) => void;
   variants?: number | number[];
 }
 
@@ -41,7 +47,7 @@ export const colorButtonStyle = {
 
 export function NamedColorGrid({
   palette = defaultBrandPalette,
-  color,
+  value,
   onChange,
   variants = 9,
 }: Props) {
@@ -73,8 +79,8 @@ export function NamedColorGrid({
                       className={clsx(
                         "h-8 flex-1",
                         colorButtonStyle.base,
-                        color?.name === name &&
-                          color?.variant === variant &&
+                        value?.name === name &&
+                          value?.variant === variant &&
                           colorButtonStyle.selected,
                       )}
                       style={{ backgroundColor: v }}
@@ -101,7 +107,7 @@ export function NamedColorGrid({
                 className={clsx(
                   "h-8 flex-1",
                   colorButtonStyle.base,
-                  color?.name === "gray" && color?.variant === variant && colorButtonStyle.selected,
+                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
                 )}
                 style={{ backgroundColor: c }}
                 onClick={() => onChange({ type: "named", name: "gray", variant })}
@@ -125,7 +131,7 @@ export function NamedColorGrid({
                 className={clsx(
                   "h-8 flex-1 hover:scale-x-105!",
                   colorButtonStyle.base,
-                  color?.name === "gray" && color?.variant === variant && colorButtonStyle.selected,
+                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
                   variant === 100 && "border border-gray-2",
                 )}
                 style={{ backgroundColor: c }}
