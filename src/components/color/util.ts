@@ -1,6 +1,14 @@
-import { Color, ColorName, defaultBrandPalette } from "./config";
+import { Color, ColorName, defaultBrandPalette, defaultFallbackColor } from "./config";
 
-export function getColorValue(color: Color, palette = defaultBrandPalette): string {
+export function getColorValue(
+  color: Color | null,
+  palette = defaultBrandPalette,
+  fallbackColor = defaultFallbackColor,
+): string {
+  if (!color) {
+    return fallbackColor;
+  }
+
   if (color.type === "raw") {
     return color.hex;
   }
