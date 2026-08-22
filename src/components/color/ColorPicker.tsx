@@ -33,7 +33,9 @@ export function ColorPicker({
 
   const [isOpen, setIsOpen] = useState(false);
   const [tempValue, setTempValue] = useState<null | Color>(null);
-  const [tabId, setTabId] = useState<string | number>(value?.type === "raw" ? "custom" : "palette");
+  const [tabId, setTabId] = useState<string | number>(
+    value?.type === "raw" ? "custom" : palette ? "palette" : "swatches",
+  );
 
   function handleSubmit() {
     onChange(tempValue);
@@ -50,7 +52,7 @@ export function ColorPicker({
       ? [
           {
             id: "palette",
-            title: t?.("common.colorPalette") ?? "Couleurs du thème",
+            title: t?.("common.brandPalette") ?? "Couleurs du thème",
             content: (
               <NamedColorGrid
                 palette={palette}
@@ -77,8 +79,8 @@ export function ColorPicker({
         ]
       : []),
     {
-      id: "predefined",
-      title: t?.("common.colorPredefined") ?? "Nuancier",
+      id: "swatches",
+      title: t?.("common.colorSwatches") ?? "Nuancier",
       content: (
         <RawColorGrid
           value={tempValue?.type === "raw" ? tempValue : null}
