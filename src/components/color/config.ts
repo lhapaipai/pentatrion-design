@@ -36,5 +36,5 @@ export const defaultBrandPalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: null,
   tertiary: null,
-  gray: "#323232",
+  gray: "#808080",
 };
