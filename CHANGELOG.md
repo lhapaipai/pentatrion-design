@@ -1,3 +1,13 @@
+## 1.3.0
+
+### Minor Changes
+
+- add color advanced picker and custom fields
+
+### Patch Changes
+
+- 4657ad8: externalise Color
+
 ## 1.2.14
 
 ### Patch Changes
