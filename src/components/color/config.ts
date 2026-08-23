@@ -1,7 +1,6 @@
 import { z } from "zod/v4-mini";
 
-export const colorNames = ["primary", "secondary", "tertiary", "text", "gray"] as const;
-export const principalColorNames = ["primary", "secondary", "tertiary"] as const;
+export const colorNames = ["primary", "secondary", "tertiary", "gray"] as const;
 export type ColorName = (typeof colorNames)[number];
 
 export const namedColorSchema = z.object({
@@ -29,7 +28,7 @@ export const brandPaletteSchema = z.object({
   primary: z.string(),
   secondary: z._default(z.nullable(z.string()), null),
   tertiary: z._default(z.nullable(z.string()), null),
-  text: z.string(),
+  gray: z.string(),
 });
 export type BrandPalette = z.infer<typeof brandPaletteSchema>;
 
@@ -37,5 +36,5 @@ export const defaultBrandPalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: null,
   tertiary: null,
-  text: "#323232",
+  gray: "#323232",
 };

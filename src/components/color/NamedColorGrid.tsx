@@ -1,11 +1,5 @@
 import clsx from "clsx";
-import {
-  Color,
-  defaultBrandPalette,
-  BrandPalette,
-  NamedColor,
-  principalColorNames,
-} from "./config";
+import { Color, defaultBrandPalette, BrandPalette, NamedColor, colorNames } from "./config";
 import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
 import { useTranslate } from "../i18n";
 
@@ -16,10 +10,11 @@ interface Props {
   variants?: number | number[];
 }
 
-const principalColorLabels: Record<(typeof principalColorNames)[number], string> = {
+const colorLabels: Record<(typeof colorNames)[number], string> = {
   primary: "Principale",
   secondary: "Secondaire",
   tertiary: "Tertiaire",
+  gray: "Niveau de gris",
 };
 // bornes à -80/80 plutôt que -100/100 : à 100% la base disparaît complètement
 // du color-mix, le swatch ne reproduit plus que du blanc/gris pur, redondant
@@ -55,7 +50,7 @@ export function NamedColorGrid({
 
   return (
     <div className="flex flex-col gap-3 p-2">
-      {principalColorNames
+      {colorNames
         .filter((name) => isColorAvailable(name, palette))
         .map((name) => {
           // une seule vignette pour black : color-mix(black, black) est un no-op,
@@ -65,7 +60,7 @@ export function NamedColorGrid({
           return (
             <div key={name}>
               <div className="text-body-xs truncate">
-                {t?.(`form.values.colorNames.${name}`) ?? principalColorLabels[name]}
+                {t?.(`form.values.colorNames.${name}`) ?? colorLabels[name]}
               </div>
               <div className="flex">
                 {steps.map((variant) => {
@@ -92,30 +87,7 @@ export function NamedColorGrid({
             </div>
           );
         })}
-      <div>
-        <div className="text-body-xs truncate">
-          {t?.("form.values.colorNames.grayScale") ?? "Niveau de gris"}
-        </div>
-        <div className="flex">
-          {getVariantSteps(variants).map((variant) => {
-            const c = applyColorVariant("#808080", variant);
-            return (
-              <button
-                key={variant}
-                type="button"
-                title={`gray (${variant}%)`}
-                className={clsx(
-                  "h-8 flex-1",
-                  colorButtonStyle.base,
-                  value?.name === "gray" && value?.variant === variant && colorButtonStyle.selected,
-                )}
-                style={{ backgroundColor: c }}
-                onClick={() => onChange({ type: "named", name: "gray", variant })}
-              />
-            );
-          })}
-        </div>
-      </div>
+
       <div>
         <div className="text-body-xs truncate">
           {t?.("form.values.colorNames.blackAndWhite") ?? "Noir & Blanc"}
