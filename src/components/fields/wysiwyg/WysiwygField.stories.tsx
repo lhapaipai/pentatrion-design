@@ -12,7 +12,7 @@ import { WysiwygField } from "./WysiwygField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 import { configureCoercion } from "@conform-to/zod/v4/future";
-import { parseWysiwygValue, serializeWysiwygValue, wysiwygSchema, WysiwygValue } from "./types";
+import { parseStringifiedWysiwygValue, serializeWysiwygValue, wysiwygSchema, WysiwygValue } from "./types";
 import { editorStateRichText } from "./_fixtures";
 
 const meta = {
@@ -27,7 +27,7 @@ const storybookOnChange = action("onChange");
 const { coerceFormValue } = configureCoercion({
   customize(type) {
     if (type === wysiwygSchema) {
-      return parseWysiwygValue;
+      return parseStringifiedWysiwygValue;
     }
 
     return null;

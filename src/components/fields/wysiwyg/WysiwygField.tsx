@@ -4,7 +4,7 @@ import type { RefObject } from "react";
 import type { ToolbarVariantProps } from "./style";
 import type { WysiwygRef } from "./Wysiwyg";
 import { Wysiwyg } from "./Wysiwyg";
-import { parseWysiwygValue, serializeWysiwygValue, WysiwygValue } from "./types";
+import { parseStringifiedWysiwygValue, serializeWysiwygValue, WysiwygValue } from "./types";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<WysiwygValue | undefined | null>;
@@ -37,7 +37,7 @@ export function WysiwygField({
     // ici on a uniquement un input text
     defaultValue: field.defaultValue,
     // useControl attend `null` (pas `undefined`) pour signaler l'absence de valeur
-    parse: (payload) => parseWysiwygValue(payload) ?? null,
+    parse: (payload) => parseStringifiedWysiwygValue(payload) ?? null,
     serialize: serializeWysiwygValue,
   });
 

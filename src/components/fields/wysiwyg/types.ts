@@ -18,13 +18,17 @@ export const wysiwygSchema = z.object({
 
 // renvoie `undefined` (convention Zod pour "absent", cf. z.optional()) plutôt que `null`
 // (convention Conform) : c'est au point d'appel `useControl.parse` d'adapter avec `?? null`
-export function parseWysiwygValue(payload: unknown) {
+export function parseStringifiedWysiwygValue(payload: unknown) {
   if (payload == null || payload === "") {
     return null;
   }
-  if (typeof payload !== "string") {
-    throw new Error("wysiwyg value must be a JSON string");
+  if (typeof payload === "object") {
+    return payload as WysiwygValue;
   }
+  if (typeof payload !== "string") {
+    return null;
+  }
+
   try {
     return JSON.parse(payload) as WysiwygValue;
   } catch {

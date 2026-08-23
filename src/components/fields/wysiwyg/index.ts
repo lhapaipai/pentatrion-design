@@ -7,7 +7,7 @@ export { isPlausibleLexicalState, isValidLexicalState } from "./config/validatio
 export {
   wysiwygSchema,
   type WysiwygValue,
-  parseWysiwygValue,
+  parseStringifiedWysiwygValue,
   serializeWysiwygValue,
   isWysiwygStateEmpty,
 } from "./types";
