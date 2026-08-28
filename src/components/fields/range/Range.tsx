@@ -1,4 +1,12 @@
-import { useMemo, ComponentProps, useState, ChangeEvent, useRef } from "react";
+import {
+  useMemo,
+  ComponentProps,
+  useState,
+  ChangeEvent,
+  PointerEvent,
+  TouchEvent,
+  KeyboardEvent,
+} from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
@@ -57,8 +65,6 @@ export function Range({
   onChangeCommitted,
   ...rest
 }: RangeProps) {
-  const rangeRef = useRef<HTMLInputElement>(null!);
-
   const [tempValue, setTempValue] = useState<number | undefined>(undefined);
   const isTemp = typeof tempValue !== "undefined";
 
@@ -84,16 +90,16 @@ export function Range({
     onChange?.(e);
   };
 
-  function handleSeekStart() {
-    setTempValue(rangeRef.current.valueAsNumber);
+  function handleSeekStart(event: PointerEvent<HTMLInputElement>) {
+    setTempValue((event.target as HTMLInputElement).valueAsNumber);
   }
-  function handleSeekEnd() {
+  function handleSeekEnd(event: TouchEvent<HTMLInputElement> | PointerEvent<HTMLInputElement>) {
     setTempValue(undefined);
-    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+    onChangeCommitted?.((event.target as HTMLInputElement).valueAsNumber);
   }
 
-  function handleKeyUp() {
-    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+  function handleKeyUp(event: KeyboardEvent) {
+    onChangeCommitted?.((event.target as HTMLInputElement).valueAsNumber);
   }
 
   return (
@@ -168,7 +174,6 @@ export function Range({
         className={clsx(
           "p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]",
         )}
-        ref={rangeRef}
         min={min}
         max={max}
         step={step}
