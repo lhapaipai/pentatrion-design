@@ -1,3 +1,10 @@
+## 1.3.1
+
+### Patch Changes
+
+- 8bad967: fix range ref
+- 8bad967: fix color refactor inside storybook
+
 ## 1.3.0
 
 ### Minor Changes
