@@ -14,7 +14,7 @@ const Playbook = () => {
 
   return (
     <>
-      <RawColorGrid color={color} onChange={setColor} />
+      <RawColorGrid value={color} onChange={setColor} />
       <div className="shadow-sm w-72 rounded-2xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>value</dt>

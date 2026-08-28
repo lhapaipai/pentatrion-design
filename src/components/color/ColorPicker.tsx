@@ -19,6 +19,7 @@ interface Props extends Omit<FieldProps, "children" | "group"> {
   refColor?: RawColor;
   onChange: (value: Color | null) => void;
   allowInherit?: boolean;
+  variants?: number | number[];
 }
 
 export function ColorPicker({
@@ -26,6 +27,7 @@ export function ColorPicker({
   value,
   refColor,
   onChange,
+  variants,
   allowInherit = false,
   ...rest
 }: Props) {
@@ -58,6 +60,7 @@ export function ColorPicker({
                 palette={palette}
                 value={tempValue?.type === "named" ? tempValue : null}
                 onChange={setTempValue}
+                variants={variants}
               />
             ),
           },

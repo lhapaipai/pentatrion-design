@@ -16,7 +16,7 @@ const Playbook = () => {
 
   return (
     <div className="max-w-64">
-      <HarmonyColorGrid refColor={refColor} color={value} onChange={setValue} />
+      <HarmonyColorGrid refColor={refColor} value={value} onChange={setValue} />
       <div className="shadow-sm w-72 rounded-2xl mt-4 p-2">
         <dl className="p8n-setting">
           <dt>value</dt>
