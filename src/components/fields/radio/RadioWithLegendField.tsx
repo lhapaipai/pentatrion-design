@@ -4,7 +4,7 @@ import { RadioWithLegend } from "./Radio";
 import clsx from "clsx";
 import type { ReactNode } from "react";
 
-export type RadioWithLegendOption<T extends string | null = string> = {
+export type RadioWithLegendOption<T extends string | null = string | null> = {
   label: string;
   value: T;
   children: ReactNode;
@@ -34,7 +34,7 @@ export function RadiosWithLegendField({
           <RadioWithLegend
             key={option.value}
             name={field.name}
-            value={option.value}
+            value={option.value ?? ""}
             defaultChecked={field.defaultValue === option.value}
             label={option.label}
             labelClassName={labelClassName}

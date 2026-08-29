@@ -4,6 +4,7 @@ import { useRipple } from "pentatrion-design/hooks";
 import { Color, defaultBrandPalette, defaultNamedColor, BrandPalette } from "./config";
 import { getColorValue } from "./util";
 import { ThemeColor } from "../../types";
+import { useTranslate } from "../i18n";
 
 export interface ColorPreviewProps extends Omit<ComponentProps<"button">, "color" | "value"> {
   withRipple?: boolean;
@@ -28,12 +29,19 @@ export function ColorPreview({
   ref,
   ...rest
 }: ColorPreviewProps) {
-  const value: Color =
-    typeof unknownColor === "string"
-      ? { type: "raw", hex: unknownColor }
-      : (unknownColor ?? defaultNamedColor);
+  const t = useTranslate();
+  const value: Color | null =
+    typeof unknownColor === "string" ? { type: "raw", hex: unknownColor } : (unknownColor ?? null);
 
-  const valueToShow = label ?? (showValue ? (value.type === "raw" ? value.hex : value.name) : null);
+  const valueLabel =
+    label ??
+    (value
+      ? showValue
+        ? value.type === "raw"
+          ? value.hex
+          : value.name
+        : null
+      : (t?.("form.values.color.inherit") ?? "Par défault"));
 
   const buttonRef = useRef<HTMLButtonElement>(null!);
 
@@ -55,19 +63,20 @@ export function ColorPreview({
       <span
         className={clsx(
           "absolute inset-1 flex items-center justify-center rounded-2xl transition-transform group-hover:scale-150",
-          valueToShow === null && "min-w-12",
+          valueLabel === null && "min-w-12",
           className,
         )}
-        style={{ backgroundColor: getColorValue(value, palette) }}
+        style={{ backgroundColor: value ? getColorValue(value, palette) : undefined }}
       ></span>
       <span
         className={clsx(
-          "relative flex h-full items-center justify-center px-2",
-          valueToShow === null && "min-w-12",
+          "relative flex h-full items-center justify-center px-2 rounded-2xl",
+          valueLabel === null && "min-w-12",
           className,
+          !value && "border border-dashed border-gray-3",
         )}
       >
-        {valueToShow}
+        {valueLabel}
       </span>
     </button>
   );
