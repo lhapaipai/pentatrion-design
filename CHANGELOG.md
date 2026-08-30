@@ -1,3 +1,9 @@
+## 1.3.3
+
+### Patch Changes
+
+- 1503a74: ColorPreview add null value
+
 ## 1.3.2
 
 ### Patch Changes
