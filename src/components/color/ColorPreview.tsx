@@ -1,7 +1,7 @@
 import { ComponentProps, RefObject, useImperativeHandle, useRef } from "react";
 import clsx from "clsx";
 import { useRipple } from "pentatrion-design/hooks";
-import { Color, defaultBrandPalette, defaultNamedColor, BrandPalette } from "./config";
+import { Color, defaultBrandPalette, BrandPalette } from "./config";
 import { getColorValue } from "./util";
 import { ThemeColor } from "../../types";
 import { useTranslate } from "../i18n";

@@ -12,7 +12,12 @@ import { WysiwygField } from "./WysiwygField";
 import { Button } from "../../button";
 import { Meta } from "@storybook/react-vite";
 import { configureCoercion } from "@conform-to/zod/v4/future";
-import { parseStringifiedWysiwygValue, serializeWysiwygValue, wysiwygSchema, WysiwygValue } from "./types";
+import {
+  parseStringifiedWysiwygValue,
+  serializeWysiwygValue,
+  wysiwygSchema,
+  WysiwygValue,
+} from "./types";
 import { editorStateRichText } from "./_fixtures";
 
 const meta = {
