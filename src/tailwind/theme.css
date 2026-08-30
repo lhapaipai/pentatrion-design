@@ -192,8 +192,8 @@
 
   --default-transition-duration: 0.2s;
 
-  --breakpoint-4sm: 22.5rem;
-  --breakpoint-3sm: 26rem;
+  --breakpoint-4sm: 22.5rem; /* 360px */
+  --breakpoint-3sm: 26rem; /* 416px */
   /* 480px mobile landscape */
   --breakpoint-2sm: 30rem;
   /* 1920px */
