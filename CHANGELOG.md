@@ -1,3 +1,9 @@
+## 1.3.4
+
+### Patch Changes
+
+- ecb88e3: fix wysiwygField child errors reports
+
 ## 1.3.3
 
 ### Patch Changes
