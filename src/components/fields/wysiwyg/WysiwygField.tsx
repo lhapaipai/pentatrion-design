@@ -31,6 +31,8 @@ export function WysiwygField({
 }: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
+  const itemErrors = Object.values(field.fieldErrors).flat();
+  const errors = field.errors ?? (itemErrors.length > 0 ? itemErrors : undefined);
 
   const control = useControl<WysiwygValue, string>({
     // on utiliserait defaultPayload si on construisait un composant fieldset.
@@ -58,7 +60,7 @@ export function WysiwygField({
         readOnly={readOnly}
         hidden
       />
-      <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
+      <Field id={id} errors={errors} data-testid={field.name} {...rest}>
         <Wysiwyg
           key={field.key}
           ref={ref}
