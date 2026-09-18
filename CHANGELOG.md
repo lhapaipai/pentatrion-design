@@ -1,3 +1,9 @@
+## 1.3.5
+
+### Patch Changes
+
+- ed057f1: color better management of dark mode computation
+
 ## 1.3.4
 
 ### Patch Changes
