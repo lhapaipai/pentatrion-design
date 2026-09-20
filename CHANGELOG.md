@@ -1,3 +1,9 @@
+## 1.3.6
+
+### Patch Changes
+
+- d04c163: slugfield add placeholder
+
 ## 1.3.5
 
 ### Patch Changes
