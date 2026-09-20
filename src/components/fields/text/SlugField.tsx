@@ -6,9 +6,10 @@ import type { ChangeEvent } from "react";
 
 interface Props extends Omit<FieldProps, "errors" | "children" | "group"> {
   name: FieldName<string | null | undefined>;
+  placeholder?: string;
 }
 
-export function SlugField({ name, id: forcedId, ...rest }: Props) {
+export function SlugField({ name, id: forcedId, placeholder, ...rest }: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
   const control = useControl({
@@ -36,7 +37,12 @@ export function SlugField({ name, id: forcedId, ...rest }: Props) {
         defaultValue={field.defaultValue}
       />
       <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
-        <Input value={control.value ?? ""} onBlur={handleBlur} onChange={handleChange} />
+        <Input
+          value={control.value ?? ""}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
       </Field>
     </>
   );
