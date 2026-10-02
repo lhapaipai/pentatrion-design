@@ -1,6 +1,11 @@
 import clsx from "clsx";
-import { Color, defaultBrandPalette, BrandPalette, NamedColor, colorNames } from "./config";
-import { applyColorVariant, getColorValue, isColorAvailable } from "./util";
+import { Color, BrandPalette, NamedColor, colorNames } from "./config";
+import {
+  applyColorVariant,
+  defaultBrandPalette,
+  getColorValue,
+  isColorAvailable,
+} from "../../lib/palette";
 import { useTranslate } from "../i18n";
 
 interface Props {

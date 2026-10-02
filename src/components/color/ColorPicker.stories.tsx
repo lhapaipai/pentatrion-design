@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Meta } from "@storybook/react-vite";
 import { ColorPicker } from "./ColorPicker";
 import { Color, type BrandPalette, defaultNamedColor, RawColor } from "./config";
-import { getColorValue } from "./util";
+import { getColorValue } from "../../lib/palette";
 
 const meta = {
   title: "Components/Color/ColorPicker",

@@ -25,6 +25,9 @@
     "test-run": "vitest --run"
   },
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "devDependencies": {
     "@changesets/cli": "^3.0.0",
     "@conform-to/react": "^1.19.4",

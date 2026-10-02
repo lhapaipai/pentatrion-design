@@ -4,3 +4,4 @@ export * from "./fetch";
 export * from "./compose-refs";
 export * from "./invariant";
 export * from "./strUtil";
+export * from "./palette";

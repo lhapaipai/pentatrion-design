@@ -1,4 +1,13 @@
-import { Color, ColorName, defaultBrandPalette, defaultFallbackColor } from "./config";
+import type { BrandPalette, Color, ColorName } from "../components/color/config";
+
+export const defaultBrandPalette: BrandPalette = {
+  primary: "#ffca0a",
+  secondary: null,
+  tertiary: null,
+  gray: "#808080",
+};
+
+export const defaultFallbackColor = "#000000";
 
 export function getColorValue(
   color: Color | null,

@@ -11,7 +11,6 @@ export const namedColorSchema = z.object({
 export type NamedColor = z.infer<typeof namedColorSchema>;
 
 export const defaultNamedColor: NamedColor = { name: "gray", variant: -100, type: "named" };
-export const defaultFallbackColor = "#000000";
 
 export const rawColorSchema = z.object({
   type: z.literal("raw"),
@@ -31,10 +30,3 @@ export const brandPaletteSchema = z.object({
   gray: z.string(),
 });
 export type BrandPalette = z.infer<typeof brandPaletteSchema>;
-
-export const defaultBrandPalette: BrandPalette = {
-  primary: "#ffca0a",
-  secondary: null,
-  tertiary: null,
-  gray: "#808080",
-};
