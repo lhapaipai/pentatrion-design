@@ -1,3 +1,9 @@
+## 1.3.7
+
+### Patch Changes
+
+- c242b04: isolate color config into lib
+
 ## 1.3.6
 
 ### Patch Changes
