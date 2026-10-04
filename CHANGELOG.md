@@ -1,3 +1,9 @@
+## 1.3.8
+
+### Patch Changes
+
+- 230c83c: fix disabled button when loading
+
 ## 1.3.7
 
 ### Patch Changes
