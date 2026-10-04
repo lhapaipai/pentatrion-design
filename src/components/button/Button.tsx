@@ -153,7 +153,7 @@ export function Button({
       aria-checked={selected}
       suppressHydrationWarning
       aria-busy={loading}
-      {...(disabled || loading ? { disabled } : {})}
+      {...(disabled || loading ? { disabled: true } : {})}
       {...props}
     >
       {asChild ? (
