@@ -32,7 +32,9 @@ class ToastsManager {
     if (!this.setToasts) {
       return;
     }
-    const { expiration = 5000, color = "yellow", canClose = true, withLoader = false } = options;
+    const { color = "yellow", canClose = true, withLoader = false } = options;
+
+    const expiration = options.expiration ?? (color === "red" ? -1 : 5000);
 
     const id = (this.idx++).toString();
     if (this.timeoutIds.has(id)) {
