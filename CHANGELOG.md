@@ -1,3 +1,10 @@
+## 1.3.9
+
+### Patch Changes
+
+- b91e176: button loader width
+- b91e176: toasts manager expiration
+
 ## 1.3.8
 
 ### Patch Changes
