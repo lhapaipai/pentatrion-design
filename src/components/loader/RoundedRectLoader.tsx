@@ -10,7 +10,7 @@ interface Props extends ComponentPropsWithoutRef<"svg"> {
   radius?: number;
 }
 
-const width = 4;
+const width = 2;
 
 const trackStyle: CSSProperties = {
   strokeLinecap: "round",
