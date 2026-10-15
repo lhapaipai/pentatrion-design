@@ -1,3 +1,9 @@
+## 1.3.10
+
+### Patch Changes
+
+- e0cb382: enhance AudioRange, Range a11y
+
 ## 1.3.9
 
 ### Patch Changes
