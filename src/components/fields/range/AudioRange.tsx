@@ -110,7 +110,6 @@ export function AudioRange({
   return (
     <div className="flex items-center">
       <div className={clsx("text-right", valueClassName)}>{formatter(value)}</div>
-
       <div
         className={clsx("group relative flex flex-1", className)}
         style={cssVars}
@@ -119,22 +118,15 @@ export function AudioRange({
         <div className={clsx(trackBase, "right-0 bottom-0 flex items-center justify-center")}>
           <div className="relative h-2 w-[calc(100%-2rem)]">
             {/* track full */}
-            <div
-              className={clsx(
-                trackBase,
-                "track bg-custom-2/50 after:bg-custom-2/50 w-full after:absolute after:left-[calc(100%-.25rem)] after:h-2 after:w-2 after:rounded-full after:mask-l-from-50% after:mask-l-to-transparent after:mask-l-to-50%",
-              )}
-            ></div>
-
+            <div className={clsx(trackBase, "track bg-custom-2/50  w-full rounded-sm")}></div>
             {/* active zone */}
             <div
               className={clsx(
                 trackBase,
-                "from-gray-8/70 to-gray-8/50 before:bg-gray-8/70 bg-linear-to-r from-5%",
-                "group-hover:from-custom-4 group-hover:to-custom-3 group-hover:before:bg-custom-4 group-hover:bg-linear-to-r",
+                "from-gray-8/70 to-gray-8/50  bg-linear-to-r from-5%  rounded-sm",
+                "group-hover:from-custom-4 group-hover:to-custom-3  group-hover:bg-linear-to-r",
 
                 "w-(--p8n-range-progress-percent) rounded-r-sm",
-                "before:absolute before:-left-1 before:h-2 before:w-2 before:rounded-full before:mask-r-from-50% before:mask-r-to-transparent before:mask-r-to-50%",
               )}
             ></div>
           </div>
