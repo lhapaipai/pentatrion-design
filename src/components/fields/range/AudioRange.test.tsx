@@ -8,6 +8,10 @@ describe("AudioRange", () => {
     [9.9999, "0:09"],
     [10, "0:10"],
     [59.9999, "0:59"],
+    [3600, "60:00"],
+    [Infinity, "--:--"],
+    [NaN, "--:--"],
+    [-1, "--:--"],
   ])("formatTime %s -> %s", (time, expectedFormattedTime) => {
     const formattedTime = formatTime(time);
     expect(formattedTime).toBe(expectedFormattedTime);
