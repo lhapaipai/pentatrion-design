@@ -18,8 +18,10 @@
 .p8n-input-range::-moz-range-thumb {
   @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
-.p8n-input-range::-moz-range-thumb:hover {
-  @apply scale-55;
+@media (hover: hover) {
+  .p8n-input-range::-moz-range-thumb:hover {
+    @apply scale-55;
+  }
 }
 .p8n-input-range::-moz-range-thumb:active {
   @apply scale-60;
@@ -28,8 +30,10 @@
 .p8n-input-range::-ms-thumb {
   @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
-.p8n-input-range::-ms-thumb:hover {
-  @apply scale-55;
+@media (hover: hover) {
+  .p8n-input-range::-ms-thumb:hover {
+    @apply scale-55;
+  }
 }
 .p8n-input-range::-ms-thumb:active {
   @apply scale-60;
@@ -38,8 +42,10 @@
 .p8n-input-range::-webkit-slider-thumb {
   @apply h-8 w-8 scale-45 bg-custom-4 transition-transform ease-[cubic-bezier(0.16,1,0.3,1)];
 }
-.p8n-input-range::-webkit-slider-thumb:hover {
-  @apply scale-55;
+@media (hover: hover) {
+  .p8n-input-range::-webkit-slider-thumb:hover {
+    @apply scale-55;
+  }
 }
 .p8n-input-range::-webkit-slider-thumb:active {
   @apply scale-60;

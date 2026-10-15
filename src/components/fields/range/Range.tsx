@@ -1,27 +1,11 @@
-import {
-  useMemo,
-  ComponentProps,
-  useState,
-  ChangeEvent,
-  PointerEvent,
-  TouchEvent,
-  KeyboardEvent,
-} from "react";
+import { ComponentProps, useState, ChangeEvent, useRef, useEffect, useEffectEvent } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
 
 export interface RangeProps extends Omit<
   ComponentProps<"input">,
-  | "value"
-  | "defaultValue"
-  | "min"
-  | "max"
-  | "step"
-  | "onPointerDown"
-  | "onPointerUp"
-  | "onTouchEnd"
-  | "ref"
+  "value" | "defaultValue" | "min" | "max" | "step" | "aria-valuetext" | "ref"
 > {
   value: number;
 
@@ -41,12 +25,21 @@ export interface RangeProps extends Omit<
 
   color?: ThemeColor;
 
-  formatter?: (str: number) => string;
+  formatter?: (value: number) => string;
+
+  /**
+   * text announced by screen readers (aria-valuetext), `formatter` by default
+   */
+  valueTextFormatter?: (value: number) => string;
 
   onChangeCommitted?: (valueAsNumber: number) => void;
 }
 
 const trackBase = "pointer-events-none absolute top-0 left-0 h-full";
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
 
 export function Range({
   className,
@@ -60,53 +53,55 @@ export function Range({
   valuesByTick,
   showValue = true,
   ticks = false,
-  formatter = (str) => str?.toString(),
+  formatter = (value) => value.toString(),
+  valueTextFormatter = formatter,
   onChange,
   onChangeCommitted,
   ...rest
 }: RangeProps) {
-  const [tempValue, setTempValue] = useState<number | undefined>(undefined);
-  const isTemp = typeof tempValue !== "undefined";
+  const rangeRef = useRef<HTMLInputElement>(null!);
 
-  const value = isTemp ? tempValue : controlledValue;
+  // value being adjusted by the user, not committed yet
+  const [tempValue, setTempValue] = useState<number | undefined>(undefined);
+  const value = tempValue ?? controlledValue;
 
   const range = max - min;
-  const percent = (value - min) / range;
-  const additionalPercent = additionalBarValue ? (additionalBarValue - min) / range : 0;
-  const nbOfTicks = 1 + Math.floor(range / (valuesByTick ?? step ?? 5));
+  const toPercent = (v: number) => (range > 0 ? clamp((v - min) / range, 0, 1) : 0);
+  const percent = toPercent(value);
+  const additionalPercent = additionalBarValue === undefined ? 0 : toPercent(additionalBarValue);
+  const nbOfTicks = 1 + Math.floor(range / (valuesByTick ?? step));
 
-  const cssVars = useMemo(
-    () => ({
-      "--p8n-range-progress-percent": `${percent * 100}%`,
-      "--p8n-range-additional-percent": `${additionalPercent * 100}%`,
-    }),
-    [percent, additionalPercent],
-  );
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (isTemp) {
-      setTempValue(e.target.valueAsNumber);
-    }
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setTempValue(e.target.valueAsNumber);
     onChange?.(e);
   };
 
-  function handleSeekStart(event: PointerEvent<HTMLInputElement>) {
-    setTempValue((event.target as HTMLInputElement).valueAsNumber);
-  }
-  function handleSeekEnd(event: TouchEvent<HTMLInputElement> | PointerEvent<HTMLInputElement>) {
+  // React's onChange is bound to the native "input" event. The native "change" event
+  // is fired once the user commits: pointer/touch release, keyboard, assistive technologies.
+  const handleNativeChange = useEffectEvent(() => {
     setTempValue(undefined);
-    onChangeCommitted?.((event.target as HTMLInputElement).valueAsNumber);
-  }
+    onChangeCommitted?.(rangeRef.current.valueAsNumber);
+  });
 
-  function handleKeyUp(event: KeyboardEvent) {
-    onChangeCommitted?.((event.target as HTMLInputElement).valueAsNumber);
-  }
+  useEffect(() => {
+    const input = rangeRef.current;
+    input.addEventListener("change", handleNativeChange);
+    return () => input.removeEventListener("change", handleNativeChange);
+  }, []);
 
   return (
-    <div className={clsx("group relative flex", className)} style={cssVars} data-color={color}>
+    <div
+      className={clsx("group relative flex", className)}
+      style={{
+        "--p8n-range-progress-percent": `${percent * 100}%`,
+        "--p8n-range-additional-percent": `${additionalPercent * 100}%`,
+      }}
+      data-color={color}
+    >
       {showMinMax !== "never" && (
         <>
           <div
+            aria-hidden
             className={clsx(
               "text-body-xs absolute top-6 left-4 -translate-x-2/4",
               showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
@@ -115,6 +110,7 @@ export function Range({
             {formatter(min)}
           </div>
           <div
+            aria-hidden
             className={clsx(
               "text-body-xs absolute top-6 right-4 translate-x-2/4",
               showMinMax === "onHover" && "opacity-0 transition-opacity group-hover:opacity-100",
@@ -143,7 +139,10 @@ export function Range({
             ></div>
           )}
           {showValue && (
-            <div className="text-body-sm pointer-events-none absolute bottom-4 left-(--p8n-range-progress-percent) -translate-x-2/4">
+            <div
+              aria-hidden
+              className="text-body-sm pointer-events-none absolute bottom-4 left-(--p8n-range-progress-percent) -translate-x-2/4"
+            >
               {formatter(value)}
             </div>
           )}
@@ -170,19 +169,15 @@ export function Range({
         </div>
       </div>
       <input
+        ref={rangeRef}
         type="range"
-        className={clsx(
-          "p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]",
-        )}
+        className="p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]"
         min={min}
         max={max}
         step={step}
         value={value}
-        onChange={handleChange}
-        onPointerDown={handleSeekStart}
-        onPointerUp={handleSeekEnd}
-        onTouchEnd={handleSeekEnd}
-        onKeyUp={handleKeyUp}
+        aria-valuetext={valueTextFormatter(value)}
+        onChange={handleInput}
         {...rest}
       />
     </div>
