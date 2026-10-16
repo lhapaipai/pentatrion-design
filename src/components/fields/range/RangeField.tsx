@@ -31,7 +31,7 @@ export function RangeField({
       if (typeof payload !== "string") {
         throw new Error("range input must return string");
       }
-      return parseInt(payload);
+      return parseFloat(payload);
     },
     serialize(value) {
       return value.toString();
