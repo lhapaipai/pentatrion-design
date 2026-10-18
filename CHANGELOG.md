@@ -1,3 +1,9 @@
+## 1.3.11
+
+### Patch Changes
+
+- b4d62f3: update deps
+
 ## 1.3.10
 
 ### Patch Changes
