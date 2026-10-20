@@ -1,19 +1,29 @@
 import { FieldName, useField, useControl } from "@conform-to/react/future";
 import { Field, FieldProps } from "../field/Field";
 import { Input } from "../text/Input";
-import { useRef } from "react";
+
+type DateInputType = "datetime-local" | "date";
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<Date | null | undefined>;
-  type?: "datetime-local" | "date";
+  type?: DateInputType;
+  min?: Date;
+  max?: Date;
 }
 
-function pad(n: number): string {
-  return n.toString().padStart(2, "0");
+const defaultMax = new Date(9999, 11, 31, 23, 59);
+
+function pad(n: number, length = 2): string {
+  return n.toString().padStart(length, "0");
 }
 
-function toDateLocalValue(date: Date, type: "datetime-local" | "date"): string {
-  const year = date.getFullYear();
+function isValidDate(date: Date): boolean {
+  return !Number.isNaN(date.getTime());
+}
+
+function toDateLocalValue(date: Date, type: DateInputType): string {
+  // years < 1000 must be padded or the native input rejects the value
+  const year = pad(date.getFullYear(), 4);
   const month = pad(date.getMonth() + 1);
   const day = pad(date.getDate());
   const hours = pad(date.getHours());
@@ -24,17 +34,29 @@ function toDateLocalValue(date: Date, type: "datetime-local" | "date"): string {
     : `${year}-${month}-${day}`;
 }
 
-function fromDatetimeLocalValue(value: string): Date {
+function fromDateLocalValue(value: string): Date | null {
+  if (value === "") {
+    return null;
+  }
   const [datePart, timePart] = value.split("T");
   const [year, month, day] = datePart.split("-").map(Number);
   const [hours, minutes] = timePart?.split(":").map(Number) ?? [0, 0];
-  return new Date(year, month - 1, day, hours, minutes);
+  const date = new Date(year, month - 1, day, hours, minutes);
+  // new Date(year, …) maps years 0-99 to 1900-1999
+  date.setFullYear(year, month - 1, day);
+  return isValidDate(date) ? date : null;
 }
 
-export function DateField({ name, type = "datetime-local", id: forcedId, ...rest }: Props) {
+export function DateField({
+  name,
+  type = "datetime-local",
+  id: forcedId,
+  min,
+  max = defaultMax,
+  ...rest
+}: Props) {
   const field = useField(name);
   const id = forcedId ?? field.id;
-  const dateInputRef = useRef<HTMLInputElement>(null!);
 
   const control = useControl<Date, string>({
     defaultValue: field.defaultValue,
@@ -43,7 +65,11 @@ export function DateField({ name, type = "datetime-local", id: forcedId, ...rest
       if (typeof payload !== "string") {
         throw new Error("date input must return string");
       }
-      return new Date(payload);
+      if (payload === "") {
+        return null;
+      }
+      const date = new Date(payload);
+      return isValidDate(date) ? date : null;
     },
     serialize(value) {
       return value.toISOString();
@@ -56,11 +82,11 @@ export function DateField({ name, type = "datetime-local", id: forcedId, ...rest
       <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
         <Input
           type={type}
-          ref={dateInputRef}
+          min={min && toDateLocalValue(min, type)}
+          max={toDateLocalValue(max, type)}
           value={control.payload ? toDateLocalValue(control.payload, type) : ""}
           onChange={(e) => {
-            console.log("onChange", e.target.value, fromDatetimeLocalValue(e.target.value));
-            control.change(fromDatetimeLocalValue(e.target.value));
+            control.change(fromDateLocalValue(e.target.value));
           }}
           onBlur={() => control.blur()}
         />
