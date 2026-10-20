@@ -17,7 +17,19 @@ export function SlugField({ name, id: forcedId, placeholder, ...rest }: Props) {
   });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    control.change(slugify(e.target.value, false, false));
+    const input = e.target;
+    const slug = slugify(input.value, false, false);
+    if (slug !== input.value) {
+      // the cursor stays after the same characters once the text before it is slugified
+      const cursor = input.selectionStart ?? input.value.length;
+      const slugCursor = Math.min(
+        slugify(input.value.slice(0, cursor), false, false).length,
+        slug.length,
+      );
+      input.value = slug;
+      input.setSelectionRange(slugCursor, slugCursor);
+    }
+    control.change(slug);
   }
 
   function handleBlur() {
