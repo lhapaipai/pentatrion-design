@@ -25,7 +25,7 @@ export function RangeField({
   const field = useField(name);
   const id = forcedId ?? field.id;
 
-  const control = useControl<number, string>({
+  const { payload, register, change, blur } = useControl<number, string>({
     defaultValue: field.defaultValue,
     parse(payload) {
       if (typeof payload !== "string") {
@@ -40,19 +40,19 @@ export function RangeField({
 
   return (
     <>
-      <input type="text" name={field.name} ref={control.register} hidden />
+      <input type="text" name={field.name} ref={register} hidden />
       <Field id={id} errors={field.errors} data-testid={field.name} {...rest}>
         <Range
-          value={control.payload ?? 0}
+          value={payload ?? 0}
           min={min}
           max={max}
           step={step}
           showMinMax={showMinMax}
           showValue={showValue}
           onChangeCommitted={(value: number) => {
-            control.change(value);
+            change(value);
           }}
-          onBlur={() => control.blur()}
+          onBlur={() => blur()}
         />
       </Field>
     </>
