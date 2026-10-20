@@ -201,6 +201,7 @@ export function Select<V extends string | number = string>({
               {...getFloatingProps()}
             >
               <Dialog
+                role="presentation"
                 placement={context.placement}
                 className={clsx("motion-safe:animate-fade-in-list overflow-auto", dialogClassName)}
                 rounded={!dialogClassName}
@@ -214,12 +215,12 @@ export function Select<V extends string | number = string>({
                       key={option.value}
                       className={clsx("option", isSelected ? "bg-gray-2" : isActive && "bg-gray-1")}
                       data-presentation="compact"
-                      role="option"
-                      aria-selected={isSelected}
                       ref={(node) => {
                         listRef.current[i] = node;
                       }}
                       {...getItemProps({
+                        active: isActive,
+                        selected: isSelected,
                         onClick() {
                           handleSelect(i);
                         },

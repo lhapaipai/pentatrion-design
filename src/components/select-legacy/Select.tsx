@@ -336,6 +336,7 @@ export function SelectLegacy<O extends Option>({
                 {...getFloatingProps()}
               >
                 <Dialog
+                  role="presentation"
                   placement={context.placement}
                   className={clsx(
                     "motion-safe:animate-fade-in-list max-h-80 overflow-auto",

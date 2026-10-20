@@ -204,7 +204,7 @@ export function Autocomplete<O extends OptionLike = Option>({
     clearSearchButton && (searchValue.trim() !== "" || selection !== null);
 
   return (
-    <div className={className} role="combobox">
+    <div className={className}>
       <div
         className={clsx(inputConfig.container, sizeVariant.medium, readOnly && "readonly")}
         ref={refs.setReference}
@@ -299,6 +299,7 @@ export function Autocomplete<O extends OptionLike = Option>({
                 {...getFloatingProps()}
               >
                 <Dialog
+                  role="presentation"
                   placement={context.placement}
                   className="motion-safe:animate-fade-in-list overflow-auto"
                 >
