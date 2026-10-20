@@ -1,3 +1,13 @@
+## 1.3.12
+
+### Patch Changes
+
+- f75b55f: useTooltip pointer interaction fix
+- 505b1fc: fix Range field useRef
+- 84ffd3b: fix Autocomplete Select a11y
+- 395c9c1: fix invalide DateField
+- 6953db4: fix slug fiekd cursor position
+
 ## 1.3.11
 
 ### Patch Changes
