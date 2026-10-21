@@ -1,3 +1,9 @@
+## 1.3.13
+
+### Patch Changes
+
+- 8ac1b5b: fix slot component ref transmission (best fix for Range, AudioRange)
+
 ## 1.3.12
 
 ### Patch Changes
