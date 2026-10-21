@@ -1,4 +1,4 @@
-import { ComponentProps, useState, ChangeEvent, useRef, useCallback, useLayoutEffect } from "react";
+import { ComponentProps, useState, ChangeEvent, useRef, useEffect, useEffectEvent } from "react";
 
 import clsx from "clsx";
 import { ThemeColor } from "../../../types";
@@ -59,6 +59,8 @@ export function Range({
   onChangeCommitted,
   ...rest
 }: RangeProps) {
+  const rangeRef = useRef<HTMLInputElement>(null!);
+
   // value being adjusted by the user, not committed yet
   const [tempValue, setTempValue] = useState<number | undefined>(undefined);
   const value = tempValue ?? controlledValue;
@@ -74,22 +76,15 @@ export function Range({
     onChange?.(e);
   };
 
-  // dernier callback reçu, lu par l'écouteur natif sans avoir à le rebrancher à chaque rendu
-  const onChangeCommittedRef = useRef(onChangeCommitted);
-  useLayoutEffect(() => {
-    onChangeCommittedRef.current = onChangeCommitted;
+  // React's onChange is bound to the native "input" event. The native "change" event
+  // is fired once the user commits: pointer/touch release, keyboard, assistive technologies.
+  const handleNativeChange = useEffectEvent(() => {
+    setTempValue(undefined);
+    onChangeCommitted?.(rangeRef.current.valueAsNumber);
   });
 
-  // le onChange de React est branché sur l'événement natif "input". L'événement natif "change"
-  // n'est émis qu'une fois la valeur validée : relâchement du pointeur/doigt, clavier,
-  // technologies d'assistance.
-  // ref callback (nettoyage React 19) : l'écouteur suit le nœud DOM lui-même, quel que soit
-  // le moment où s'exécutent les effets (révélation d'un Suspense, Activity…).
-  const rangeRef = useCallback((input: HTMLInputElement) => {
-    function handleNativeChange() {
-      setTempValue(undefined);
-      onChangeCommittedRef.current?.(input.valueAsNumber);
-    }
+  useEffect(() => {
+    const input = rangeRef.current;
     input.addEventListener("change", handleNativeChange);
     return () => input.removeEventListener("change", handleNativeChange);
   }, []);
@@ -174,7 +169,6 @@ export function Range({
         </div>
       </div>
       <input
-        ref={rangeRef}
         type="range"
         className="p8n-input-range h-8 w-full min-w-0 bg-transparent outline-offset-[0.75rem]"
         min={min}
@@ -184,6 +178,7 @@ export function Range({
         aria-valuetext={valueTextFormatter(value)}
         onChange={handleInput}
         {...rest}
+        ref={rangeRef}
       />
     </div>
   );
