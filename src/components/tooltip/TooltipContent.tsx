@@ -39,7 +39,6 @@ export function TooltipContent({
           placement={context.placement}
           className={clsx("text-body-sm motion-safe:animate-fade-in max-w-80 px-2 py-1", className)}
           color={context.color}
-          role="tooltip"
         >
           {children}
           <div
