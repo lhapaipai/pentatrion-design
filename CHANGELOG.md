@@ -1,3 +1,9 @@
+## 1.3.14
+
+### Patch Changes
+
+- c6cd162: autocomplete prevent default
+
 ## 1.3.13
 
 ### Patch Changes
