@@ -253,6 +253,8 @@ export function Autocomplete<O extends OptionLike = Option>({
             },
             onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
               if (e.key === "Enter" && activeIndex != null) {
+                // dans un <form>, Entrée sur une suggestion ne doit pas soumettre
+                e.preventDefault();
                 handleSelect(activeIndex);
               }
             },
