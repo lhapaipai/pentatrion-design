@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, RefObject } from "react";
+import { ComponentPropsWithRef, ReactNode, RefObject } from "react";
 import { type ThemeColor } from "../../../types";
 import clsx from "clsx";
 import { ButtonProps, buttonVariants } from "../../button";
@@ -7,6 +7,7 @@ export interface RadioProps extends ComponentPropsWithRef<"input"> {
   color?: ThemeColor;
   variant?: "contained" | "light" | "outlined" | "text" | "ghost";
   width?: "fit" | "full" | "custom";
+  description?: ReactNode;
   ref?: RefObject<HTMLInputElement>;
 }
 
@@ -14,12 +15,16 @@ export function Radio({
   disabled = false,
   color = "yellow",
   children,
+  description,
   className,
   ref,
   ...rest
 }: RadioProps) {
   return (
-    <label aria-disabled={disabled} className={clsx("flex cursor-pointer items-center")}>
+    <label
+      aria-disabled={disabled}
+      className={clsx("flex cursor-pointer", description ? "items-start" : "items-center")}
+    >
       <input
         data-color={color}
         ref={ref}
@@ -32,7 +37,15 @@ export function Radio({
         {...(disabled ? { disabled } : {})}
         {...rest}
       />
-      {children}
+      {description ? (
+        <span className="flex flex-col">
+          {/* leading-8 = h-6 + my-1 du rond : le libellé reste aligné sur lui */}
+          <span className="leading-8">{children}</span>
+          <span className="text-body-sm text-gray-6">{description}</span>
+        </span>
+      ) : (
+        children
+      )}
     </label>
   );
 }

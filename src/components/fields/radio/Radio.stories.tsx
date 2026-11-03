@@ -72,6 +72,31 @@ export const Basic = () => {
           </Radio>
         </div>
       </div>
+      <div>
+        <h3 className="text-body-md mt-8 font-medium">With description</h3>
+        <div className="max-w-md">
+          <Radio name="sport-description" value="">
+            I'd rather not say
+          </Radio>
+          <Radio
+            name="sport-description"
+            value="climbing"
+            description="Indoor or outdoor, from bouldering to multi-pitch routes."
+          >
+            Climbing
+          </Radio>
+          <Radio
+            name="sport-description"
+            value="tennis"
+            description="Singles or doubles. A long description wraps under the label while the radio stays aligned with the first line."
+          >
+            Tennis
+          </Radio>
+          <Radio name="sport-description" value="soccer" description="Five-a-side or full team.">
+            Soccer
+          </Radio>
+        </div>
+      </div>
 
       {variants.map((variant) => (
         <div key={variant} className="flex flex-col gap-4">

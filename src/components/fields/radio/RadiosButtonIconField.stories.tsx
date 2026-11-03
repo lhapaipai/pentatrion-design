@@ -30,7 +30,7 @@ const viewOptions: RadioButtonIconOption[] = [
   { value: "settings", icon: "fe-settings", label: "Settings" },
 ];
 
-const defaultValue = {
+const defaultValue: z.input<typeof formSchema> = {
   view: "grid",
 };
 

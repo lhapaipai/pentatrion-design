@@ -55,7 +55,7 @@ const userProfileOptions = [
   },
 ] as const satisfies RadioWithLegendOption[];
 
-const defaultValue = {
+const defaultValue: z.input<typeof formSchema> = {
   profile: "musician",
 };
 

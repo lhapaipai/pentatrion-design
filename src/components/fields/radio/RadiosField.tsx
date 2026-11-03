@@ -4,10 +4,13 @@ import { SelectOption } from "../select/types";
 import clsx from "clsx";
 import { buttonGroupVariants } from "../../button";
 import { Radio } from "./Radio";
+import { ReactNode } from "react";
+
+export type RadioOption = SelectOption & { description?: ReactNode };
 
 interface Props extends Omit<FieldProps, "children" | "group"> {
   name: FieldName<string | number | undefined | null>;
-  options: readonly SelectOption[];
+  options: readonly RadioOption[];
   asButton?: boolean;
   direction?: "horizontal" | "vertical";
 }
@@ -42,6 +45,7 @@ export function RadiosField({
             name={field.name}
             value={option.value}
             defaultChecked={field.defaultValue === option.value}
+            description={option.description}
           >
             {option.label}
           </Radio>
