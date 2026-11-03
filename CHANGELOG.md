@@ -1,3 +1,9 @@
+## 1.3.15
+
+### Patch Changes
+
+- 3da0ad7: radios, radiosField : add description prop
+
 ## 1.3.14
 
 ### Patch Changes
