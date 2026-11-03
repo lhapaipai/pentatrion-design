@@ -21,7 +21,7 @@ export function PopoverContent({ style, children, className, ref, ...props }: Pr
     <FloatingPortal>
       <FloatingFocusManager context={floatingContext} modal={context.modal}>
         <div
-          className="outline-hidden"
+          className="outline-hidden z-dialog"
           ref={mergedRef}
           style={{ ...context.floatingStyles, ...style }}
           aria-labelledby={context.labelId}

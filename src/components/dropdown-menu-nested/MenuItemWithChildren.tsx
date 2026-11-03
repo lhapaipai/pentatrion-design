@@ -193,7 +193,11 @@ export function MenuItemWithChildren({
               returnFocus={!isNested}
             >
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                <div ref={refs.setFloating} style={floatingStyles} className="outline-hidden">
+                <div
+                  ref={refs.setFloating}
+                  style={floatingStyles}
+                  className="outline-hidden z-dialog"
+                >
                   <Dialog {...getFloatingProps()}>{children}</Dialog>
                 </div>
               </FloatingList>
