@@ -1,3 +1,9 @@
+## 1.3.16
+
+### Patch Changes
+
+- 4de0148: added textChromacity
+
 ## 1.3.15
 
 ### Patch Changes
