@@ -14,7 +14,7 @@ const samplePalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: "#3b82f6",
   tertiary: "#ec4899",
-  gray: "#323232",
+  textChromaticity: null,
 };
 
 const variantsRamp = [-75, -25, 0, 25, 85, 90, 95];

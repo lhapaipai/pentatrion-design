@@ -205,6 +205,10 @@
   --resize-indicator: 2px;
 
   --step-circle-radius: 16px;
+
+  /* luminosités OKLCH des textes teintés par une Chromaticity : à L 0 ou 1, la teinte serait invisible */
+  --chromaticity-title-l: 0.23;
+  --chromaticity-text-l: 0.32;
 }
 
 .dark {
@@ -261,6 +265,9 @@
   --color-gray-1: #232323;
   --color-gray-0: #151d1d;
   --color-gray-text: var(--color-gray-8);
+
+  --chromaticity-title-l: 0.95;
+  --chromaticity-text-l: 0.89;
 }
 
 @keyframes ripple {

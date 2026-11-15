@@ -5,3 +5,5 @@ export { NamedColorGrid } from "./NamedColorGrid";
 export * from "../../lib/palette";
 export { RawColorGrid } from "./RawColorGrid";
 export { HarmonyColorGrid } from "./HarmonyColorGrid";
+export { ChromaticityGrid } from "./ChromaticityGrid";
+export { ChromaticityPicker } from "./ChromaticityPicker";

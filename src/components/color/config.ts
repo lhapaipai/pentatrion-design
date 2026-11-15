@@ -23,10 +23,18 @@ export type Color = z.infer<typeof colorSchema>;
 
 export type ColorInput = z.input<typeof colorSchema>;
 
+export const maxChroma = 0.12;
+
+export const chromaticitySchema = z.object({
+  hue: z.number().check(z.gte(0), z.lt(360)),
+  chroma: z.number().check(z.gte(0), z.lte(maxChroma)),
+});
+export type Chromaticity = z.infer<typeof chromaticitySchema>;
+
 export const brandPaletteSchema = z.object({
   primary: z.string(),
   secondary: z._default(z.nullable(z.string()), null),
   tertiary: z._default(z.nullable(z.string()), null),
-  gray: z.string(),
+  textChromaticity: z._default(z.nullable(chromaticitySchema), null),
 });
 export type BrandPalette = z.infer<typeof brandPaletteSchema>;

@@ -1,13 +1,37 @@
-import type { BrandPalette, Color, ColorName } from "../components/color/config";
+import type { BrandPalette, Chromaticity, Color, ColorName } from "../components/color/config";
 
 export const defaultBrandPalette: BrandPalette = {
   primary: "#ffca0a",
   secondary: null,
   tertiary: null,
-  gray: "#808080",
+  textChromaticity: null,
 };
 
 export const defaultFallbackColor = "#000000";
+
+export const chromaticityGridHues = Array.from({ length: 12 }, (_, i) => i * 30);
+
+// intensités calées sur les gris Tailwind stone (≈0.012), taupe (≈0.025) et slate (≈0.04),
+// vivid pour du texte franchement coloré
+export const chromaticityGridChromas = {
+  subtle: 0.012,
+  marked: 0.025,
+  strong: 0.04,
+  vivid: 0.1,
+} as const;
+
+export const chromaticityPreviewLightness = 0.55;
+
+export function getChromaticityValue(
+  { hue, chroma }: Chromaticity,
+  lightness: number | string = chromaticityPreviewLightness,
+): string {
+  return `oklch(${lightness} ${chroma} ${hue})`;
+}
+
+export function isSameChromaticity(a: Chromaticity | null, b: Chromaticity | null): boolean {
+  return a === b || (!!a && !!b && a.hue === b.hue && a.chroma === b.chroma);
+}
 
 export function getColorValue(
   color: Color | null,
